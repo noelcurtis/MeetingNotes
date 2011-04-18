@@ -21,11 +21,11 @@
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C78540E8135CF9B7001AAEDD /* MeetingNotes-Info.plist */ = {isa = PBXFileReference; path = "MeetingNotes-Info.plist"; sourceTree = "<group>"; };
+		C78540E8135CF9B7001AAEDD /* MeetingNotes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeetingNotes-Info.plist"; sourceTree = "<group>"; };
 		C78540EA135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C78540EC135CF9B7001AAEDD /* MeetingNotes-Prefix.pch */ = {isa = PBXFileReference; path = "MeetingNotes-Prefix.pch"; sourceTree = "<group>"; };
+		C78540EC135CF9B7001AAEDD /* MeetingNotes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetingNotes-Prefix.pch"; sourceTree = "<group>"; };
 		C78540ED135CF9B7001AAEDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
+		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
 		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
 		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,6 +263,7 @@
 				C78540F9135CF9B7001AAEDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
