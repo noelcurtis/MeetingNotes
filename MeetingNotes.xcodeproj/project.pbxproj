@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
+		C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
+		C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
+		C78540EB135CF9B7001AAEDD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C78540E9135CF9B7001AAEDD /* InfoPlist.strings */; };
+		C78540EE135CF9B7001AAEDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540ED135CF9B7001AAEDD /* main.m */; };
+		C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */; };
+		C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78540F2135CF9B7001AAEDD /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C78540E8135CF9B7001AAEDD /* MeetingNotes-Info.plist */ = {isa = PBXFileReference; path = "MeetingNotes-Info.plist"; sourceTree = "<group>"; };
+		C78540EA135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C78540EC135CF9B7001AAEDD /* MeetingNotes-Prefix.pch */ = {isa = PBXFileReference; path = "MeetingNotes-Prefix.pch"; sourceTree = "<group>"; };
+		C78540ED135CF9B7001AAEDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
+		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
+		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C78540D9135CF9B7001AAEDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */,
+				C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */,
+				C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C78540D1135CF9B7001AAEDD = {
+			isa = PBXGroup;
+			children = (
+				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
+				C78540DF135CF9B7001AAEDD /* Frameworks */,
+				C78540DD135CF9B7001AAEDD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C78540DD135CF9B7001AAEDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C78540DC135CF9B7001AAEDD /* MeetingNotes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C78540E0135CF9B7001AAEDD /* UIKit.framework */,
+				C78540E2135CF9B7001AAEDD /* Foundation.framework */,
+				C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
+			isa = PBXGroup;
+			children = (
+				C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */,
+				C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */,
+				C78540F2135CF9B7001AAEDD /* MainWindow.xib */,
+				C78540E7135CF9B7001AAEDD /* Supporting Files */,
+			);
+			path = MeetingNotes;
+			sourceTree = "<group>";
+		};
+		C78540E7135CF9B7001AAEDD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C78540E8135CF9B7001AAEDD /* MeetingNotes-Info.plist */,
+				C78540E9135CF9B7001AAEDD /* InfoPlist.strings */,
+				C78540EC135CF9B7001AAEDD /* MeetingNotes-Prefix.pch */,
+				C78540ED135CF9B7001AAEDD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C78540DB135CF9B7001AAEDD /* MeetingNotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C78540F7135CF9B7001AAEDD /* Build configuration list for PBXNativeTarget "MeetingNotes" */;
+			buildPhases = (
+				C78540D8135CF9B7001AAEDD /* Sources */,
+				C78540D9135CF9B7001AAEDD /* Frameworks */,
+				C78540DA135CF9B7001AAEDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetingNotes;
+			productName = MeetingNotes;
+			productReference = C78540DC135CF9B7001AAEDD /* MeetingNotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C78540D3135CF9B7001AAEDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "EMC Corporation";
+			};
+			buildConfigurationList = C78540D6135CF9B7001AAEDD /* Build configuration list for PBXProject "MeetingNotes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C78540D1135CF9B7001AAEDD;
+			productRefGroup = C78540DD135CF9B7001AAEDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C78540DB135CF9B7001AAEDD /* MeetingNotes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C78540DA135CF9B7001AAEDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C78540EB135CF9B7001AAEDD /* InfoPlist.strings in Resources */,
+				C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C78540D8135CF9B7001AAEDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C78540EE135CF9B7001AAEDD /* main.m in Sources */,
+				C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C78540E9135CF9B7001AAEDD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C78540EA135CF9B7001AAEDD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C78540F2135CF9B7001AAEDD /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C78540F3135CF9B7001AAEDD /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C78540F5135CF9B7001AAEDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C78540F6135CF9B7001AAEDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		C78540F8135CF9B7001AAEDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
+				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C78540F9135CF9B7001AAEDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
+				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C78540D6135CF9B7001AAEDD /* Build configuration list for PBXProject "MeetingNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C78540F5135CF9B7001AAEDD /* Debug */,
+				C78540F6135CF9B7001AAEDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C78540F7135CF9B7001AAEDD /* Build configuration list for PBXNativeTarget "MeetingNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C78540F8135CF9B7001AAEDD /* Debug */,
+				C78540F9135CF9B7001AAEDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C78540D3135CF9B7001AAEDD /* Project object */;
+}
