@@ -7,16 +7,33 @@
 //
 
 #import "MeetingNotesAppDelegate.h"
+#import "SortRootViewController.h"
+#import "SortDetailViewController.h"
 
 @implementation MeetingNotesAppDelegate
 
 
 @synthesize window=_window;
+@synthesize sortDVController, sortRVController, splitViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    splitViewController = [[UISplitViewController alloc] init];
+	
+	sortDVController = [[SortDetailViewController alloc] init];
+	splitViewController.delegate = sortDVController;
+	
+	sortRVController = [[SortRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	sortRVController.dvController = sortDVController;
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
+    
+	splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];
+	[self.window addSubview:splitViewController.view];
+    
+	NSLog(@"SplitViewController has been displayed.");
+	[nav release];
     return YES;
 }
 

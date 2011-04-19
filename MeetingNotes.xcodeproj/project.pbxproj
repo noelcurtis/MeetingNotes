@@ -14,6 +14,10 @@
 		C78540EE135CF9B7001AAEDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540ED135CF9B7001AAEDD /* main.m */; };
 		C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */; };
 		C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78540F2135CF9B7001AAEDD /* MainWindow.xib */; };
+		C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E69F135D0599009B42B9 /* SortRootViewController.m */; };
+		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
+		C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */; };
+		C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,12 @@
 		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
 		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
 		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C790E69E135D0599009B42B9 /* SortRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRootViewController.h; sourceTree = "<group>"; };
+		C790E69F135D0599009B42B9 /* SortRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortRootViewController.m; sourceTree = "<group>"; };
+		C790E6A0135D0599009B42B9 /* SortRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortRootViewController.xib; sourceTree = "<group>"; };
+		C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortDetailViewController.h; sourceTree = "<group>"; };
+		C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDetailViewController.m; sourceTree = "<group>"; };
+		C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +84,9 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
-				C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */,
-				C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */,
-				C78540F2135CF9B7001AAEDD /* MainWindow.xib */,
+				C790E681135D040D009B42B9 /* MainSplitView Controllers */,
+				C790E680135D03FA009B42B9 /* AppDelegate */,
+				C790E67E135D03D7009B42B9 /* Resources */,
 				C78540E7135CF9B7001AAEDD /* Supporting Files */,
 			);
 			path = MeetingNotes;
@@ -91,6 +101,36 @@
 				C78540ED135CF9B7001AAEDD /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C790E67E135D03D7009B42B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C78540F2135CF9B7001AAEDD /* MainWindow.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C790E680135D03FA009B42B9 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */,
+				C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C790E681135D040D009B42B9 /* MainSplitView Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C790E69E135D0599009B42B9 /* SortRootViewController.h */,
+				C790E69F135D0599009B42B9 /* SortRootViewController.m */,
+				C790E6A0135D0599009B42B9 /* SortRootViewController.xib */,
+				C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */,
+				C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */,
+				C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */,
+			);
+			name = "MainSplitView Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +185,8 @@
 			files = (
 				C78540EB135CF9B7001AAEDD /* InfoPlist.strings in Resources */,
 				C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */,
+				C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */,
+				C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +199,8 @@
 			files = (
 				C78540EE135CF9B7001AAEDD /* main.m in Sources */,
 				C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */,
+				C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */,
+				C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

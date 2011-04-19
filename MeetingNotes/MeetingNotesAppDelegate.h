@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class SortRootViewController;
+@class SortDetailViewController;
+
 @interface MeetingNotesAppDelegate : NSObject <UIApplicationDelegate> {
 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) SortRootViewController *sortRVController;
+@property (nonatomic, retain) SortDetailViewController *sortDVController;
+@property (nonatomic, retain) UISplitViewController *splitViewController;
 
 @end
