@@ -3,7 +3,7 @@
 //  NotesMainView
 //
 //  Created by Noel Curtis on 4/10/11.
-//  Copyright 2011 EMC Corporation. All rights reserved.
+//  Copyright 2011 Noel Curtis. All rights reserved.
 //
 
 #import "CalenderView.h"
