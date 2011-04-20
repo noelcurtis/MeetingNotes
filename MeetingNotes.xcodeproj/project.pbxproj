@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7132D83135E7DC30012B12A /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */; };
+		C7132DA6135E7F350012B12A /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA5135E7F350012B12A /* libTapkuLibrary.a */; };
+		C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA7135E7F5A0012B12A /* MapKit.framework */; };
+		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
+		C7132DB7135E83400012B12A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7132DB6135E83400012B12A /* CalenderView.m */; };
 		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
 		C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
@@ -14,9 +19,44 @@
 		C78540EE135CF9B7001AAEDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540ED135CF9B7001AAEDD /* main.m */; };
 		C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */; };
 		C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78540F2135CF9B7001AAEDD /* MainWindow.xib */; };
+		C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E69F135D0599009B42B9 /* SortRootViewController.m */; };
+		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
+		C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */; };
+		C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C7132D9F135E7F120012B12A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
+		C7132DA1135E7F120012B12A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
+			remoteInfo = LogicTests;
+		};
+		C7132DA3135E7F270012B12A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../../SDK_API/tapkulibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
+		C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../SDK_API/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		C7132DA5135E7F350012B12A /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
+		C7132DA7135E7F5A0012B12A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C7132DA9135E7F680012B12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C7132DB5135E83400012B12A /* CalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderView.h; sourceTree = "<group>"; };
+		C7132DB6135E83400012B12A /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -28,6 +68,12 @@
 		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
 		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
 		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C790E69E135D0599009B42B9 /* SortRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRootViewController.h; sourceTree = "<group>"; };
+		C790E69F135D0599009B42B9 /* SortRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortRootViewController.m; sourceTree = "<group>"; };
+		C790E6A0135D0599009B42B9 /* SortRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortRootViewController.xib; sourceTree = "<group>"; };
+		C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortDetailViewController.h; sourceTree = "<group>"; };
+		C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDetailViewController.m; sourceTree = "<group>"; };
+		C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */,
+				C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */,
+				C7132DA6135E7F350012B12A /* libTapkuLibrary.a in Frameworks */,
 				C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */,
 				C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */,
 				C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */,
@@ -44,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7132D98135E7F120012B12A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C7132DA0135E7F120012B12A /* libTapkuLibrary.a */,
+				C7132DA2135E7F120012B12A /* LogicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +122,10 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7132DA9135E7F680012B12A /* QuartzCore.framework */,
+				C7132DA7135E7F5A0012B12A /* MapKit.framework */,
+				C7132DA5135E7F350012B12A /* libTapkuLibrary.a */,
+				C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */,
 				C78540E0135CF9B7001AAEDD /* UIKit.framework */,
 				C78540E2135CF9B7001AAEDD /* Foundation.framework */,
 				C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */,
@@ -74,9 +136,11 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
-				C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */,
-				C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */,
-				C78540F2135CF9B7001AAEDD /* MainWindow.xib */,
+				C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */,
+				C7CA16CF135D37660065D288 /* CalenderView */,
+				C790E681135D040D009B42B9 /* MainSplitView Controllers */,
+				C790E680135D03FA009B42B9 /* AppDelegate */,
+				C790E67E135D03D7009B42B9 /* Resources */,
 				C78540E7135CF9B7001AAEDD /* Supporting Files */,
 			);
 			path = MeetingNotes;
@@ -93,6 +157,45 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C790E67E135D03D7009B42B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C78540F2135CF9B7001AAEDD /* MainWindow.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C790E680135D03FA009B42B9 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */,
+				C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C790E681135D040D009B42B9 /* MainSplitView Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C790E69E135D0599009B42B9 /* SortRootViewController.h */,
+				C790E69F135D0599009B42B9 /* SortRootViewController.m */,
+				C790E6A0135D0599009B42B9 /* SortRootViewController.xib */,
+				C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */,
+				C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */,
+				C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */,
+			);
+			name = "MainSplitView Controllers";
+			sourceTree = "<group>";
+		};
+		C7CA16CF135D37660065D288 /* CalenderView */ = {
+			isa = PBXGroup;
+			children = (
+				C7132DB5135E83400012B12A /* CalenderView.h */,
+				C7132DB6135E83400012B12A /* CalenderView.m */,
+			);
+			name = CalenderView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,6 +210,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C7132DA4135E7F270012B12A /* PBXTargetDependency */,
 			);
 			name = MeetingNotes;
 			productName = MeetingNotes;
@@ -131,12 +235,35 @@
 			mainGroup = C78540D1135CF9B7001AAEDD;
 			productRefGroup = C78540DD135CF9B7001AAEDD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C7132D98135E7F120012B12A /* Products */;
+					ProjectRef = C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C78540DB135CF9B7001AAEDD /* MeetingNotes */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C7132DA0135E7F120012B12A /* libTapkuLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTapkuLibrary.a;
+			remoteRef = C7132D9F135E7F120012B12A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C7132DA2135E7F120012B12A /* LogicTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LogicTests.octest;
+			remoteRef = C7132DA1135E7F120012B12A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C78540DA135CF9B7001AAEDD /* Resources */ = {
@@ -145,6 +272,9 @@
 			files = (
 				C78540EB135CF9B7001AAEDD /* InfoPlist.strings in Resources */,
 				C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */,
+				C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */,
+				C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */,
+				C7132D83135E7DC30012B12A /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,10 +287,21 @@
 			files = (
 				C78540EE135CF9B7001AAEDD /* main.m in Sources */,
 				C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */,
+				C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */,
+				C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */,
+				C7132DB7135E83400012B12A /* CalenderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C7132DA4135E7F270012B12A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapkuLibrary;
+			targetProxy = C7132DA3135E7F270012B12A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C78540E9135CF9B7001AAEDD /* InfoPlist.strings */ = {
@@ -224,7 +365,16 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src;
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -237,7 +387,16 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src;
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
