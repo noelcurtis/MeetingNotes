@@ -19,4 +19,7 @@
 
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *calendarButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
+
+-(IBAction) calenderButtonClick:(id)sender;
+
 @end

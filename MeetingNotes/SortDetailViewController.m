@@ -7,7 +7,7 @@
 //
 
 #import "SortDetailViewController.h"
-
+#import "CalenderView.h"
 
 @implementation SortDetailViewController
 @synthesize toolBar;
@@ -34,6 +34,21 @@
     [toolBar release];
     [super dealloc];
 }
+
+#pragma mark - CalendarView show method
+
+-(IBAction)calenderButtonClick:(id)sender{
+    UIViewController *vc = [[CalenderView alloc] init];
+    UIPopoverController *controls = [[UIPopoverController alloc]
+                                     initWithContentViewController:vc]; 
+    //controls.popoverContentSize = vc.view.frame.size;
+    [controls presentPopoverFromBarButtonItem:sender 
+                     permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+}
+
+
+#pragma mark - SplitViewController delegate methods
 
 -(void) splitViewController:(UISplitViewController *)svc 
      willHideViewController:(UIViewController *)aViewController 
