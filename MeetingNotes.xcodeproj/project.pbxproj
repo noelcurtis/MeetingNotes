@@ -23,6 +23,8 @@
 		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
 		C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */; };
 		C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */; };
+		C7D74AF31362242B00B57A9C /* MeetingNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7D74AF11362242B00B57A9C /* MeetingNotes.xcdatamodeld */; };
+		C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D74AF41362266600B57A9C /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortDetailViewController.h; sourceTree = "<group>"; };
 		C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDetailViewController.m; sourceTree = "<group>"; };
 		C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
+		C7D74AF21362242B00B57A9C /* MeetingNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetingNotes.xcdatamodel; sourceTree = "<group>"; };
+		C7D74AF41362266600B57A9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */,
 				C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */,
 				C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */,
 				C7132DA6135E7F350012B12A /* libTapkuLibrary.a in Frameworks */,
@@ -122,6 +127,7 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7D74AF41362266600B57A9C /* CoreData.framework */,
 				C7132DA9135E7F680012B12A /* QuartzCore.framework */,
 				C7132DA7135E7F5A0012B12A /* MapKit.framework */,
 				C7132DA5135E7F350012B12A /* libTapkuLibrary.a */,
@@ -136,6 +142,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C7D74AF0136223F500B57A9C /* DataModel */,
 				C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */,
 				C7CA16CF135D37660065D288 /* CalenderView */,
 				C790E681135D040D009B42B9 /* MainSplitView Controllers */,
@@ -194,6 +201,14 @@
 				C7132DB6135E83400012B12A /* CalenderView.m */,
 			);
 			name = CalenderView;
+			sourceTree = "<group>";
+		};
+		C7D74AF0136223F500B57A9C /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7D74AF11362242B00B57A9C /* MeetingNotes.xcdatamodeld */,
+			);
+			name = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +305,7 @@
 				C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */,
 				C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */,
 				C7132DB7135E83400012B12A /* CalenderView.m in Sources */,
+				C7D74AF31362242B00B57A9C /* MeetingNotes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +441,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C7D74AF11362242B00B57A9C /* MeetingNotes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C7D74AF21362242B00B57A9C /* MeetingNotes.xcdatamodel */,
+			);
+			currentVersion = C7D74AF21362242B00B57A9C /* MeetingNotes.xcdatamodel */;
+			path = MeetingNotes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C78540D3135CF9B7001AAEDD /* Project object */;
 }
