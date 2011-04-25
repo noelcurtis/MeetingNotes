@@ -11,6 +11,8 @@
 @class SortRootViewController;
 @interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate> {
     
+    UIViewController *activeViewController; // use to hold the current active detail view
+    
 }
 
 @property(nonatomic, retain) IBOutlet UIToolbar *toolBar;
@@ -20,6 +22,8 @@
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *calendarButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
 
--(IBAction) calenderButtonClick:(id)sender;
 
+-(IBAction) calenderButtonClick:(id)sender;
+-(IBAction) addButtonPressed;
+-(void) setupWithActiveViewController:(UIViewController*)controller;
 @end

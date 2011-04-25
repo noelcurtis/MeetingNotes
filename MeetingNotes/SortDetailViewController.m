@@ -8,11 +8,21 @@
 
 #import "SortDetailViewController.h"
 #import "CalenderView.h"
+#import "SortRootViewController.h"
+#import "NotesRootViewController.h"
+#import "NotesDetailViewController.h"
+#import "MeetingListViewController.h"
+
+@interface SortDetailViewController() 
+    @property (nonatomic, retain)UIViewController *activeViewController;
+@end
 
 @implementation SortDetailViewController
+
 @synthesize toolBar;
 @synthesize rvController;
 @synthesize popoverController;
+@synthesize activeViewController;
 
 @synthesize calendarButton, flexButton;
 
@@ -27,12 +37,45 @@
 
 - (void)dealloc
 {
+    [activeViewController release];
     [calendarButton release];
     [popoverController release];
     [rvController release];
     [flexButton release];
     [toolBar release];
     [super dealloc];
+}
+
+#pragma mark - Managing the active detail view
+// Use to change the active sub view controller in the Detail view
+-(void) setupWithActiveViewController:(UIViewController*) controller
+{
+    [self.activeViewController.view removeFromSuperview];
+	self.activeViewController = controller;
+    // Customize the size of the frame so that the toolbar is not hidden.
+	CGRect r = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height);
+	self.activeViewController.view.frame = r;
+	[self.activeViewController viewWillAppear:NO];
+	[self.view addSubview:self.activeViewController.view];
+	[self.activeViewController viewDidAppear:NO];
+}
+
+#pragma mark - Showing the Notes view
+// The add button is attached to this action
+// Push the NotesView controllers when the add button is pressed
+-(IBAction) addButtonPressed
+{
+    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
+    // get the navigation controller from the SplitView Controller
+    UINavigationController *navController = [self.splitViewController.viewControllers objectAtIndex:0];
+    // push the NotesRootView Controller
+    [navController pushViewController:notesRVController animated:YES];
+    [notesRVController release];
+    [navController release];
+    // push the NotesDetailView Controller
+    NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
+    [self setupWithActiveViewController:notesDetailView];
+    [notesDetailView release];
 }
 
 #pragma mark - CalendarView show method
@@ -90,6 +133,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
+    //show a list of all the current meetings
+    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithNibName:@"MeetingListViewController" bundle:nil];
+    [self setupWithActiveViewController:meetingsList];
+    [meetingsList release];
+    
 }
 
 - (void)viewDidUnload

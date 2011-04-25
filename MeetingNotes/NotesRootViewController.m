@@ -1,18 +1,15 @@
 //
-//  SortRootViewController.m
+//  NotesRootViewController.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 4/18/11.
-//  Copyright 2011 Noel Curtis. All rights reserved.
+//  Created by Noel Curtis on 4/23/11.
+//  Copyright 2011 EMC Corporation. All rights reserved.
 //
 
-#import "SortRootViewController.h"
 #import "NotesRootViewController.h"
-#import "NotesDetailViewController.h"
-#import "SortDetailViewController.h"
 
-@implementation SortRootViewController
-@synthesize dvController;
+
+@implementation NotesRootViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,7 +22,6 @@
 
 - (void)dealloc
 {
-    [dvController release];
     [super dealloc];
 }
 
@@ -42,13 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Views";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -89,13 +84,23 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    switch (section) {
+        case 0:
+            return 1;  // section for the meeting description
+            break;
+        case 1:
+            return 4;  // section for agenda items will return noOfRows == noOfAgendaItems
+            break;
+        default:
+            return 1;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -12,6 +12,8 @@
 		C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA7135E7F5A0012B12A /* MapKit.framework */; };
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7132DB7135E83400012B12A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7132DB6135E83400012B12A /* CalenderView.m */; };
+		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
+		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
 		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
 		C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
@@ -25,6 +27,10 @@
 		C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */; };
 		C7D74AF31362242B00B57A9C /* MeetingNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7D74AF11362242B00B57A9C /* MeetingNotes.xcdatamodeld */; };
 		C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D74AF41362266600B57A9C /* CoreData.framework */; };
+		C7D74B0E1363255500B57A9C /* NotesRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B0C1363255500B57A9C /* NotesRootViewController.m */; };
+		C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */; };
+		C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */; };
+		C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,9 @@
 		C7132DA9135E7F680012B12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7132DB5135E83400012B12A /* CalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderView.h; sourceTree = "<group>"; };
 		C7132DB6135E83400012B12A /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
+		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
+		C748C96913662841005C4A2C /* MeetingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingListViewController.m; sourceTree = "<group>"; };
+		C748C96A13662841005C4A2C /* MeetingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingListViewController.xib; sourceTree = "<group>"; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -78,6 +87,12 @@
 		C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
 		C7D74AF21362242B00B57A9C /* MeetingNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetingNotes.xcdatamodel; sourceTree = "<group>"; };
 		C7D74AF41362266600B57A9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C7D74B0B1363255500B57A9C /* NotesRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRootViewController.h; sourceTree = "<group>"; };
+		C7D74B0C1363255500B57A9C /* NotesRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRootViewController.m; sourceTree = "<group>"; };
+		C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesRootViewController.xib; sourceTree = "<group>"; };
+		C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailViewController.h; sourceTree = "<group>"; };
+		C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailViewController.m; sourceTree = "<group>"; };
+		C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +120,16 @@
 				C7132DA2135E7F120012B12A /* LogicTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C748C973136635FD005C4A2C /* MeetingList Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C748C96813662841005C4A2C /* MeetingListViewController.h */,
+				C748C96913662841005C4A2C /* MeetingListViewController.m */,
+				C748C96A13662841005C4A2C /* MeetingListViewController.xib */,
+			);
+			name = "MeetingList Controllers";
 			sourceTree = "<group>";
 		};
 		C78540D1135CF9B7001AAEDD = {
@@ -142,6 +167,8 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C748C973136635FD005C4A2C /* MeetingList Controllers */,
+				C7D74B0A1363212500B57A9C /* NotesView Controllers */,
 				C7D74AF0136223F500B57A9C /* DataModel */,
 				C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */,
 				C7CA16CF135D37660065D288 /* CalenderView */,
@@ -209,6 +236,19 @@
 				C7D74AF11362242B00B57A9C /* MeetingNotes.xcdatamodeld */,
 			);
 			name = DataModel;
+			sourceTree = "<group>";
+		};
+		C7D74B0A1363212500B57A9C /* NotesView Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7D74B0B1363255500B57A9C /* NotesRootViewController.h */,
+				C7D74B0C1363255500B57A9C /* NotesRootViewController.m */,
+				C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */,
+				C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */,
+				C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */,
+				C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */,
+			);
+			name = "NotesView Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +330,9 @@
 				C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */,
 				C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */,
 				C7132D83135E7DC30012B12A /* TapkuLibrary.bundle in Resources */,
+				C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */,
+				C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */,
+				C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +349,9 @@
 				C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */,
 				C7132DB7135E83400012B12A /* CalenderView.m in Sources */,
 				C7D74AF31362242B00B57A9C /* MeetingNotes.xcdatamodeld in Sources */,
+				C7D74B0E1363255500B57A9C /* NotesRootViewController.m in Sources */,
+				C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */,
+				C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

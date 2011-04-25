@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class SortDetailViewController;
+@class NotesRootViewController;
+
 @interface SortRootViewController : UITableViewController<UISplitViewControllerDelegate> {
     
 }
 
 @property (nonatomic, retain) IBOutlet SortDetailViewController *dvController;
-
 @end

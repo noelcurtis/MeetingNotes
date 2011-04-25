@@ -1,18 +1,15 @@
 //
-//  SortRootViewController.m
+//  MeetingListViewController.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 4/18/11.
-//  Copyright 2011 Noel Curtis. All rights reserved.
+//  Created by Noel Curtis on 4/25/11.
+//  Copyright 2011 EMC Corporation. All rights reserved.
 //
 
-#import "SortRootViewController.h"
-#import "NotesRootViewController.h"
-#import "NotesDetailViewController.h"
-#import "SortDetailViewController.h"
+#import "MeetingListViewController.h"
 
-@implementation SortRootViewController
-@synthesize dvController;
+
+@implementation MeetingListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,7 +22,6 @@
 
 - (void)dealloc
 {
-    [dvController release];
     [super dealloc];
 }
 
@@ -42,13 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Views";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -95,7 +90,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
