@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70E6AAD13667FD90059B75E /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C70E6AAC13667FD90059B75E /* Meeting.m */; };
 		C7132D83135E7DC30012B12A /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */; };
 		C7132DA6135E7F350012B12A /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA5135E7F350012B12A /* libTapkuLibrary.a */; };
 		C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA7135E7F5A0012B12A /* MapKit.framework */; };
@@ -58,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C70E6AAB13667FD90059B75E /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
+		C70E6AAC13667FD90059B75E /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
 		C7132D82135E7DC30012B12A /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../../SDK_API/tapkulibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		C7132D97135E7F120012B12A /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../SDK_API/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		C7132DA5135E7F350012B12A /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
@@ -113,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C70E6AAE13667FE20059B75E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C70E6AAB13667FD90059B75E /* Meeting.h */,
+				C70E6AAC13667FD90059B75E /* Meeting.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		C7132D98135E7F120012B12A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +179,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C70E6AAE13667FE20059B75E /* Data */,
 				C748C973136635FD005C4A2C /* MeetingList Controllers */,
 				C7D74B0A1363212500B57A9C /* NotesView Controllers */,
 				C7D74AF0136223F500B57A9C /* DataModel */,
@@ -352,6 +365,7 @@
 				C7D74B0E1363255500B57A9C /* NotesRootViewController.m in Sources */,
 				C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */,
 				C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */,
+				C70E6AAD13667FD90059B75E /* Meeting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

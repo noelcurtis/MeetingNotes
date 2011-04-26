@@ -27,6 +27,7 @@
     splitViewController = [[UISplitViewController alloc] init];
 	
 	sortDVController = [[SortDetailViewController alloc] init];
+    sortDVController.managedObjectContext = self.managedObjectContext;
 	splitViewController.delegate = sortDVController;
 	
 	sortRVController = [[SortRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -35,9 +36,8 @@
     
 	splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];
 	[self.window addSubview:splitViewController.view];
-    
 	NSLog(@"SplitViewController has been displayed.");
-	[nav release];
+    [nav release];
     return YES;
 }
 
@@ -73,25 +73,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
-    NSError *error = nil;
-    if (__managedObjectContext != nil) {
-        if ([__managedObjectContext hasChanges] && ![__managedObjectContext save:&error]) {
-            /*
-             Replace this implementation with code to handle the error appropriately.
-             
-             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-             */
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
-    }
-    [__managedObjectContext release];
+    // Saves changes in the application's managed object context before the application terminates.
+    [self saveContext];
+}
 
+- (void)awakeFromNib
+{
+    
+     //Typically you should set up the Core Data stack here, usually by passing the managed object context to the first view controller.
+     //self.<#View controller#>.managedObjectContext = self.managedObjectContext;
+     
 }
 
 - (void)dealloc
@@ -106,9 +97,10 @@
 - (void)saveContext
 {
     NSError *error = nil;
-    if (__managedObjectContext != nil)
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil)
     {
-        if ([__managedObjectContext hasChanges] && ![__managedObjectContext save:&error])
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {
             /*
              Replace this implementation with code to handle the error appropriately.

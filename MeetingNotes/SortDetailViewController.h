@@ -22,6 +22,7 @@
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *calendarButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
 
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction) calenderButtonClick:(id)sender;
 -(IBAction) addButtonPressed;

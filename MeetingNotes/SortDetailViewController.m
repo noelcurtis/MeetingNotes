@@ -23,6 +23,7 @@
 @synthesize rvController;
 @synthesize popoverController;
 @synthesize activeViewController;
+@synthesize managedObjectContext;
 
 @synthesize calendarButton, flexButton;
 
@@ -37,6 +38,7 @@
 
 - (void)dealloc
 {
+    [managedObjectContext release];
     [activeViewController release];
     [calendarButton release];
     [popoverController release];
