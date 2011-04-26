@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MeetingListViewController : UITableViewController {
+@interface MeetingListViewController : UITableViewController<NSFetchedResultsControllerDelegate> {
     
 }
 
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+- (void)insertNewObject:(id)sender;
 @end

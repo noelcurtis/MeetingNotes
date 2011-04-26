@@ -25,6 +25,6 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction) calenderButtonClick:(id)sender;
--(IBAction) addButtonPressed;
+-(IBAction) addButtonPressed:(id) sender;
 -(void) setupWithActiveViewController:(UIViewController*)controller;
 @end

@@ -65,9 +65,9 @@
 #pragma mark - Showing the Notes view
 // The add button is attached to this action
 // Push the NotesView controllers when the add button is pressed
--(IBAction) addButtonPressed
+-(IBAction) addButtonPressed:(id) sender
 {
-    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
+    /*NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
     // get the navigation controller from the SplitView Controller
     UINavigationController *navController = [self.splitViewController.viewControllers objectAtIndex:0];
     // push the NotesRootView Controller
@@ -77,7 +77,8 @@
     // push the NotesDetailView Controller
     NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
     [self setupWithActiveViewController:notesDetailView];
-    [notesDetailView release];
+    [notesDetailView release];*/
+    [(MeetingListViewController*)self.activeViewController insertNewObject:sender];
 }
 
 #pragma mark - CalendarView show method
@@ -137,6 +138,7 @@
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
     //show a list of all the current meetings
     MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithNibName:@"MeetingListViewController" bundle:nil];
+    meetingsList.managedObjectContext = self.managedObjectContext;
     [self setupWithActiveViewController:meetingsList];
     [meetingsList release];
     
