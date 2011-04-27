@@ -13,8 +13,8 @@
 		C7132DB7135E83400012B12A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7132DB6135E83400012B12A /* CalenderView.m */; };
 		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
-		C750C60213670E0D00EF67F1 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C750C60113670E0D00EF67F1 /* TapkuLibrary.bundle */; };
-		C750C60413670E2200EF67F1 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C750C60313670E2200EF67F1 /* libTapkuLibrary.a */; };
+		C74DC34A1367B432004FA304 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C74DC3491367B432004FA304 /* TapkuLibrary.bundle */; };
+		C74DC34E1367B448004FA304 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C74DC34D1367B448004FA304 /* libTapkuLibrary.a */; };
 		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
 		C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
@@ -35,23 +35,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C750C5FD13670DFB00EF67F1 /* PBXContainerItemProxy */ = {
+		C74DC3451367B429004FA304 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C750C5F513670DFB00EF67F1 /* TapkuLibrary.xcodeproj */;
+			containerPortal = C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = TapkuLibrary;
 		};
-		C750C5FF13670DFB00EF67F1 /* PBXContainerItemProxy */ = {
+		C74DC3471367B429004FA304 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C750C5F513670DFB00EF67F1 /* TapkuLibrary.xcodeproj */;
+			containerPortal = C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
 			remoteInfo = LogicTests;
 		};
-		C750C60513670E3A00EF67F1 /* PBXContainerItemProxy */ = {
+		C74DC34B1367B441004FA304 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C750C5F513670DFB00EF67F1 /* TapkuLibrary.xcodeproj */;
+			containerPortal = C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = TapkuLibrary;
@@ -68,9 +68,9 @@
 		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
 		C748C96913662841005C4A2C /* MeetingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingListViewController.m; sourceTree = "<group>"; };
 		C748C96A13662841005C4A2C /* MeetingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingListViewController.xib; sourceTree = "<group>"; };
-		C750C5F513670DFB00EF67F1 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../API/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
-		C750C60113670E0D00EF67F1 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../../API/tapkulibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
-		C750C60313670E2200EF67F1 /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
+		C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../SDK_API/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		C74DC3491367B432004FA304 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../../SDK_API/tapkulibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
+		C74DC34D1367B448004FA304 /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,7 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C750C60413670E2200EF67F1 /* libTapkuLibrary.a in Frameworks */,
+				C74DC34E1367B448004FA304 /* libTapkuLibrary.a in Frameworks */,
 				C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */,
 				C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */,
 				C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */,
@@ -135,11 +135,11 @@
 			name = "MeetingList Controllers";
 			sourceTree = "<group>";
 		};
-		C750C5F613670DFB00EF67F1 /* Products */ = {
+		C74DC33E1367B429004FA304 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C750C5FE13670DFB00EF67F1 /* libTapkuLibrary.a */,
-				C750C60013670DFB00EF67F1 /* LogicTests.octest */,
+				C74DC3461367B429004FA304 /* libTapkuLibrary.a */,
+				C74DC3481367B429004FA304 /* LogicTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,8 +164,8 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C750C60313670E2200EF67F1 /* libTapkuLibrary.a */,
-				C750C5F513670DFB00EF67F1 /* TapkuLibrary.xcodeproj */,
+				C74DC34D1367B448004FA304 /* libTapkuLibrary.a */,
+				C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */,
 				C7D74AF41362266600B57A9C /* CoreData.framework */,
 				C7132DA9135E7F680012B12A /* QuartzCore.framework */,
 				C7132DA7135E7F5A0012B12A /* MapKit.framework */,
@@ -179,7 +179,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
-				C750C60113670E0D00EF67F1 /* TapkuLibrary.bundle */,
+				C74DC3491367B432004FA304 /* TapkuLibrary.bundle */,
 				C70E6AAE13667FE20059B75E /* Data */,
 				C748C973136635FD005C4A2C /* MeetingList Controllers */,
 				C7D74B0A1363212500B57A9C /* NotesView Controllers */,
@@ -278,7 +278,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C750C60613670E3A00EF67F1 /* PBXTargetDependency */,
+				C74DC34C1367B441004FA304 /* PBXTargetDependency */,
 			);
 			name = MeetingNotes;
 			productName = MeetingNotes;
@@ -305,8 +305,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C750C5F613670DFB00EF67F1 /* Products */;
-					ProjectRef = C750C5F513670DFB00EF67F1 /* TapkuLibrary.xcodeproj */;
+					ProductGroup = C74DC33E1367B429004FA304 /* Products */;
+					ProjectRef = C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -317,18 +317,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C750C5FE13670DFB00EF67F1 /* libTapkuLibrary.a */ = {
+		C74DC3461367B429004FA304 /* libTapkuLibrary.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libTapkuLibrary.a;
-			remoteRef = C750C5FD13670DFB00EF67F1 /* PBXContainerItemProxy */;
+			remoteRef = C74DC3451367B429004FA304 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C750C60013670DFB00EF67F1 /* LogicTests.octest */ = {
+		C74DC3481367B429004FA304 /* LogicTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = LogicTests.octest;
-			remoteRef = C750C5FF13670DFB00EF67F1 /* PBXContainerItemProxy */;
+			remoteRef = C74DC3471367B429004FA304 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -345,7 +345,7 @@
 				C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */,
 				C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */,
 				C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */,
-				C750C60213670E0D00EF67F1 /* TapkuLibrary.bundle in Resources */,
+				C74DC34A1367B432004FA304 /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,10 +372,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C750C60613670E3A00EF67F1 /* PBXTargetDependency */ = {
+		C74DC34C1367B441004FA304 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapkuLibrary;
-			targetProxy = C750C60513670E3A00EF67F1 /* PBXContainerItemProxy */;
+			targetProxy = C74DC34B1367B441004FA304 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

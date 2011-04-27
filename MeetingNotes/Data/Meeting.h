@@ -3,7 +3,7 @@
 //  MeetingNotes
 //
 //  Created by Noel Curtis on 4/26/11.
-//  Copyright (c) 2011 EMC Corporation. All rights reserved.
+//  Copyright (c) 2011 Noel Curtis. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

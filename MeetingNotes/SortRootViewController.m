@@ -11,6 +11,11 @@
 #import "NotesDetailViewController.h"
 #import "SortDetailViewController.h"
 
+@interface SortRootViewController()
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@end
+
+
 @implementation SortRootViewController
 @synthesize dvController;
 
@@ -42,7 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Views";
+    self.title = @"Sort";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -89,7 +94,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -107,10 +112,26 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
+
+// Use to configure a cell for this table view.
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.text = @"Tags";
+            break;
+        case 1:
+            cell.textLabel.text = @"Date";
+            break;
+        default:
+            break;
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -3,7 +3,7 @@
 //  MeetingNotes
 //
 //  Created by Noel Curtis on 4/25/11.
-//  Copyright 2011 EMC Corporation. All rights reserved.
+//  Copyright 2011 Noel Curtis. All rights reserved.
 //
 
 #import "MeetingListViewController.h"
@@ -186,7 +186,7 @@
 }
 
 #pragma mark - Inserting a new object
-
+// Use to insert an Event into the database
 - (void)insertNewObject:(id)sender
 {
     NSIndexPath *currentSelection = [self.tableView indexPathForSelectedRow];
