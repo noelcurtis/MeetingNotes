@@ -21,9 +21,10 @@
 
 @synthesize toolBar;
 @synthesize rvController;
-@synthesize popoverController;
+@synthesize rootViewPopover;
 @synthesize activeViewController;
 @synthesize managedObjectContext;
+@synthesize createMinutePopoverController;
 
 @synthesize calendarButton, flexButton;
 
@@ -38,10 +39,11 @@
 
 - (void)dealloc
 {
+    [createMinutePopoverController release];
     [managedObjectContext release];
     [activeViewController release];
     [calendarButton release];
-    [popoverController release];
+    [rootViewPopover release];
     [rvController release];
     [flexButton release];
     [toolBar release];
@@ -67,7 +69,52 @@
 // Push the NotesView controllers when the add button is pressed
 -(IBAction) addButtonPressed:(id) sender
 {
-    /*NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
+    // create a view to enter a meeting manually
+    CreateMinutesViewController *createMinutesVC = [[CreateMinutesViewController alloc] initWithNibName:@"CreateMinutesView" bundle:nil];
+	createMinutesVC.delegate = self;
+    
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
+	createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+	createMinutePopoverController.delegate = self;
+    createMinutePopoverController.popoverContentSize = createMinutesVC.view.frame.size;
+	[createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+	
+	[navigationController release];
+	[createMinutesVC release];
+}
+
+#pragma mark - CalendarView show method
+
+-(IBAction)calenderButtonClick:(id)sender{
+    UIViewController *calenderView = [[CalenderView alloc] init];
+    UIPopoverController *calenderPopover = [[UIPopoverController alloc]
+                                     initWithContentViewController:calenderView]; 
+    //calenderPopover.popoverContentSize = calenderView.view.frame.size;
+    [calenderPopover presentPopoverFromBarButtonItem:sender 
+                     permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+}
+
+#pragma mark -
+#pragma mark CreateMinutesModalViewControllerDelegate
+
+- (void)didDismissModalView {
+	//[self dismissModalViewControllerAnimated:YES];	
+	[createMinutePopoverController dismissPopoverAnimated:YES];
+}
+
+- (void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place {
+	// Save minute
+    [createMinutePopoverController dismissPopoverAnimated:YES];
+	[(MeetingListViewController*)self.activeViewController insertNewMeeting];
+}
+
+#pragma mark Push the Meeting Notes View Controllers
+
+// Use method to push Meeting Notes View Controllers
+-(void) pushMeetingNotesViewControllers{
+    // Push the controllers for the Notes Editing views
+    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
     // get the navigation controller from the SplitView Controller
     UINavigationController *navController = [self.splitViewController.viewControllers objectAtIndex:0];
     // push the NotesRootView Controller
@@ -77,20 +124,17 @@
     // push the NotesDetailView Controller
     NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
     [self setupWithActiveViewController:notesDetailView];
-    [notesDetailView release];*/
-    [(MeetingListViewController*)self.activeViewController insertNewObject:sender];
+    [notesDetailView release];
 }
 
-#pragma mark - CalendarView show method
+#pragma mark -
+#pragma mark Popover Delegate
 
--(IBAction)calenderButtonClick:(id)sender{
-    UIViewController *vc = [[CalenderView alloc] init];
-    UIPopoverController *controls = [[UIPopoverController alloc]
-                                     initWithContentViewController:vc]; 
-    //controls.popoverContentSize = vc.view.frame.size;
-    [controls presentPopoverFromBarButtonItem:sender 
-                     permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
+	if (popoverController == createMinutePopoverController) {
+		return NO;
+	}
+	return YES;
 }
 
 
@@ -106,7 +150,7 @@
     [items insertObject:barButtonItem atIndex:0];
     [self.toolBar setItems:items // setup bar button item for toolbar
                   animated:YES]; 
-    self.popoverController = pc;
+    self.rootViewPopover = pc;
 
     
 }
@@ -119,7 +163,7 @@
     [items removeObjectAtIndex:0];
     [toolBar setItems:items animated:YES];
     [items release];
-    self.popoverController = nil;
+    self.rootViewPopover = nil;
 
 }
 
@@ -139,6 +183,7 @@
     //show a list of all the current meetings
     MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithNibName:@"MeetingListViewController" bundle:nil];
     meetingsList.managedObjectContext = self.managedObjectContext;
+    meetingsList.masterSortDetailView = self;
     [self setupWithActiveViewController:meetingsList];
     [meetingsList release];
     

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreateMinutesViewController.h"
 
 @class SortRootViewController;
-@interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate> {
+@interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate> {
     
     UIViewController *activeViewController; // use to hold the current active detail view
     
@@ -17,14 +18,21 @@
 
 @property(nonatomic, retain) IBOutlet UIToolbar *toolBar;
 @property(nonatomic, retain) IBOutlet SortRootViewController *rvController;
-@property(nonatomic, retain) IBOutlet UIPopoverController *popoverController;
+@property(nonatomic, retain) IBOutlet UIPopoverController *rootViewPopover;
 
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *calendarButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
+@property(nonatomic, retain) IBOutlet UIPopoverController *createMinutePopoverController;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction) calenderButtonClick:(id)sender;
 -(IBAction) addButtonPressed:(id) sender;
 -(void) setupWithActiveViewController:(UIViewController*)controller;
+//Methods to satisfy the CreateMinutesModalViewControllerDelegate protocol
+- (void)didDismissModalView;
+- (void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
+
+//Method to push Notes View Controllers
+-(void) pushMeetingNotesViewControllers;
 @end

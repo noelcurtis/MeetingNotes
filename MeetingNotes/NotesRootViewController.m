@@ -84,23 +84,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    switch (section) {
-        case 0:
-            return 1;  // section for the meeting description
-            break;
-        case 1:
-            return 4;  // section for agenda items will return noOfRows == noOfAgendaItems
-            break;
-        default:
-            return 1;
-            break;
-    }
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

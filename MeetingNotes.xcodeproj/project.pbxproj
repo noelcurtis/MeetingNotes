@@ -32,6 +32,10 @@
 		C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */; };
 		C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */; };
 		C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */; };
+		C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */; };
+		C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */; };
+		C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */; };
+		C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,12 @@
 		C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailViewController.h; sourceTree = "<group>"; };
 		C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailViewController.m; sourceTree = "<group>"; };
 		C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesDetailViewController.xib; sourceTree = "<group>"; };
+		C7F96FDE1368EDA300737BEA /* CreateMinutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMinutesViewController.h; sourceTree = "<group>"; };
+		C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMinutesViewController.m; sourceTree = "<group>"; };
+		C7F96FE01368EDA300737BEA /* StartsEndsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartsEndsViewController.h; sourceTree = "<group>"; };
+		C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartsEndsViewController.m; sourceTree = "<group>"; };
+		C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateMinutesView.xib; sourceTree = "<group>"; };
+		C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartsEndsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +189,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C7F96FDD1368ED6F00737BEA /* ManualAddMeeting Controllers */,
 				C74DC3491367B432004FA304 /* TapkuLibrary.bundle */,
 				C70E6AAE13667FE20059B75E /* Data */,
 				C748C973136635FD005C4A2C /* MeetingList Controllers */,
@@ -264,6 +275,19 @@
 			name = "NotesView Controllers";
 			sourceTree = "<group>";
 		};
+		C7F96FDD1368ED6F00737BEA /* ManualAddMeeting Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */,
+				C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */,
+				C7F96FDE1368EDA300737BEA /* CreateMinutesViewController.h */,
+				C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */,
+				C7F96FE01368EDA300737BEA /* StartsEndsViewController.h */,
+				C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */,
+			);
+			name = "ManualAddMeeting Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,6 +370,8 @@
 				C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */,
 				C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */,
 				C74DC34A1367B432004FA304 /* TapkuLibrary.bundle in Resources */,
+				C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */,
+				C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +392,8 @@
 				C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */,
 				C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */,
 				C70E6AAD13667FD90059B75E /* Meeting.m in Sources */,
+				C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */,
+				C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

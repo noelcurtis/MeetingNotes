@@ -7,6 +7,7 @@
 //
 
 #import "MeetingListViewController.h"
+#import "SortDetailViewController.h"
 
 @interface MeetingListViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -17,6 +18,8 @@
 @synthesize fetchedResultsController;
 
 @synthesize managedObjectContext;
+
+@synthesize masterSortDetailView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,6 +32,7 @@
 
 - (void)dealloc
 {
+    [masterSortDetailView release];
     [fetchedResultsController release];
     [managedObjectContext release];
     [super dealloc];
@@ -183,11 +187,13 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    // Push the Notes View Controllers in the split view
+    [self.masterSortDetailView pushMeetingNotesViewControllers];
 }
 
 #pragma mark - Inserting a new object
 // Use to insert an Event into the database
-- (void)insertNewObject:(id)sender
+- (void)insertNewMeeting
 {
     NSIndexPath *currentSelection = [self.tableView indexPathForSelectedRow];
     if (currentSelection != nil) {
@@ -202,7 +208,7 @@
     // If appropriate, configure the new managed object.
     [newManagedObject setValue:[NSDate date] forKey:@"startDate"];
     
-    // Save the context.
+    // Save the context. => might not want to save the context here and might want to save the context later
     NSError *error = nil;
     if (![context save:&error]) {
         /*
@@ -215,9 +221,29 @@
     }
     
     NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
-    [self.tableView selectRowAtIndexPath:insertionPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    //[self.tableView selectRowAtIndexPath:insertionPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 }
 
+
+-(void)insertNewMeeting:(Meeting *)newMeeting{
+    NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    
+    newManagedObject = newMeeting;
+    // Save the context.
+    NSError *error = nil;
+    if (![context save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
 
 
 

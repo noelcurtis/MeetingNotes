@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Meeting.h"
 
-
+@class SortDetailViewController;
 @interface MeetingListViewController : UITableViewController<NSFetchedResultsControllerDelegate> {
     
 }
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-- (void)insertNewObject:(id)sender;
+@property (nonatomic, retain) SortDetailViewController *masterSortDetailView;
+
+- (void)insertNewMeeting;
+- (void)insertNewMeeting:(Meeting*) newMeeting;
 @end
