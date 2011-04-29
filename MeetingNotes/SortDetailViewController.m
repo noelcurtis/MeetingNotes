@@ -106,7 +106,7 @@
 - (void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place {
 	// Save minute
     [createMinutePopoverController dismissPopoverAnimated:YES];
-	[(MeetingListViewController*)self.activeViewController insertNewMeeting];
+	[(MeetingListViewController*)self.activeViewController insertNewMeetingWithName:title andLocation:place];
 }
 
 #pragma mark Push the Meeting Notes View Controllers

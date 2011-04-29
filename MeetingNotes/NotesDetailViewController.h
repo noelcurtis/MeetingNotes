@@ -14,4 +14,9 @@
 }
 
 @property(nonatomic, retain) NSManagedObject* agendaItem;
+@property(nonatomic, retain)IBOutlet UITableViewCell* actionItemCell;
+@property(nonatomic, retain)IBOutlet UITableViewCell* attendeeCell;
+@property(nonatomic, retain)IBOutlet UITableViewCell* agendaItemNotesCell;
+
+-(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath;
 @end

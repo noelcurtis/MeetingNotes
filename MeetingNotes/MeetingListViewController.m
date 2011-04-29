@@ -8,6 +8,7 @@
 
 #import "MeetingListViewController.h"
 #import "SortDetailViewController.h"
+#import "Meeting.h"
 
 @interface MeetingListViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -132,7 +133,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *managedObject = [fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[managedObject valueForKey:@"startDate"] description];
+    cell.textLabel.text = [[managedObject valueForKey:@"name"] description];
 }
 
 
@@ -226,12 +227,14 @@
 }
 
 
--(void)insertNewMeeting:(Meeting *)newMeeting{
+-(void)insertNewMeetingWithName:(NSString *)name andLocation:(NSString*)location{
+    // Create a new Meeting
     NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    newManagedObject = newMeeting;
+    // Set the values for the new Meeting
+    [(Meeting*)newManagedObject setName:name];
+    [(Meeting*)newManagedObject setLocation:location];
     // Save the context.
     NSError *error = nil;
     if (![context save:&error]) {
@@ -243,6 +246,8 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
+    [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 }
 
 

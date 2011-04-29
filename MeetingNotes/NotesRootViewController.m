@@ -33,17 +33,24 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(IBAction) addActionItem:(id) sender{
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.title = @"Name of Meeting";
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+																							target:self 
+																							action:@selector(addActionItem:)] autorelease];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -106,6 +113,20 @@
     
     return cell;
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	NSString *title = nil;
+    switch (section) {
+        case 0:
+            title = @"Agenda Items";
+            break;
+        
+        default:
+            break;
+    }
+    return title;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

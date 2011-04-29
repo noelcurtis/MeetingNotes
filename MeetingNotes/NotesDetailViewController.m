@@ -12,6 +12,7 @@
 @implementation NotesDetailViewController
 
 @synthesize agendaItem;
+@synthesize actionItemCell, attendeeCell, agendaItemNotesCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,7 +25,10 @@
 
 - (void)dealloc
 {
+    [agendaItemNotesCell dealloc];
     [agendaItem dealloc];
+    [actionItemCell dealloc];
+    [attendeeCell dealloc];
     [super dealloc];
 }
 
@@ -87,27 +91,85 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+            
+        case 1:
+            return 2;
+            break;
+
+        default:
+            NSLog(@"There are no rows for section=%@", section);
+            NSException *exception = [NSException exceptionWithName:@"NoRows" reason:@"There are no rows for section." userInfo:nil];
+            @throw exception;
+            break;
+    }
+}
+
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	NSString *title = nil;
+    switch (section) {
+        case 1:
+            title = @"Action Item Name";
+            break;
+        case 0:
+            title = @"Notes";
+            break;
+
+        default:
+            break;
+    }
+    return title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
+    }*/
+    //NSLog(<#NSString *format, ...#>)
     // Configure the cell...
-    
-    return cell;
+    //[self configureCell:cell atIndexPath:indexPath];
+    return [self configureCellAtIndexPath:indexPath];
+
+}
+
+-(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return self.agendaItemNotesCell;
+    }
+    else if(indexPath.section == 1 && indexPath.row == 0){
+        return self.actionItemCell;
+    }
+    else if(indexPath.section == 1 && indexPath.row == 1){
+        return self.attendeeCell;
+    }else{
+        NSLog(@"There is no cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
+        NSException *exception = [NSException exceptionWithName:@"NoCell" reason:@"There is no table view cell for this indexPath" userInfo:nil];
+        @throw exception;
+    }    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 50;
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        height = 400;
+    }
+    return height;
 }
 
 /*

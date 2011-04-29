@@ -19,5 +19,5 @@
 @property (nonatomic, retain) SortDetailViewController *masterSortDetailView;
 
 - (void)insertNewMeeting;
-- (void)insertNewMeeting:(Meeting*) newMeeting;
+-(void)insertNewMeetingWithName:(NSString *)name andLocation:(NSString*)location;
 @end
