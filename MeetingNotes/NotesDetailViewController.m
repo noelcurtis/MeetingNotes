@@ -13,7 +13,7 @@
 
 @synthesize agendaItem;
 @synthesize actionItemCell, attendeeCell, agendaItemNotesCell;
-
+@synthesize notesRootViewController;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -25,10 +25,11 @@
 
 - (void)dealloc
 {
-    [agendaItemNotesCell dealloc];
-    [agendaItem dealloc];
-    [actionItemCell dealloc];
-    [attendeeCell dealloc];
+    [notesRootViewController release];
+    [agendaItemNotesCell release];
+    [agendaItem release];
+    [actionItemCell release];
+    [attendeeCell release];
     [super dealloc];
 }
 

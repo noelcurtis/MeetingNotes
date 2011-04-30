@@ -7,9 +7,12 @@
 //
 
 #import "NotesRootViewController.h"
-
+#import "Meeting.h"
 
 @implementation NotesRootViewController
+
+@synthesize meetingBeingEdited;
+@synthesize notesDetailViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,6 +25,8 @@
 
 - (void)dealloc
 {
+    [notesDetailViewController release];
+    [meetingBeingEdited release];
     [super dealloc];
 }
 
@@ -42,7 +47,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Name of Meeting";
+    if(self.meetingBeingEdited == nil)
+    {
+        NSException *exception = [NSException exceptionWithName:@"NoMeetingToEdit" reason:@"You did not give me a meeting to edit." userInfo:nil];
+        @throw exception;
+    }
+    self.title = self.meetingBeingEdited.name;
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																							target:self 
 																							action:@selector(addActionItem:)] autorelease];

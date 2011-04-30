@@ -189,7 +189,8 @@
      [detailViewController release];
      */
     // Push the Notes View Controllers in the split view
-    [self.masterSortDetailView pushMeetingNotesViewControllers];
+    NSManagedObject *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [self.masterSortDetailView pushMeetingNotesViewControllers:(Meeting*)selectedObject];
 }
 
 #pragma mark - Inserting a new object

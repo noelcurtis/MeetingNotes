@@ -127,6 +127,31 @@
     [notesDetailView release];
 }
 
+// Use method to push Meeting Notes View Controller with a meeting to edit
+-(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit
+{
+    // Push the controllers for the Notes Editing views
+    // Create the notes root view controller
+    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
+    // Create the detail view controller
+    NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
+    notesRVController.notesDetailViewController = notesDetailView;
+    notesDetailView.notesRootViewController = notesRVController;
+    // setup the meeting to edit in the root view controler
+    notesRVController.meetingBeingEdited = meetingToEdit;
+    
+    // get the navigation controller from the SplitView Controller
+    UINavigationController *navController = [self.splitViewController.viewControllers objectAtIndex:0];
+    // push the NotesRootView Controller
+    [navController pushViewController:notesRVController animated:YES];
+    [notesRVController release];
+    [navController release];
+    // push the new detail view controller
+    [self setupWithActiveViewController:notesDetailView];
+    [notesDetailView release];
+
+}
+
 #pragma mark -
 #pragma mark Popover Delegate
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CreateMinutesViewController.h"
-
+#import "Meeting.h"
 @class SortRootViewController;
 @interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate> {
     
@@ -35,4 +35,6 @@
 
 //Method to push Notes View Controllers
 -(void) pushMeetingNotesViewControllers;
+-(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit;
+
 @end

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class Meeting;
+@class NotesDetailViewController;
 @interface NotesRootViewController : UITableViewController {
     
 }
-
+@property (nonatomic, retain) Meeting* meetingBeingEdited;
+@property (nonatomic, retain) NotesDetailViewController* notesDetailViewController;
 -(IBAction) addActionItem:(id) sender;
 @end
