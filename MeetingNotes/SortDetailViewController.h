@@ -13,7 +13,7 @@
 @interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate> {
     
     UIViewController *activeViewController; // use to hold the current active detail view
-    
+        
 }
 
 @property(nonatomic, retain) IBOutlet UIToolbar *toolBar;
@@ -21,8 +21,10 @@
 @property(nonatomic, retain) IBOutlet UIPopoverController *rootViewPopover;
 
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *calendarButton;
+@property(nonatomic, retain) IBOutlet UIBarButtonItem *addnewMeetingButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
 @property(nonatomic, retain) IBOutlet UIPopoverController *createMinutePopoverController;
+@property(nonatomic, retain) IBOutlet UIPopoverController *calenderCreatePopover;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 

@@ -15,5 +15,8 @@
 }
 @property (nonatomic, retain) Meeting* meetingBeingEdited;
 @property (nonatomic, retain) NotesDetailViewController* notesDetailViewController;
+@property (nonatomic, retain) NSMutableArray* agendaItems;
 -(IBAction) addActionItem:(id) sender;
+
+-(void)saveContextAndReloadTable;
 @end

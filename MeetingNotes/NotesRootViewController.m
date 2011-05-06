@@ -8,11 +8,19 @@
 
 #import "NotesRootViewController.h"
 #import "Meeting.h"
+#import "AgendaItem.h"
+#import "NotesDetailViewController.h"
+
+@interface NotesRootViewController()
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+-(void)addToolBarToView;
+@end
 
 @implementation NotesRootViewController
 
 @synthesize meetingBeingEdited;
 @synthesize notesDetailViewController;
+@synthesize agendaItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +33,7 @@
 
 - (void)dealloc
 {
+    [agendaItems release];
     [notesDetailViewController release];
     [meetingBeingEdited release];
     [super dealloc];
@@ -38,8 +47,54 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(IBAction) addActionItem:(id) sender{
+-(IBAction) addActionItem:(id)sender{
     
+    // example code to create new action items
+    NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
+    
+    AgendaItem *agendaItem = [NSEntityDescription insertNewObjectForEntityForName:@"AgendaItem" inManagedObjectContext:context];
+    [agendaItem setNote:@"Im a new note."];
+    [agendaItem setTitle:@"New Agenda Item"];
+    [self.meetingBeingEdited addAgendaItemsObject:agendaItem];    
+    NSError *error = nil;
+    if (![context save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    NSLog(@"Added AgendaItem to meeting, current count for agenda items is %@", [NSNumber numberWithInteger:[self.meetingBeingEdited.AgendaItems count]]);
+    [self.agendaItems release];
+    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+    NSUInteger positionOfNewAgendaItem = [self.agendaItems indexOfObject:agendaItem];
+    [agendaItem release];
+    [self.tableView reloadData];
+    
+    NSIndexPath *indexOfNewAgendaItem = [NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexOfNewAgendaItem];
+    
+}
+
+-(void)saveContextAndReloadTable{
+    NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
+    NSError *error = nil;
+    if (![context save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    // release the old agenda items
+    [self.agendaItems release];
+    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+    [self.tableView reloadData];
+    // ?? how do I make sure that the agenda item that was just updated is selected....
 }
 
 #pragma mark - View lifecycle
@@ -56,12 +111,44 @@
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																							target:self 
 																							action:@selector(addActionItem:)] autorelease];
+    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+    [self addToolBarToView];
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.clearsSelectionOnViewWillAppear = NO;
 }
+
+
+-(void)addToolBarToView{
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.barStyle = UIBarStyleDefault;
+    [toolbar sizeToFit];
+    //Caclulate the height of the toolbar
+    CGFloat toolbarHeight = [toolbar frame].size.height;
+    
+    //Get the bounds of the parent view
+    CGRect rootViewBounds = self.parentViewController.view.bounds;
+    
+    //Get the height of the parent view.
+    CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
+    
+    //Get the width of the parent view,
+    CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
+    
+    //Create a rectangle for the toolbar
+    CGRect rectArea = CGRectMake(0, (rootViewHeight-toolbarHeight), rootViewWidth, toolbarHeight);
+    
+    //Reposition and resize the receiver
+    [toolbar setFrame:rectArea];
+    
+    //Create a button
+    UIBarButtonItem *pdfButton = [[UIBarButtonItem alloc] initWithTitle:@"PDF" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [toolbar setItems:[NSArray arrayWithObjects:pdfButton,emailButton,nil]];
+    
+    [self.navigationController.view addSubview:toolbar];
+}
+
 
 - (void)viewDidUnload
 {
@@ -78,6 +165,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    // display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    if([self.agendaItems count] >= 1)
+    {
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -107,7 +201,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return [self.agendaItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,8 +214,25 @@
     }
     
     // Configure the cell...
-    
+    AgendaItem *currentItem = [self.agendaItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = currentItem.title;
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+    // If the row is within the range of the number of ingredients for the current recipe, then configure the cell to show the ingredient name and amount.
+    static NSString *agendaItemsIdentifier = @"AgendaItemCell";
+    
+    cell = [self.tableView dequeueReusableCellWithIdentifier:agendaItemsIdentifier];
+    
+    if (cell == nil) {
+        // Create a cell to display an ingredient.
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:agendaItemsIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    AgendaItem *currentItem = [self.agendaItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = currentItem.title;
+    [currentItem release];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -189,6 +300,8 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    // setup the detail view with the selected agenda item
+    [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];
 }
 
 @end

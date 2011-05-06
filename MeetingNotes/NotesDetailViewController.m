@@ -7,13 +7,20 @@
 //
 
 #import "NotesDetailViewController.h"
+#import "AgendaItem.h"
+#import "NotesRootViewController.h"
+#import "SortDetailViewController.h"
 
+@interface NotesDetailViewController()
+- (void)configureButtonsForToolbar;
+@end
 
 @implementation NotesDetailViewController
 
 @synthesize agendaItem;
-@synthesize actionItemCell, attendeeCell, agendaItemNotesCell;
+@synthesize actionItemCell, attendeeCell, agendaItemNotesCell, notesTextView, attendeeUILabel, actionItemUILabel, agendaItemTitleTextField, agendaItemTitleCell;
 @synthesize notesRootViewController;
+@synthesize detailViewControllerToolbar;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -25,6 +32,12 @@
 
 - (void)dealloc
 {
+    [detailViewControllerToolbar release];
+    [agendaItemTitleCell release];
+    [agendaItemTitleTextField release];
+    [notesTextView release];
+    [attendeeUILabel release];
+    [actionItemUILabel release];
     [notesRootViewController release];
     [agendaItemNotesCell release];
     [agendaItem release];
@@ -43,15 +56,35 @@
 
 #pragma mark - View lifecycle
 
+-(void) setupDetailViewWithAgendaItem:(AgendaItem *)selectedAgendaItem{
+    self.agendaItem = selectedAgendaItem;
+    self.notesTextView.text = self.agendaItem.note;
+    if(self.agendaItem.title != nil)
+    {
+    self.agendaItemTitleTextField.text = self.agendaItem.title;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self configureButtonsForToolbar];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)configureButtonsForToolbar{
+    // setup buttons on the toolbar
+    UIBarButtonItem *newAgendaItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" 
+                                                                            style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
+    [self.detailViewControllerToolbar setItems:[NSArray arrayWithObjects:
+                                                [self.detailViewControllerToolbar.items objectAtIndex:0],
+                                                newAgendaItemButton, nil] animated:YES];
+    [newAgendaItemButton release];
 }
 
 - (void)viewDidUnload
@@ -92,7 +125,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -104,6 +137,10 @@
             break;
             
         case 1:
+            return 1;
+            break;
+        
+        case 2:
             return 2;
             break;
 
@@ -119,10 +156,10 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *title = nil;
     switch (section) {
-        case 1:
+        case 2:
             title = @"Action Item Name";
             break;
-        case 0:
+        case 1:
             title = @"Notes";
             break;
 
@@ -151,14 +188,18 @@
 -(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
-        return self.agendaItemNotesCell;
+        return self.agendaItemTitleCell;
     }
     else if(indexPath.section == 1 && indexPath.row == 0){
+        return self.agendaItemNotesCell;
+    }
+    else if(indexPath.section == 2 && indexPath.row == 0){
         return self.actionItemCell;
     }
-    else if(indexPath.section == 1 && indexPath.row == 1){
+    else if(indexPath.section == 2 && indexPath.row == 1){
         return self.attendeeCell;
-    }else{
+    }
+    else{
         NSLog(@"There is no cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
         NSException *exception = [NSException exceptionWithName:@"NoCell" reason:@"There is no table view cell for this indexPath" userInfo:nil];
         @throw exception;
@@ -167,7 +208,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = 50;
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.section == 1 && indexPath.row == 0) {
         height = 400;
     }
     return height;
@@ -225,5 +266,40 @@
      [detailViewController release];
      */
 }
+
+
+#pragma mark - UITextView/UITextField delegate
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    NSLog(@"text field did begin editing");
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSLog(@"text field did change %@", string);
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    NSLog(@"Text field did end editing, updating agenda item and saving context");
+    [self.agendaItem setNote:self.notesTextView.text];
+    [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
+    [self.notesRootViewController saveContextAndReloadTable];
+    // change the current agenda item
+    // save the context
+    // reload the table
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    NSLog(@"Text view did end editing, updating agenda item and saving context");
+    [self.agendaItem setNote:self.notesTextView.text];
+    [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
+    [self.notesRootViewController saveContextAndReloadTable];
+
+}
+
+#pragma mark - Button actions
+-(IBAction) newActionItemAction:(id)sender{
+    NSLog(@"New action item button pressed");
+}
+
 
 @end

@@ -25,8 +25,8 @@
 @synthesize activeViewController;
 @synthesize managedObjectContext;
 @synthesize createMinutePopoverController;
-
-@synthesize calendarButton, flexButton;
+@synthesize calenderCreatePopover;
+@synthesize calendarButton, flexButton, addnewMeetingButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +39,8 @@
 
 - (void)dealloc
 {
+    [calenderCreatePopover release];
+    [addnewMeetingButton release];
     [createMinutePopoverController release];
     [managedObjectContext release];
     [activeViewController release];
@@ -69,6 +71,11 @@
 // Push the NotesView controllers when the add button is pressed
 -(IBAction) addButtonPressed:(id) sender
 {
+    // make sure you dissmiss the popover if one already exsits
+    if (self.createMinutePopoverController.popoverVisible == YES){
+        [self.createMinutePopoverController dismissPopoverAnimated:YES]; 
+    }else{
+    
     // create a view to enter a meeting manually
     CreateMinutesViewController *createMinutesVC = [[CreateMinutesViewController alloc] initWithNibName:@"CreateMinutesView" bundle:nil];
 	createMinutesVC.delegate = self;
@@ -81,17 +88,23 @@
 	
 	[navigationController release];
 	[createMinutesVC release];
+    }
 }
 
 #pragma mark - CalendarView show method
 
 -(IBAction)calenderButtonClick:(id)sender{
+    if (self.calenderCreatePopover.popoverVisible == YES){
+        [self.calenderCreatePopover dismissPopoverAnimated:YES]; 
+    }else{
+    
     UIViewController *calenderView = [[CalenderView alloc] init];
-    UIPopoverController *calenderPopover = [[UIPopoverController alloc]
+    self.calenderCreatePopover = [[UIPopoverController alloc]
                                      initWithContentViewController:calenderView]; 
     //calenderPopover.popoverContentSize = calenderView.view.frame.size;
-    [calenderPopover presentPopoverFromBarButtonItem:sender 
+    [self.calenderCreatePopover presentPopoverFromBarButtonItem:sender 
                      permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
     
 }
 
@@ -147,6 +160,8 @@
     [notesRVController release];
     [navController release];
     // push the new detail view controller
+    // pass the toolbar on so the new detail view can edit it
+    notesDetailView.detailViewControllerToolbar = self.toolBar;
     [self setupWithActiveViewController:notesDetailView];
     [notesDetailView release];
 
@@ -226,5 +241,25 @@
     // Return YES for supported orientations
 	return YES;
 }
+
+
+#pragma mark - Customize Toolbar
+/*
+-(void) changeButtonsInToolbar:(NSInteger)typeOfController{
+        
+    switch (typeOfController) {
+        case 1:
+            self.calendarButton = [[UIBarItem alloc] init];
+            self.addnewMeetingButton = [[UIBarButtonItem alloc] init];
+            [self.toolBar setItems:[NSArray arrayWithObjects:self.flexButton, self.calendarButton,self.addnewMeetingButton, nil] animated:YES];
+            break;
+        case 2:
+            self.meetingOptionsButton = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleDone target:nil action:nil];
+            self.addActionItemButton = [[UIBarButtonItem alloc] initWithTitle:@"New Meeting" style:UIBarButtonItemStyleDone target:nil action:nil];
+            [self.toolBar setItems:[NSArray arrayWithObjects: self.flexButton,self.meetingOptionsButton, self.addActionItemButton, nil] animated:YES];
+        default:
+            break;
+    }
+}*/
 
 @end
