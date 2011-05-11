@@ -7,9 +7,19 @@
 //
 
 #import "ActionItemsViewController.h"
+#import "ActionItem.h"
 
+@interface ActionItemsViewController()
+-(UITableViewCell *) configureCellAtIndexPath:(UITableViewCell*)cell atIndexPath:(NSIndexPath *)indexPath;
+@property (nonatomic, retain) NSMutableArray* personsSelectedFromPeoplePicker;
+@end
 
 @implementation ActionItemsViewController
+
+@synthesize actionItem;
+@synthesize actionableAttendees;
+@synthesize actionItemNoteCell;
+@synthesize personsSelectedFromPeoplePicker;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,6 +32,10 @@
 
 - (void)dealloc
 {
+    [personsSelectedFromPeoplePicker release];
+    [actionItemNoteCell release];
+    [actionableAttendees release];
+    [actionItem release];
     [super dealloc];
 }
 
@@ -44,6 +58,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // Done Button
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+																							target:self 
+																							action:@selector(addActionableAttendeesAction:)] autorelease];
+    self.title = @"Add Action Item";
+    
+    // setup the current actionable attendees in this action item
+    self.actionableAttendees = [[NSMutableArray alloc] initWithArray:[self.actionItem.Attendees allObjects]];
 }
 
 - (void)viewDidUnload
@@ -83,31 +105,57 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+            
+        case 1:
+            return [self.actionableAttendees count];
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
     
+    static NSString *CellIdentifier = @"AttendeeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
     // Configure the cell...
     
-    return cell;
+    return [self configureCellAtIndexPath:cell atIndexPath:indexPath];
 }
+
+-(UITableViewCell *) configureCellAtIndexPath:(UITableViewCell*)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return self.actionItemNoteCell;
+    }
+    else if(indexPath.section == 1){
+        cell.textLabel.text = [self.actionableAttendees objectAtIndex:indexPath.row];
+        return cell;
+    }
+    else{
+        NSLog(@"There is no cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
+        NSException *exception = [NSException exceptionWithName:@"NoCell" reason:@"There is no table view cell for this indexPath" userInfo:nil];
+        @throw exception;
+    }    
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -160,6 +208,80 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    switch (indexPath.section) {
+        case 0:
+            break;
+        case 1:
+            if ([[self.tableView cellForRowAtIndexPath:indexPath ] accessoryType] == UITableViewCellAccessoryCheckmark)
+            {
+                [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+            }
+            else
+            {
+                [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+            }
+
+            break;
+        default:
+            break;
+    }
 }
+
+#pragma mark - Adding new Actionable Attendees
+-(IBAction) addActionableAttendeesAction:(id)sender{
+    NSLog(@"Add actionable attendees items button pressed.");
+    
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.modalInPopover = TRUE;
+    picker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    //picker.view.frame.size = self.view.frame.size;
+    picker.peoplePickerDelegate = self;
+    // Display only a person's phone, email, and birthdate
+	/*NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
+                               [NSNumber numberWithInt:kABPersonEmailProperty],
+                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+	
+	
+	picker.displayedProperties = displayedItems;*/
+	// Show the picker
+    [self.navigationController presentModalViewController:picker animated:YES];
+	[picker release];	
+
+}
+
+#pragma mark ABPeoplePickerNavigationControllerDelegate methods
+// Displays the information of a selected person
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+	if(personsSelectedFromPeoplePicker == nil){
+        personsSelectedFromPeoplePicker = [[NSMutableArray alloc] init];
+    }else{
+        NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+        NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+        [personsSelectedFromPeoplePicker addObject:[NSString stringWithFormat:firstName,@" ",lastName]];
+    }
+    [self.actionableAttendees addObjectsFromArray:self.personsSelectedFromPeoplePicker];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.tableView reloadData];
+    return NO;
+}
+
+
+// Does not allow users to perform default actions such as dialing a phone number, when they select a person property.
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+								property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+	return NO;
+}
+
+
+// Dismisses the people picker and shows the application when users tap Cancel. 
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+	[personsSelectedFromPeoplePicker release];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+
 
 @end

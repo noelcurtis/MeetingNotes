@@ -104,8 +104,8 @@
     //calenderPopover.popoverContentSize = calenderView.view.frame.size;
     [self.calenderCreatePopover presentPopoverFromBarButtonItem:sender 
                      permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [calenderView release];
     }
-    
 }
 
 #pragma mark -
@@ -241,25 +241,5 @@
     // Return YES for supported orientations
 	return YES;
 }
-
-
-#pragma mark - Customize Toolbar
-/*
--(void) changeButtonsInToolbar:(NSInteger)typeOfController{
-        
-    switch (typeOfController) {
-        case 1:
-            self.calendarButton = [[UIBarItem alloc] init];
-            self.addnewMeetingButton = [[UIBarButtonItem alloc] init];
-            [self.toolBar setItems:[NSArray arrayWithObjects:self.flexButton, self.calendarButton,self.addnewMeetingButton, nil] animated:YES];
-            break;
-        case 2:
-            self.meetingOptionsButton = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleDone target:nil action:nil];
-            self.addActionItemButton = [[UIBarButtonItem alloc] initWithTitle:@"New Meeting" style:UIBarButtonItemStyleDone target:nil action:nil];
-            [self.toolBar setItems:[NSArray arrayWithObjects: self.flexButton,self.meetingOptionsButton, self.addActionItemButton, nil] animated:YES];
-        default:
-            break;
-    }
-}*/
 
 @end

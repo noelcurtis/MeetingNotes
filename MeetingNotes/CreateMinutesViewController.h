@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
 
 @protocol CreateMinutesModalViewControllerDelegate;
 
-@interface CreateMinutesViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface CreateMinutesViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate, 
+UITableViewDelegate, UITableViewDataSource> {
 	id<CreateMinutesModalViewControllerDelegate> delegate;
 	
 	UITextField *titleTextField;
@@ -22,15 +26,19 @@
 }
 
 @property (nonatomic, assign) id<CreateMinutesModalViewControllerDelegate> delegate;
-
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
 @property (nonatomic, retain) IBOutlet UITextField *locationTextField;
 @property (nonatomic, retain) IBOutlet UITableViewCell *titleCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *locationCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *startsEndsCell;
+@property (nonatomic, retain) NSMutableArray *attendees;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
+// options segment action
+- (IBAction)optionsSegmentAction:(id)sender;
+-(void) addActionableAttendeesAction;
 
 @end
 

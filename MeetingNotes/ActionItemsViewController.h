@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-
-@interface ActionItemsViewController : UITableViewController {
+@class ActionItem;
+@interface ActionItemsViewController : UITableViewController<ABPeoplePickerNavigationControllerDelegate> {
     
 }
 
+@property (nonatomic, retain) ActionItem *actionItem;
+@property (nonatomic, retain) NSMutableArray *actionableAttendees;
+@property (nonatomic, retain)IBOutlet UITableViewCell *actionItemNoteCell;
+
+-(IBAction) addActionableAttendeesAction:(id)sender;
+
+
+// Test with popover view controller
 @end

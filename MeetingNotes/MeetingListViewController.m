@@ -229,6 +229,7 @@
 
 
 -(void)insertNewMeetingWithName:(NSString *)name andLocation:(NSString*)location{
+    NSLog(@"Adding new Meeting with Name:%@ and Location:%@", name, location);
     // Create a new Meeting
     NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];

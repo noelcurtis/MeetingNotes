@@ -47,6 +47,8 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - Functions to update and save context
+
 -(IBAction) addActionItem:(id)sender{
     
     // example code to create new action items
@@ -97,6 +99,15 @@
     // ?? how do I make sure that the agenda item that was just updated is selected....
 }
 
+#pragma mark - Meeting options to allow to print PDFs, send email and view meeting details
+
+- (IBAction)optionsSegmentAction:(id)sender
+{
+	// The segmented control was clicked, handle it here 
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+	NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -141,12 +152,22 @@
     //Reposition and resize the receiver
     [toolbar setFrame:rectArea];
     
-    //Create a button
-    UIBarButtonItem *pdfButton = [[UIBarButtonItem alloc] initWithTitle:@"PDF" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    [toolbar setItems:[NSArray arrayWithObjects:pdfButton,emailButton,nil]];
+    //Add buttons to the toolbar
+    NSArray *itemArray = [NSArray arrayWithObjects: @"PDF", @"Email", @"Meeting", nil];
     
+    UISegmentedControl *meetingOptions = [[UISegmentedControl alloc] initWithItems:itemArray];
+    meetingOptions.segmentedControlStyle = UISegmentedControlStyleBezeled;
+    [meetingOptions addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
+    meetingOptions.frame = CGRectMake(0, 0, 200, 30);
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:meetingOptions];
+    UIBarButtonItem *flex1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *flex2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [toolbar setItems:[NSArray arrayWithObjects:flex1, optionsButton, flex2, nil]];
+    [meetingOptions release];
+    [flex1 release];
+    [flex2 release];
     [self.navigationController.view addSubview:toolbar];
+    [toolbar release];
 }
 
 

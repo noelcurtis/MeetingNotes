@@ -34,9 +34,9 @@
 																							target:self 
 																							action:@selector(done:)] autorelease];
 	// Cancel Button
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
-																						   target:self 
-																						   action:@selector(cancel:)] autorelease];
+	//self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+	//																					   target:self 
+	//																					   action:@selector(cancel:)] autorelease];
 }
 
 

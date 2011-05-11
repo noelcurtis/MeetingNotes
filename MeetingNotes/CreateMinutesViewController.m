@@ -9,9 +9,14 @@
 #import "CreateMinutesViewController.h"
 #import "StartsEndsViewController.h"
 
+@interface CreateMinutesViewController()
+@property (nonatomic, retain) NSString* personSelectedFromPeoplePicker;
+@end
+
 @implementation CreateMinutesViewController
 
-@synthesize delegate, titleTextField, locationTextField, titleCell, locationCell, startsEndsCell;
+@synthesize delegate, titleTextField, locationTextField, titleCell, locationCell, startsEndsCell, attendees, personSelectedFromPeoplePicker;
+@synthesize tableView = _tableView;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,24 +33,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Done Button
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-																							target:self 
-																							action:@selector(done:)] autorelease];
+	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+	//																						target:self 
+	//																						action:@selector(done:)] autorelease];
 	// Cancel Button
 	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
 																						   target:self 
-																						   action:@selector(cancel:)] autorelease];
+                                                                                           action:@selector(cancel:)] autorelease];
+    //Add buttons to the toolbar
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Add", @"Contacts", @"Done", nil];
+
+    UISegmentedControl *options = [[UISegmentedControl alloc] initWithItems:itemArray];
+    options.segmentedControlStyle = UISegmentedControlStyleBezeled;
+    [options addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
+    options.frame = CGRectMake(0, 0, 200, 30);
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:options];
+    self.navigationItem.rightBarButtonItem = optionsButton;
+    
+    // initialize the attendees list
+    self.attendees = [[NSMutableArray alloc] init];
 }
 
 
 #pragma mark -
 #pragma mark Actions
 
+// options segment action
+- (IBAction)optionsSegmentAction:(id)sender{
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    
+	switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+            segmentedControl.selectedSegmentIndex = -1;
+            break;
+        case 1:
+            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+            [self addActionableAttendeesAction];
+            segmentedControl.selectedSegmentIndex = -1;
+            break;
+        case 2:
+            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+            segmentedControl.selectedSegmentIndex = -1;
+            [self done:sender];
+            break;           
+        default:
+            break;
+    }
+}
+
 // The done button was tapped, save and close Modal view
 - (IBAction)done:(id)sender {
 	// TODO - Check for all values
 	
-	// Save values for minutes	
+	// Save values for minutes
 	[delegate insertMinuteWithTitle:titleTextField.text place:locationTextField.text];
 	
 	[self.delegate didDismissModalView];
@@ -84,20 +125,24 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    int numberOfRows = 0;
-	if(section == 0)
-	{
-		numberOfRows = 2;
-	}
-	else if (section == 1) {
-		numberOfRows = 1;	
-	}
-	return numberOfRows;
+    
+    switch (section) {
+        case 0:
+            return 2;
+            break;
+        case 1:
+            return 1;
+        case 2:
+            return [self.attendees count];
+        default:
+            return 0;
+            break;
+    }
 }
 
 
@@ -110,12 +155,19 @@
 		else if (indexPath.row == 1) {
 			return locationCell;
 		}
-	}
-	else if (indexPath.section == 1) {
+	}else if (indexPath.section == 1) {
 		if (indexPath.row == 0) {
 			return startsEndsCell;
 		}
-	}
+	}else if (indexPath.section == 2){
+        static NSString *CellIdentifier = @"AttendeeCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        cell.textLabel.text = [self.attendees objectAtIndex:indexPath.row];
+        return cell;
+    }
 	NSLog(@"There is not cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
 	NSException *exception = [NSException exceptionWithName:@"NoCell" reason:@"There is no table view cell for this indexPath" userInfo:nil];
 	@throw exception;
@@ -135,6 +187,51 @@
     // The table view should not be re-orderable.
     return NO;
 }
+
+#pragma mark ABPeoplePickerNavigationControllerDelegate methods
+// Displays the information of a selected person
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+	NSString *firstName;
+    firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    self.personSelectedFromPeoplePicker = firstName;
+    if(firstName != nil)
+        [self.attendees addObject:firstName];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [_tableView reloadData];
+    return NO;
+}
+
+
+// Does not allow users to perform default actions such as dialing a phone number, when they select a person property.
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+								property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+	return NO;
+}
+
+
+// Dismisses the people picker and shows the application when users tap Cancel. 
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+	[personSelectedFromPeoplePicker release];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Adding new Actionable Attendees
+-(void) addActionableAttendeesAction{
+    NSLog(@"Add actionable attendees items button pressed.");
+    
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.modalInPopover = TRUE;
+    picker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    picker.peoplePickerDelegate = self;
+    // Show the picker
+    [self.navigationController presentModalViewController:picker animated:YES];
+	[picker release];	
+}
+
+
 
 
 #pragma mark -
@@ -192,6 +289,14 @@
 
 
 - (void)dealloc {
+    [_tableView release];
+    [personSelectedFromPeoplePicker release];
+    [titleTextField release];
+    [locationTextField release];
+    [titleCell release];
+    [locationCell release];
+    [startsEndsCell release];
+    [attendees release];
     [super dealloc];
 }
 

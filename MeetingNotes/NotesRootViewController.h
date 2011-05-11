@@ -19,4 +19,8 @@
 -(IBAction) addActionItem:(id) sender;
 
 -(void)saveContextAndReloadTable;
+
+// options segment action
+- (IBAction)optionsSegmentAction:(id)sender;
+
 @end

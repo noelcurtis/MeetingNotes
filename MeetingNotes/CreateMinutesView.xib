@@ -85,7 +85,7 @@
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUITableViewCell" id="155533802">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -138,6 +138,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 44}</string>
+				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="899866651"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="541527085">
 					<int key="NSColorSpace">1</int>
@@ -149,7 +150,7 @@
 				<reference key="IBUIContentView" ref="899866651"/>
 			</object>
 			<object class="IBUITableViewCell" id="1049275234">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -195,6 +196,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 44}</string>
+				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="541527085"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
@@ -380,6 +382,14 @@
 					</object>
 					<int key="connectionID">43</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="491017751"/>
+					</object>
+					<int key="connectionID">46</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -537,7 +547,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">45</int>
+			<int key="maxID">46</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -551,9 +561,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cancel:</string>
 							<string>done:</string>
+							<string>optionsSegmentAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -564,6 +576,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cancel:</string>
 							<string>done:</string>
+							<string>optionsSegmentAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -575,6 +588,10 @@
 								<string key="name">done:</string>
 								<string key="candidateClassName">id</string>
 							</object>
+							<object class="IBActionInfo">
+								<string key="name">optionsSegmentAction:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -584,6 +601,7 @@
 							<string>locationCell</string>
 							<string>locationTextField</string>
 							<string>startsEndsCell</string>
+							<string>tableView</string>
 							<string>titleCell</string>
 							<string>titleTextField</string>
 						</object>
@@ -592,6 +610,7 @@
 							<string>UITableViewCell</string>
 							<string>UITextField</string>
 							<string>UITableViewCell</string>
+							<string>UITableView</string>
 							<string>UITableViewCell</string>
 							<string>UITextField</string>
 						</object>
@@ -603,6 +622,7 @@
 							<string>locationCell</string>
 							<string>locationTextField</string>
 							<string>startsEndsCell</string>
+							<string>tableView</string>
 							<string>titleCell</string>
 							<string>titleTextField</string>
 						</object>
@@ -619,6 +639,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">startsEndsCell</string>
 								<string key="candidateClassName">UITableViewCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableView</string>
+								<string key="candidateClassName">UITableView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">titleCell</string>

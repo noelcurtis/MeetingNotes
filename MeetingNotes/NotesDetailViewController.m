@@ -10,9 +10,11 @@
 #import "AgendaItem.h"
 #import "NotesRootViewController.h"
 #import "SortDetailViewController.h"
+#import "ActionItemsViewController.h"
 
 @interface NotesDetailViewController()
 - (void)configureButtonsForToolbar;
+@property (nonatomic, retain) UIPopoverController* agendaItemPopoverController;
 @end
 
 @implementation NotesDetailViewController
@@ -21,6 +23,8 @@
 @synthesize actionItemCell, attendeeCell, agendaItemNotesCell, notesTextView, attendeeUILabel, actionItemUILabel, agendaItemTitleTextField, agendaItemTitleCell;
 @synthesize notesRootViewController;
 @synthesize detailViewControllerToolbar;
+@synthesize agendaItemPopoverController;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -32,6 +36,7 @@
 
 - (void)dealloc
 {
+    [agendaItemPopoverController release];
     [detailViewControllerToolbar release];
     [agendaItemTitleCell release];
     [agendaItemTitleTextField release];
@@ -81,6 +86,8 @@
     // setup buttons on the toolbar
     UIBarButtonItem *newAgendaItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" 
                                                                             style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
+    //************????????
+    // this config wont work in portrate mode becuase there is an extra button in the ToolBar 
     [self.detailViewControllerToolbar setItems:[NSArray arrayWithObjects:
                                                 [self.detailViewControllerToolbar.items objectAtIndex:0],
                                                 newAgendaItemButton, nil] animated:YES];
@@ -299,6 +306,23 @@
 #pragma mark - Button actions
 -(IBAction) newActionItemAction:(id)sender{
     NSLog(@"New action item button pressed");
+    if (self.agendaItemPopoverController.popoverVisible == YES){
+        [self.agendaItemPopoverController dismissPopoverAnimated:YES];
+        NSLog(@"Implement any cancel code you require to cancel adding new meeting items.");
+    }else{
+        
+        // create a view to enter a meeting manually
+        ActionItemsViewController *actionItemsVC = [[ActionItemsViewController alloc] initWithNibName:@"ActionItemsViewController" bundle:nil ];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:actionItemsVC];
+        self.agendaItemPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+        //self.agendaItemPopoverController.delegate = self;
+        agendaItemPopoverController.popoverContentSize = actionItemsVC.view.frame.size;
+        [agendaItemPopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        NSLog(@"Action item view conrtollers displayed.");
+        [navigationController release];
+        [actionItemsVC release];
+    }
+
 }
 
 
