@@ -14,7 +14,14 @@
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
 		C74DC34A1367B432004FA304 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C74DC3491367B432004FA304 /* TapkuLibrary.bundle */; };
 		C74DC34E1367B448004FA304 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C74DC34D1367B448004FA304 /* libTapkuLibrary.a */; };
+		C7557C50137758C2003AC2A2 /* checkbox-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = C7557C4D137758C2003AC2A2 /* checkbox-checked.png */; };
+		C7557C51137758C2003AC2A2 /* checkbox-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C7557C4E137758C2003AC2A2 /* checkbox-pressed.png */; };
+		C7557C52137758C2003AC2A2 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = C7557C4F137758C2003AC2A2 /* checkbox.png */; };
+		C7557C5613775E55003AC2A2 /* ActionItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7557C5413775E55003AC2A2 /* ActionItemsViewController.m */; };
+		C7557C5713775E55003AC2A2 /* ActionItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7557C5513775E55003AC2A2 /* ActionItemsViewController.xib */; };
 		C75C7EB31370E1DB00052CA1 /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C75C7EB21370E1DB00052CA1 /* AgendaItem.m */; };
+		C76A79C31378ADAD00AEF020 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76A79C11378ADAD00AEF020 /* AddressBook.framework */; };
+		C76A79C41378ADAD00AEF020 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */; };
 		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
 		C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
@@ -76,8 +83,16 @@
 		C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../SDK_API/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		C74DC3491367B432004FA304 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../../SDK_API/tapkulibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		C74DC34D1367B448004FA304 /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
+		C7557C4D137758C2003AC2A2 /* checkbox-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkbox-checked.png"; path = "Images/checkbox-checked.png"; sourceTree = "<group>"; };
+		C7557C4E137758C2003AC2A2 /* checkbox-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkbox-pressed.png"; path = "Images/checkbox-pressed.png"; sourceTree = "<group>"; };
+		C7557C4F137758C2003AC2A2 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox.png; path = Images/checkbox.png; sourceTree = "<group>"; };
+		C7557C5313775E55003AC2A2 /* ActionItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemsViewController.h; sourceTree = "<group>"; };
+		C7557C5413775E55003AC2A2 /* ActionItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemsViewController.m; sourceTree = "<group>"; };
+		C7557C5513775E55003AC2A2 /* ActionItemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemsViewController.xib; sourceTree = "<group>"; };
 		C75C7EB11370E1DB00052CA1 /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
 		C75C7EB21370E1DB00052CA1 /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
+		C76A79C11378ADAD00AEF020 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C76A79C31378ADAD00AEF020 /* AddressBook.framework in Frameworks */,
+				C76A79C41378ADAD00AEF020 /* AddressBookUI.framework in Frameworks */,
 				C74DC34E1367B448004FA304 /* libTapkuLibrary.a in Frameworks */,
 				C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */,
 				C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */,
@@ -169,9 +186,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C7557C3913775086003AC2A2 /* ActionItem Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7557C5313775E55003AC2A2 /* ActionItemsViewController.h */,
+				C7557C5413775E55003AC2A2 /* ActionItemsViewController.m */,
+				C7557C5513775E55003AC2A2 /* ActionItemsViewController.xib */,
+			);
+			name = "ActionItem Controllers";
+			sourceTree = "<group>";
+		};
+		C7557C4C137758AC003AC2A2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C7557C4D137758C2003AC2A2 /* checkbox-checked.png */,
+				C7557C4E137758C2003AC2A2 /* checkbox-pressed.png */,
+				C7557C4F137758C2003AC2A2 /* checkbox.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
+				C76A79C11378ADAD00AEF020 /* AddressBook.framework */,
+				C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
 				C78540DD135CF9B7001AAEDD /* Products */,
@@ -204,6 +243,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C7557C3913775086003AC2A2 /* ActionItem Controllers */,
 				C7F96FDD1368ED6F00737BEA /* ManualAddMeeting Controllers */,
 				C74DC3491367B432004FA304 /* TapkuLibrary.bundle */,
 				C70E6AAE13667FE20059B75E /* Data */,
@@ -233,6 +273,7 @@
 		C790E67E135D03D7009B42B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C7557C4C137758AC003AC2A2 /* Images */,
 				C78540F2135CF9B7001AAEDD /* MainWindow.xib */,
 			);
 			name = Resources;
@@ -387,6 +428,10 @@
 				C74DC34A1367B432004FA304 /* TapkuLibrary.bundle in Resources */,
 				C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */,
 				C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */,
+				C7557C50137758C2003AC2A2 /* checkbox-checked.png in Resources */,
+				C7557C51137758C2003AC2A2 /* checkbox-pressed.png in Resources */,
+				C7557C52137758C2003AC2A2 /* checkbox.png in Resources */,
+				C7557C5713775E55003AC2A2 /* ActionItemsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +457,7 @@
 				C7FFF4A8136F699400E8E91D /* ActionItem.m in Sources */,
 				C7FFF4AB136F69B300E8E91D /* Attendee.m in Sources */,
 				C75C7EB31370E1DB00052CA1 /* AgendaItem.m in Sources */,
+				C7557C5613775E55003AC2A2 /* ActionItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
