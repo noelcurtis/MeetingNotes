@@ -1,4 +1,4 @@
-    //
+//
 //  CreateMinutesViewController.m
 //  Notes
 //
@@ -8,14 +8,19 @@
 
 #import "CreateMinutesViewController.h"
 #import "StartsEndsViewController.h"
+#import "Attendee.h"
+#import "Meeting.h"
+@class Meeting;
+@class Attendee;
 
 @interface CreateMinutesViewController()
-@property (nonatomic, retain) NSString* personSelectedFromPeoplePicker;
+@property (nonatomic, retain) Attendee* personSelectedFromPeoplePicker;
 @end
 
 @implementation CreateMinutesViewController
 
 @synthesize delegate, titleTextField, locationTextField, titleCell, locationCell, startsEndsCell, attendees, personSelectedFromPeoplePicker;
+@synthesize managedObjectContext;
 @synthesize tableView = _tableView;
 
 /*
@@ -49,9 +54,6 @@
     options.frame = CGRectMake(0, 0, 200, 30);
     UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:options];
     self.navigationItem.rightBarButtonItem = optionsButton;
-    
-    // initialize the attendees list
-    self.attendees = [[NSMutableArray alloc] init];
 }
 
 
@@ -85,11 +87,15 @@
 // The done button was tapped, save and close Modal view
 - (IBAction)done:(id)sender {
 	// TODO - Check for all values
-	
-	// Save values for minutes
-	[delegate insertMinuteWithTitle:titleTextField.text place:locationTextField.text];
-	
-	[self.delegate didDismissModalView];
+    // create the new meeting from the managed object context
+    Meeting *newMeeting = [NSEntityDescription insertNewObjectForEntityForName:@"Meeting" inManagedObjectContext:self.managedObjectContext];
+    // Set the values for the new Meeting
+    [newMeeting setName:titleTextField.text];
+    [newMeeting setLocation:locationTextField.text];
+    [newMeeting addAttendees:[[NSSet alloc] initWithArray:self.attendees]];
+    [delegate insertNewMeeting:newMeeting];
+    
+    [self.delegate didDismissModalView];
 }
 
 // The cancel button was tapped, display alert letting them know they will lose changes
@@ -123,6 +129,21 @@
 
 #pragma mark -
 #pragma mark Table view data source
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	NSString *title = nil;
+    switch (section) {
+        case 2:
+            if([self.attendees count] > 0)
+                title = @"Attendees";
+            break;
+            
+        default:
+            break;
+    }
+    return title;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
@@ -159,13 +180,14 @@
 		if (indexPath.row == 0) {
 			return startsEndsCell;
 		}
-	}else if (indexPath.section == 2){
-        static NSString *CellIdentifier = @"AttendeeCell";
+	}else{
+        static NSString *CellIdentifier = @"newCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         }
-        cell.textLabel.text = [self.attendees objectAtIndex:indexPath.row];
+        Attendee *attendeeAtIndex = [self.attendees objectAtIndex:indexPath.row];
+        cell.textLabel.text = attendeeAtIndex.name;
         return cell;
     }
 	NSLog(@"There is not cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
@@ -192,11 +214,47 @@
 // Displays the information of a selected person
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-	NSString *firstName;
-    firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-    self.personSelectedFromPeoplePicker = firstName;
-    if(firstName != nil)
-        [self.attendees addObject:firstName];
+    //NSString *emailAddress;
+    NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+    //ABMultiValueRef emailRef = ABRecordCopyValue(person, kABPersonEmailProperty);
+    //if(emailRef!=nil && ABMultiValueGetCount(emailRef) != 0){
+    //    emailAddress = [NSString stringWithFormat:@"%@",ABMultiValueCopyValueAtIndex(emailRef, 0)];
+    //}
+        
+    self.personSelectedFromPeoplePicker = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:self.managedObjectContext];
+    
+    //Add a new name to the new attendee
+    if(firstName != nil && lastName != nil){
+        [self.personSelectedFromPeoplePicker setName:[NSString stringWithFormat:firstName,@" ",lastName]];
+    }
+    else if (firstName !=nil && lastName ==nil){
+        [self.personSelectedFromPeoplePicker setName:firstName];
+    }
+    else if (firstName == nil && lastName != nil){
+        [self.personSelectedFromPeoplePicker setName:lastName];
+    }
+    //else if (firstName == nil && lastName == nil && emailAddress != nil){
+    //    [self.personSelectedFromPeoplePicker setName:emailAddress];
+    //}
+    
+    //Add a new email to the new attendee
+    //if (emailAddress != nil){
+    //    [self.personSelectedFromPeoplePicker setEmail:emailAddress];
+    //}
+    
+    // Add attendee to the list of attendees
+    if (self.attendees == nil) {
+        // initialize the attendees list
+        self.attendees = [[NSMutableArray alloc] init];
+        [self.attendees addObject:self.personSelectedFromPeoplePicker];
+    }else{
+        [self.attendees addObject:self.personSelectedFromPeoplePicker];
+    }
+    NSLog(@"New attendee picked and created, to add to the attendee list.");
+    [firstName release];
+    [lastName release];
+    //[emailAddress release];
     [self.navigationController dismissModalViewControllerAnimated:YES];
     [_tableView reloadData];
     return NO;
@@ -289,6 +347,7 @@
 
 
 - (void)dealloc {
+    [managedObjectContext release];
     [_tableView release];
     [personSelectedFromPeoplePicker release];
     [titleTextField release];

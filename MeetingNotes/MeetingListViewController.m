@@ -195,22 +195,13 @@
 
 #pragma mark - Inserting a new object
 // Use to insert an Event into the database
-- (void)insertNewMeeting
-{
-    NSIndexPath *currentSelection = [self.tableView indexPathForSelectedRow];
-    if (currentSelection != nil) {
-        [self.tableView deselectRowAtIndexPath:currentSelection animated:NO];
-    }    
-    
-    // Create a new instance of the entity managed by the fetched results controller.
+-(void) insertNewMeeting:(Meeting *)newMeeting{
+    NSLog(@"Adding new Meeting with Name:%@ and Location:%@", newMeeting.name, newMeeting.location);
+    // Create a new Meeting
     NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    // If appropriate, configure the new managed object.
-    [newManagedObject setValue:[NSDate date] forKey:@"startDate"];
-    
-    // Save the context. => might not want to save the context here and might want to save the context later
+    NSManagedObject *newManagedObject = newMeeting;
+    NSLog(@"Saving the context");
+    // Save the context.
     NSError *error = nil;
     if (![context save:&error]) {
         /*
@@ -221,12 +212,10 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
     NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
-    //[self.tableView selectRowAtIndexPath:insertionPath animated:YES scrollPosition:UITableViewScrollPositionTop];
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
-}
 
+}
 
 -(void)insertNewMeetingWithName:(NSString *)name andLocation:(NSString*)location{
     NSLog(@"Adding new Meeting with Name:%@ and Location:%@", name, location);
@@ -252,6 +241,36 @@
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 }
 
+-(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
+                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
+                      attendees:(NSSet *)attendees{
+    NSLog(@"Adding new Meeting with Name:%@, Location:%@, StartDate:%@, EndDate:%@", name, location, [startDate description], [endDate description]);
+    NSLog(@"Attendees to the meeting are\r\n");
+    for(NSString* attendee in attendees)
+    {
+        NSLog(@"%@\r\n",attendee);
+    }
+    // Create a new Meeting
+    NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    // Set the values for the new Meeting
+    [(Meeting*)newManagedObject setName:name];
+    [(Meeting*)newManagedObject setLocation:location];
+    // Save the context.
+    NSError *error = nil;
+    if (![context save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
+    [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
+}
 
 
 #pragma mark - Fetched results controller

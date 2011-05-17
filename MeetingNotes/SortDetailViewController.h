@@ -26,14 +26,19 @@
 @property(nonatomic, retain) IBOutlet UIPopoverController *createMinutePopoverController;
 @property(nonatomic, retain) IBOutlet UIPopoverController *calenderCreatePopover;
 
+// set when the application starts up
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction) calenderButtonClick:(id)sender;
 -(IBAction) addButtonPressed:(id) sender;
 -(void) setupWithActiveViewController:(UIViewController*)controller;
 //Methods to satisfy the CreateMinutesModalViewControllerDelegate protocol
-- (void)didDismissModalView;
-- (void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
+-(void)didDismissModalView;
+-(void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
+-(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
+                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
+                      attendees:(NSSet *)attendees;
+-(void)insertNewMeeting:(Meeting *)newMeeting;
 
 //Method to push Notes View Controllers
 -(void) pushMeetingNotesViewControllers;

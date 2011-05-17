@@ -78,7 +78,8 @@
     
     // create a view to enter a meeting manually
     CreateMinutesViewController *createMinutesVC = [[CreateMinutesViewController alloc] initWithNibName:@"CreateMinutesView" bundle:nil];
-	createMinutesVC.delegate = self;
+    createMinutesVC.managedObjectContext = self.managedObjectContext;
+    createMinutesVC.delegate = self;
     
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
 	createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
@@ -122,12 +123,27 @@
 	[(MeetingListViewController*)self.activeViewController insertNewMeetingWithName:title andLocation:place];
 }
 
+-(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
+                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
+                      attendees:(NSSet *)attendees{
+    // Save minute
+    [createMinutePopoverController dismissPopoverAnimated:YES];
+	[(MeetingListViewController*)self.activeViewController 
+     insertNewMeetingWithName:name location:location startDate:startDate 
+     endDate:endDate attendees:attendees];
+}
+
+-(void) insertNewMeeting:(Meeting *)newMeeting{
+    [createMinutePopoverController dismissPopoverAnimated:YES];
+    [(MeetingListViewController*)self.activeViewController insertNewMeeting:newMeeting];
+}
+
 #pragma mark Push the Meeting Notes View Controllers
 
 // Use method to push Meeting Notes View Controllers
 -(void) pushMeetingNotesViewControllers{
     // Push the controllers for the Notes Editing views
-    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
+    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] init];
     // get the navigation controller from the SplitView Controller
     UINavigationController *navController = [self.splitViewController.viewControllers objectAtIndex:0];
     // push the NotesRootView Controller
@@ -135,7 +151,7 @@
     [notesRVController release];
     [navController release];
     // push the NotesDetailView Controller
-    NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
+    NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] init];
     [self setupWithActiveViewController:notesDetailView];
     [notesDetailView release];
 }
@@ -221,7 +237,7 @@
 {
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
     //show a list of all the current meetings
-    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithNibName:@"MeetingListViewController" bundle:nil];
+    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] init];
     meetingsList.managedObjectContext = self.managedObjectContext;
     meetingsList.masterSortDetailView = self;
     [self setupWithActiveViewController:meetingsList];

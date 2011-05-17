@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J567</string>
+		<string key="IBDocument.SystemVersion">10J869</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">462.00</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">300</string>
@@ -46,9 +46,10 @@
 					<object class="IBUIToolbar" id="905765626">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrameSize">{1024, 44}</string>
+						<string key="NSFrameSize">{768, 44}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -74,24 +75,40 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
+				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="905765626"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
 				</object>
+				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
-				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-					<int key="IBUIInterfaceOrientation">3</int>
-					<int key="interfaceOrientation">3</int>
+				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
+					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<integer value="1"/>
+							<integer value="3"/>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>{768, 1024}</string>
+							<string>{703, 768}</string>
+						</object>
+					</object>
+					<string key="IBUITargetRuntime">IBIPadFramework</string>
+					<string key="IBUIDisplayName">Detail</string>
+					<string key="IBUIDestinationClass">IBUISplitViewController</string>
+					<object class="NSDictionary" key="IBUIDestinationContext">
+						<string key="NS.key.0">IBUISplitViewControllerContentSizeLocation</string>
+						<string key="NS.object.0">IBUISplitViewControllerContentSizeLocationDetail</string>
+					</object>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -286,15 +303,21 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addnewMeetingButton</string>
 							<string>calendarButton</string>
+							<string>calenderCreatePopover</string>
+							<string>createMinutePopoverController</string>
 							<string>flexButton</string>
-							<string>popoverController</string>
+							<string>rootViewPopover</string>
 							<string>rvController</string>
 							<string>toolBar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIBarButtonItem</string>
+							<string>UIBarButtonItem</string>
+							<string>UIPopoverController</string>
+							<string>UIPopoverController</string>
 							<string>UIBarButtonItem</string>
 							<string>UIPopoverController</string>
 							<string>SortRootViewController</string>
@@ -305,24 +328,39 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addnewMeetingButton</string>
 							<string>calendarButton</string>
+							<string>calenderCreatePopover</string>
+							<string>createMinutePopoverController</string>
 							<string>flexButton</string>
-							<string>popoverController</string>
+							<string>rootViewPopover</string>
 							<string>rvController</string>
 							<string>toolBar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">addnewMeetingButton</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">calendarButton</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">calenderCreatePopover</string>
+								<string key="candidateClassName">UIPopoverController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">createMinutePopoverController</string>
+								<string key="candidateClassName">UIPopoverController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">flexButton</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">popoverController</string>
+								<string key="name">rootViewPopover</string>
 								<string key="candidateClassName">UIPopoverController</string>
 							</object>
 							<object class="IBToOneOutletInfo">

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
-
+#import "Meeting.h"
 
 @protocol CreateMinutesModalViewControllerDelegate;
 
@@ -34,6 +34,9 @@ UITableViewDelegate, UITableViewDataSource> {
 @property (nonatomic, retain) IBOutlet UITableViewCell *startsEndsCell;
 @property (nonatomic, retain) NSMutableArray *attendees;
 
+// setup when the view is loaded
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
 // options segment action
@@ -43,6 +46,10 @@ UITableViewDelegate, UITableViewDataSource> {
 @end
 
 @protocol CreateMinutesModalViewControllerDelegate
-- (void)didDismissModalView;
-- (void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
+-(void)didDismissModalView;
+-(void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
+-(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
+                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
+                      attendees:(NSSet *)attendees;
+-(void)insertNewMeeting:(Meeting *)newMeeting;
 @end

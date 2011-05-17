@@ -30,13 +30,13 @@
     sortDVController.managedObjectContext = self.managedObjectContext;
 	splitViewController.delegate = sortDVController;
 	
-	sortRVController = [[SortRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	sortRVController = [[SortRootViewController alloc] init];
 	sortRVController.dvController = sortDVController;
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
     
 	splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];
 	[self.window addSubview:splitViewController.view];
-	NSLog(@"SplitViewController has been displayed.");
+	NSLog(@"Application has launched, managed object context has been set, main split view controllers have been displayed.");
     [nav release];
     return YES;
 }

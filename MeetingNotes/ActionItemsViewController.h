@@ -7,20 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>
 
 @class ActionItem;
-@interface ActionItemsViewController : UITableViewController<ABPeoplePickerNavigationControllerDelegate> {
+@class Meeting;
+@class AgendaItem;
+@interface ActionItemsViewController : UITableViewController {
     
 }
 
+@property (nonatomic, retain) Meeting *meetingBeingEdited;
 @property (nonatomic, retain) ActionItem *actionItem;
-@property (nonatomic, retain) NSMutableArray *actionableAttendees;
-@property (nonatomic, retain)IBOutlet UITableViewCell *actionItemNoteCell;
-
--(IBAction) addActionableAttendeesAction:(id)sender;
-
-
+@property (nonatomic, retain) AgendaItem *agendaItem;
+// attendees that are actionable because they are related to this action item.
+@property (nonatomic, retain) NSMutableArray *actionableAttendeesToAdd;
+@property (nonatomic, retain) NSMutableArray *actionableAttendeesToRemove;
+// all attendees in the meeting
+@property (nonatomic, retain) NSMutableArray *allAttendees;
+@property (nonatomic, retain) IBOutlet UITableViewCell *actionItemNoteCell;
+@property (nonatomic, retain) IBOutlet UITextField *actionItemNote;
 // Test with popover view controller
 @end

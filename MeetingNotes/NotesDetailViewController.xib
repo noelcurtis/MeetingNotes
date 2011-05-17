@@ -36,6 +36,7 @@
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{768, 1024}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MCAwIDAgMAA</bytes>
@@ -43,26 +44,6 @@
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
-					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<array key="dict.sortedKeys">
-							<integer value="1"/>
-							<integer value="3"/>
-						</array>
-						<array class="NSMutableArray" key="dict.values">
-							<string>{768, 1024}</string>
-							<string>{703, 768}</string>
-						</array>
-					</object>
-					<string key="IBUITargetRuntime">IBIPadFramework</string>
-					<string key="IBUIDisplayName">Detail</string>
-					<string key="IBUIDestinationClass">IBUISplitViewController</string>
-					<object class="NSDictionary" key="IBUIDestinationContext">
-						<string key="NS.key.0">IBUISplitViewControllerContentSizeLocation</string>
-						<string key="NS.object.0">IBUISplitViewControllerContentSizeLocationDetail</string>
-					</object>
-				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<bool key="IBUIBouncesZoom">NO</bool>
 				<int key="IBUIStyle">1</int>
@@ -74,7 +55,7 @@
 				<float key="IBUISectionFooterHeight">10</float>
 			</object>
 			<object class="IBUITableViewCell" id="191342693">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="864990137">
@@ -86,7 +67,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 2}, {728, 39}}</string>
 								<reference key="NSSuperview" ref="864990137"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -117,7 +97,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 44}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="864990137"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="104897115">
 					<int key="NSColorSpace">1</int>
@@ -129,7 +108,7 @@
 				<string key="IBUIReuseIdentifier">actionItem</string>
 			</object>
 			<object class="IBUITableViewCell" id="88724499">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="40545419">
@@ -141,7 +120,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 0}, {728, 44}}</string>
 								<reference key="NSSuperview" ref="40545419"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -166,7 +144,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 44}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="40545419"/>
 				<reference key="IBUIBackgroundColor" ref="104897115"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -175,7 +152,7 @@
 				<string key="IBUIReuseIdentifier">attendee</string>
 			</object>
 			<object class="IBUITableViewCell" id="931881704">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="468391937">
@@ -187,8 +164,6 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{20, 20}, {728, 260}}</string>
 								<reference key="NSSuperview" ref="468391937"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="104897115"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -203,7 +178,6 @@
 						</array>
 						<string key="NSFrameSize">{768, 300}</string>
 						<reference key="NSSuperview" ref="931881704"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="801363727"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -214,8 +188,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 300}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="468391937"/>
 				<reference key="IBUIBackgroundColor" ref="104897115"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -225,7 +197,7 @@
 				<string key="IBUIReuseIdentifier">agendaItemNotes</string>
 			</object>
 			<object class="IBUITableViewCell" id="430293711">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="510873419">
@@ -237,8 +209,6 @@
 								<int key="NSvFlags">298</int>
 								<string key="NSFrame">{{20, 6}, {728, 31}}</string>
 								<reference key="NSSuperview" ref="510873419"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -267,7 +237,6 @@
 						</array>
 						<string key="NSFrameSize">{768, 44}</string>
 						<reference key="NSSuperview" ref="430293711"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="152240794"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -278,8 +247,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="510873419"/>
 				<reference key="IBUIBackgroundColor" ref="104897115"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -522,6 +489,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NotesDetailViewController</string>
 					<string key="superclassName">UITableViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">newActionItemAction:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">newActionItemAction:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">newActionItemAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="actionItemCell">UITableViewCell</string>
 						<string key="actionItemUILabel">UILabel</string>
@@ -530,6 +508,7 @@
 						<string key="agendaItemTitleTextField">UITextField</string>
 						<string key="attendeeCell">UITableViewCell</string>
 						<string key="attendeeUILabel">UILabel</string>
+						<string key="detailViewControllerToolbar">UIToolbar</string>
 						<string key="notesTextView">UITextView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -560,6 +539,10 @@
 						<object class="IBToOneOutletInfo" key="attendeeUILabel">
 							<string key="name">attendeeUILabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="detailViewControllerToolbar">
+							<string key="name">detailViewControllerToolbar</string>
+							<string key="candidateClassName">UIToolbar</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="notesTextView">
 							<string key="name">notesTextView</string>

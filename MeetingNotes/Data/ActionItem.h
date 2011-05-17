@@ -19,4 +19,9 @@
 @property (nonatomic, retain) AgendaItem * AgendaItem;
 @property (nonatomic, retain) NSSet* Attendees;
 
+- (void)addAttendeesObject:(Attendee *)value;
+- (void)removeAttendeesObject:(Attendee *)value;
+- (void)addAttendees:(NSSet *)value;
+- (void)removeAttendees:(NSSet *)value;
+
 @end

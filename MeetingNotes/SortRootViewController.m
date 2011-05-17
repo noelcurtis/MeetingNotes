@@ -94,13 +94,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,7 +120,7 @@
 // Use to configure a cell for this table view.
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     cell.textLabel.textAlignment = UITextAlignmentCenter;
-    switch (indexPath.section) {
+    switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"Tags";
             break;

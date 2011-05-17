@@ -21,4 +21,7 @@
 @property (nonatomic, retain) NSSet* AgendaItems;
 @property (nonatomic, retain) NSSet* Attendees;
 
+- (void)addAgendaItemsObject:(AgendaItem *)value;
+- (void)addAttendeesObject:(Attendee *)value;
+- (void)addAttendees:(NSSet *)value;
 @end

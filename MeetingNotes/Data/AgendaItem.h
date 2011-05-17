@@ -19,4 +19,6 @@
 @property (nonatomic, retain) Meeting * Meeting;
 @property (nonatomic, retain) NSSet* ActionItems;
 
+- (void)addActionItemsObject:(ActionItem *)value;
+- (void)removeActionItemsObject:(ActionItem *)value;
 @end

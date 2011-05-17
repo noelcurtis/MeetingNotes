@@ -8,18 +8,25 @@
 
 #import "ActionItemsViewController.h"
 #import "ActionItem.h"
+#import "Meeting.h"
+#import "Attendee.h"
+#import "AgendaItem.h"
 
 @interface ActionItemsViewController()
 -(UITableViewCell *) configureCellAtIndexPath:(UITableViewCell*)cell atIndexPath:(NSIndexPath *)indexPath;
-@property (nonatomic, retain) NSMutableArray* personsSelectedFromPeoplePicker;
+-(void)done:(id)sender;
 @end
 
 @implementation ActionItemsViewController
 
+@synthesize agendaItem;
 @synthesize actionItem;
-@synthesize actionableAttendees;
+@synthesize allAttendees;
+@synthesize actionableAttendeesToAdd;
 @synthesize actionItemNoteCell;
-@synthesize personsSelectedFromPeoplePicker;
+@synthesize meetingBeingEdited;
+@synthesize actionableAttendeesToRemove;
+@synthesize actionItemNote;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,9 +39,13 @@
 
 - (void)dealloc
 {
-    [personsSelectedFromPeoplePicker release];
+    [agendaItem release];
+    [actionItemNote release];
+    [actionableAttendeesToRemove release];
+    [meetingBeingEdited release];
     [actionItemNoteCell release];
-    [actionableAttendees release];
+    [allAttendees release];
+    [actionableAttendeesToAdd release];
     [actionItem release];
     [super dealloc];
 }
@@ -49,24 +60,27 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     // Done Button
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
-																							target:self 
-																							action:@selector(addActionableAttendeesAction:)] autorelease];
-    self.title = @"Add Action Item";
+	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+	//																						target:self 
+	//																						action:@selector(addActionableAttendeesAction:)] autorelease];
     
-    // setup the current actionable attendees in this action item
-    self.actionableAttendees = [[NSMutableArray alloc] initWithArray:[self.actionItem.Attendees allObjects]];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] 
+                                               initWithBarButtonSystemItem: UIBarButtonSystemItemDone
+                                               target:self action:@selector(done:)] 
+                                               autorelease];
+    // setup all attendees from the meeting
+    self.allAttendees = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.Attendees allObjects]];
 }
+
 
 - (void)viewDidUnload
 {
@@ -103,6 +117,21 @@
 
 #pragma mark - Table view data source
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	NSString *title = nil;
+    switch (section) {
+        case 1:
+            if([self.meetingBeingEdited.Attendees count] > 0)
+                title = @"Actionable Attendees";
+            break;
+            
+        default:
+            break;
+    }
+    return title;
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -118,7 +147,7 @@
             break;
             
         case 1:
-            return [self.actionableAttendees count];
+            return [self.allAttendees count];
             break;
             
         default:
@@ -136,7 +165,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     // Configure the cell...
-    
     return [self configureCellAtIndexPath:cell atIndexPath:indexPath];
 }
 
@@ -146,7 +174,8 @@
         return self.actionItemNoteCell;
     }
     else if(indexPath.section == 1){
-        cell.textLabel.text = [self.actionableAttendees objectAtIndex:indexPath.row];
+        Attendee *attendee = [self.allAttendees objectAtIndex:indexPath.row];
+        cell.textLabel.text = attendee.name;
         return cell;
     }
     else{
@@ -215,10 +244,28 @@
             if ([[self.tableView cellForRowAtIndexPath:indexPath ] accessoryType] == UITableViewCellAccessoryCheckmark)
             {
                 [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+                if(self.actionableAttendeesToRemove == nil)
+                {
+                    self.actionableAttendeesToRemove = [[NSMutableArray alloc] init];
+                }
+                // update the actionableattendees and the actionableattendeestoremove
+                [self.actionableAttendeesToAdd removeObjectIdenticalTo:[self.allAttendees objectAtIndex:indexPath.row]];
+                [self.actionableAttendeesToRemove addObject:[self.allAttendees objectAtIndex:indexPath.row]];
+                
+                NSLog((@"An actionable attendee has been de-selected for this action item"));
             }
             else
             {
                 [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+                if(self.actionableAttendeesToAdd == nil)
+                {
+                    self.actionableAttendeesToAdd = [[NSMutableArray alloc] init];
+                }
+                // update the actionableattendees and the actionableattendeestoremove
+                [self.actionableAttendeesToAdd addObject:[self.allAttendees objectAtIndex:indexPath.row]];
+                [self.actionableAttendeesToRemove removeObjectIdenticalTo:[self.allAttendees objectAtIndex:indexPath.row]];
+                
+                NSLog(@"A new actionable attendee has been selected for this action item");
             }
 
             break;
@@ -227,6 +274,7 @@
     }
 }
 
+/*
 #pragma mark - Adding new Actionable Attendees
 -(IBAction) addActionableAttendeesAction:(id)sender{
     NSLog(@"Add actionable attendees items button pressed.");
@@ -237,13 +285,7 @@
     //picker.view.frame.size = self.view.frame.size;
     picker.peoplePickerDelegate = self;
     // Display only a person's phone, email, and birthdate
-	/*NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
-                               [NSNumber numberWithInt:kABPersonEmailProperty],
-                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
-	
-	
-	picker.displayedProperties = displayedItems;*/
-	// Show the picker
+    // Show the picker
     [self.navigationController presentModalViewController:picker animated:YES];
 	[picker release];	
 
@@ -253,14 +295,49 @@
 // Displays the information of a selected person
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-	if(personsSelectedFromPeoplePicker == nil){
-        personsSelectedFromPeoplePicker = [[NSMutableArray alloc] init];
-    }else{
-        NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-        NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-        [personsSelectedFromPeoplePicker addObject:[NSString stringWithFormat:firstName,@" ",lastName]];
+	//NSString *emailAddress;
+    NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+    //ABMultiValueRef emailRef = ABRecordCopyValue(person, kABPersonEmailProperty);
+    //if(emailRef!=nil && ABMultiValueGetCount(emailRef) != 0){
+    //    emailAddress = [NSString stringWithFormat:@"%@",ABMultiValueCopyValueAtIndex(emailRef, 0)];
+    //}
+    
+    self.personSelectedFromPeoplePicker = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:[self.meetingBeingEdited managedObjectContext]];
+    
+    //Add a new name to the new attendee
+    if(firstName != nil && lastName != nil){
+        [self.personSelectedFromPeoplePicker setName:[NSString stringWithFormat:firstName,@" ",lastName]];
     }
-    [self.actionableAttendees addObjectsFromArray:self.personsSelectedFromPeoplePicker];
+    else if (firstName !=nil && lastName ==nil){
+        [self.personSelectedFromPeoplePicker setName:firstName];
+    }
+    else if (firstName == nil && lastName != nil){
+        [self.personSelectedFromPeoplePicker setName:lastName];
+    }
+    //else if (firstName == nil && lastName == nil && emailAddress != nil){
+    //    [self.personSelectedFromPeoplePicker setName:emailAddress];
+    //}
+    
+    //Add a new email to the new attendee
+    //if (emailAddress != nil){
+    //    [self.personSelectedFromPeoplePicker setEmail:emailAddress];
+    //}
+    
+    // Add attendee to the list of all attendees of the meeting
+    if (self.allAttendees == nil) {
+        // initialize the attendees list
+        self.allAttendees = [[NSMutableArray alloc] init];
+        [self.allAttendees addObject:self.personSelectedFromPeoplePicker];
+    }else{
+        [self.allAttendees addObject:self.personSelectedFromPeoplePicker];
+    }
+    // ?? should you release personSelectedFromPeoplePicker ?????????????????????????????
+    
+    NSLog(@"New attendee picked and created, need to add to the attendee list.");
+    [firstName release];
+    [lastName release];
+    //[emailAddress release];
     [self.navigationController dismissModalViewControllerAnimated:YES];
     [self.tableView reloadData];
     return NO;
@@ -268,8 +345,7 @@
 
 
 // Does not allow users to perform default actions such as dialing a phone number, when they select a person property.
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
-								property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
 {
 	return NO;
 }
@@ -278,8 +354,57 @@
 // Dismisses the people picker and shows the application when users tap Cancel. 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
-	[personsSelectedFromPeoplePicker release];
+	[personSelectedFromPeoplePicker release];
     [self.navigationController dismissModalViewControllerAnimated:YES];
+}*/
+
+#pragma mark - Done button/Update the context
+-(void)done:(id)sender{
+    NSLog(@"Done button pressed for Action Items view controller.");
+    // setup the action item if it is not passed in
+    if(!self.actionItem){
+        // create an action item if there is none
+        NSLog(@"Creating a new Action Item as one was not passed into the Action Item view controller");
+        self.actionItem = [NSEntityDescription insertNewObjectForEntityForName:@"ActionItem" inManagedObjectContext:[self.meetingBeingEdited managedObjectContext]];
+    }
+    
+    // add note to the action item
+    self.actionItem.notes = self.actionItemNote.text;
+    
+    // add new actionable attendees into the action item
+    for(Attendee *actionableAttendee in self.actionableAttendeesToAdd){
+        if(![self.actionItem.Attendees containsObject:actionableAttendee]){
+            NSLog(@"Adding new actionable attendee: %@ to the action item: %@", 
+                  [actionableAttendee description], [self.actionItem description]);
+            [self.actionItem addAttendeesObject:actionableAttendee];
+        }
+    }
+    
+    // remove actionable attendees that have been deselected
+    for(Attendee *actionableAttendeeToRemove in self.actionableAttendeesToRemove){
+        if([self.actionItem.Attendees containsObject:actionableAttendeeToRemove]){
+            NSLog(@"Removing actionable attendee: %@ to the action item: %@", 
+                  [actionableAttendeeToRemove description], [self.actionItem description]);
+            [self.actionItem removeAttendeesObject:actionableAttendeeToRemove];
+        }
+    }
+    
+    // add the agenda item to the agenda item
+    NSLog(@"Adding the new action item: %@ to the agenda item: %@", [self.actionItem description], [self.agendaItem description]);
+    [self.agendaItem addActionItemsObject:self.actionItem];
+    
+    NSLog(@"Saving the context in the Action Items view controller.");
+    // Save the context.
+    NSError *error = nil;
+    if (![[self.meetingBeingEdited managedObjectContext] save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 

@@ -74,6 +74,7 @@
 {
     [super viewDidLoad];
     [self configureButtonsForToolbar];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -131,6 +132,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    [self.tableView setBackgroundColor:[UIColor blackColor]];
     // Return the number of sections.
     return 3;
 }
@@ -312,7 +314,11 @@
     }else{
         
         // create a view to enter a meeting manually
+        NSLog(@"Setting up the ActionItemsViewController with a meeting and agenda item");
         ActionItemsViewController *actionItemsVC = [[ActionItemsViewController alloc] initWithNibName:@"ActionItemsViewController" bundle:nil ];
+        // pass the meeting being edited along
+        actionItemsVC.meetingBeingEdited = self.notesRootViewController.meetingBeingEdited;
+        actionItemsVC.agendaItem = self.agendaItem;
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:actionItemsVC];
         self.agendaItemPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
         //self.agendaItemPopoverController.delegate = self;
