@@ -209,8 +209,6 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
-				C76A79C11378ADAD00AEF020 /* AddressBook.framework */,
-				C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
 				C78540DD135CF9B7001AAEDD /* Products */,
@@ -228,6 +226,8 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */,
+				C76A79C11378ADAD00AEF020 /* AddressBook.framework */,
 				C74DC34D1367B448004FA304 /* libTapkuLibrary.a */,
 				C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */,
 				C7D74AF41362266600B57A9C /* CoreData.framework */,
@@ -534,8 +534,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					/Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src,
-					/Users/noelcurtis/Workspace/API/tapkulibrary/src,
+					../../Workspace/SDK_API/tapkulibrary/src,
+					../../Workspace/SDK_API/tapkulibrary/src,
 				);
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -560,7 +560,7 @@
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					/Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src,
-					/Users/noelcurtis/Workspace/API/tapkulibrary/src,
+					/Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src,
 				);
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
