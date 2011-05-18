@@ -533,10 +533,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					../../Workspace/SDK_API/tapkulibrary/src,
-					../../Workspace/SDK_API/tapkulibrary/src,
-				);
+				HEADER_SEARCH_PATHS = ../../SDK_API/tapkulibrary/src;
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,10 +555,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					/Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src,
-					/Users/noelcurtis/Workspace/SDK_API/tapkulibrary/src,
-				);
+				HEADER_SEARCH_PATHS = ../../SDK_API/tapkulibrary/src;
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
