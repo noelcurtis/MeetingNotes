@@ -2,8 +2,8 @@
 //  ActionItem.h
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/2/11.
-//  Copyright (c) 2011 Noel Curtis. All rights reserved.
+//  Created by Noel Curtis on 5/19/11.
+//  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,8 +14,8 @@
 @interface ActionItem : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSNumber * isComplete;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) AgendaItem * AgendaItem;
 @property (nonatomic, retain) NSSet* Attendees;
 
@@ -23,5 +23,4 @@
 - (void)removeAttendeesObject:(Attendee *)value;
 - (void)addAttendees:(NSSet *)value;
 - (void)removeAttendees:(NSSet *)value;
-
 @end

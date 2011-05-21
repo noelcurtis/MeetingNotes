@@ -10,8 +10,11 @@
 		C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA7135E7F5A0012B12A /* MapKit.framework */; };
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7132DB7135E83400012B12A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7132DB6135E83400012B12A /* CalenderView.m */; };
+		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
 		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
+		C74B372A1384BD36000DFE5D /* ActionItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C74B37291384BD36000DFE5D /* ActionItemCell.m */; };
+		C74B372C1384BD50000DFE5D /* ActionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74B372B1384BD50000DFE5D /* ActionItemCell.xib */; };
 		C74DC34A1367B432004FA304 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C74DC3491367B432004FA304 /* TapkuLibrary.bundle */; };
 		C74DC34E1367B448004FA304 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C74DC34D1367B448004FA304 /* libTapkuLibrary.a */; };
 		C7557C50137758C2003AC2A2 /* checkbox-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = C7557C4D137758C2003AC2A2 /* checkbox-checked.png */; };
@@ -41,11 +44,11 @@
 		C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */; };
 		C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */; };
 		C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */; };
+		C7F3B7A61384D61D00C22F4D /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F3B7A51384D61D00C22F4D /* ActionItem.m */; };
 		C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */; };
 		C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */; };
 		C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */; };
 		C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */; };
-		C7FFF4A8136F699400E8E91D /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FFF4A7136F699400E8E91D /* ActionItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +80,14 @@
 		C7132DA9135E7F680012B12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7132DB5135E83400012B12A /* CalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderView.h; sourceTree = "<group>"; };
 		C7132DB6135E83400012B12A /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
+		C7153EFE1383783200A48C85 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
+		C7153EFF1383783200A48C85 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
 		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
 		C748C96913662841005C4A2C /* MeetingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingListViewController.m; sourceTree = "<group>"; };
 		C748C96A13662841005C4A2C /* MeetingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingListViewController.xib; sourceTree = "<group>"; };
+		C74B37281384BD36000DFE5D /* ActionItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemCell.h; sourceTree = "<group>"; };
+		C74B37291384BD36000DFE5D /* ActionItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemCell.m; sourceTree = "<group>"; };
+		C74B372B1384BD50000DFE5D /* ActionItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemCell.xib; sourceTree = "<group>"; };
 		C74DC33D1367B429004FA304 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../SDK_API/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		C74DC3491367B432004FA304 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../../SDK_API/tapkulibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		C74DC34D1367B448004FA304 /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
@@ -122,14 +130,14 @@
 		C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailViewController.h; sourceTree = "<group>"; };
 		C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailViewController.m; sourceTree = "<group>"; };
 		C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesDetailViewController.xib; sourceTree = "<group>"; };
+		C7F3B7A41384D61D00C22F4D /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItem.h; path = Data/ActionItem.h; sourceTree = "<group>"; };
+		C7F3B7A51384D61D00C22F4D /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
 		C7F96FDE1368EDA300737BEA /* CreateMinutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMinutesViewController.h; sourceTree = "<group>"; };
 		C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMinutesViewController.m; sourceTree = "<group>"; };
 		C7F96FE01368EDA300737BEA /* StartsEndsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartsEndsViewController.h; sourceTree = "<group>"; };
 		C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartsEndsViewController.m; sourceTree = "<group>"; };
 		C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateMinutesView.xib; sourceTree = "<group>"; };
 		C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartsEndsView.xib; sourceTree = "<group>"; };
-		C7FFF4A6136F699400E8E91D /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItem.h; path = Data/ActionItem.h; sourceTree = "<group>"; };
-		C7FFF4A7136F699400E8E91D /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,14 +163,14 @@
 		C70E6AAE13667FE20059B75E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C7F3B7A41384D61D00C22F4D /* ActionItem.h */,
+				C7F3B7A51384D61D00C22F4D /* ActionItem.m */,
 				C798B798137A253D00F6452B /* Attendee.h */,
 				C798B799137A253D00F6452B /* Attendee.m */,
 				C798B795137A24F400F6452B /* Meeting.h */,
 				C798B796137A24F400F6452B /* Meeting.m */,
 				C75C7EB11370E1DB00052CA1 /* AgendaItem.h */,
 				C75C7EB21370E1DB00052CA1 /* AgendaItem.m */,
-				C7FFF4A6136F699400E8E91D /* ActionItem.h */,
-				C7FFF4A7136F699400E8E91D /* ActionItem.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -175,6 +183,18 @@
 				C748C96A13662841005C4A2C /* MeetingListViewController.xib */,
 			);
 			name = "MeetingList Controllers";
+			sourceTree = "<group>";
+		};
+		C74B37271384BCEE000DFE5D /* NotesView Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C7153EFE1383783200A48C85 /* NoteView.h */,
+				C7153EFF1383783200A48C85 /* NoteView.m */,
+				C74B37281384BD36000DFE5D /* ActionItemCell.h */,
+				C74B37291384BD36000DFE5D /* ActionItemCell.m */,
+				C74B372B1384BD50000DFE5D /* ActionItemCell.xib */,
+			);
+			name = "NotesView Custom Cells";
 			sourceTree = "<group>";
 		};
 		C74DC33E1367B429004FA304 /* Products */ = {
@@ -321,6 +341,7 @@
 		C7D74B0A1363212500B57A9C /* NotesView Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C74B37271384BCEE000DFE5D /* NotesView Custom Cells */,
 				C7D74B0B1363255500B57A9C /* NotesRootViewController.h */,
 				C7D74B0C1363255500B57A9C /* NotesRootViewController.m */,
 				C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */,
@@ -432,6 +453,7 @@
 				C7557C51137758C2003AC2A2 /* checkbox-pressed.png in Resources */,
 				C7557C52137758C2003AC2A2 /* checkbox.png in Resources */,
 				C7557C5713775E55003AC2A2 /* ActionItemsViewController.xib in Resources */,
+				C74B372C1384BD50000DFE5D /* ActionItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,11 +475,13 @@
 				C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */,
 				C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */,
 				C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */,
-				C7FFF4A8136F699400E8E91D /* ActionItem.m in Sources */,
 				C75C7EB31370E1DB00052CA1 /* AgendaItem.m in Sources */,
 				C7557C5613775E55003AC2A2 /* ActionItemsViewController.m in Sources */,
 				C798B797137A24F400F6452B /* Meeting.m in Sources */,
 				C798B79A137A253D00F6452B /* Attendee.m in Sources */,
+				C7153F001383783200A48C85 /* NoteView.m in Sources */,
+				C74B372A1384BD36000DFE5D /* ActionItemCell.m in Sources */,
+				C7F3B7A61384D61D00C22F4D /* ActionItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

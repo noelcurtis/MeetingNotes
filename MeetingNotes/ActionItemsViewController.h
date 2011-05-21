@@ -11,6 +11,9 @@
 @class ActionItem;
 @class Meeting;
 @class AgendaItem;
+
+@protocol ActionItemsViewControllerDelegate;
+
 @interface ActionItemsViewController : UITableViewController {
     
 }
@@ -26,4 +29,14 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell *actionItemNoteCell;
 @property (nonatomic, retain) IBOutlet UITextField *actionItemNote;
 // Test with popover view controller
+
+// ActionViewControllerDelegate
+@property (nonatomic, assign) id<ActionItemsViewControllerDelegate> actionViewControllerDelegate;
+
+@end
+
+
+// Definition of the protocol
+@protocol ActionItemsViewControllerDelegate
+    -(void) dismissActionItemsViewController;
 @end

@@ -2,7 +2,7 @@
 //  AgendaItem.h
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/3/11.
+//  Created by Noel Curtis on 5/19/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
@@ -14,11 +14,13 @@
 @interface AgendaItem : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) Meeting * Meeting;
+@property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSSet* ActionItems;
+@property (nonatomic, retain) Meeting * Meeting;
 
 - (void)addActionItemsObject:(ActionItem *)value;
 - (void)removeActionItemsObject:(ActionItem *)value;
+- (void)addActionItems:(NSSet *)value;
+- (void)removeActionItems:(NSSet *)value;
 @end

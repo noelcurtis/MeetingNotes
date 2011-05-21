@@ -2,8 +2,8 @@
 //  ActionItem.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/2/11.
-//  Copyright (c) 2011 Noel Curtis. All rights reserved.
+//  Created by Noel Curtis on 5/19/11.
+//  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
 #import "ActionItem.h"
@@ -12,8 +12,8 @@
 
 
 @implementation ActionItem
-@dynamic notes;
 @dynamic isComplete;
+@dynamic notes;
 @dynamic AgendaItem;
 @dynamic Attendees;
 

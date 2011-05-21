@@ -7,21 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActionItemsViewController.h"
 
 @class NotesRootViewController;
 @class AgendaItem;
-@interface NotesDetailViewController : UITableViewController<UITextFieldDelegate, UITextViewDelegate> {
+@class NoteView;
+@class ActionItemCell;
+
+@interface NotesDetailViewController : UITableViewController<UITextFieldDelegate, UITextViewDelegate, ActionItemsViewControllerDelegate> {
     
 }
 
-@property(nonatomic, retain)IBOutlet UITableViewCell* actionItemCell;
-@property(nonatomic, retain)IBOutlet UITableViewCell* attendeeCell;
-@property(nonatomic, retain)IBOutlet UITableViewCell* agendaItemNotesCell;
 @property(nonatomic, retain)IBOutlet UITableViewCell* agendaItemTitleCell;
-@property(nonatomic, retain)IBOutlet UITextView* notesTextView;
-@property(nonatomic, retain)IBOutlet UILabel* attendeeUILabel;
-@property(nonatomic, retain)IBOutlet UILabel* actionItemUILabel;
 @property(nonatomic, retain)IBOutlet UITextField* agendaItemTitleTextField;
+@property(nonatomic, retain)IBOutlet UITableViewCell* customNotesTextViewCell;
+@property(nonatomic, retain)IBOutlet ActionItemCell *actionItemCell;
+@property(nonatomic, retain)IBOutlet NoteView* noteView;
 
 // From the root view controller
 @property(nonatomic, retain)NotesRootViewController* notesRootViewController;
@@ -35,5 +36,8 @@
 
 // Test with the tool bar
 @property (nonatomic, retain)IBOutlet UIToolbar* detailViewControllerToolbar;
+
+// Satisfy the ActionItemsViewControllerDelegate
+-(void) dismissActionItemsViewController;
 
 @end

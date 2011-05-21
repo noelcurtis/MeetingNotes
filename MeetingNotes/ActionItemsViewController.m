@@ -27,6 +27,7 @@
 @synthesize meetingBeingEdited;
 @synthesize actionableAttendeesToRemove;
 @synthesize actionItemNote;
+@synthesize actionViewControllerDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -365,7 +366,9 @@
     if(!self.actionItem){
         // create an action item if there is none
         NSLog(@"Creating a new Action Item as one was not passed into the Action Item view controller");
-        self.actionItem = [NSEntityDescription insertNewObjectForEntityForName:@"ActionItem" inManagedObjectContext:[self.meetingBeingEdited managedObjectContext]];
+        self.actionItem = [NSEntityDescription insertNewObjectForEntityForName:@"ActionItem" 
+                                                        inManagedObjectContext:[self.meetingBeingEdited 
+                                                                                managedObjectContext]];
     }
     
     // add note to the action item
@@ -405,6 +408,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    [self.actionViewControllerDelegate dismissActionItemsViewController];
 }
 
 

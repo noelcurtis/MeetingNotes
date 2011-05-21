@@ -11,6 +11,9 @@
 #import "NotesRootViewController.h"
 #import "SortDetailViewController.h"
 #import "ActionItemsViewController.h"
+#import "NoteView.h"
+#import "ActionItemCell.h"
+#import "ActionItem.h"
 
 @interface NotesDetailViewController()
 - (void)configureButtonsForToolbar;
@@ -20,13 +23,15 @@
 @implementation NotesDetailViewController
 
 @synthesize agendaItem;
-@synthesize actionItemCell, attendeeCell, agendaItemNotesCell, notesTextView, attendeeUILabel, actionItemUILabel, agendaItemTitleTextField, agendaItemTitleCell;
+@synthesize agendaItemTitleTextField, agendaItemTitleCell;
 @synthesize notesRootViewController;
 @synthesize detailViewControllerToolbar;
 @synthesize agendaItemPopoverController;
+@synthesize noteView;
+@synthesize customNotesTextViewCell;
+@synthesize actionItemCell;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -34,25 +39,20 @@
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc{
+    [actionItemCell release];
+    [customNotesTextViewCell release];
+    [noteView release];
     [agendaItemPopoverController release];
     [detailViewControllerToolbar release];
     [agendaItemTitleCell release];
     [agendaItemTitleTextField release];
-    [notesTextView release];
-    [attendeeUILabel release];
-    [actionItemUILabel release];
     [notesRootViewController release];
-    [agendaItemNotesCell release];
     [agendaItem release];
-    [actionItemCell release];
-    [attendeeCell release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -63,18 +63,18 @@
 
 -(void) setupDetailViewWithAgendaItem:(AgendaItem *)selectedAgendaItem{
     self.agendaItem = selectedAgendaItem;
-    self.notesTextView.text = self.agendaItem.note;
-    if(self.agendaItem.title != nil)
-    {
-    self.agendaItemTitleTextField.text = self.agendaItem.title;
+    self.noteView.text = self.agendaItem.note;
+    if(self.agendaItem.title != nil){
+        self.agendaItemTitleTextField.text = self.agendaItem.title;
     }
+    [self.tableView  reloadData];
+    NSLog(@"Setup the Notes detail view with a new AgendaItem: %@", [selectedAgendaItem.ActionItems description]);
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self configureButtonsForToolbar];
-    self.tableView.backgroundColor = [UIColor clearColor];
+    //self.tableView.backgroundColor = [UIColor clearColor];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -95,50 +95,44 @@
     [newAgendaItemButton release];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
 	return YES;
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    [self.tableView setBackgroundColor:[UIColor blackColor]];
-    // Return the number of sections.
-    return 3;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if([self.agendaItem.ActionItems count] >0){
+        return 3;
+    }else{
+    return 2;
+    }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     // Return the number of rows in the section.
     switch (section) {
         case 0:
@@ -150,7 +144,7 @@
             break;
         
         case 2:
-            return 2;
+            return [self.agendaItem.ActionItems count];
             break;
 
         default:
@@ -165,21 +159,19 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *title = nil;
     switch (section) {
-        case 2:
-            title = @"Action Item Name";
-            break;
         case 1:
             title = @"Notes";
             break;
-
+        case 2:
+            title = @"Action Items";
+            break;
         default:
             break;
     }
     return title;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     /*
     static NSString *CellIdentifier = @"Cell";
     
@@ -194,19 +186,28 @@
 
 }
 
--(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 && indexPath.row == 0) {
         return self.agendaItemTitleCell;
     }
     else if(indexPath.section == 1 && indexPath.row == 0){
-        return self.agendaItemNotesCell;
+        return self.customNotesTextViewCell;
     }
-    else if(indexPath.section == 2 && indexPath.row == 0){
-        return self.actionItemCell;
-    }
-    else if(indexPath.section == 2 && indexPath.row == 1){
-        return self.attendeeCell;
+    else if(indexPath.section == 2){
+        // create a new ActionItemCell if one is not dequeued
+        static NSString *CellIdentifier = @"ActionItemCell";
+        ActionItemCell *cell = (ActionItemCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            [[NSBundle mainBundle] loadNibNamed:@"ActionItemCell" owner:self options:nil];
+            cell = actionItemCell;
+            self.actionItemCell = nil;
+        }
+        // get the action items and push a new ActionItemCell with one
+        NSMutableArray *actionItems = [[NSMutableArray alloc] initWithArray:[self.agendaItem.ActionItems allObjects]];
+        cell.actionItemLabel.text = ((ActionItem *)[actionItems objectAtIndex:indexPath.row]).notes;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [actionItems release];
+        return cell;
     }
     else{
         NSLog(@"There is no cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
@@ -219,6 +220,9 @@
     CGFloat height = 50;
     if (indexPath.section == 1 && indexPath.row == 0) {
         height = 400;
+    }
+    else if (indexPath.section == 2) {
+        height = 92;
     }
     return height;
 }
@@ -264,8 +268,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -278,6 +281,11 @@
 
 
 #pragma mark - UITextView/UITextField delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.noteView setNeedsDisplay];
+}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     NSLog(@"text field did begin editing");
 }
@@ -289,9 +297,10 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     NSLog(@"Text field did end editing, updating agenda item and saving context");
-    [self.agendaItem setNote:self.notesTextView.text];
+    [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
     [self.notesRootViewController saveContextAndReloadTable];
+    [textField resignFirstResponder];
     // change the current agenda item
     // save the context
     // reload the table
@@ -299,9 +308,10 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
     NSLog(@"Text view did end editing, updating agenda item and saving context");
-    [self.agendaItem setNote:self.notesTextView.text];
+    [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
     [self.notesRootViewController saveContextAndReloadTable];
+    [textView resignFirstResponder];
 
 }
 
@@ -319,6 +329,7 @@
         // pass the meeting being edited along
         actionItemsVC.meetingBeingEdited = self.notesRootViewController.meetingBeingEdited;
         actionItemsVC.agendaItem = self.agendaItem;
+        actionItemsVC.actionViewControllerDelegate = self;
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:actionItemsVC];
         self.agendaItemPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
         //self.agendaItemPopoverController.delegate = self;
@@ -331,5 +342,11 @@
 
 }
 
+#pragma mark - ActionItemViewControllerDelegate
+
+-(void) dismissActionItemsViewController{
+    [self.agendaItemPopoverController dismissPopoverAnimated:YES];
+    [self.tableView reloadData];
+}
 
 @end

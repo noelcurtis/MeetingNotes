@@ -2,7 +2,7 @@
 //  AgendaItem.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/3/11.
+//  Created by Noel Curtis on 5/19/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
@@ -12,11 +12,10 @@
 
 
 @implementation AgendaItem
-@dynamic note;
 @dynamic title;
-@dynamic Meeting;
+@dynamic note;
 @dynamic ActionItems;
-
+@dynamic Meeting;
 
 - (void)addActionItemsObject:(ActionItem *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -45,6 +44,7 @@
     [[self primitiveValueForKey:@"ActionItems"] minusSet:value];
     [self didChangeValueForKey:@"ActionItems" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 @end

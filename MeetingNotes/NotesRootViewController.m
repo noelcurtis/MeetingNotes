@@ -192,7 +192,7 @@
     {
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
     }
-
+    [indexPath release];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -216,13 +216,16 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.agendaItems count];
+    if (section==0) {
+        return [self.agendaItems count];
+    }
+    else return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
