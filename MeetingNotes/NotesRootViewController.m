@@ -10,6 +10,7 @@
 #import "Meeting.h"
 #import "AgendaItem.h"
 #import "NotesDetailViewController.h"
+#import "SortDetailViewController.h"
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -21,6 +22,7 @@
 @synthesize meetingBeingEdited;
 @synthesize notesDetailViewController;
 @synthesize agendaItems;
+@synthesize sortDetailViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,6 +38,7 @@
     [agendaItems release];
     [notesDetailViewController release];
     [meetingBeingEdited release];
+    [sortDetailViewController release];
     [super dealloc];
 }
 
@@ -122,12 +125,21 @@
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																							target:self 
 																							action:@selector(addActionItem:)] autorelease];
+    
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemRewind target:self action:@selector(backButtonAction:)] autorelease];
+    self.navigationItem.hidesBackButton = YES;
     self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
     [self addToolBarToView];
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
 }
 
+-(IBAction)backButtonAction:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+    // replace the detail view in the split view controller
+    NSLog(@"Replacing the detail view with the MeetingListViewController");
+    [self.sortDetailViewController setupWithMeetingListViewCotnroller];
+}
 
 -(void)addToolBarToView{
     
@@ -156,6 +168,7 @@
     NSArray *itemArray = [NSArray arrayWithObjects: @"PDF", @"Email", @"Meeting", nil];
     
     UISegmentedControl *meetingOptions = [[UISegmentedControl alloc] initWithItems:itemArray];
+    meetingOptions.tintColor = [UIColor darkGrayColor];
     meetingOptions.segmentedControlStyle = UISegmentedControlStyleBezeled;
     [meetingOptions addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
     meetingOptions.frame = CGRectMake(0, 0, 200, 30);

@@ -10,17 +10,21 @@
 
 @class Meeting;
 @class NotesDetailViewController;
+@class SortDetailViewController;
 @interface NotesRootViewController : UITableViewController {
     
 }
 @property (nonatomic, retain) Meeting* meetingBeingEdited;
 @property (nonatomic, retain) NotesDetailViewController* notesDetailViewController;
+@property (nonatomic, retain) SortDetailViewController* sortDetailViewController;
 @property (nonatomic, retain) NSMutableArray* agendaItems;
 -(IBAction) addActionItem:(id) sender;
 
 -(void)saveContextAndReloadTable;
 
 // options segment action
-- (IBAction)optionsSegmentAction:(id)sender;
+-(IBAction)optionsSegmentAction:(id)sender;
+
+-(IBAction)backButtonAction:(id)sender;
 
 @end

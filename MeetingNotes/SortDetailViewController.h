@@ -32,6 +32,7 @@
 -(IBAction) calenderButtonClick:(id)sender;
 -(IBAction) addButtonPressed:(id) sender;
 -(void) setupWithActiveViewController:(UIViewController*)controller;
+-(void) setupWithMeetingListViewCotnroller;
 //Methods to satisfy the CreateMinutesModalViewControllerDelegate protocol
 -(void)didDismissModalView;
 -(void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;

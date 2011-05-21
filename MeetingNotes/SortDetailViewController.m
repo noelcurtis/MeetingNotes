@@ -53,6 +53,14 @@
 }
 
 #pragma mark - Managing the active detail view
+-(void) setupWithMeetingListViewCotnroller{
+    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] init];
+    meetingsList.managedObjectContext = self.managedObjectContext;
+    meetingsList.masterSortDetailView = self;
+    [self setupWithActiveViewController:meetingsList];
+    [meetingsList release];
+}
+
 // Use to change the active sub view controller in the Detail view
 -(void) setupWithActiveViewController:(UIViewController*) controller
 {
@@ -162,6 +170,8 @@
     // Push the controllers for the Notes Editing views
     // Create the notes root view controller
     NotesRootViewController *notesRVController = [[NotesRootViewController alloc] initWithNibName:@"NotesRootViewController" bundle:nil];
+    // Add self to the controller so that you can push it back in future
+    notesRVController.sortDetailViewController = self;
     // Create the detail view controller
     NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
     notesRVController.notesDetailViewController = notesDetailView;
@@ -174,7 +184,6 @@
     // push the NotesRootView Controller
     [navController pushViewController:notesRVController animated:YES];
     [notesRVController release];
-    [navController release];
     // push the new detail view controller
     // pass the toolbar on so the new detail view can edit it
     notesDetailView.detailViewControllerToolbar = self.toolBar;
@@ -237,12 +246,7 @@
 {
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
     //show a list of all the current meetings
-    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] init];
-    meetingsList.managedObjectContext = self.managedObjectContext;
-    meetingsList.masterSortDetailView = self;
-    [self setupWithActiveViewController:meetingsList];
-    [meetingsList release];
-    
+    [self setupWithMeetingListViewCotnroller];
 }
 
 - (void)viewDidUnload
