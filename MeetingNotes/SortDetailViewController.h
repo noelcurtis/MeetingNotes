@@ -16,6 +16,7 @@
         
 }
 
+@property(nonatomic, retain)UIViewController *activeViewController;
 @property(nonatomic, retain) IBOutlet UIToolbar *toolBar;
 @property(nonatomic, retain) IBOutlet SortRootViewController *rvController;
 @property(nonatomic, retain) IBOutlet UIPopoverController *rootViewPopover;
@@ -25,6 +26,7 @@
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
 @property(nonatomic, retain) IBOutlet UIPopoverController *createMinutePopoverController;
 @property(nonatomic, retain) IBOutlet UIPopoverController *calenderCreatePopover;
+@property(nonatomic, assign) BOOL isActiveViewControllerHidden;
 
 // set when the application starts up
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
@@ -32,13 +34,11 @@
 -(IBAction) calenderButtonClick:(id)sender;
 -(IBAction) addButtonPressed:(id) sender;
 -(void) setupWithActiveViewController:(UIViewController*)controller;
--(void) setupWithMeetingListViewCotnroller;
+-(void) hideActiveViewController;
+-(void) showActiveViewController;
+-(void) setupWithMeetingListViewController;
 //Methods to satisfy the CreateMinutesModalViewControllerDelegate protocol
 -(void)didDismissModalView;
--(void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
--(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
-                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
-                      attendees:(NSSet *)attendees;
 -(void)insertNewMeeting:(Meeting *)newMeeting;
 
 //Method to push Notes View Controllers

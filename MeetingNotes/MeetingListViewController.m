@@ -137,28 +137,41 @@
 }
 
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        // Delete the managed object for the given index path
+		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
+		
+		// Save the context.
+		NSError *error;
+		if (![context save:&error]) {
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
+			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			abort();
+		}
+
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -177,6 +190,11 @@
 */
 
 #pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 100;
+    return height;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -216,62 +234,6 @@
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 
 }
-
--(void)insertNewMeetingWithName:(NSString *)name andLocation:(NSString*)location{
-    NSLog(@"Adding new Meeting with Name:%@ and Location:%@", name, location);
-    // Create a new Meeting
-    NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    // Set the values for the new Meeting
-    [(Meeting*)newManagedObject setName:name];
-    [(Meeting*)newManagedObject setLocation:location];
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
-    [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
-}
-
--(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
-                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
-                      attendees:(NSSet *)attendees{
-    NSLog(@"Adding new Meeting with Name:%@, Location:%@, StartDate:%@, EndDate:%@", name, location, [startDate description], [endDate description]);
-    NSLog(@"Attendees to the meeting are\r\n");
-    for(NSString* attendee in attendees)
-    {
-        NSLog(@"%@\r\n",attendee);
-    }
-    // Create a new Meeting
-    NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    // Set the values for the new Meeting
-    [(Meeting*)newManagedObject setName:name];
-    [(Meeting*)newManagedObject setLocation:location];
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
-    [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
-}
-
 
 #pragma mark - Fetched results controller
 

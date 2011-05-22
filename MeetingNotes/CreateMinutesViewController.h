@@ -47,9 +47,5 @@ UITableViewDelegate, UITableViewDataSource> {
 
 @protocol CreateMinutesModalViewControllerDelegate
 -(void)didDismissModalView;
--(void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place;
--(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
-                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
-                      attendees:(NSSet *)attendees;
 -(void)insertNewMeeting:(Meeting *)newMeeting;
 @end

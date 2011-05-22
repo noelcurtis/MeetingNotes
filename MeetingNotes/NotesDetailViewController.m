@@ -172,18 +172,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    /*
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }*/
-    //NSLog(<#NSString *format, ...#>)
-    // Configure the cell...
-    //[self configureCell:cell atIndexPath:indexPath];
     return [self configureCellAtIndexPath:indexPath];
-
 }
 
 -(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath{

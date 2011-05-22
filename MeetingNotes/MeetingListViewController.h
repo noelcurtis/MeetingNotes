@@ -18,9 +18,5 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) SortDetailViewController *masterSortDetailView;
 
--(void)insertNewMeetingWithName:(NSString *)name andLocation:(NSString*)location;
--(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
-                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
-                      attendees:(NSSet *)attendees;
 -(void)insertNewMeeting:(Meeting *)newMeeting;
 @end

@@ -14,7 +14,7 @@
 #import "MeetingListViewController.h"
 
 @interface SortDetailViewController() 
-    @property (nonatomic, retain)UIViewController *activeViewController;
+
 @end
 
 @implementation SortDetailViewController
@@ -27,6 +27,7 @@
 @synthesize createMinutePopoverController;
 @synthesize calenderCreatePopover;
 @synthesize calendarButton, flexButton, addnewMeetingButton;
+@synthesize isActiveViewControllerHidden;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,7 +54,7 @@
 }
 
 #pragma mark - Managing the active detail view
--(void) setupWithMeetingListViewCotnroller{
+-(void) setupWithMeetingListViewController{
     MeetingListViewController *meetingsList = [[MeetingListViewController alloc] init];
     meetingsList.managedObjectContext = self.managedObjectContext;
     meetingsList.masterSortDetailView = self;
@@ -72,6 +73,22 @@
 	[self.activeViewController viewWillAppear:NO];
 	[self.view addSubview:self.activeViewController.view];
 	[self.activeViewController viewDidAppear:NO];
+    self.isActiveViewControllerHidden = NO;
+}
+
+// Use to completely remove the active view controller
+-(void) hideActiveViewController{
+    [self.activeViewController.view removeFromSuperview];
+    self.isActiveViewControllerHidden = YES;
+    //[self.activeViewController release];
+    //self.activeViewController = nil;
+}
+
+-(void) showActiveViewController{
+    [self.activeViewController viewWillAppear:NO];
+    [self.view addSubview:self.activeViewController.view];
+    [self.activeViewController viewDidAppear:NO];
+    self.isActiveViewControllerHidden = NO;
 }
 
 #pragma mark - Showing the Notes view
@@ -125,22 +142,6 @@
 	[createMinutePopoverController dismissPopoverAnimated:YES];
 }
 
-- (void)insertMinuteWithTitle:(NSString *)title place:(NSString *)place {
-	// Save minute
-    [createMinutePopoverController dismissPopoverAnimated:YES];
-	[(MeetingListViewController*)self.activeViewController insertNewMeetingWithName:title andLocation:place];
-}
-
--(void)insertNewMeetingWithName:(NSString *)name location:(NSString *)location 
-                      startDate:(NSDate *)startDate endDate:(NSDate *)endDate 
-                      attendees:(NSSet *)attendees{
-    // Save minute
-    [createMinutePopoverController dismissPopoverAnimated:YES];
-	[(MeetingListViewController*)self.activeViewController 
-     insertNewMeetingWithName:name location:location startDate:startDate 
-     endDate:endDate attendees:attendees];
-}
-
 -(void) insertNewMeeting:(Meeting *)newMeeting{
     [createMinutePopoverController dismissPopoverAnimated:YES];
     [(MeetingListViewController*)self.activeViewController insertNewMeeting:newMeeting];
@@ -188,6 +189,7 @@
     // pass the toolbar on so the new detail view can edit it
     notesDetailView.detailViewControllerToolbar = self.toolBar;
     [self setupWithActiveViewController:notesDetailView];
+    [self hideActiveViewController];
     [notesDetailView release];
 
 }
@@ -215,6 +217,7 @@
     [items insertObject:barButtonItem atIndex:0];
     [self.toolBar setItems:items // setup bar button item for toolbar
                   animated:YES]; 
+    [items release];
     self.rootViewPopover = pc;
 
     
@@ -246,7 +249,7 @@
 {
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
     //show a list of all the current meetings
-    [self setupWithMeetingListViewCotnroller];
+    [self setupWithMeetingListViewController];
 }
 
 - (void)viewDidUnload

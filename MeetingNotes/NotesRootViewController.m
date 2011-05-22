@@ -138,7 +138,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     // replace the detail view in the split view controller
     NSLog(@"Replacing the detail view with the MeetingListViewController");
-    [self.sortDetailViewController setupWithMeetingListViewCotnroller];
+    [self.sortDetailViewController setupWithMeetingListViewController];
 }
 
 -(void)addToolBarToView{
@@ -286,28 +286,44 @@
 }
 
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Deleting at index path:%@", [indexPath description]);
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        NSLog(@"Deleting agenta item %@", [[self.agendaItems objectAtIndex:indexPath.row] description]);
+        [[self.meetingBeingEdited managedObjectContext] deleteObject:[self.agendaItems objectAtIndex:indexPath.row]];
+        [self saveContextAndReloadTable];
+        if([self.meetingBeingEdited.AgendaItems count] > 0){
+            NSInteger newRow;
+            if(indexPath.row > 0){
+                newRow = indexPath.row - 1;
+            }else if(indexPath.row == 0){
+                newRow = indexPath.row + 1;
+            }else{
+                NSException *exception = [NSException exceptionWithName:@"NoCellToSelect" 
+                                                                 reason:@"Nothing to select for index in NotesRootViewController" userInfo:nil];
+                @throw exception;
+            }
+            NSIndexPath *newSelectedIndex = [NSIndexPath indexPathForRow:newRow inSection:indexPath.section];
+            [self.tableView selectRowAtIndexPath:newSelectedIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
+            [self tableView:self.tableView didSelectRowAtIndexPath:newSelectedIndex];
+            [newSelectedIndex release];
+        }else{
+            [self.sortDetailViewController hideActiveViewController];
+        }
+    }  
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -338,6 +354,9 @@
      [detailViewController release];
      */
     // setup the detail view with the selected agenda item
+    if (self.sortDetailViewController.isActiveViewControllerHidden) {
+        [self.sortDetailViewController showActiveViewController];
+    }
     [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];
 }
 
