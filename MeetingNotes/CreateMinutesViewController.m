@@ -89,12 +89,22 @@
 	// TODO - Check for all values
     // create the new meeting from the managed object context
     Meeting *newMeeting = [NSEntityDescription insertNewObjectForEntityForName:@"Meeting" inManagedObjectContext:self.managedObjectContext];
+    NSError *error;
     // Set the values for the new Meeting
     [newMeeting setName:titleTextField.text];
     [newMeeting setLocation:locationTextField.text];
     [newMeeting addAttendees:[[NSSet alloc] initWithArray:self.attendees]];
+    if (![self.managedObjectContext save:&error]) {
+        
+        /*Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         
+         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+         abort();*/
+    }
+    NSLog(@"Added new Meeting with Name:%@ and Location:%@", newMeeting.name, newMeeting.location);
     [delegate insertNewMeeting:newMeeting];
-    
     [self.delegate didDismissModalView];
 }
 
@@ -214,19 +224,19 @@
 // Displays the information of a selected person
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-    //NSString *emailAddress;
+    NSString *emailAddress = nil;
     NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
     NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-    //ABMultiValueRef emailRef = ABRecordCopyValue(person, kABPersonEmailProperty);
-    //if(emailRef!=nil && ABMultiValueGetCount(emailRef) != 0){
-    //    emailAddress = [NSString stringWithFormat:@"%@",ABMultiValueCopyValueAtIndex(emailRef, 0)];
-    //}
+    ABMultiValueRef emailRef = ABRecordCopyValue(person, kABPersonEmailProperty);
+    if(emailRef!=nil && ABMultiValueGetCount(emailRef) != 0){
+        emailAddress = [NSString stringWithFormat:@"%@",ABMultiValueCopyValueAtIndex(emailRef, 0)];
+    }
         
     self.personSelectedFromPeoplePicker = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:self.managedObjectContext];
     
     //Add a new name to the new attendee
     if(firstName != nil && lastName != nil){
-        [self.personSelectedFromPeoplePicker setName:[NSString stringWithFormat:firstName,@" ",lastName]];
+        [self.personSelectedFromPeoplePicker setName:[NSString stringWithFormat:@"%@ %@",firstName, lastName]];
     }
     else if (firstName !=nil && lastName ==nil){
         [self.personSelectedFromPeoplePicker setName:firstName];
@@ -234,14 +244,14 @@
     else if (firstName == nil && lastName != nil){
         [self.personSelectedFromPeoplePicker setName:lastName];
     }
-    //else if (firstName == nil && lastName == nil && emailAddress != nil){
-    //    [self.personSelectedFromPeoplePicker setName:emailAddress];
-    //}
+    else if (firstName == nil && lastName == nil && emailAddress != nil){
+        [self.personSelectedFromPeoplePicker setName:emailAddress];
+    }
     
     //Add a new email to the new attendee
-    //if (emailAddress != nil){
-    //    [self.personSelectedFromPeoplePicker setEmail:emailAddress];
-    //}
+    if (emailAddress != nil){
+        [self.personSelectedFromPeoplePicker setEmail:emailAddress];
+    }
     
     // Add attendee to the list of attendees
     if (self.attendees == nil) {
@@ -251,10 +261,10 @@
     }else{
         [self.attendees addObject:self.personSelectedFromPeoplePicker];
     }
-    NSLog(@"New attendee picked and created, to add to the attendee list.");
+    NSLog(@"New attendee %@ picked and created, to add to the attendee list.", [self.personSelectedFromPeoplePicker description]);
     [firstName release];
     [lastName release];
-    //[emailAddress release];
+    [emailAddress release];
     [self.navigationController dismissModalViewControllerAnimated:YES];
     [_tableView reloadData];
     return NO;

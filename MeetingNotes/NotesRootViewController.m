@@ -131,7 +131,7 @@
     self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
     [self addToolBarToView];
     // Uncomment the following line to preserve selection between presentations.
-    //self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = NO;
 }
 
 -(IBAction)backButtonAction:(id)sender{
@@ -302,17 +302,26 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSLog(@"Deleting agenta item %@", [[self.agendaItems objectAtIndex:indexPath.row] description]);
         [[self.meetingBeingEdited managedObjectContext] deleteObject:[self.agendaItems objectAtIndex:indexPath.row]];
-        [self saveContextAndReloadTable];
+        NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
+        NSError *error = nil;
+        if (![context save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        self.agendaItems = nil;
+        self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+        [self.tableView reloadData];
         if([self.meetingBeingEdited.AgendaItems count] > 0){
             NSInteger newRow;
-            if(indexPath.row > 0){
+            if(indexPath.row == [self.agendaItems count]){
                 newRow = indexPath.row - 1;
-            }else if(indexPath.row == 0){
-                newRow = indexPath.row + 1;
             }else{
-                NSException *exception = [NSException exceptionWithName:@"NoCellToSelect" 
-                                                                 reason:@"Nothing to select for index in NotesRootViewController" userInfo:nil];
-                @throw exception;
+                newRow = indexPath.row;
             }
             NSIndexPath *newSelectedIndex = [NSIndexPath indexPathForRow:newRow inSection:indexPath.section];
             [self.tableView selectRowAtIndexPath:newSelectedIndex animated:YES scrollPosition:UITableViewScrollPositionTop];

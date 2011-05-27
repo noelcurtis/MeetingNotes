@@ -22,7 +22,6 @@
 		C7557C52137758C2003AC2A2 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = C7557C4F137758C2003AC2A2 /* checkbox.png */; };
 		C7557C5613775E55003AC2A2 /* ActionItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7557C5413775E55003AC2A2 /* ActionItemsViewController.m */; };
 		C7557C5713775E55003AC2A2 /* ActionItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7557C5513775E55003AC2A2 /* ActionItemsViewController.xib */; };
-		C75C7EB31370E1DB00052CA1 /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C75C7EB21370E1DB00052CA1 /* AgendaItem.m */; };
 		C76A79C31378ADAD00AEF020 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76A79C11378ADAD00AEF020 /* AddressBook.framework */; };
 		C76A79C41378ADAD00AEF020 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */; };
 		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
@@ -32,23 +31,24 @@
 		C78540EE135CF9B7001AAEDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540ED135CF9B7001AAEDD /* main.m */; };
 		C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */; };
 		C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78540F2135CF9B7001AAEDD /* MainWindow.xib */; };
+		C7909C4D138C8166001EFF79 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */; };
 		C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E69F135D0599009B42B9 /* SortRootViewController.m */; };
 		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
 		C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */; };
-		C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */; };
-		C798B797137A24F400F6452B /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C798B796137A24F400F6452B /* Meeting.m */; };
-		C798B79A137A253D00F6452B /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = C798B799137A253D00F6452B /* Attendee.m */; };
 		C7D74AF31362242B00B57A9C /* MeetingNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7D74AF11362242B00B57A9C /* MeetingNotes.xcdatamodeld */; };
 		C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D74AF41362266600B57A9C /* CoreData.framework */; };
 		C7D74B0E1363255500B57A9C /* NotesRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B0C1363255500B57A9C /* NotesRootViewController.m */; };
 		C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */; };
 		C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */; };
 		C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */; };
-		C7F3B7A61384D61D00C22F4D /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F3B7A51384D61D00C22F4D /* ActionItem.m */; };
 		C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */; };
 		C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */; };
 		C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */; };
 		C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */; };
+		C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCCC138F3EB300BEF168 /* Meeting.m */; };
+		C7FEBCD0138F3EC800BEF168 /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCCF138F3EC800BEF168 /* AgendaItem.m */; };
+		C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD2138F3ED500BEF168 /* ActionItem.m */; };
+		C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD5138F3EE400BEF168 /* Attendee.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +97,6 @@
 		C7557C5313775E55003AC2A2 /* ActionItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemsViewController.h; sourceTree = "<group>"; };
 		C7557C5413775E55003AC2A2 /* ActionItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemsViewController.m; sourceTree = "<group>"; };
 		C7557C5513775E55003AC2A2 /* ActionItemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemsViewController.xib; sourceTree = "<group>"; };
-		C75C7EB11370E1DB00052CA1 /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
-		C75C7EB21370E1DB00052CA1 /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
 		C76A79C11378ADAD00AEF020 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,16 +110,12 @@
 		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
 		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
 		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
 		C790E69E135D0599009B42B9 /* SortRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRootViewController.h; sourceTree = "<group>"; };
 		C790E69F135D0599009B42B9 /* SortRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortRootViewController.m; sourceTree = "<group>"; };
 		C790E6A0135D0599009B42B9 /* SortRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortRootViewController.xib; sourceTree = "<group>"; };
 		C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortDetailViewController.h; sourceTree = "<group>"; };
 		C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDetailViewController.m; sourceTree = "<group>"; };
-		C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
-		C798B795137A24F400F6452B /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
-		C798B796137A24F400F6452B /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
-		C798B798137A253D00F6452B /* Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Attendee.h; path = Data/Attendee.h; sourceTree = "<group>"; };
-		C798B799137A253D00F6452B /* Attendee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attendee.m; path = Data/Attendee.m; sourceTree = "<group>"; };
 		C7D74AF21362242B00B57A9C /* MeetingNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetingNotes.xcdatamodel; sourceTree = "<group>"; };
 		C7D74AF41362266600B57A9C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C7D74B0B1363255500B57A9C /* NotesRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRootViewController.h; sourceTree = "<group>"; };
@@ -130,14 +124,20 @@
 		C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailViewController.h; sourceTree = "<group>"; };
 		C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailViewController.m; sourceTree = "<group>"; };
 		C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesDetailViewController.xib; sourceTree = "<group>"; };
-		C7F3B7A41384D61D00C22F4D /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItem.h; path = Data/ActionItem.h; sourceTree = "<group>"; };
-		C7F3B7A51384D61D00C22F4D /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
 		C7F96FDE1368EDA300737BEA /* CreateMinutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMinutesViewController.h; sourceTree = "<group>"; };
 		C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMinutesViewController.m; sourceTree = "<group>"; };
 		C7F96FE01368EDA300737BEA /* StartsEndsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartsEndsViewController.h; sourceTree = "<group>"; };
 		C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartsEndsViewController.m; sourceTree = "<group>"; };
 		C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateMinutesView.xib; sourceTree = "<group>"; };
 		C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartsEndsView.xib; sourceTree = "<group>"; };
+		C7FEBCCB138F3EB300BEF168 /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
+		C7FEBCCC138F3EB300BEF168 /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
+		C7FEBCCE138F3EC800BEF168 /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
+		C7FEBCCF138F3EC800BEF168 /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
+		C7FEBCD1138F3ED500BEF168 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItem.h; path = Data/ActionItem.h; sourceTree = "<group>"; };
+		C7FEBCD2138F3ED500BEF168 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
+		C7FEBCD4138F3EE400BEF168 /* Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Attendee.h; path = Data/Attendee.h; sourceTree = "<group>"; };
+		C7FEBCD5138F3EE400BEF168 /* Attendee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attendee.m; path = Data/Attendee.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,14 +163,14 @@
 		C70E6AAE13667FE20059B75E /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C7F3B7A41384D61D00C22F4D /* ActionItem.h */,
-				C7F3B7A51384D61D00C22F4D /* ActionItem.m */,
-				C798B798137A253D00F6452B /* Attendee.h */,
-				C798B799137A253D00F6452B /* Attendee.m */,
-				C798B795137A24F400F6452B /* Meeting.h */,
-				C798B796137A24F400F6452B /* Meeting.m */,
-				C75C7EB11370E1DB00052CA1 /* AgendaItem.h */,
-				C75C7EB21370E1DB00052CA1 /* AgendaItem.m */,
+				C7FEBCD4138F3EE400BEF168 /* Attendee.h */,
+				C7FEBCD5138F3EE400BEF168 /* Attendee.m */,
+				C7FEBCD1138F3ED500BEF168 /* ActionItem.h */,
+				C7FEBCD2138F3ED500BEF168 /* ActionItem.m */,
+				C7FEBCCE138F3EC800BEF168 /* AgendaItem.h */,
+				C7FEBCCF138F3EC800BEF168 /* AgendaItem.m */,
+				C7FEBCCB138F3EB300BEF168 /* Meeting.h */,
+				C7FEBCCC138F3EB300BEF168 /* Meeting.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -311,12 +311,12 @@
 		C790E681135D040D009B42B9 /* MainSplitView Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */,
 				C790E69E135D0599009B42B9 /* SortRootViewController.h */,
 				C790E69F135D0599009B42B9 /* SortRootViewController.m */,
 				C790E6A0135D0599009B42B9 /* SortRootViewController.xib */,
 				C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */,
 				C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */,
-				C790E6A5135D05C5009B42B9 /* SortDetailViewController.xib */,
 			);
 			name = "MainSplitView Controllers";
 			sourceTree = "<group>";
@@ -442,7 +442,6 @@
 				C78540EB135CF9B7001AAEDD /* InfoPlist.strings in Resources */,
 				C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */,
 				C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */,
-				C790E6A7135D05C5009B42B9 /* SortDetailViewController.xib in Resources */,
 				C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */,
 				C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */,
 				C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */,
@@ -454,6 +453,7 @@
 				C7557C52137758C2003AC2A2 /* checkbox.png in Resources */,
 				C7557C5713775E55003AC2A2 /* ActionItemsViewController.xib in Resources */,
 				C74B372C1384BD50000DFE5D /* ActionItemCell.xib in Resources */,
+				C7909C4D138C8166001EFF79 /* SortDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,13 +475,13 @@
 				C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */,
 				C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */,
 				C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */,
-				C75C7EB31370E1DB00052CA1 /* AgendaItem.m in Sources */,
 				C7557C5613775E55003AC2A2 /* ActionItemsViewController.m in Sources */,
-				C798B797137A24F400F6452B /* Meeting.m in Sources */,
-				C798B79A137A253D00F6452B /* Attendee.m in Sources */,
 				C7153F001383783200A48C85 /* NoteView.m in Sources */,
 				C74B372A1384BD36000DFE5D /* ActionItemCell.m in Sources */,
-				C7F3B7A61384D61D00C22F4D /* ActionItem.m in Sources */,
+				C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */,
+				C7FEBCD0138F3EC800BEF168 /* AgendaItem.m in Sources */,
+				C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */,
+				C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

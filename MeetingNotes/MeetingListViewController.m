@@ -83,6 +83,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.masterSortDetailView setupToolbarForMeetingListViewController];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -214,25 +215,8 @@
 #pragma mark - Inserting a new object
 // Use to insert an Event into the database
 -(void) insertNewMeeting:(Meeting *)newMeeting{
-    NSLog(@"Adding new Meeting with Name:%@ and Location:%@", newMeeting.name, newMeeting.location);
-    // Create a new Meeting
-    NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-    NSManagedObject *newManagedObject = newMeeting;
-    NSLog(@"Saving the context");
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
+    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newMeeting];
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
-
 }
 
 #pragma mark - Fetched results controller

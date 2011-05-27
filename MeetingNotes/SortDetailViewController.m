@@ -26,7 +26,6 @@
 @synthesize managedObjectContext;
 @synthesize createMinutePopoverController;
 @synthesize calenderCreatePopover;
-@synthesize calendarButton, flexButton, addnewMeetingButton;
 @synthesize isActiveViewControllerHidden;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,19 +40,30 @@
 - (void)dealloc
 {
     [calenderCreatePopover release];
-    [addnewMeetingButton release];
     [createMinutePopoverController release];
     [managedObjectContext release];
     [activeViewController release];
-    [calendarButton release];
     [rootViewPopover release];
     [rvController release];
-    [flexButton release];
     [toolBar release];
     [super dealloc];
 }
 
 #pragma mark - Managing the active detail view
+-(void) setupToolbarForMeetingListViewController{
+    UIBarButtonItem *calenderButton = [[UIBarButtonItem alloc] initWithTitle:@"Calendar" style:
+                                       UIBarButtonItemStyleBordered target:self action:@selector(calenderButtonClick:)];
+    UIBarButtonItem *addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
+    
+    UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    NSMutableArray *items = [NSMutableArray arrayWithObjects:flexButton, calenderButton, addMeetingButton, nil];
+    [self.toolBar setItems:items];
+    [calenderButton release];
+    [flexButton release];
+    [addMeetingButton release];
+}
+
 -(void) setupWithMeetingListViewController{
     MeetingListViewController *meetingsList = [[MeetingListViewController alloc] init];
     meetingsList.managedObjectContext = self.managedObjectContext;
@@ -80,8 +90,6 @@
 -(void) hideActiveViewController{
     [self.activeViewController.view removeFromSuperview];
     self.isActiveViewControllerHidden = YES;
-    //[self.activeViewController release];
-    //self.activeViewController = nil;
 }
 
 -(void) showActiveViewController{
@@ -149,22 +157,6 @@
 
 #pragma mark Push the Meeting Notes View Controllers
 
-// Use method to push Meeting Notes View Controllers
--(void) pushMeetingNotesViewControllers{
-    // Push the controllers for the Notes Editing views
-    NotesRootViewController *notesRVController = [[NotesRootViewController alloc] init];
-    // get the navigation controller from the SplitView Controller
-    UINavigationController *navController = [self.splitViewController.viewControllers objectAtIndex:0];
-    // push the NotesRootView Controller
-    [navController pushViewController:notesRVController animated:YES];
-    [notesRVController release];
-    [navController release];
-    // push the NotesDetailView Controller
-    NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] init];
-    [self setupWithActiveViewController:notesDetailView];
-    [notesDetailView release];
-}
-
 // Use method to push Meeting Notes View Controller with a meeting to edit
 -(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit
 {
@@ -214,13 +206,12 @@
     
     barButtonItem.title = aViewController.title;  // set the title for the button
     NSMutableArray *items = [[self.toolBar items] mutableCopy];
-    [items insertObject:barButtonItem atIndex:0];
-    [self.toolBar setItems:items // setup bar button item for toolbar
-                  animated:YES]; 
+    NSMutableArray *newItems = [NSMutableArray arrayWithObject:barButtonItem];
+    [newItems addObjectsFromArray:items];
+    [self.toolBar setItems:newItems // setup bar button item for toolbar
+                  animated:YES];
     [items release];
-    self.rootViewPopover = pc;
-
-    
+    self.rootViewPopover = pc;    
 }
 
 -(void) splitViewController:(UISplitViewController *)svc 
@@ -228,11 +219,10 @@
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem{
     
     NSMutableArray *items = [[toolBar items] mutableCopy];
-    [items removeObjectAtIndex:0];
+    [items removeObject:barButtonItem];
     [toolBar setItems:items animated:YES];
     [items release];
     self.rootViewPopover = nil;
-
 }
 
 - (void)didReceiveMemoryWarning

@@ -21,9 +21,6 @@
 @property(nonatomic, retain) IBOutlet SortRootViewController *rvController;
 @property(nonatomic, retain) IBOutlet UIPopoverController *rootViewPopover;
 
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *calendarButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *addnewMeetingButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *flexButton;
 @property(nonatomic, retain) IBOutlet UIPopoverController *createMinutePopoverController;
 @property(nonatomic, retain) IBOutlet UIPopoverController *calenderCreatePopover;
 @property(nonatomic, assign) BOOL isActiveViewControllerHidden;
@@ -37,12 +34,12 @@
 -(void) hideActiveViewController;
 -(void) showActiveViewController;
 -(void) setupWithMeetingListViewController;
+-(void) setupToolbarForMeetingListViewController;
 //Methods to satisfy the CreateMinutesModalViewControllerDelegate protocol
 -(void)didDismissModalView;
 -(void)insertNewMeeting:(Meeting *)newMeeting;
 
 //Method to push Notes View Controllers
--(void) pushMeetingNotesViewControllers;
 -(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit;
 
 @end

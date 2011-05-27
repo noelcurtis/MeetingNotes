@@ -73,7 +73,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self configureButtonsForToolbar];
     //self.tableView.backgroundColor = [UIColor clearColor];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -85,13 +84,25 @@
 
 -(void)configureButtonsForToolbar{
     // setup buttons on the toolbar
-    UIBarButtonItem *newAgendaItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" 
-                                                                            style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
-    //************????????
-    // this config wont work in portrate mode becuase there is an extra button in the ToolBar 
-    [self.detailViewControllerToolbar setItems:[NSArray arrayWithObjects:
-                                                [self.detailViewControllerToolbar.items objectAtIndex:0],
-                                                newAgendaItemButton, nil] animated:YES];
+    NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
+    UIBarButtonItem *newAgendaItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
+    
+    switch ([items count]) {
+        case 4:{
+            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:[items objectAtIndex:0], [items objectAtIndex:1], newAgendaItemButton ,nil]];
+            break;
+        }
+        case 3:{
+            UIBarButtonItem *replaceFlexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+            [self.detailViewControllerToolbar setItems:[NSArray arrayWithObjects:
+                                                        replaceFlexButton,
+                                                        newAgendaItemButton, nil] animated:YES];
+            [replaceFlexButton release];
+            break;
+        }
+        default:
+            break;
+    }
     [newAgendaItemButton release];
 }
 
@@ -107,6 +118,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self configureButtonsForToolbar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -258,14 +270,27 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    // create a view to enter a meeting manually
+    if(indexPath.section == 2){
+        // get the action item for the cel that you selected
+        NSLog(@"Setting up the ActionItemsViewController with a meeting and agenda item");
+        ActionItemsViewController *actionItemsVC = [[ActionItemsViewController alloc] initWithNibName:@"ActionItemsViewController" bundle:nil ];
+        // pass the meeting being edited along
+        actionItemsVC.meetingBeingEdited = self.notesRootViewController.meetingBeingEdited;
+        actionItemsVC.agendaItem = self.agendaItem;
+        actionItemsVC.actionViewControllerDelegate = self;
+        // setup the action item for the popover controller
+        actionItemsVC.actionItem = [[self.agendaItem.ActionItems allObjects] objectAtIndex:indexPath.row];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:actionItemsVC];
+        self.agendaItemPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+        //self.agendaItemPopoverController.delegate = self;
+        self.agendaItemPopoverController.popoverContentSize = actionItemsVC.view.frame.size;
+        //[self.agendaItemPopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];rz
+        [self.agendaItemPopoverController presentPopoverFromRect:[self.tableView rectForRowAtIndexPath:indexPath] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+        [navigationController release];
+        [actionItemsVC release];
+    }
+
 }
 
 

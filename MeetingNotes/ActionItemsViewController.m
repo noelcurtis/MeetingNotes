@@ -78,8 +78,6 @@
                                                initWithBarButtonSystemItem: UIBarButtonSystemItemDone
                                                target:self action:@selector(done:)] 
                                                autorelease];
-    // setup all attendees from the meeting
-    self.allAttendees = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.Attendees allObjects]];
 }
 
 
@@ -98,6 +96,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    // setup all attendees from the meeting
+    self.allAttendees = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.Attendees allObjects]];
+    if(self.actionItem != nil){
+        self.actionItemNote.text = self.actionItem.notes;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -176,7 +179,17 @@
     }
     else if(indexPath.section == 1){
         Attendee *attendee = [self.allAttendees objectAtIndex:indexPath.row];
+        // check if the action item contains the attendee so you can select the cell
+        if(self.actionItem.Attendees != nil){
+            NSMutableArray *actionableAttendees = [NSMutableArray arrayWithArray:[self.actionItem.Attendees allObjects]];
+            if([actionableAttendees containsObject:attendee])
+            {
+                [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            }
+            //[actionableAttendees release];
+        }
         cell.textLabel.text = attendee.name;
+        //[attendee release];
         return cell;
     }
     else{
@@ -275,89 +288,6 @@
     }
 }
 
-/*
-#pragma mark - Adding new Actionable Attendees
--(IBAction) addActionableAttendeesAction:(id)sender{
-    NSLog(@"Add actionable attendees items button pressed.");
-    
-    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.modalInPopover = TRUE;
-    picker.modalPresentationStyle = UIModalPresentationCurrentContext;
-    //picker.view.frame.size = self.view.frame.size;
-    picker.peoplePickerDelegate = self;
-    // Display only a person's phone, email, and birthdate
-    // Show the picker
-    [self.navigationController presentModalViewController:picker animated:YES];
-	[picker release];	
-
-}
-
-#pragma mark ABPeoplePickerNavigationControllerDelegate methods
-// Displays the information of a selected person
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
-{
-	//NSString *emailAddress;
-    NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-    NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-    //ABMultiValueRef emailRef = ABRecordCopyValue(person, kABPersonEmailProperty);
-    //if(emailRef!=nil && ABMultiValueGetCount(emailRef) != 0){
-    //    emailAddress = [NSString stringWithFormat:@"%@",ABMultiValueCopyValueAtIndex(emailRef, 0)];
-    //}
-    
-    self.personSelectedFromPeoplePicker = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:[self.meetingBeingEdited managedObjectContext]];
-    
-    //Add a new name to the new attendee
-    if(firstName != nil && lastName != nil){
-        [self.personSelectedFromPeoplePicker setName:[NSString stringWithFormat:firstName,@" ",lastName]];
-    }
-    else if (firstName !=nil && lastName ==nil){
-        [self.personSelectedFromPeoplePicker setName:firstName];
-    }
-    else if (firstName == nil && lastName != nil){
-        [self.personSelectedFromPeoplePicker setName:lastName];
-    }
-    //else if (firstName == nil && lastName == nil && emailAddress != nil){
-    //    [self.personSelectedFromPeoplePicker setName:emailAddress];
-    //}
-    
-    //Add a new email to the new attendee
-    //if (emailAddress != nil){
-    //    [self.personSelectedFromPeoplePicker setEmail:emailAddress];
-    //}
-    
-    // Add attendee to the list of all attendees of the meeting
-    if (self.allAttendees == nil) {
-        // initialize the attendees list
-        self.allAttendees = [[NSMutableArray alloc] init];
-        [self.allAttendees addObject:self.personSelectedFromPeoplePicker];
-    }else{
-        [self.allAttendees addObject:self.personSelectedFromPeoplePicker];
-    }
-    // ?? should you release personSelectedFromPeoplePicker ?????????????????????????????
-    
-    NSLog(@"New attendee picked and created, need to add to the attendee list.");
-    [firstName release];
-    [lastName release];
-    //[emailAddress release];
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-    [self.tableView reloadData];
-    return NO;
-}
-
-
-// Does not allow users to perform default actions such as dialing a phone number, when they select a person property.
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
-{
-	return NO;
-}
-
-
-// Dismisses the people picker and shows the application when users tap Cancel. 
-- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
-{
-	[personSelectedFromPeoplePicker release];
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}*/
 
 #pragma mark - Done button/Update the context
 -(void)done:(id)sender{

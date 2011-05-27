@@ -2,7 +2,7 @@
 //  AgendaItem.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/19/11.
+//  Created by Noel Curtis on 5/26/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 

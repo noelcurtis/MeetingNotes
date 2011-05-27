@@ -2,7 +2,7 @@
 //  Attendee.h
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/10/11.
+//  Created by Noel Curtis on 5/26/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
@@ -14,8 +14,8 @@
 @interface Attendee : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) ActionItem * ActionItem;
 @property (nonatomic, retain) Meeting * Meeting;
 
