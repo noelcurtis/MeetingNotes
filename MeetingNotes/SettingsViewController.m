@@ -1,24 +1,19 @@
 //
-//  SortRootViewController.m
+//  SettingsViewController.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 4/18/11.
-//  Copyright 2011 Noel Curtis. All rights reserved.
+//  Created by Noel Curtis on 6/5/11.
+//  Copyright 2011 EMC Corporation. All rights reserved.
 //
 
-#import "SortRootViewController.h"
-#import "NotesRootViewController.h"
-#import "NotesDetailViewController.h"
-#import "SortDetailViewController.h"
 #import "SettingsViewController.h"
+#import "DropboxSDK.h"
 
-@interface SortRootViewController()
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@interface SettingsViewController() <DBLoginControllerDelegate>
+
 @end
 
-
-@implementation SortRootViewController
-@synthesize dvController;
+@implementation SettingsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,7 +26,6 @@
 
 - (void)dealloc
 {
-    [dvController release];
     [super dealloc];
 }
 
@@ -48,12 +42,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Categories";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -112,26 +106,22 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    [self configureCell:cell atIndexPath:indexPath];
-    
-    return cell;
-}
-
-// Use to configure a cell for this table view.
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    // Configure the cell...
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"Category 1";
+            cell.textLabel.text = @"Link Dropbox";
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             break;
         case 1:
-            cell.textLabel.text = @"Category 2";
+            cell.textLabel.text = @"Rate the app";
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             break;
         default:
             break;
     }
+    
+    return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -184,5 +174,42 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    switch (indexPath.row) {
+        case 0:
+            [self didPressLinkDropboxAccount:[self tableView:self.tableView cellForRowAtIndexPath:indexPath]];
+            break;
+            
+        default:
+            break;
+    }
 }
+
+#pragma mark - Application Settings
+
+-(IBAction) didPressLinkDropboxAccount:(id)sender{
+    if (![[DBSession sharedSession] isLinked]) {
+        DBLoginController* controller = [[DBLoginController new] autorelease];
+        controller.delegate = self;
+        [controller presentFromController:self];
+    } else {
+        [[DBSession sharedSession] unlink];
+        [[[[UIAlertView alloc] 
+           initWithTitle:@"Account Unlinked!" message:@"Your dropbox account has been unlinked" 
+           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
+          autorelease]
+         show];
+    }
+}
+
+#pragma mark DBLoginControllerDelegate methods
+
+- (void)loginControllerDidLogin:(DBLoginController*)controller {
+    NSLog(@"Loging to Dropbox successful");
+}
+
+- (void)loginControllerDidCancel:(DBLoginController*)controller {
+    
+}
+
+
 @end

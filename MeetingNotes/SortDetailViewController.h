@@ -41,5 +41,5 @@
 
 //Method to push Notes View Controllers
 -(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit;
-
+-(IBAction) didPressSettingsButton:(id)sender;
 @end

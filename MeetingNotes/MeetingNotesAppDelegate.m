@@ -9,6 +9,11 @@
 #import "MeetingNotesAppDelegate.h"
 #import "SortRootViewController.h"
 #import "SortDetailViewController.h"
+#import "DropboxSDK.h"
+
+@interface MeetingNotesAppDelegate() <DBSessionDelegate>
+-(void) setupDropboxSession;
+@end
 
 @implementation MeetingNotesAppDelegate
 
@@ -19,9 +24,12 @@
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
 
 @synthesize sortDVController, sortRVController, splitViewController;
+@synthesize dropboxNavigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{   
+    [self setupDropboxSession];
+    
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
     splitViewController = [[UISplitViewController alloc] init];
@@ -40,6 +48,7 @@
     [nav release];
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -206,5 +215,42 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark -
+#pragma mark DBSessionDelegate methods
+
+- (void)sessionDidReceiveAuthorizationFailure:(DBSession*)session {
+	DBLoginController* loginController = [[DBLoginController new] autorelease];
+	[loginController presentFromController:dropboxNavigationController];
+}
+
+-(void)setupDropboxSession{
+    // Set these variables before launching the app
+    NSString* consumerKey = @"v7wv9j7ra5xni86";
+	NSString* consumerSecret = @"rfqnzls0x48adv7";
+	
+	// Look below where the DBSession is created to understand how to use DBSession in your app
+	
+	NSString* errorMsg = nil;
+	if ([consumerKey rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
+		errorMsg = @"Make sure you set the consumer key correctly in DBRouletteAppDelegate.m";
+	} else if ([consumerSecret rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
+		errorMsg = @"Make sure you set the consumer secret correctly in DBRouletteAppDelegate.m";
+	}
+	
+	DBSession* session = 
+    [[DBSession alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
+	session.delegate = self; // DBSessionDelegate methods allow you to handle re-authenticating
+	[DBSession setSharedSession:session];
+    [session release];
+	
+	if (errorMsg != nil) {
+		[[[[UIAlertView alloc]
+		   initWithTitle:@"Error Configuring Session" message:errorMsg 
+		   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
+		  autorelease]
+		 show];
+	}
+
+}
 
 @end

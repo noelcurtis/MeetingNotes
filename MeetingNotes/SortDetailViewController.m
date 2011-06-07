@@ -12,8 +12,10 @@
 #import "NotesRootViewController.h"
 #import "NotesDetailViewController.h"
 #import "MeetingListViewController.h"
+#import "DropboxSDK.h"
+#import "SettingsViewController.h"
 
-@interface SortDetailViewController() 
+@interface SortDetailViewController()
 
 @end
 
@@ -57,7 +59,9 @@
     
     UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    NSMutableArray *items = [NSMutableArray arrayWithObjects:flexButton, calenderButton, addMeetingButton, nil];
+    UIBarButtonItem *applicationSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(didPressSettingsButton:)];
+    
+    NSMutableArray *items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
     [self.toolBar setItems:items];
     [calenderButton release];
     [flexButton release];
@@ -254,5 +258,18 @@
     // Return YES for supported orientations
 	return YES;
 }
+
+#pragma mark - Application Settings
+
+-(IBAction) didPressSettingsButton:(id)sender{
+    
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    [navigationController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [self presentModalViewController:navigationController animated:YES];
+    [settingsVC release];
+    [navigationController release];
+}
+
 
 @end

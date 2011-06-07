@@ -11,6 +11,7 @@
 #import "AgendaItem.h"
 #import "NotesDetailViewController.h"
 #import "SortDetailViewController.h"
+#import "FileHandlerController.h"
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -109,6 +110,29 @@
 	// The segmented control was clicked, handle it here 
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
 	NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+    
+	switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            segmentedControl.selectedSegmentIndex = -1;
+            // create a .txt file with the meeting notes
+            FileHandlerController *fileHandlerController = [[FileHandlerController alloc] init];
+            [fileHandlerController exportMeetingToFile:self.meetingBeingEdited];
+            //[fileHandlerController release];
+            break;
+        /*case 1:
+            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+            [self addActionableAttendeesAction];
+            segmentedControl.selectedSegmentIndex = -1;
+            break;
+        case 2:
+            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
+            segmentedControl.selectedSegmentIndex = -1;
+            [self done:sender];
+            break;  */         
+        default:
+            break;
+    }
+
 }
 
 #pragma mark - View lifecycle
