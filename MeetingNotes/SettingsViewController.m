@@ -10,10 +10,12 @@
 #import "DropboxSDK.h"
 
 @interface SettingsViewController() <DBLoginControllerDelegate>
-
+-(void) done:(id)sender;
 @end
 
 @implementation SettingsViewController
+
+@synthesize settingsViewControllerDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,8 +49,10 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] 
+                                               initWithBarButtonSystemItem: UIBarButtonSystemItemDone
+                                               target:self action:@selector(done:)] 
+                                              autorelease];}
 
 - (void)viewDidUnload
 {
@@ -65,6 +69,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.title = @"App Settings";
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -84,6 +89,20 @@
 }
 
 #pragma mark - Table view data source
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	NSString *title = nil;
+    switch (section) {
+        case 0:
+            title = @"Accounts:";
+            break;
+            
+        default:
+            break;
+    }
+    return title;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -211,5 +230,8 @@
     
 }
 
+-(void)done:(id)sender{
+    [self.settingsViewControllerDelegate dismissSettingsViewController];
+}
 
 @end

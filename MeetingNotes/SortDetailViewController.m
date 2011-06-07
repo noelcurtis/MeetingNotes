@@ -16,7 +16,7 @@
 #import "SettingsViewController.h"
 
 @interface SortDetailViewController()
-
+@property(nonatomic, retain) UINavigationController* settingsNavigationController;
 @end
 
 @implementation SortDetailViewController
@@ -29,6 +29,7 @@
 @synthesize createMinutePopoverController;
 @synthesize calenderCreatePopover;
 @synthesize isActiveViewControllerHidden;
+@synthesize settingsNavigationController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +42,7 @@
 
 - (void)dealloc
 {
+    [settingsNavigationController release];
     [calenderCreatePopover release];
     [createMinutePopoverController release];
     [managedObjectContext release];
@@ -263,13 +265,19 @@
 
 -(IBAction) didPressSettingsButton:(id)sender{
     
-    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
-    [navigationController setModalPresentationStyle:UIModalPresentationFormSheet];
-    [self presentModalViewController:navigationController animated:YES];
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    settingsVC.settingsViewControllerDelegate = self;
+    self.settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    [self.settingsNavigationController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [self presentModalViewController:self.settingsNavigationController animated:YES];
     [settingsVC release];
-    [navigationController release];
+    [self.settingsNavigationController release];
 }
 
+#pragma mark - Satisfying SettingsViewController Delegate
+
+-(void) dismissSettingsViewController{
+    [self.settingsNavigationController dismissModalViewControllerAnimated:YES];
+}
 
 @end

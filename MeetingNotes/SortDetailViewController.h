@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CreateMinutesViewController.h"
 #import "Meeting.h"
+#import "SettingsViewController.h"
+
 @class SortRootViewController;
-@interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate> {
+@interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate, SettingsViewControllerDelegate> {
     
     UIViewController *activeViewController; // use to hold the current active detail view
         

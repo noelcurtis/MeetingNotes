@@ -8,11 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SettingsViewControllerDelegate;
 
 @interface SettingsViewController : UITableViewController {
     
 }
 
 -(IBAction) didPressLinkDropboxAccount:(id)sender;
-
+// SettingsViewControllerDelegate
+@property (nonatomic, assign) id<SettingsViewControllerDelegate> settingsViewControllerDelegate;
 @end
+
+
+@protocol SettingsViewControllerDelegate
+-(void) dismissSettingsViewController;
+@end
+
