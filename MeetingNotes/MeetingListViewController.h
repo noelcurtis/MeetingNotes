@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Meeting.h"
+#import "MeetingCell.h"
 
 @class SortDetailViewController;
 @interface MeetingListViewController : UITableViewController<NSFetchedResultsControllerDelegate> {
@@ -17,6 +18,8 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) SortDetailViewController *masterSortDetailView;
+@property (nonatomic, retain) IBOutlet MeetingCell *meetingCell;
+
 
 -(void)insertNewMeeting:(Meeting *)newMeeting;
 @end

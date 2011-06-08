@@ -37,73 +37,112 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
-			<object class="IBUITableViewCell" id="82209643">
+			<object class="IBUITableViewCell" id="64237729">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
+				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIView" id="185598374">
-						<reference key="NSNextResponder" ref="82209643"/>
+					<object class="IBUIView" id="536879528">
+						<reference key="NSNextResponder" ref="64237729"/>
 						<int key="NSvFlags">256</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUILabel" id="278694324">
-								<reference key="NSNextResponder" ref="185598374"/>
-								<int key="NSvFlags">306</int>
-								<string key="NSFrame">{{20, 11}, {734, 18}}</string>
-								<reference key="NSSuperview" ref="185598374"/>
+							<object class="IBUILabel" id="633054299">
+								<reference key="NSNextResponder" ref="536879528"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{20, 0}, {543, 40}}</string>
+								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="620320926"/>
+								<reference key="NSNextKeyView" ref="33883671"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<string key="IBUIText">Action Item Notes</string>
+								<string key="IBUIText">Friday Meeting</string>
 								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">18</double>
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">24</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<object class="NSColor" key="IBUITextColor">
+								<object class="NSColor" key="IBUITextColor" id="734182588">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">18</float>
+								<float key="IBUIMinimumFontSize">24</float>
 							</object>
-							<object class="IBUILabel" id="620320926">
-								<reference key="NSNextResponder" ref="185598374"/>
-								<int key="NSvFlags">306</int>
-								<string key="NSFrame">{{20, 31}, {643, 23}}</string>
-								<reference key="NSSuperview" ref="185598374"/>
+							<object class="IBUILabel" id="33883671">
+								<reference key="NSNextResponder" ref="536879528"/>
+								<int key="NSvFlags">288</int>
+								<string key="NSFrame">{{21, 35}, {61, 22}}</string>
+								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="986647626"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<string key="IBUIText">Noel Curtis, Dan Chung, Scott Penrose, Dave Parrish</string>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica-BoldOblique</string>
-									<double key="NSSize">17</double>
+								<string key="IBUIText">Location:</string>
+								<object class="NSFont" key="IBUIFont" id="874543509">
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<object class="NSColor" key="IBUITextColor">
+								<object class="NSColor" key="IBUITextColor" id="759057684">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">17</float>
+								<float key="IBUIMinimumFontSize">14</float>
+							</object>
+							<object class="IBUILabel" id="986647626">
+								<reference key="NSNextResponder" ref="536879528"/>
+								<int key="NSvFlags">288</int>
+								<string key="NSFrame">{{80, 35}, {473, 22}}</string>
+								<reference key="NSSuperview" ref="536879528"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="801718519"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Raleigh</string>
+								<reference key="IBUIFont" ref="874543509"/>
+								<reference key="IBUITextColor" ref="759057684"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">14</float>
+							</object>
+							<object class="IBUILabel" id="801718519">
+								<reference key="NSNextResponder" ref="536879528"/>
+								<int key="NSvFlags">297</int>
+								<string key="NSFrame">{{552, 19}, {42, 26}}</string>
+								<reference key="NSSuperview" ref="536879528"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<reference key="IBUIBackgroundColor" ref="759057684"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">100</string>
+								<reference key="IBUITextColor" ref="734182588"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{768, 65}</string>
-						<reference key="NSSuperview" ref="82209643"/>
+						<string key="NSFrameSize">{614, 65}</string>
+						<reference key="NSSuperview" ref="64237729"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="278694324"/>
+						<reference key="NSNextKeyView" ref="633054299"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -115,17 +154,17 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{768, 65}</string>
+				<string key="NSFrameSize">{614, 65}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="185598374"/>
+				<reference key="NSNextKeyView" ref="536879528"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
-				<reference key="IBUIContentView" ref="185598374"/>
+				<reference key="IBUIContentView" ref="536879528"/>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -133,19 +172,35 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">actionItemLabel</string>
-						<reference key="source" ref="82209643"/>
-						<reference key="destination" ref="278694324"/>
+						<string key="label">meetingLabel</string>
+						<reference key="source" ref="64237729"/>
+						<reference key="destination" ref="633054299"/>
 					</object>
-					<int key="connectionID">6</int>
+					<int key="connectionID">5</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">actionItemCell</string>
+						<string key="label">meetingCell</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="82209643"/>
+						<reference key="destination" ref="64237729"/>
+					</object>
+					<int key="connectionID">7</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">locationLabel</string>
+						<reference key="source" ref="64237729"/>
+						<reference key="destination" ref="986647626"/>
 					</object>
 					<int key="connectionID">9</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">actionItemCountLabel</string>
+						<reference key="source" ref="64237729"/>
+						<reference key="destination" ref="801718519"/>
+					</object>
+					<int key="connectionID">11</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -170,24 +225,39 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2</int>
-						<reference key="object" ref="82209643"/>
+						<reference key="object" ref="64237729"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="278694324"/>
-							<reference ref="620320926"/>
+							<reference ref="633054299"/>
+							<reference ref="801718519"/>
+							<reference ref="33883671"/>
+							<reference ref="986647626"/>
 						</object>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">actionItemCell</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="278694324"/>
-						<reference key="parent" ref="82209643"/>
+						<reference key="object" ref="633054299"/>
+						<reference key="parent" ref="64237729"/>
+						<string key="objectName">meetingLabel</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">4</int>
+						<reference key="object" ref="33883671"/>
+						<reference key="parent" ref="64237729"/>
+						<string key="objectName">locationNameLabel</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">8</int>
+						<reference key="object" ref="986647626"/>
+						<reference key="parent" ref="64237729"/>
+						<string key="objectName">locationLabel</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="620320926"/>
-						<reference key="parent" ref="82209643"/>
+						<reference key="object" ref="801718519"/>
+						<reference key="parent" ref="64237729"/>
+						<string key="objectName">actionItemCountLabel</string>
 					</object>
 				</object>
 			</object>
@@ -201,13 +271,17 @@
 					<string>2.CustomClassName</string>
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
+					<string>4.IBPluginDependency</string>
+					<string>8.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>NotesDetailViewController</string>
+					<string>MeetingListViewController</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>ActionItemCell</string>
+					<string>MeetingCell</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
@@ -224,25 +298,25 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">10</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">ActionItemCell</string>
+					<string key="className">MeetingCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>actionItemDetailButton</string>
-							<string>actionItemLabel</string>
-							<string>actionableAttendeesLabel</string>
+							<string>actionItemCountLabel</string>
+							<string>locationLabel</string>
+							<string>meetingLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIButton</string>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 						</object>
@@ -251,116 +325,48 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>actionItemDetailButton</string>
-							<string>actionItemLabel</string>
-							<string>actionableAttendeesLabel</string>
+							<string>actionItemCountLabel</string>
+							<string>locationLabel</string>
+							<string>meetingLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">actionItemDetailButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">actionItemLabel</string>
+								<string key="name">actionItemCountLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">actionableAttendeesLabel</string>
+								<string key="name">locationLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">meetingLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ActionItemCell.h</string>
+						<string key="minorKey">./Classes/MeetingCell.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NoteView</string>
-					<string key="superclassName">UITextView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NoteView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NotesDetailViewController</string>
+					<string key="className">MeetingListViewController</string>
 					<string key="superclassName">UITableViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">newActionItemAction:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">newActionItemAction:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">newActionItemAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>actionItemCell</string>
-							<string>agendaItemTitleCell</string>
-							<string>agendaItemTitleTextField</string>
-							<string>customNotesTextViewCell</string>
-							<string>detailViewControllerToolbar</string>
-							<string>noteView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>ActionItemCell</string>
-							<string>UITableViewCell</string>
-							<string>UITextField</string>
-							<string>UITableViewCell</string>
-							<string>UIToolbar</string>
-							<string>NoteView</string>
-						</object>
+						<string key="NS.key.0">meetingCell</string>
+						<string key="NS.object.0">MeetingCell</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>actionItemCell</string>
-							<string>agendaItemTitleCell</string>
-							<string>agendaItemTitleTextField</string>
-							<string>customNotesTextViewCell</string>
-							<string>detailViewControllerToolbar</string>
-							<string>noteView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">actionItemCell</string>
-								<string key="candidateClassName">ActionItemCell</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">agendaItemTitleCell</string>
-								<string key="candidateClassName">UITableViewCell</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">agendaItemTitleTextField</string>
-								<string key="candidateClassName">UITextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">customNotesTextViewCell</string>
-								<string key="candidateClassName">UITableViewCell</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">detailViewControllerToolbar</string>
-								<string key="candidateClassName">UIToolbar</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">noteView</string>
-								<string key="candidateClassName">NoteView</string>
-							</object>
+						<string key="NS.key.0">meetingCell</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">meetingCell</string>
+							<string key="candidateClassName">MeetingCell</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NotesDetailViewController.h</string>
+						<string key="minorKey">./Classes/MeetingListViewController.h</string>
 					</object>
 				</object>
 			</object>

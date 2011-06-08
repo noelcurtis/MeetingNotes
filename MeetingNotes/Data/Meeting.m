@@ -76,5 +76,13 @@
     [self didChangeValueForKey:@"AgendaItems" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
+- (int)getActionItemCount{
+    int actionItemCount = 0;
+    for (AgendaItem *agendaItem in [self AgendaItems]) {
+        actionItemCount += [agendaItem.ActionItems count];
+    }
+    return actionItemCount;
+}
+
 
 @end

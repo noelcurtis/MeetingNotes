@@ -9,9 +9,10 @@
 #import "MeetingListViewController.h"
 #import "SortDetailViewController.h"
 #import "Meeting.h"
+#import "MeetingCell.h"
 
 @interface MeetingListViewController ()
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCell:(MeetingCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation MeetingListViewController
@@ -21,6 +22,8 @@
 @synthesize managedObjectContext;
 
 @synthesize masterSortDetailView;
+
+@synthesize meetingCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -119,22 +122,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"MeetingCell";
+    MeetingCell *cell = (MeetingCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        [[NSBundle mainBundle] loadNibNamed:@"MeetingCell" owner:self options:nil];
+        cell = self.meetingCell;
+        self.meetingCell = nil;
     }
-    
-    // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(MeetingCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *managedObject = [fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[managedObject valueForKey:@"name"] description];
+    cell.meetingLabel.text = [[managedObject valueForKey:@"name"] description];
+    cell.locationLabel.text = [[managedObject valueForKey:@"location"] description];
+    if([(Meeting*)managedObject getActionItemCount] > 0)
+    {
+        cell.actionItemCountLabel.text = [NSString stringWithFormat:@"%d",[(Meeting*)managedObject getActionItemCount]];
+    }
+    else
+    {
+        [cell.actionItemCountLabel setHidden:YES];
+    }
 }
 
 
@@ -193,7 +204,7 @@
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat height = 100;
+    CGFloat height = 64;
     return height;
 }
 
@@ -297,7 +308,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(MeetingCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:

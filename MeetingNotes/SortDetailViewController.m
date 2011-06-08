@@ -71,7 +71,7 @@
 }
 
 -(void) setupWithMeetingListViewController{
-    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] init];
+    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     meetingsList.managedObjectContext = self.managedObjectContext;
     meetingsList.masterSortDetailView = self;
     [self setupWithActiveViewController:meetingsList];

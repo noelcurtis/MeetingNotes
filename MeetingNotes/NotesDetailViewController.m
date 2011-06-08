@@ -223,7 +223,7 @@
         height = 400;
     }
     else if (indexPath.section == 2) {
-        height = 92;
+        height = 65;
     }
     return height;
 }
