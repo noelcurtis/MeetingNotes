@@ -71,7 +71,7 @@
 }
 
 -(void) setupWithMeetingListViewController{
-    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithNibName:@"MeetingListViewController" bundle:nil];
     meetingsList.managedObjectContext = self.managedObjectContext;
     meetingsList.masterSortDetailView = self;
     [self setupWithActiveViewController:meetingsList];
@@ -123,8 +123,9 @@
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
 	createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
 	createMinutePopoverController.delegate = self;
-    createMinutePopoverController.popoverContentSize = createMinutesVC.view.frame.size;
-	[createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    CGSize size = {320, 390};
+    [createMinutePopoverController setPopoverContentSize:size];
+    [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 	
 	[navigationController release];
 	[createMinutesVC release];
@@ -161,7 +162,7 @@
     [(MeetingListViewController*)self.activeViewController insertNewMeeting:newMeeting];
 }
 
-#pragma mark Push the Meeting Notes View Controllers
+#pragma mark- Push the Meeting Notes View Controllers
 
 // Use method to push Meeting Notes View Controller with a meeting to edit
 -(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit

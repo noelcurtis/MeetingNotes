@@ -165,9 +165,10 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         // Delete the managed object for the given index path
-		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
-		
+		NSManagedObject *objectToDelete = [fetchedResultsController objectAtIndexPath:indexPath];
+        NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+		NSLog(@"Deleting meeting...");
+        [context deleteObject:objectToDelete];
 		// Save the context.
 		NSError *error;
 		if (![context save:&error]) {

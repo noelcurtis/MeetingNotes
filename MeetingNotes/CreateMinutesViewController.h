@@ -33,9 +33,12 @@ UITableViewDelegate, UITableViewDataSource> {
 @property (nonatomic, retain) IBOutlet UITableViewCell *locationCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *startsEndsCell;
 @property (nonatomic, retain) NSMutableArray *attendees;
-
 // setup when the view is loaded
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSDate *startsDate;
+@property (nonatomic, retain) NSDate *endsDate;
+@property (nonatomic, retain) IBOutlet UILabel *startsDateLabel;
+@property (nonatomic, retain) IBOutlet UILabel *endsDateLabel;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

@@ -15,6 +15,7 @@
 
 @interface CreateMinutesViewController()
 @property (nonatomic, retain) Attendee* personSelectedFromPeoplePicker;
+@property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @end
 
 @implementation CreateMinutesViewController
@@ -22,6 +23,11 @@
 @synthesize delegate, titleTextField, locationTextField, titleCell, locationCell, startsEndsCell, attendees, personSelectedFromPeoplePicker;
 @synthesize managedObjectContext;
 @synthesize tableView = _tableView;
+@synthesize startsDate;
+@synthesize endsDate;
+@synthesize startsDateLabel;
+@synthesize endsDateLabel;
+@synthesize dateFormatter;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -33,11 +39,30 @@
 }
 */
 
+-(void) viewWillAppear:(BOOL)animated{
+    CGSize size = {320, 353};
+    [self setContentSizeForViewInPopover:size];
+    [super viewWillAppear:animated];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.startsDate];
+    self.endsDateLabel.text =  [self.dateFormatter stringFromDate:self.endsDate];
+    [super viewDidAppear:animated];
+}
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Done Button
+	self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	[self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    // setup the starts date and end dates as now
+    self.startsDate = [[NSDate alloc] init];
+    self.endsDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60];
+    // Done Button
 	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
 	//																						target:self 
 	//																						action:@selector(done:)] autorelease];
@@ -94,6 +119,8 @@
     [newMeeting setName:titleTextField.text];
     [newMeeting setLocation:locationTextField.text];
     [newMeeting addAttendees:[[NSSet alloc] initWithArray:self.attendees]];
+    [newMeeting setStartDate:self.startsDate];
+    [newMeeting setEndDate:self.endsDate];
     if (![self.managedObjectContext save:&error]) {
         
         /*Replace this implementation with code to handle the error appropriately.
@@ -233,6 +260,7 @@
     }
         
     self.personSelectedFromPeoplePicker = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:self.managedObjectContext];
+    //self.personSelectedFromPeoplePicker = [[Attendee alloc] 
     
     //Add a new name to the new attendee
     if(firstName != nil && lastName != nil){
@@ -261,6 +289,18 @@
     }else{
         [self.attendees addObject:self.personSelectedFromPeoplePicker];
     }
+    // save the context as new Attendee has been created
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        
+        /*Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         
+         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+         abort();*/
+    }
+
     NSLog(@"New attendee %@ picked and created, to add to the attendee list.", [self.personSelectedFromPeoplePicker description]);
     [firstName release];
     [lastName release];
@@ -313,7 +353,8 @@
 		[startsEndsCell setSelected:NO];
 		
 		StartsEndsViewController *startsEndsVC = [[StartsEndsViewController alloc] initWithNibName:@"StartsEndsView" bundle:nil];
-		startsEndsVC.title = @"Start & End";
+		startsEndsVC.createMinutesViewControllerRef = self;
+        startsEndsVC.title = @"Start & End";
         [self.navigationController pushViewController:startsEndsVC animated:YES];
 		[startsEndsVC release];
 	}
@@ -357,6 +398,11 @@
 
 
 - (void)dealloc {
+    [self.dateFormatter release];
+    [startsDateLabel release];
+    [endsDateLabel  release];
+    [endsDate release];
+    [startsDate release];
     [managedObjectContext release];
     [_tableView release];
     [personSelectedFromPeoplePicker release];

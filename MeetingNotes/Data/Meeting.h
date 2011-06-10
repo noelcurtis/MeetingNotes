@@ -2,7 +2,7 @@
 //  Meeting.h
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 5/26/11.
+//  Created by Noel Curtis on 6/8/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 @private
 }
 @property (nonatomic, retain) NSString * location;
-@property (nonatomic, retain) NSDate * startDate;
-@property (nonatomic, retain) NSDate * endDate;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * endDate;
+@property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSSet* Attendees;
 @property (nonatomic, retain) NSSet* AgendaItems;
 

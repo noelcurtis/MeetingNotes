@@ -7,18 +7,24 @@
 //
 
 #import "ActionItemCell.h"
-
+#import "Attendee.h"
 
 @implementation ActionItemCell
 @synthesize actionItemLabel;
 @synthesize actionableAttendeesLabel;
-@synthesize actionItemDetailButton;
 
 -(void) dealloc{
     [actionItemLabel release];
     [actionableAttendeesLabel release];
-    [actionItemDetailButton release];
     [super dealloc];
+}
+
+-(void) setupAttendeesLabel:(NSSet *)Attendees{
+    NSMutableArray *attendeesLabelText = [[[NSMutableArray alloc] init] autorelease];
+    for (Attendee *attendee in Attendees) {
+        [attendeesLabelText addObject:attendee.name];
+    }
+    self.actionableAttendeesLabel.text = [attendeesLabelText componentsJoinedByString:@", "];
 }
 
 @end

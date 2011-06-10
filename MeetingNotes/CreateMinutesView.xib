@@ -42,13 +42,13 @@
 			</object>
 			<object class="IBUIView" id="612033327">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">289</int>
+				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUITableView" id="491017751">
 						<reference key="NSNextResponder" ref="612033327"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 490}</string>
+						<string key="NSFrameSize">{320, 353}</string>
 						<reference key="NSSuperview" ref="612033327"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -56,7 +56,9 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAgMAA</bytes>
 						</object>
+						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
 							<bool key="IBUIPrompted">NO</bool>
 						</object>
@@ -71,21 +73,20 @@
 						<float key="IBUISectionFooterHeight">10</float>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 490}</string>
+				<string key="NSFrameSize">{320, 353}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="491017751"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
+				<object class="NSColor" key="IBUIBackgroundColor" id="334854750">
 					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace" id="418828468">
-						<int key="NSID">2</int>
-					</object>
+					<bytes key="NSWhite">MCAwAA</bytes>
 				</object>
+				<bool key="IBUIClipsSubviews">YES</bool>
+				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUITableViewCell" id="155533802">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -108,7 +109,9 @@
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MAA</bytes>
-									<reference key="NSCustomColorSpace" ref="418828468"/>
+									<object class="NSColorSpace" key="NSCustomColorSpace" id="418828468">
+										<int key="NSID">2</int>
+									</object>
 								</object>
 								<object class="NSFont" key="IBUIFont" id="30522414">
 									<string key="NSName">Helvetica</string>
@@ -126,10 +129,7 @@
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="155533802"/>
 						<reference key="NSNextKeyView" ref="337208304"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="334854750">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="334854750"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -138,7 +138,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 44}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="899866651"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="541527085">
 					<int key="NSColorSpace">1</int>
@@ -150,7 +149,7 @@
 				<reference key="IBUIContentView" ref="899866651"/>
 			</object>
 			<object class="IBUITableViewCell" id="1049275234">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -196,7 +195,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 44}</string>
-				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="541527085"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
@@ -204,7 +202,7 @@
 				<reference key="IBUIContentView" ref="888327637"/>
 			</object>
 			<object class="IBUITableViewCell" id="583025177">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -218,6 +216,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 4}, {103, 34}}</string>
 								<reference key="NSSuperview" ref="62883458"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -242,6 +241,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 29}, {95, 36}}</string>
 								<reference key="NSSuperview" ref="62883458"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -259,6 +259,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{90, 5}, {170, 33}}</string>
 								<reference key="NSSuperview" ref="62883458"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -280,6 +281,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{90, 29}, {170, 37}}</string>
 								<reference key="NSSuperview" ref="62883458"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -299,6 +301,7 @@
 						</object>
 						<string key="NSFrameSize">{280, 70}</string>
 						<reference key="NSSuperview" ref="583025177"/>
+						<reference key="NSWindow"/>
 						<reference key="IBUIBackgroundColor" ref="334854750"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -308,6 +311,8 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{300, 70}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="IBUIBackgroundColor" ref="541527085"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
@@ -389,6 +394,22 @@
 						<reference key="destination" ref="491017751"/>
 					</object>
 					<int key="connectionID">46</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">startsDateLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="434635033"/>
+					</object>
+					<int key="connectionID">47</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">endsDateLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="829467566"/>
+					</object>
+					<int key="connectionID">48</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -547,7 +568,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">46</int>
+			<int key="maxID">48</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -598,8 +619,10 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>endsDateLabel</string>
 							<string>locationCell</string>
 							<string>locationTextField</string>
+							<string>startsDateLabel</string>
 							<string>startsEndsCell</string>
 							<string>tableView</string>
 							<string>titleCell</string>
@@ -607,8 +630,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UILabel</string>
 							<string>UITableViewCell</string>
 							<string>UITextField</string>
+							<string>UILabel</string>
 							<string>UITableViewCell</string>
 							<string>UITableView</string>
 							<string>UITableViewCell</string>
@@ -619,8 +644,10 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>endsDateLabel</string>
 							<string>locationCell</string>
 							<string>locationTextField</string>
+							<string>startsDateLabel</string>
 							<string>startsEndsCell</string>
 							<string>tableView</string>
 							<string>titleCell</string>
@@ -629,12 +656,20 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">endsDateLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">locationCell</string>
 								<string key="candidateClassName">UITableViewCell</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">locationTextField</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startsDateLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">startsEndsCell</string>

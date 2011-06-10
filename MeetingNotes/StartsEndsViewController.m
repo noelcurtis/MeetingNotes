@@ -7,11 +7,20 @@
 //
 
 #import "StartsEndsViewController.h"
+#import "CreateMinutesViewController.h"
 
+@interface StartsEndsViewController()
+@property (nonatomic, retain)NSDateFormatter *dateFormatter;
+@end
 
 @implementation StartsEndsViewController
 
 @synthesize startsCell, endsCell, startsDateTimeLabel, endsDateTimeLabel;
+@synthesize startsDate, endsDate;
+@synthesize datePicker;
+@synthesize tableView = _tableView;
+@synthesize dateFormatter;
+@synthesize createMinutesViewControllerRef;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -30,13 +39,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Done Button
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-																							target:self 
-																							action:@selector(done:)] autorelease];
-	// Cancel Button
+	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+	//																						target:self 
+	//																						action:@selector(done:)] autorelease];
+	self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	[self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [self.datePicker setDate:self.createMinutesViewControllerRef.startsDate];
+    self.startsDate = self.createMinutesViewControllerRef.startsDate;
+    self.endsDate = self.createMinutesViewControllerRef.endsDate;
+    self.startsDateTimeLabel.text = [self.dateFormatter stringFromDate:self.startsDate];
+    self.endsDateTimeLabel.text = [self.dateFormatter stringFromDate:self.endsDate];
+    // Cancel Button
 	//self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
 	//																					   target:self 
 	//																					   action:@selector(cancel:)] autorelease];
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    CGSize size = {320, 353};
+    [self setContentSizeForViewInPopover:size];
+    [self tableView:_tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [super viewWillAppear:animated];
 }
 
 
@@ -54,6 +79,31 @@
 // The cancel button was tapped, pop off nav stack
 - (IBAction)cancel:(id)sender {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)dateAction:(id)sender{
+    NSLog(@"Picked date...");
+    NSIndexPath *indexPath = [_tableView indexPathForSelectedRow];
+    //NSLog(@"%@", [[self.dateFormatter stringFromDate:self.datePicker.date] description]);
+    NSLog(@"%@", [self.datePicker.date description]);
+    switch (indexPath.row) {
+        case 0:
+            self.startsDateTimeLabel.text = [self.dateFormatter stringFromDate:self.datePicker.date];
+            self.startsDate = self.datePicker.date;
+            
+            self.endsDate = [[NSDate alloc] initWithTimeInterval:60*60 sinceDate:self.startsDate];
+            self.endsDateTimeLabel.text = [self.dateFormatter stringFromDate:self.endsDate];
+            self.createMinutesViewControllerRef.startsDate = self.startsDate;
+            self.createMinutesViewControllerRef.endsDate = self.endsDate;
+            break;
+        case 1:
+            self.endsDateTimeLabel.text = [self.dateFormatter stringFromDate:self.datePicker.date];
+            self.endsDate = self.datePicker.date;
+            self.createMinutesViewControllerRef.endsDate = self.endsDate;
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -83,7 +133,7 @@
 	@throw exception;
 }
 
-
+/*
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -91,7 +141,7 @@
 		
     }   
 }
-
+*/
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // The table view should not be re-orderable.
@@ -103,7 +153,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,6 +189,16 @@
 
 
 - (void)dealloc {
+    [createMinutesViewControllerRef release];
+    [dateFormatter release];
+    [_tableView release];
+    [datePicker release];
+    [startsCell release];
+    [endsCell release];
+    [startsDateTimeLabel release];
+    [endsDateTimeLabel release];
+    [startsDate release];
+    [endsDate release];
     [super dealloc];
 }
 

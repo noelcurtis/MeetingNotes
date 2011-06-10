@@ -15,7 +15,8 @@
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
--(void)addToolBarToView;
+- (void)addToolBarToView;
+@property (nonatomic, retain)UIToolbar *toolbar;
 @end
 
 @implementation NotesRootViewController
@@ -24,6 +25,7 @@
 @synthesize notesDetailViewController;
 @synthesize agendaItems;
 @synthesize sortDetailViewController;
+@synthesize toolbar;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,12 +81,31 @@
     [agendaItem release];
     [self.tableView reloadData];
     
-    NSIndexPath *indexOfNewAgendaItem = [NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0];
+    NSIndexPath *indexOfNewAgendaItem = [[NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0] autorelease];
     [self tableView:self.tableView didSelectRowAtIndexPath:indexOfNewAgendaItem];
     
 }
-
+/*
 -(void)saveContextAndReloadTable{
+    NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
+    NSError *error = nil;
+    if (![context save:&error]) {
+        
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    // release the old agenda items
+    [self.agendaItems release];
+    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+    [self.tableView reloadData];
+    // ?? how do I make sure that the agenda item that was just updated is selected....
+}
+*/
+-(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem{
     NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
     NSError *error = nil;
     if (![context save:&error]) {
@@ -100,7 +121,9 @@
     [self.agendaItems release];
     self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
     [self.tableView reloadData];
-    // ?? how do I make sure that the agenda item that was just updated is selected....
+    NSUInteger positionOfNewAgendaItem = [self.agendaItems indexOfObject:newAgendaItem];
+    NSIndexPath *indexOfNewAgendaItem = [[NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0] autorelease];
+    [self.tableView selectRowAtIndexPath:indexOfNewAgendaItem animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 #pragma mark - Meeting options to allow to print PDFs, send email and view meeting details
@@ -140,22 +163,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if(self.meetingBeingEdited == nil)
-    {
-        NSException *exception = [NSException exceptionWithName:@"NoMeetingToEdit" reason:@"You did not give me a meeting to edit." userInfo:nil];
-        @throw exception;
-    }
-    self.title = self.meetingBeingEdited.name;
+    // setup navigation bar
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																							target:self 
 																							action:@selector(addActionItem:)] autorelease];
     
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemRewind target:self action:@selector(backButtonAction:)] autorelease];
     self.navigationItem.hidesBackButton = YES;
+    
+    // setup meeting being edited
+    if(self.meetingBeingEdited == nil)
+    {
+        NSException *exception = [NSException exceptionWithName:@"NoMeetingToEdit" reason:@"You did not give me a meeting to edit." userInfo:nil];
+        @throw exception;
+    }
+    self.title = self.meetingBeingEdited.name;
     self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
-    [self addToolBarToView];
-    // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
 }
 
 -(IBAction)backButtonAction:(id)sender{
@@ -167,7 +190,7 @@
 
 -(void)addToolBarToView{
     
-    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar = [[UIToolbar alloc] init];
     toolbar.barStyle = UIBarStyleDefault;
     [toolbar sizeToFit];
     //Caclulate the height of the toolbar
@@ -204,7 +227,7 @@
     [flex1 release];
     [flex2 release];
     [self.navigationController.view addSubview:toolbar];
-    [toolbar release];
+    //[toolbar release];
 }
 
 
@@ -223,11 +246,17 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self addToolBarToView];
+    // Uncomment the following line to preserve selection between presentations.
+    //self.clearsSelectionOnViewWillAppear = NO;
+
+    
     // display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if([self.agendaItems count] >= 1)
     {
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
     }
     [indexPath release];
 }
@@ -240,6 +269,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [self.toolbar removeFromSuperview];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

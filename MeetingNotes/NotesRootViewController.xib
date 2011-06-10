@@ -29,7 +29,7 @@
 			</object>
 			<object class="IBUITableView" id="993928743">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">274</int>
+				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{320, 852}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
@@ -143,11 +143,16 @@
 					<string key="superclassName">UITableViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addActionItem:">id</string>
+						<string key="backButtonAction:">id</string>
 						<string key="optionsSegmentAction:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="addActionItem:">
 							<string key="name">addActionItem:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="backButtonAction:">
+							<string key="name">backButtonAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="optionsSegmentAction:">

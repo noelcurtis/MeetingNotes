@@ -33,10 +33,9 @@
 				<string key="NSFrameSize">{768, 1024}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MSAxIDEAA</bytes>
 				</object>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
@@ -124,6 +123,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addButtonPressed:">id</string>
 						<string key="calenderButtonClick:">id</string>
+						<string key="didPressSettingsButton:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="addButtonPressed:">
@@ -134,26 +134,19 @@
 							<string key="name">calenderButtonClick:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="didPressSettingsButton:">
+							<string key="name">didPressSettingsButton:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="addnewMeetingButton">UIBarButtonItem</string>
-						<string key="calendarButton">UIBarButtonItem</string>
 						<string key="calenderCreatePopover">UIPopoverController</string>
 						<string key="createMinutePopoverController">UIPopoverController</string>
-						<string key="flexButton">UIBarButtonItem</string>
 						<string key="rootViewPopover">UIPopoverController</string>
 						<string key="rvController">SortRootViewController</string>
 						<string key="toolBar">UIToolbar</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="addnewMeetingButton">
-							<string key="name">addnewMeetingButton</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="calendarButton">
-							<string key="name">calendarButton</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="calenderCreatePopover">
 							<string key="name">calenderCreatePopover</string>
 							<string key="candidateClassName">UIPopoverController</string>
@@ -161,10 +154,6 @@
 						<object class="IBToOneOutletInfo" key="createMinutePopoverController">
 							<string key="name">createMinutePopoverController</string>
 							<string key="candidateClassName">UIPopoverController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="flexButton">
-							<string key="name">flexButton</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="rootViewPopover">
 							<string key="name">rootViewPopover</string>

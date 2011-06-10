@@ -206,6 +206,7 @@
         // get the action items and push a new ActionItemCell with one
         NSMutableArray *actionItems = [[NSMutableArray alloc] initWithArray:[self.agendaItem.ActionItems allObjects]];
         cell.actionItemLabel.text = ((ActionItem *)[actionItems objectAtIndex:indexPath.row]).notes;
+        [cell setupAttendeesLabel:((ActionItem *)[actionItems objectAtIndex:indexPath.row]).Attendees];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [actionItems release];
         return cell;
@@ -313,7 +314,8 @@
     NSLog(@"Text field did end editing, updating agenda item and saving context");
     [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
-    [self.notesRootViewController saveContextAndReloadTable];
+    //[self.notesRootViewController saveContextAndReloadTable];
+    [self.notesRootViewController saveContextAndReloadTableWithNewAgendaItem:self.agendaItem];
     [textField resignFirstResponder];
     // change the current agenda item
     // save the context
@@ -324,9 +326,9 @@
     NSLog(@"Text view did end editing, updating agenda item and saving context");
     [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
-    [self.notesRootViewController saveContextAndReloadTable];
-    [textView resignFirstResponder];
-
+    //[self.notesRootViewController saveContextAndReloadTable];
+    [self.notesRootViewController saveContextAndReloadTableWithNewAgendaItem:self.agendaItem];
+    [textView resignFirstResponder];    
 }
 
 #pragma mark - Button actions

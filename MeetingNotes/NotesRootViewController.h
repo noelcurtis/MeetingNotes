@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AgendaItem.h"
 
 @class Meeting;
 @class NotesDetailViewController;
@@ -20,7 +21,8 @@
 @property (nonatomic, retain) NSMutableArray* agendaItems;
 -(IBAction) addActionItem:(id) sender;
 
--(void)saveContextAndReloadTable;
+//-(void)saveContextAndReloadTable;
+-(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem;
 
 // options segment action
 -(IBAction)optionsSegmentAction:(id)sender;

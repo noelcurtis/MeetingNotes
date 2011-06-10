@@ -12,6 +12,7 @@
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7132DB7135E83400012B12A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7132DB6135E83400012B12A /* CalenderView.m */; };
 		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
+		C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
 		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
 		C74B372A1384BD36000DFE5D /* ActionItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C74B37291384BD36000DFE5D /* ActionItemCell.m */; };
@@ -97,7 +98,6 @@
 		C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */; };
 		C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */; };
 		C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCCC138F3EB300BEF168 /* Meeting.m */; };
-		C7FEBCD0138F3EC800BEF168 /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCCF138F3EC800BEF168 /* AgendaItem.m */; };
 		C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD2138F3ED500BEF168 /* ActionItem.m */; };
 		C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD5138F3EE400BEF168 /* Attendee.m */; };
 /* End PBXBuildFile section */
@@ -134,6 +134,8 @@
 		C7132DB6135E83400012B12A /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
 		C7153EFE1383783200A48C85 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		C7153EFF1383783200A48C85 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
+		C715C0E213A03EFD004CCF7D /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
+		C715C0E313A03EFD004CCF7D /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
 		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
 		C748C96913662841005C4A2C /* MeetingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingListViewController.m; sourceTree = "<group>"; };
 		C748C96A13662841005C4A2C /* MeetingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingListViewController.xib; sourceTree = "<group>"; };
@@ -275,8 +277,6 @@
 		C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartsEndsView.xib; sourceTree = "<group>"; };
 		C7FEBCCB138F3EB300BEF168 /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
 		C7FEBCCC138F3EB300BEF168 /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
-		C7FEBCCE138F3EC800BEF168 /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
-		C7FEBCCF138F3EC800BEF168 /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
 		C7FEBCD1138F3ED500BEF168 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItem.h; path = Data/ActionItem.h; sourceTree = "<group>"; };
 		C7FEBCD2138F3ED500BEF168 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
 		C7FEBCD4138F3EE400BEF168 /* Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Attendee.h; path = Data/Attendee.h; sourceTree = "<group>"; };
@@ -307,12 +307,12 @@
 		C70E6AAE13667FE20059B75E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C715C0E213A03EFD004CCF7D /* AgendaItem.h */,
+				C715C0E313A03EFD004CCF7D /* AgendaItem.m */,
 				C7FEBCD4138F3EE400BEF168 /* Attendee.h */,
 				C7FEBCD5138F3EE400BEF168 /* Attendee.m */,
 				C7FEBCD1138F3ED500BEF168 /* ActionItem.h */,
 				C7FEBCD2138F3ED500BEF168 /* ActionItem.m */,
-				C7FEBCCE138F3EC800BEF168 /* AgendaItem.h */,
-				C7FEBCCF138F3EC800BEF168 /* AgendaItem.m */,
 				C7FEBCCB138F3EB300BEF168 /* Meeting.h */,
 				C7FEBCCC138F3EB300BEF168 /* Meeting.m */,
 			);
@@ -793,7 +793,6 @@
 				C7153F001383783200A48C85 /* NoteView.m in Sources */,
 				C74B372A1384BD36000DFE5D /* ActionItemCell.m in Sources */,
 				C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */,
-				C7FEBCD0138F3EC800BEF168 /* AgendaItem.m in Sources */,
 				C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */,
 				C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */,
 				C7EF0AED139B2ECF00314AC5 /* FileHandlerController.m in Sources */,
@@ -832,6 +831,7 @@
 				C7D56DC3139C62BD00F342C7 /* NSString+Dropbox.m in Sources */,
 				C7D56DDA139C750100F342C7 /* SettingsViewController.m in Sources */,
 				C7751916139EE918004E1813 /* MeetingCell.m in Sources */,
+				C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

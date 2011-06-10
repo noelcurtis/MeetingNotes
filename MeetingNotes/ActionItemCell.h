@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-
 @interface ActionItemCell : UITableViewCell {
     
 }
 @property (nonatomic, retain)IBOutlet UILabel *actionItemLabel;
 @property (nonatomic, retain)IBOutlet UILabel *actionableAttendeesLabel;
-@property (nonatomic, retain)IBOutlet UIButton *actionItemDetailButton;
+
+-(void) setupAttendeesLabel:(NSSet*) Attendees;
 
 @end

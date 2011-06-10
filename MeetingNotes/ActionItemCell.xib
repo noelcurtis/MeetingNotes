@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="278694324">
 								<reference key="NSNextResponder" ref="185598374"/>
 								<int key="NSvFlags">306</int>
-								<string key="NSFrame">{{20, 11}, {734, 18}}</string>
+								<string key="NSFrame">{{20, 5}, {734, 28}}</string>
 								<reference key="NSSuperview" ref="185598374"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="620320926"/>
@@ -59,7 +59,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<string key="IBUIText">Action Item Notes</string>
+								<string key="IBUIText">Action Item Notes g</string>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">18</double>
@@ -76,7 +76,7 @@
 							<object class="IBUILabel" id="620320926">
 								<reference key="NSNextResponder" ref="185598374"/>
 								<int key="NSvFlags">306</int>
-								<string key="NSFrame">{{20, 31}, {643, 23}}</string>
+								<string key="NSFrame">{{20, 32}, {734, 25}}</string>
 								<reference key="NSSuperview" ref="185598374"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -147,6 +147,14 @@
 					</object>
 					<int key="connectionID">9</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">actionableAttendeesLabel</string>
+						<reference key="source" ref="82209643"/>
+						<reference key="destination" ref="620320926"/>
+					</object>
+					<int key="connectionID">11</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -183,11 +191,13 @@
 						<int key="objectID">3</int>
 						<reference key="object" ref="278694324"/>
 						<reference key="parent" ref="82209643"/>
+						<string key="objectName">actionItemNotesLabel</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
 						<reference key="object" ref="620320926"/>
 						<reference key="parent" ref="82209643"/>
+						<string key="objectName">actionableAttendeesLabel</string>
 					</object>
 				</object>
 			</object>
@@ -224,7 +234,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">10</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
