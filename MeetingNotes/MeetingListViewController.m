@@ -137,7 +137,12 @@
 {
     NSManagedObject *managedObject = [fetchedResultsController objectAtIndexPath:indexPath];
     cell.meetingLabel.text = [[managedObject valueForKey:@"name"] description];
-    cell.locationLabel.text = [[managedObject valueForKey:@"location"] description];
+    if ([[managedObject valueForKey:@"location"] description]) {
+        cell.locationLabel.text = [[managedObject valueForKey:@"location"] description];
+    }else{
+        cell.locationLabel.hidden = YES;
+        cell.locationNameLabel.hidden = YES;
+    }
     if([(Meeting*)managedObject getActionItemCount] > 0)
     {
         cell.actionItemCountLabel.text = [NSString stringWithFormat:@"%d",[(Meeting*)managedObject getActionItemCount]];
@@ -230,6 +235,35 @@
     NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newMeeting];
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 }
+
+// Use to insert a Meeting from an EKEvent into the database
+-(void) insertNewMeetingWithEvent:(EKEvent*)event{
+    // Create a new Meeting
+    NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    // Set the values for the new Meeting
+    [(Meeting*)newManagedObject setName:event.title];
+    if (event.location) {
+        [(Meeting*)newManagedObject setLocation:event.location];
+    }
+    [(Meeting*)newManagedObject setStartDate:event.startDate];
+    [(Meeting*)newManagedObject setEndDate:event.endDate];
+    // Save the context.
+    NSError *error = nil;
+    if (![context save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
+    [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
+}
+
 
 #pragma mark - Fetched results controller
 

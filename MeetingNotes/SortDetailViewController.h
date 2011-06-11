@@ -10,9 +10,10 @@
 #import "CreateMinutesViewController.h"
 #import "Meeting.h"
 #import "SettingsViewController.h"
+#import "EventsViewController.h"
 
 @class SortRootViewController;
-@interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate, SettingsViewControllerDelegate> {
+@interface SortDetailViewController : UIViewController<UISplitViewControllerDelegate, CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate, SettingsViewControllerDelegate, CalendarEventSelectedDelegate> {
     
     UIViewController *activeViewController; // use to hold the current active detail view
         
@@ -44,4 +45,8 @@
 //Method to push Notes View Controllers
 -(void) pushMeetingNotesViewControllers:(Meeting *)meetingToEdit;
 -(IBAction) didPressSettingsButton:(id)sender;
+
+//Methods to satisfy CalendarEventsSelectedDelegate
+-(void) insertMeeting:(EKEvent *)event;
+-(void) didDismissEventsViewController;
 @end

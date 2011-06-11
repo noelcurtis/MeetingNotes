@@ -14,6 +14,7 @@
 #import "MeetingListViewController.h"
 #import "DropboxSDK.h"
 #import "SettingsViewController.h"
+#import "EventsViewController.h"
 
 @interface SortDetailViewController()
 @property(nonatomic, retain) UINavigationController* settingsNavigationController;
@@ -138,14 +139,18 @@
     if (self.calenderCreatePopover.popoverVisible == YES){
         [self.calenderCreatePopover dismissPopoverAnimated:YES]; 
     }else{
-    
-    UIViewController *calenderView = [[CalenderView alloc] init];
-    self.calenderCreatePopover = [[UIPopoverController alloc]
-                                     initWithContentViewController:calenderView]; 
-    //calenderPopover.popoverContentSize = calenderView.view.frame.size;
-    [self.calenderCreatePopover presentPopoverFromBarButtonItem:sender 
-                     permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    [calenderView release];
+        EventsViewController *eventsViewController = [[EventsViewController alloc] initWithNibName:@"EventsViewController" bundle:nil];
+        UINavigationController *eventsNavigationController = [[UINavigationController alloc] initWithRootViewController:eventsViewController];
+        
+        eventsViewController.calenderEventSelectedDelegate = self;
+        self.calenderCreatePopover = [[UIPopoverController alloc]
+                                  initWithContentViewController:eventsNavigationController];
+        CGSize size = {320, 390};
+        self.calenderCreatePopover.popoverContentSize = size;
+        [self.calenderCreatePopover presentPopoverFromBarButtonItem:sender 
+                                       permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [eventsViewController release];
+        [eventsNavigationController release];
     }
 }
 
@@ -160,6 +165,15 @@
 -(void) insertNewMeeting:(Meeting *)newMeeting{
     [createMinutePopoverController dismissPopoverAnimated:YES];
     [(MeetingListViewController*)self.activeViewController insertNewMeeting:newMeeting];
+}
+
+#pragma mark -CalendarEventSelectedDelegate
+-(void) insertMeeting:(EKEvent *)event{
+    [(MeetingListViewController*)self.activeViewController insertNewMeetingWithEvent:event];
+}
+
+-(void) didDismissEventsViewController{
+    [self.calenderCreatePopover dismissPopoverAnimated:YES];
 }
 
 #pragma mark- Push the Meeting Notes View Controllers

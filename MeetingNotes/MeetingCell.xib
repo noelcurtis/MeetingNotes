@@ -124,7 +124,6 @@
 								<string key="NSFrame">{{552, 19}, {42, 26}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="759057684"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -201,6 +200,14 @@
 						<reference key="destination" ref="801718519"/>
 					</object>
 					<int key="connectionID">11</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">locationNameLabel</string>
+						<reference key="source" ref="64237729"/>
+						<reference key="destination" ref="33883671"/>
+					</object>
+					<int key="connectionID">12</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -298,7 +305,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">11</int>
+			<int key="maxID">12</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -312,10 +319,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionItemCountLabel</string>
 							<string>locationLabel</string>
+							<string>locationNameLabel</string>
 							<string>meetingLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -327,6 +336,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionItemCountLabel</string>
 							<string>locationLabel</string>
+							<string>locationNameLabel</string>
 							<string>meetingLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -337,6 +347,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">locationLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">locationNameLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">

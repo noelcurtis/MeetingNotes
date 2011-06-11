@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Meeting.h"
 #import "MeetingCell.h"
+#import <Eventkit/EventKit.h>
 
 @class SortDetailViewController;
 @interface MeetingListViewController : UITableViewController<NSFetchedResultsControllerDelegate> {
@@ -21,5 +22,6 @@
 @property (nonatomic, retain) IBOutlet MeetingCell *meetingCell;
 
 
--(void)insertNewMeeting:(Meeting *)newMeeting;
+-(void) insertNewMeeting:(Meeting *)newMeeting;
+-(void) insertNewMeetingWithEvent:(EKEvent*)event;
 @end

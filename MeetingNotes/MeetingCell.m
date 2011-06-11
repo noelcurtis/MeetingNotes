@@ -12,6 +12,15 @@
 @implementation MeetingCell
 @synthesize meetingLabel;
 @synthesize locationLabel;
+@synthesize locationNameLabel;
 @synthesize actionItemCountLabel;
+
+-(void)dealloc{
+    [meetingLabel release];
+    [locationNameLabel release];
+    [locationLabel release];
+    [actionItemCountLabel release];
+    [super dealloc];
+}
 
 @end

@@ -17,5 +17,6 @@
 @property(nonatomic, retain) IBOutlet UILabel* meetingLabel;
 @property(nonatomic, retain) IBOutlet UILabel* locationLabel;
 @property(nonatomic, retain) IBOutlet UILabel* actionItemCountLabel;
+@property(nonatomic, retain) IBOutlet UILabel* locationNameLabel;
 
 @end
