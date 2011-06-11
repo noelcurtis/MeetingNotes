@@ -10,6 +10,7 @@
 #import "SortDetailViewController.h"
 #import "Meeting.h"
 #import "MeetingCell.h"
+#import "Attendee.h"
 
 @interface MeetingListViewController ()
 - (void)configureCell:(MeetingCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -249,6 +250,12 @@
     }
     [(Meeting*)newManagedObject setStartDate:event.startDate];
     [(Meeting*)newManagedObject setEndDate:event.endDate];
+    for (EKParticipant *participant in event.attendees) {
+        Attendee *newAttendee = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:context];
+        [newAttendee setName:participant.name];
+        [(Meeting*)newManagedObject addAttendeesObject:newAttendee];
+    }
+    
     // Save the context.
     NSError *error = nil;
     if (![context save:&error]) {
