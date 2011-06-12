@@ -170,6 +170,15 @@
 		C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */; };
 		C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */; };
 		C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */; };
+		C7E162EE13A3E30400FA4790 /* dark_noise_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162ED13A3E30400FA4790 /* dark_noise_bg.png */; };
+		C7E162F013A3FD8700FA4790 /* cat_view_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162EF13A3FD8700FA4790 /* cat_view_bg.png */; };
+		C7E162F213A4098700FA4790 /* meet_list_item_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162F113A4098700FA4790 /* meet_list_item_bg.png */; };
+		C7E162F613A412C600FA4790 /* SortViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E162F513A412C600FA4790 /* SortViewCell.m */; };
+		C7E162F813A412D800FA4790 /* SortViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E162F713A412D800FA4790 /* SortViewCell.xib */; };
+		C7E162FA13A4151100FA4790 /* cat_list_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162F913A4151100FA4790 /* cat_list_bg.png */; };
+		C7E162FC13A421EB00FA4790 /* cat_label_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FB13A421EB00FA4790 /* cat_label_yellow.png */; };
+		C7E162FF13A4321600FA4790 /* favstar_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FD13A4321600FA4790 /* favstar_off.png */; };
+		C7E1630013A4321600FA4790 /* favstar_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FE13A4321600FA4790 /* favstar_on.png */; };
 		C7EF0AED139B2ECF00314AC5 /* FileHandlerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF0AEC139B2ECF00314AC5 /* FileHandlerController.m */; };
 		C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */; };
 		C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */; };
@@ -504,6 +513,16 @@
 		C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailViewController.h; sourceTree = "<group>"; };
 		C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailViewController.m; sourceTree = "<group>"; };
 		C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesDetailViewController.xib; sourceTree = "<group>"; };
+		C7E162ED13A3E30400FA4790 /* dark_noise_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dark_noise_bg.png; path = Images/dark_noise_bg.png; sourceTree = "<group>"; };
+		C7E162EF13A3FD8700FA4790 /* cat_view_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat_view_bg.png; path = Images/cat_view_bg.png; sourceTree = "<group>"; };
+		C7E162F113A4098700FA4790 /* meet_list_item_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meet_list_item_bg.png; path = Images/meet_list_item_bg.png; sourceTree = "<group>"; };
+		C7E162F413A412C600FA4790 /* SortViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewCell.h; sourceTree = "<group>"; };
+		C7E162F513A412C600FA4790 /* SortViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewCell.m; sourceTree = "<group>"; };
+		C7E162F713A412D800FA4790 /* SortViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortViewCell.xib; sourceTree = "<group>"; };
+		C7E162F913A4151100FA4790 /* cat_list_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat_list_bg.png; path = Images/cat_list_bg.png; sourceTree = "<group>"; };
+		C7E162FB13A421EB00FA4790 /* cat_label_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat_label_yellow.png; path = Images/cat_label_yellow.png; sourceTree = "<group>"; };
+		C7E162FD13A4321600FA4790 /* favstar_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favstar_off.png; path = Images/favstar_off.png; sourceTree = "<group>"; };
+		C7E162FE13A4321600FA4790 /* favstar_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favstar_on.png; path = Images/favstar_on.png; sourceTree = "<group>"; };
 		C7EF0AEB139B2ECF00314AC5 /* FileHandlerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHandlerController.h; sourceTree = "<group>"; };
 		C7EF0AEC139B2ECF00314AC5 /* FileHandlerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandlerController.m; sourceTree = "<group>"; };
 		C7F96FDE1368EDA300737BEA /* CreateMinutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMinutesViewController.h; sourceTree = "<group>"; };
@@ -784,7 +803,14 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7E162FD13A4321600FA4790 /* favstar_off.png */,
+				C7E162FE13A4321600FA4790 /* favstar_on.png */,
+				C7E162FB13A421EB00FA4790 /* cat_label_yellow.png */,
+				C7E162F913A4151100FA4790 /* cat_list_bg.png */,
+				C7E162F113A4098700FA4790 /* meet_list_item_bg.png */,
+				C7E162ED13A3E30400FA4790 /* dark_noise_bg.png */,
 				C70061B5139DC46A00FD9766 /* icon_settings.png */,
+				C7E162EF13A3FD8700FA4790 /* cat_view_bg.png */,
 				C7557C4D137758C2003AC2A2 /* checkbox-checked.png */,
 				C7557C4E137758C2003AC2A2 /* checkbox-pressed.png */,
 				C7557C4F137758C2003AC2A2 /* checkbox.png */,
@@ -910,6 +936,7 @@
 		C790E681135D040D009B42B9 /* MainSplitView Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7E162F313A4127700FA4790 /* SortView Custom Cells */,
 				C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */,
 				C790E69E135D0599009B42B9 /* SortRootViewController.h */,
 				C790E69F135D0599009B42B9 /* SortRootViewController.m */,
@@ -1082,6 +1109,16 @@
 			name = "NotesView Controllers";
 			sourceTree = "<group>";
 		};
+		C7E162F313A4127700FA4790 /* SortView Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C7E162F413A412C600FA4790 /* SortViewCell.h */,
+				C7E162F513A412C600FA4790 /* SortViewCell.m */,
+				C7E162F713A412D800FA4790 /* SortViewCell.xib */,
+			);
+			name = "SortView Custom Cells";
+			sourceTree = "<group>";
+		};
 		C7EF0AEA139B2E7900314AC5 /* FileHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -1237,6 +1274,14 @@
 				C7751918139EE956004E1813 /* MeetingCell.xib in Resources */,
 				C759BC5513A2D64A0093C9A0 /* EventsViewController.xib in Resources */,
 				C759BC5D13A2DCD60093C9A0 /* EventCell.xib in Resources */,
+				C7E162EE13A3E30400FA4790 /* dark_noise_bg.png in Resources */,
+				C7E162F013A3FD8700FA4790 /* cat_view_bg.png in Resources */,
+				C7E162F213A4098700FA4790 /* meet_list_item_bg.png in Resources */,
+				C7E162F813A412D800FA4790 /* SortViewCell.xib in Resources */,
+				C7E162FA13A4151100FA4790 /* cat_list_bg.png in Resources */,
+				C7E162FC13A421EB00FA4790 /* cat_label_yellow.png in Resources */,
+				C7E162FF13A4321600FA4790 /* favstar_off.png in Resources */,
+				C7E1630013A4321600FA4790 /* favstar_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1394,6 +1439,7 @@
 				C759BC5013A2CDBF0093C9A0 /* EventKitIntegrator.m in Sources */,
 				C759BC5413A2D64A0093C9A0 /* EventsViewController.m in Sources */,
 				C759BC5B13A2DCA30093C9A0 /* EventCell.m in Sources */,
+				C7E162F613A412C600FA4790 /* SortViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

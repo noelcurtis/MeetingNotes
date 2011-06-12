@@ -87,7 +87,7 @@
     // Customize the size of the frame so that the toolbar is not hidden.
 	CGRect r = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height);
 	self.activeViewController.view.frame = r;
-	[self.activeViewController viewWillAppear:NO];
+    [self.activeViewController viewWillAppear:NO];
 	[self.view addSubview:self.activeViewController.view];
 	[self.activeViewController viewDidAppear:NO];
     self.isActiveViewControllerHidden = NO;
@@ -259,6 +259,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
+    //self.view.backgroundColor = [UIColor clearColor];
     //show a list of all the current meetings
     [self setupWithMeetingListViewController];
 }

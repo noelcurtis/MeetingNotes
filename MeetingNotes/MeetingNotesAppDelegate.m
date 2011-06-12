@@ -32,18 +32,28 @@
     
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+	backgroundImageView.image = [UIImage imageNamed:@"dark_noise_bg"];
+    
     splitViewController = [[UISplitViewController alloc] init];
-	
+    splitViewController.view.opaque = NO;
+    [splitViewController.view setBackgroundColor:[UIColor clearColor]];
 	sortDVController = [[SortDetailViewController alloc] init];
     sortDVController.managedObjectContext = self.managedObjectContext;
 	splitViewController.delegate = sortDVController;
 	
-	sortRVController = [[SortRootViewController alloc] init];
+	sortRVController = [[SortRootViewController alloc] initWithNibName:@"SortRootViewController" bundle:nil];
 	sortRVController.dvController = sortDVController;
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
-    
-	splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];
+    nav.view.backgroundColor = [UIColor clearColor];
+    nav.view.opaque = NO;
+	UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 276, 705)];
+	backgroundImageViewNav.image = [UIImage imageNamed:@"cat_view_bg"];
+    [nav.view insertSubview:backgroundImageViewNav atIndex:0];
+    [backgroundImageViewNav release];
+    splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];
 	[self.window addSubview:splitViewController.view];
+    [self.window insertSubview:backgroundImageView belowSubview:splitViewController.view];
 	NSLog(@"Application has launched, managed object context has been set, main split view controllers have been displayed.");
     [nav release];
     return YES;

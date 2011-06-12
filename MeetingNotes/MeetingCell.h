@@ -18,5 +18,11 @@
 @property(nonatomic, retain) IBOutlet UILabel* locationLabel;
 @property(nonatomic, retain) IBOutlet UILabel* actionItemCountLabel;
 @property(nonatomic, retain) IBOutlet UILabel* locationNameLabel;
+@property(nonatomic, retain) IBOutlet UIImageView* backgroundImage;
+@property(nonatomic, retain) IBOutlet UIImageView* categoryImage;
+@property(nonatomic, assign) BOOL isStarred;
+@property(nonatomic, retain) IBOutlet UIButton *starButton;
+
+-(IBAction) starClicked:(id)sender;
 
 @end

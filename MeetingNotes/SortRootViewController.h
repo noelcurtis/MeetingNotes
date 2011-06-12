@@ -10,10 +10,12 @@
 
 @class SortDetailViewController;
 @class NotesRootViewController;
+@class SortViewCell;
 
 @interface SortRootViewController : UITableViewController<UISplitViewControllerDelegate> {
     
 }
 
 @property (nonatomic, retain) IBOutlet SortDetailViewController *dvController;
+@property (nonatomic, retain) IBOutlet SortViewCell *sortViewCell;
 @end

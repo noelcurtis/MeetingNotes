@@ -11,6 +11,7 @@
 #import "NotesDetailViewController.h"
 #import "SortDetailViewController.h"
 #import "SettingsViewController.h"
+#import "SortViewCell.h"
 
 @interface SortRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -19,6 +20,7 @@
 
 @implementation SortRootViewController
 @synthesize dvController;
+@synthesize sortViewCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,6 +33,7 @@
 
 - (void)dealloc
 {
+    [sortViewCell release];
     [dvController release];
     [super dealloc];
 }
@@ -49,7 +52,7 @@
 {
     [super viewDidLoad];
     self.title = @"Categories";
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -91,6 +94,13 @@
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 54;
+    return height;
+}
+
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -105,14 +115,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    /*static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+    }*/
     
-    [self configureCell:cell atIndexPath:indexPath];
+    //[self configureCell:cell atIndexPath:indexPath];
+    static NSString *CellIdentifier = @"SortViewCell";
+    SortViewCell *cell = (SortViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        [[NSBundle mainBundle] loadNibNamed:@"SortViewCell" owner:self options:nil];
+        cell = self.sortViewCell;
+        self.sortViewCell = nil;
+    }
+    //[self configureCell:cell atIndexPath:indexPath];
+    return cell;
+
     
     return cell;
 }

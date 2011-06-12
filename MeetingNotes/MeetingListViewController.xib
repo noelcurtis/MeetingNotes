@@ -37,6 +37,7 @@
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
 				</object>
+				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
@@ -60,14 +61,16 @@
 					</object>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+				<double key="IBUIContentInset.top">6</double>
+				<double key="IBUIContentInset.bottom">0.0</double>
+				<double key="IBUIContentInset.left">0.0</double>
+				<double key="IBUIContentInset.right">0.0</double>
 				<bool key="IBUIBouncesZoom">NO</bool>
-				<int key="IBUIStyle">1</int>
-				<int key="IBUISeparatorStyle">2</int>
 				<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 				<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 				<float key="IBUIRowHeight">44</float>
-				<float key="IBUISectionHeaderHeight">10</float>
-				<float key="IBUISectionFooterHeight">10</float>
+				<float key="IBUISectionHeaderHeight">22</float>
+				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -143,6 +146,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="actionItemCountLabel">UILabel</string>
 						<string key="locationLabel">UILabel</string>
+						<string key="locationNameLabel">UILabel</string>
 						<string key="meetingLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -152,6 +156,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="locationLabel">
 							<string key="name">locationLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="locationNameLabel">
+							<string key="name">locationNameLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="meetingLabel">
