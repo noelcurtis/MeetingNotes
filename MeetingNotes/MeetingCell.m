@@ -7,7 +7,7 @@
 //
 
 #import "MeetingCell.h"
-
+#import "Meeting.h"
 
 @implementation MeetingCell
 @synthesize meetingLabel;
@@ -27,6 +27,25 @@
     }else{
         isStarred = YES;
         [self.starButton setImage:[UIImage imageNamed:@"favstar_on"] forState:UIControlStateNormal];
+    }
+}
+
+// Use to setup the cell with a Meeting
+-(void) setupWithMeeting:(Meeting *)meeting{
+    self.meetingLabel.text = [[meeting valueForKey:@"name"] description];
+    if ([[meeting valueForKey:@"location"] description]) {
+        self.locationLabel.text = [[meeting valueForKey:@"location"] description];
+    }else{
+        self.locationLabel.hidden = YES;
+        self.locationNameLabel.hidden = YES;
+    }
+    if([meeting getActionItemCount] > 0)
+    {
+        self.actionItemCountLabel.text = [NSString stringWithFormat:@"%d",[meeting getActionItemCount]];
+    }
+    else
+    {
+        [self.actionItemCountLabel setHidden:YES];
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Meeting.h"
 
 @interface MeetingCell : UITableViewCell {
     
@@ -22,5 +23,6 @@
 @property(nonatomic, retain) IBOutlet UIButton *starButton;
 
 -(IBAction) starClicked:(id)sender;
+-(void) setupWithMeeting:(Meeting*) meeting;
 
 @end

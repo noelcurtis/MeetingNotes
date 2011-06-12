@@ -137,21 +137,7 @@
 - (void)configureCell:(MeetingCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *managedObject = [fetchedResultsController objectAtIndexPath:indexPath];
-    cell.meetingLabel.text = [[managedObject valueForKey:@"name"] description];
-    if ([[managedObject valueForKey:@"location"] description]) {
-        cell.locationLabel.text = [[managedObject valueForKey:@"location"] description];
-    }else{
-        cell.locationLabel.hidden = YES;
-        cell.locationNameLabel.hidden = YES;
-    }
-    if([(Meeting*)managedObject getActionItemCount] > 0)
-    {
-        cell.actionItemCountLabel.text = [NSString stringWithFormat:@"%d",[(Meeting*)managedObject getActionItemCount]];
-    }
-    else
-    {
-        [cell.actionItemCountLabel setHidden:YES];
-    }
+    [cell setupWithMeeting:(Meeting*) managedObject];
 }
 
 
