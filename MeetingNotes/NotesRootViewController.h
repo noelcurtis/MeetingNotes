@@ -12,6 +12,7 @@
 @class Meeting;
 @class NotesDetailViewController;
 @class SortDetailViewController;
+@class AgendaItemCell;
 @interface NotesRootViewController : UITableViewController {
     
 }
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NotesDetailViewController* notesDetailViewController;
 @property (nonatomic, retain) SortDetailViewController* sortDetailViewController;
 @property (nonatomic, retain) NSMutableArray* agendaItems;
+@property (nonatomic, retain) IBOutlet AgendaItemCell* agendaItemCell;
 -(IBAction) addActionItem:(id) sender;
 
 //-(void)saveContextAndReloadTable;

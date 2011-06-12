@@ -12,6 +12,7 @@
 #import "NotesDetailViewController.h"
 #import "SortDetailViewController.h"
 #import "FileHandlerController.h"
+#import "AgendaItemCell.h"
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -26,6 +27,7 @@
 @synthesize agendaItems;
 @synthesize sortDetailViewController;
 @synthesize toolbar;
+@synthesize agendaItemCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,6 +40,7 @@
 
 - (void)dealloc
 {
+    [agendaItemCell release];
     [agendaItems release];
     [notesDetailViewController release];
     [meetingBeingEdited release];
@@ -280,6 +283,11 @@
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 54;
+    return height;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -297,16 +305,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"AgendaItemsCell";
+    AgendaItemCell *cell = (AgendaItemCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        [[NSBundle mainBundle] loadNibNamed:@"AgendaItemCell" owner:self options:nil];
+        cell = self.agendaItemCell;
+        self.agendaItemCell = nil;
     }
     
     // Configure the cell...
     AgendaItem *currentItem = [self.agendaItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = currentItem.title;
+    cell.agendaItemLabel.text = currentItem.title;
     return cell;
 }
 
@@ -326,6 +335,7 @@
     [currentItem release];
 }
 
+/*
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *title = nil;
     switch (section) {
@@ -338,7 +348,7 @@
     }
     return title;
 }
-
+*/
 
 
 // Override to support conditional editing of the table view.

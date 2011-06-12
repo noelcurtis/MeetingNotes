@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C70061B6139DC46A00FD9766 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C70061B5139DC46A00FD9766 /* icon_settings.png */; };
-		C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA7135E7F5A0012B12A /* MapKit.framework */; };
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
 		C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
@@ -184,6 +183,8 @@
 		C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCCC138F3EB300BEF168 /* Meeting.m */; };
 		C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD2138F3ED500BEF168 /* ActionItem.m */; };
 		C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD5138F3EE400BEF168 /* Attendee.m */; };
+		C7FF1D0213A515F1001A9A0C /* AgendaItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FF1D0113A515F1001A9A0C /* AgendaItemCell.m */; };
+		C7FF1D0413A5160F001A9A0C /* AgendaItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FF1D0313A5160F001A9A0C /* AgendaItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -505,6 +506,9 @@
 		C7FEBCD2138F3ED500BEF168 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
 		C7FEBCD4138F3EE400BEF168 /* Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Attendee.h; path = Data/Attendee.h; sourceTree = "<group>"; };
 		C7FEBCD5138F3EE400BEF168 /* Attendee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attendee.m; path = Data/Attendee.m; sourceTree = "<group>"; };
+		C7FF1D0013A515F1001A9A0C /* AgendaItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgendaItemCell.h; sourceTree = "<group>"; };
+		C7FF1D0113A515F1001A9A0C /* AgendaItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgendaItemCell.m; sourceTree = "<group>"; };
+		C7FF1D0313A5160F001A9A0C /* AgendaItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgendaItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,7 +532,6 @@
 				C76A79C41378ADAD00AEF020 /* AddressBookUI.framework in Frameworks */,
 				C7D74AF51362266600B57A9C /* CoreData.framework in Frameworks */,
 				C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */,
-				C7132DA8135E7F5A0012B12A /* MapKit.framework in Frameworks */,
 				C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */,
 				C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */,
 				C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */,
@@ -744,6 +747,9 @@
 				C74B37281384BD36000DFE5D /* ActionItemCell.h */,
 				C74B37291384BD36000DFE5D /* ActionItemCell.m */,
 				C74B372B1384BD50000DFE5D /* ActionItemCell.xib */,
+				C7FF1D0013A515F1001A9A0C /* AgendaItemCell.h */,
+				C7FF1D0113A515F1001A9A0C /* AgendaItemCell.m */,
+				C7FF1D0313A5160F001A9A0C /* AgendaItemCell.xib */,
 			);
 			name = "NotesView Custom Cells";
 			sourceTree = "<group>";
@@ -1202,6 +1208,7 @@
 				C7E162FC13A421EB00FA4790 /* cat_label_yellow.png in Resources */,
 				C7E162FF13A4321600FA4790 /* favstar_off.png in Resources */,
 				C7E1630013A4321600FA4790 /* favstar_on.png in Resources */,
+				C7FF1D0413A5160F001A9A0C /* AgendaItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,6 +1366,7 @@
 				C759BC5413A2D64A0093C9A0 /* EventsViewController.m in Sources */,
 				C759BC5B13A2DCA30093C9A0 /* EventCell.m in Sources */,
 				C7E162F613A412C600FA4790 /* SortViewCell.m in Sources */,
+				C7FF1D0213A515F1001A9A0C /* AgendaItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

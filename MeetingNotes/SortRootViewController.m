@@ -115,13 +115,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }*/
-    
     //[self configureCell:cell atIndexPath:indexPath];
     static NSString *CellIdentifier = @"SortViewCell";
     SortViewCell *cell = (SortViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -131,9 +124,6 @@
         self.sortViewCell = nil;
     }
     //[self configureCell:cell atIndexPath:indexPath];
-    return cell;
-
-    
     return cell;
 }
 

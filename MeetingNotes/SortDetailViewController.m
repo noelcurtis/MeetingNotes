@@ -258,7 +258,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    // Do any additional setup after loading the view from its nib.
-    //self.view.backgroundColor = [UIColor clearColor];
     //show a list of all the current meetings
     [self setupWithMeetingListViewController];
 }
