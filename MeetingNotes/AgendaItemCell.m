@@ -11,6 +11,7 @@
 
 @implementation AgendaItemCell
 @synthesize agendaItemLabel;
+@synthesize redArrow;
 
 -(void) setupWithAgendaItem:(AgendaItem *)agendaItem{
     
@@ -18,6 +19,7 @@
 
 -(void)dealloc{
     [agendaItemLabel release];
+    [redArrow release];
     [super dealloc];
 }
 

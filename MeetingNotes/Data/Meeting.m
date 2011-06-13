@@ -2,7 +2,7 @@
 //  Meeting.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 6/8/11.
+//  Created by Noel Curtis on 6/12/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
@@ -13,9 +13,10 @@
 
 @implementation Meeting
 @dynamic location;
-@dynamic name;
-@dynamic endDate;
 @dynamic startDate;
+@dynamic endDate;
+@dynamic name;
+@dynamic isStarred;
 @dynamic Attendees;
 @dynamic AgendaItems;
 
@@ -76,7 +77,6 @@
     [self didChangeValueForKey:@"AgendaItems" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
-
 - (int)getActionItemCount{
     int actionItemCount = 0;
     for (AgendaItem *agendaItem in [self AgendaItems]) {
@@ -84,5 +84,6 @@
     }
     return actionItemCount;
 }
+
 
 @end

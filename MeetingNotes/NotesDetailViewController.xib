@@ -31,11 +31,9 @@
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUITableView" id="993928743">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{768, 1024}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="185365787">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
@@ -53,7 +51,7 @@
 				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 			<object class="IBUITableViewCell" id="430293711">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="510873419">
@@ -65,10 +63,9 @@
 								<int key="NSvFlags">298</int>
 								<string key="NSFrame">{{20, 6}, {728, 31}}</string>
 								<reference key="NSSuperview" ref="510873419"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4wNTgyNDgyMTUwOSAwLjAyMjEwMzk0NTM1IDAuMjM0NjkzODc3NgA</bytes>
-								</object>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<reference key="IBUIBackgroundColor" ref="185365787"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -91,10 +88,16 @@
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
+								<object class="NSCustomResource" key="IBUIBackground">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">inset_bg.png</string>
+								</object>
+								<int key="IBUIClearButtonMode">1</int>
 							</object>
 						</array>
 						<string key="NSFrameSize">{768, 44}</string>
 						<reference key="NSSuperview" ref="430293711"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="152240794"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -105,6 +108,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 44}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="510873419"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="104897115">
 					<int key="NSColorSpace">1</int>
@@ -115,7 +120,7 @@
 				<reference key="IBUIContentView" ref="510873419"/>
 			</object>
 			<object class="IBUITableViewCell" id="431317934">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="923905892">
@@ -127,6 +132,8 @@
 								<int key="NSvFlags">306</int>
 								<string key="NSFrame">{{20, 20}, {728, 360}}</string>
 								<reference key="NSSuperview" ref="923905892"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="104897115"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -141,6 +148,8 @@
 						</array>
 						<string key="NSFrameSize">{768, 400}</string>
 						<reference key="NSSuperview" ref="431317934"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1003314724"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -150,6 +159,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 400}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="923905892"/>
 				<reference key="IBUIBackgroundColor" ref="104897115"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -396,6 +407,10 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">inset_bg.png</string>
+			<string key="NS.object.0">{676, 44}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">300</string>
 	</data>
 </archive>

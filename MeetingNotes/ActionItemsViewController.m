@@ -322,6 +322,9 @@
         }
     }
     
+    // setup action item as not completed by default
+    self.actionItem.isComplete = [NSNumber numberWithInt:0];
+    
     // add the agenda item to the agenda item
     NSLog(@"Adding the new action item: %@ to the agenda item: %@", [self.actionItem description], [self.agendaItem description]);
     [self.agendaItem addActionItemsObject:self.actionItem];

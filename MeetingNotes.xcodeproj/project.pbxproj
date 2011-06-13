@@ -98,6 +98,13 @@
 		C759BC5B13A2DCA30093C9A0 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C759BC5A13A2DCA30093C9A0 /* EventCell.m */; };
 		C759BC5D13A2DCD60093C9A0 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C759BC5C13A2DCD60093C9A0 /* EventCell.xib */; };
 		C759BC6013A2E7F40093C9A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C759BC5F13A2E7F40093C9A0 /* EventKit.framework */; };
+		C759C4CE13A59F2B006E6485 /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C759C4CD13A59F2B006E6485 /* Meeting.m */; };
+		C759C4D113A5A532006E6485 /* inset_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4CF13A5A532006E6485 /* inset_bg.png */; };
+		C759C4D213A5A532006E6485 /* red_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D013A5A532006E6485 /* red_arrow.png */; };
+		C759C4D413A5AF8D006E6485 /* running_man_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D313A5AF8D006E6485 /* running_man_small.png */; };
+		C759C4D613A5B15C006E6485 /* act_list_item_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D513A5B15C006E6485 /* act_list_item_bg.png */; };
+		C759C4D913A5BA72006E6485 /* checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D713A5BA72006E6485 /* checkbox_off.png */; };
+		C759C4DA13A5BA72006E6485 /* checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D813A5BA72006E6485 /* checkbox_on.png */; };
 		C76A79C31378ADAD00AEF020 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76A79C11378ADAD00AEF020 /* AddressBook.framework */; };
 		C76A79C41378ADAD00AEF020 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */; };
 		C7751916139EE918004E1813 /* MeetingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7751915139EE918004E1813 /* MeetingCell.m */; };
@@ -180,7 +187,6 @@
 		C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */; };
 		C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */; };
 		C7F96FE71368EE2A00737BEA /* StartsEndsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */; };
-		C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCCC138F3EB300BEF168 /* Meeting.m */; };
 		C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD2138F3ED500BEF168 /* ActionItem.m */; };
 		C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD5138F3EE400BEF168 /* Attendee.m */; };
 		C7FF1D0213A515F1001A9A0C /* AgendaItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FF1D0113A515F1001A9A0C /* AgendaItemCell.m */; };
@@ -366,6 +372,14 @@
 		C759BC5A13A2DCA30093C9A0 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		C759BC5C13A2DCD60093C9A0 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		C759BC5F13A2E7F40093C9A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		C759C4CC13A59F2B006E6485 /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
+		C759C4CD13A59F2B006E6485 /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
+		C759C4CF13A5A532006E6485 /* inset_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = inset_bg.png; path = Images/inset_bg.png; sourceTree = "<group>"; };
+		C759C4D013A5A532006E6485 /* red_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_arrow.png; path = Images/red_arrow.png; sourceTree = "<group>"; };
+		C759C4D313A5AF8D006E6485 /* running_man_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = running_man_small.png; path = Images/running_man_small.png; sourceTree = "<group>"; };
+		C759C4D513A5B15C006E6485 /* act_list_item_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = act_list_item_bg.png; path = Images/act_list_item_bg.png; sourceTree = "<group>"; };
+		C759C4D713A5BA72006E6485 /* checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_off.png; path = Images/checkbox_off.png; sourceTree = "<group>"; };
+		C759C4D813A5BA72006E6485 /* checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_on.png; path = Images/checkbox_on.png; sourceTree = "<group>"; };
 		C76A79C11378ADAD00AEF020 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		C7751914139EE918004E1813 /* MeetingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingCell.h; sourceTree = "<group>"; };
@@ -500,8 +514,6 @@
 		C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartsEndsViewController.m; sourceTree = "<group>"; };
 		C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateMinutesView.xib; sourceTree = "<group>"; };
 		C7F96FE51368EE2A00737BEA /* StartsEndsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartsEndsView.xib; sourceTree = "<group>"; };
-		C7FEBCCB138F3EB300BEF168 /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
-		C7FEBCCC138F3EB300BEF168 /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
 		C7FEBCD1138F3ED500BEF168 /* ActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItem.h; path = Data/ActionItem.h; sourceTree = "<group>"; };
 		C7FEBCD2138F3ED500BEF168 /* ActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItem.m; path = Data/ActionItem.m; sourceTree = "<group>"; };
 		C7FEBCD4138F3EE400BEF168 /* Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Attendee.h; path = Data/Attendee.h; sourceTree = "<group>"; };
@@ -544,14 +556,14 @@
 		C70E6AAE13667FE20059B75E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C759C4CC13A59F2B006E6485 /* Meeting.h */,
+				C759C4CD13A59F2B006E6485 /* Meeting.m */,
 				C715C0E213A03EFD004CCF7D /* AgendaItem.h */,
 				C715C0E313A03EFD004CCF7D /* AgendaItem.m */,
 				C7FEBCD4138F3EE400BEF168 /* Attendee.h */,
 				C7FEBCD5138F3EE400BEF168 /* Attendee.m */,
 				C7FEBCD1138F3ED500BEF168 /* ActionItem.h */,
 				C7FEBCD2138F3ED500BEF168 /* ActionItem.m */,
-				C7FEBCCB138F3EB300BEF168 /* Meeting.h */,
-				C7FEBCCC138F3EB300BEF168 /* Meeting.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -767,6 +779,12 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C759C4D513A5B15C006E6485 /* act_list_item_bg.png */,
+				C759C4D313A5AF8D006E6485 /* running_man_small.png */,
+				C759C4D713A5BA72006E6485 /* checkbox_off.png */,
+				C759C4D813A5BA72006E6485 /* checkbox_on.png */,
+				C759C4CF13A5A532006E6485 /* inset_bg.png */,
+				C759C4D013A5A532006E6485 /* red_arrow.png */,
 				C7E162FD13A4321600FA4790 /* favstar_off.png */,
 				C7E162FE13A4321600FA4790 /* favstar_on.png */,
 				C7E162FB13A421EB00FA4790 /* cat_label_yellow.png */,
@@ -1209,6 +1227,12 @@
 				C7E162FF13A4321600FA4790 /* favstar_off.png in Resources */,
 				C7E1630013A4321600FA4790 /* favstar_on.png in Resources */,
 				C7FF1D0413A5160F001A9A0C /* AgendaItemCell.xib in Resources */,
+				C759C4D113A5A532006E6485 /* inset_bg.png in Resources */,
+				C759C4D213A5A532006E6485 /* red_arrow.png in Resources */,
+				C759C4D413A5AF8D006E6485 /* running_man_small.png in Resources */,
+				C759C4D613A5B15C006E6485 /* act_list_item_bg.png in Resources */,
+				C759C4D913A5BA72006E6485 /* checkbox_off.png in Resources */,
+				C759C4DA13A5BA72006E6485 /* checkbox_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1322,7 +1346,6 @@
 				C7557C5613775E55003AC2A2 /* ActionItemsViewController.m in Sources */,
 				C7153F001383783200A48C85 /* NoteView.m in Sources */,
 				C74B372A1384BD36000DFE5D /* ActionItemCell.m in Sources */,
-				C7FEBCCD138F3EB300BEF168 /* Meeting.m in Sources */,
 				C7FEBCD3138F3ED500BEF168 /* ActionItem.m in Sources */,
 				C7FEBCD6138F3EE400BEF168 /* Attendee.m in Sources */,
 				C7EF0AED139B2ECF00314AC5 /* FileHandlerController.m in Sources */,
@@ -1367,6 +1390,7 @@
 				C759BC5B13A2DCA30093C9A0 /* EventCell.m in Sources */,
 				C7E162F613A412C600FA4790 /* SortViewCell.m in Sources */,
 				C7FF1D0213A515F1001A9A0C /* AgendaItemCell.m in Sources */,
+				C759C4CE13A59F2B006E6485 /* Meeting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

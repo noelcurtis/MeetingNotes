@@ -69,7 +69,6 @@
 								<string key="NSFrame">{{562, 7}, {39, 39}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -171,7 +170,7 @@
 							<object class="IBUIButton" id="268787891">
 								<reference key="NSNextResponder" ref="536879528"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{31, 26}, {21, 21}}</string>
+								<string key="NSFrame">{{31, 24}, {21, 21}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="633054299"/>
@@ -452,7 +451,6 @@
 							<string>actionItemCountLabel</string>
 							<string>backgroundImage</string>
 							<string>categoryImage</string>
-							<string>isStarred</string>
 							<string>locationLabel</string>
 							<string>locationNameLabel</string>
 							<string>meetingLabel</string>
@@ -463,7 +461,6 @@
 							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UIImageView</string>
-							<string>BOOL</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -477,7 +474,6 @@
 							<string>actionItemCountLabel</string>
 							<string>backgroundImage</string>
 							<string>categoryImage</string>
-							<string>isStarred</string>
 							<string>locationLabel</string>
 							<string>locationNameLabel</string>
 							<string>meetingLabel</string>
@@ -496,10 +492,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">categoryImage</string>
 								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">isStarred</string>
-								<string key="candidateClassName">BOOL</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">locationLabel</string>

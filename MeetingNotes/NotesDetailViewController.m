@@ -204,9 +204,10 @@
         }
         // get the action items and push a new ActionItemCell with one
         NSMutableArray *actionItems = [[NSMutableArray alloc] initWithArray:[self.agendaItem.ActionItems allObjects]];
-        cell.actionItemLabel.text = ((ActionItem *)[actionItems objectAtIndex:indexPath.row]).notes;
-        [cell setupAttendeesLabel:((ActionItem *)[actionItems objectAtIndex:indexPath.row]).Attendees];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.actionItemLabel.text = ((ActionItem *)[actionItems objectAtIndex:indexPath.row]).notes;
+        //[cell setupAttendeesLabel:((ActionItem *)[actionItems objectAtIndex:indexPath.row]).Attendees];
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setupWithActionItem:(ActionItem *)[actionItems objectAtIndex:indexPath.row]];
         [actionItems release];
         return cell;
     }

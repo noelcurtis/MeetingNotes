@@ -62,12 +62,27 @@
 									<string key="NSResourceName">cat_list_bg.png</string>
 								</object>
 							</object>
+							<object class="IBUIImageView" id="792617721">
+								<reference key="NSNextResponder" ref="530290402"/>
+								<int key="NSvFlags">257</int>
+								<string key="NSFrame">{{285, 15}, {17, 15}}</string>
+								<reference key="NSSuperview" ref="530290402"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">red_arrow.png</string>
+								</object>
+							</object>
 							<object class="IBUILabel" id="634171081">
 								<reference key="NSNextResponder" ref="530290402"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{29, 12}, {244, 21}}</string>
 								<reference key="NSSuperview" ref="530290402"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="792617721"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -135,6 +150,14 @@
 					</object>
 					<int key="connectionID">9</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">redArrow</string>
+						<reference key="source" ref="947805654"/>
+						<reference key="destination" ref="792617721"/>
+					</object>
+					<int key="connectionID">11</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -163,6 +186,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="634171081"/>
 							<reference ref="1059605944"/>
+							<reference ref="792617721"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">AgendaItemCell</string>
@@ -178,6 +202,12 @@
 						<reference key="object" ref="1059605944"/>
 						<reference key="parent" ref="947805654"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">10</int>
+						<reference key="object" ref="792617721"/>
+						<reference key="parent" ref="947805654"/>
+						<string key="objectName">redArrow</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -186,6 +216,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
+					<string>10.IBPluginDependency</string>
 					<string>3.CustomClassName</string>
 					<string>3.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
@@ -195,6 +226,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>NotesRootViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>AgendaItemCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -213,7 +245,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">9</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -222,14 +254,35 @@
 					<string key="className">AgendaItemCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">agendaItemLabel</string>
-						<string key="NS.object.0">UILabel</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>agendaItemLabel</string>
+							<string>redArrow</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UILabel</string>
+							<string>UIImageView</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">agendaItemLabel</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">agendaItemLabel</string>
-							<string key="candidateClassName">UILabel</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>agendaItemLabel</string>
+							<string>redArrow</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">agendaItemLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">redArrow</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -306,8 +359,17 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">cat_list_bg.png</string>
-			<string key="NS.object.0">{310, 54}</string>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>cat_list_bg.png</string>
+				<string>red_arrow.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{310, 54}</string>
+				<string>{17, 15}</string>
+			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">300</string>
 	</data>

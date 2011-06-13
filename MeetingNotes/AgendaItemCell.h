@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *agendaItemLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *redArrow;
 -(void) setupWithAgendaItem:(AgendaItem*) agendaItem;
 
 @end
