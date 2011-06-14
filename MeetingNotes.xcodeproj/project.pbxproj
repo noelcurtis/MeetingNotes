@@ -120,6 +120,7 @@
 		C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E69F135D0599009B42B9 /* SortRootViewController.m */; };
 		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
 		C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */; };
+		C7AC155513A7123800BD8649 /* paper_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AC155413A7123800BD8649 /* paper_bg.png */; };
 		C7D56DA3139C62BD00F342C7 /* DBAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D56D4E139C62BD00F342C7 /* DBAccountInfo.m */; };
 		C7D56DA4139C62BD00F342C7 /* DBCreateAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D56D50139C62BD00F342C7 /* DBCreateAccountController.m */; };
 		C7D56DA5139C62BD00F342C7 /* DBError.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D56D52139C62BD00F342C7 /* DBError.m */; };
@@ -173,6 +174,7 @@
 		C7D74B0F1363255500B57A9C /* NotesRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B0D1363255500B57A9C /* NotesRootViewController.xib */; };
 		C7D74B2D13634DAC00B57A9C /* NotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */; };
 		C7D74B2E13634DAC00B57A9C /* NotesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */; };
+		C7D97BC513A7154400D696D0 /* icon_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D97BC413A7154400D696D0 /* icon_calendar.png */; };
 		C7DFE63113A6F47A000CA2D2 /* btn_back.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DFE63013A6F47A000CA2D2 /* btn_back.png */; };
 		C7E162EE13A3E30400FA4790 /* dark_noise_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162ED13A3E30400FA4790 /* dark_noise_bg.png */; };
 		C7E162F013A3FD8700FA4790 /* cat_view_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162EF13A3FD8700FA4790 /* cat_view_bg.png */; };
@@ -404,6 +406,7 @@
 		C790E6A0135D0599009B42B9 /* SortRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortRootViewController.xib; sourceTree = "<group>"; };
 		C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortDetailViewController.h; sourceTree = "<group>"; };
 		C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDetailViewController.m; sourceTree = "<group>"; };
+		C7AC155413A7123800BD8649 /* paper_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper_bg.png; path = Images/paper_bg.png; sourceTree = "<group>"; };
 		C7D56D4D139C62BD00F342C7 /* DBAccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAccountInfo.h; sourceTree = "<group>"; };
 		C7D56D4E139C62BD00F342C7 /* DBAccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAccountInfo.m; sourceTree = "<group>"; };
 		C7D56D4F139C62BD00F342C7 /* DBCreateAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCreateAccountController.h; sourceTree = "<group>"; };
@@ -498,6 +501,7 @@
 		C7D74B2A13634DAC00B57A9C /* NotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailViewController.h; sourceTree = "<group>"; };
 		C7D74B2B13634DAC00B57A9C /* NotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailViewController.m; sourceTree = "<group>"; };
 		C7D74B2C13634DAC00B57A9C /* NotesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesDetailViewController.xib; sourceTree = "<group>"; };
+		C7D97BC413A7154400D696D0 /* icon_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_calendar.png; path = Images/icon_calendar.png; sourceTree = "<group>"; };
 		C7DFE63013A6F47A000CA2D2 /* btn_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_back.png; path = Images/btn_back.png; sourceTree = "<group>"; };
 		C7E162ED13A3E30400FA4790 /* dark_noise_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dark_noise_bg.png; path = Images/dark_noise_bg.png; sourceTree = "<group>"; };
 		C7E162EF13A3FD8700FA4790 /* cat_view_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat_view_bg.png; path = Images/cat_view_bg.png; sourceTree = "<group>"; };
@@ -783,6 +787,8 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7D97BC413A7154400D696D0 /* icon_calendar.png */,
+				C7AC155413A7123800BD8649 /* paper_bg.png */,
 				C7F2BC2613A7069400EE92BA /* btn_add_action.png */,
 				C759C4D513A5B15C006E6485 /* act_list_item_bg.png */,
 				C759C4D313A5AF8D006E6485 /* running_man_small.png */,
@@ -1241,6 +1247,8 @@
 				C759C4DA13A5BA72006E6485 /* checkbox_on.png in Resources */,
 				C7DFE63113A6F47A000CA2D2 /* btn_back.png in Resources */,
 				C7F2BC2713A7069400EE92BA /* btn_add_action.png in Resources */,
+				C7AC155513A7123800BD8649 /* paper_bg.png in Resources */,
+				C7D97BC513A7154400D696D0 /* icon_calendar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

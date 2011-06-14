@@ -55,13 +55,13 @@
 
 #pragma mark - Managing the active detail view
 -(void) setupToolbarForMeetingListViewController{
-    UIBarButtonItem *calenderButton = [[UIBarButtonItem alloc] initWithTitle:@"Calendar" style:
+    UIBarButtonItem *calenderButton = [[UIBarButtonItem alloc]  initWithImage:[UIImage imageNamed:@"icon_calendar"] style:
                                        UIBarButtonItemStylePlain target:self action:@selector(calenderButtonClick:)];
     UIBarButtonItem *addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
     
     UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    UIBarButtonItem *applicationSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(didPressSettingsButton:)];
+    UIBarButtonItem *applicationSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(didPressSettingsButton:)];
     
     NSMutableArray *items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
     [self.toolBar setItems:items];

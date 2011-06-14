@@ -14,6 +14,7 @@
 			<string>IBUITextView</string>
 			<string>IBUITableViewCell</string>
 			<string>IBUITableView</string>
+			<string>IBUIImageView</string>
 			<string>IBUITextField</string>
 			<string>IBProxyObject</string>
 		</array>
@@ -35,8 +36,6 @@
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{768, 1024}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="185365787">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
@@ -73,7 +72,7 @@
 				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 			<object class="IBUITableViewCell" id="430293711">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="510873419">
@@ -85,8 +84,6 @@
 								<int key="NSvFlags">298</int>
 								<string key="NSFrame">{{20, 6}, {728, 31}}</string>
 								<reference key="NSSuperview" ref="510873419"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="185365787"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -119,7 +116,6 @@
 						</array>
 						<string key="NSFrameSize">{768, 44}</string>
 						<reference key="NSSuperview" ref="430293711"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="152240794"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -130,8 +126,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="510873419"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="104897115">
 					<int key="NSColorSpace">1</int>
@@ -143,20 +137,34 @@
 			</object>
 			<object class="IBUITableViewCell" id="431317934">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
+				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="923905892">
 						<reference key="NSNextResponder" ref="431317934"/>
 						<int key="NSvFlags">256</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUITextView" id="1003314724">
+							<object class="IBUIImageView" id="255701531">
 								<reference key="NSNextResponder" ref="923905892"/>
-								<int key="NSvFlags">306</int>
+								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{20, 20}, {728, 360}}</string>
 								<reference key="NSSuperview" ref="923905892"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="1003314724"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">paper_bg.png</string>
+								</object>
+							</object>
+							<object class="IBUITextView" id="1003314724">
+								<reference key="NSNextResponder" ref="923905892"/>
+								<int key="NSvFlags">306</int>
+								<string key="NSFrame">{{20, 28}, {728, 361}}</string>
+								<reference key="NSSuperview" ref="923905892"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
-								<reference key="IBUIBackgroundColor" ref="104897115"/>
+								<reference key="IBUIBackgroundColor" ref="185365787"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -171,7 +179,7 @@
 						<string key="NSFrameSize">{768, 400}</string>
 						<reference key="NSSuperview" ref="431317934"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1003314724"/>
+						<reference key="NSNextKeyView" ref="255701531"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -309,6 +317,7 @@
 						<int key="objectID">39</int>
 						<reference key="object" ref="431317934"/>
 						<array class="NSMutableArray" key="children">
+							<reference ref="255701531"/>
 							<reference ref="1003314724"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -317,6 +326,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">41</int>
 						<reference key="object" ref="1003314724"/>
+						<reference key="parent" ref="431317934"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">47</int>
+						<reference key="object" ref="255701531"/>
 						<reference key="parent" ref="431317934"/>
 					</object>
 				</array>
@@ -329,6 +343,7 @@
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="41.CustomClassName">NoteView</string>
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBEditorWindowLastContentRect">{{45, 132}, {768, 1024}}</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -336,7 +351,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">46</int>
+			<int key="maxID">47</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -450,10 +465,10 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">inset_bg.png</string>
-			<string key="NS.object.0">{676, 44}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="inset_bg.png">{676, 44}</string>
+			<string key="paper_bg.png">{676, 394}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">300</string>
 	</data>
 </archive>
