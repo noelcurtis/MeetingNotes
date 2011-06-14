@@ -47,7 +47,7 @@
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
     nav.view.backgroundColor = [UIColor clearColor];
     nav.view.opaque = NO;
-	UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 276, 705)];
+    UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 276, 705)];
 	backgroundImageViewNav.image = [UIImage imageNamed:@"cat_view_bg"];
     [nav.view insertSubview:backgroundImageViewNav atIndex:0];
     [backgroundImageViewNav release];
