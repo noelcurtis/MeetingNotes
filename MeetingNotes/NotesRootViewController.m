@@ -22,6 +22,25 @@
 @property (nonatomic, retain)UIToolbar *toolbar;
 @end
 
+@implementation UIBarButtonItem(ButtonWithImage)
+// use to make a custom button...
++ (UIBarButtonItem*)barItemWithImage:(UIImage*)image target:(id)target action:(SEL)action{
+    // Move your item creation code here
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    
+    button.frame= CGRectMake(0.0, 0.0, image.size.width, image.size.height);
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *v=[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height) ];
+    
+    [v addSubview:button];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:v];
+}
+@end
+
 @implementation NotesRootViewController
 
 @synthesize meetingBeingEdited;
@@ -165,7 +184,8 @@
 																							target:self 
 																							action:@selector(addActionItem:)] autorelease];
     
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemRewind target:self action:@selector(backButtonAction:)] autorelease];
+    UIImage *backButtonImage = [UIImage imageNamed:@"btn_back"];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barItemWithImage:backButtonImage target:self action:@selector(backButtonAction:)];
     self.navigationItem.hidesBackButton = YES;
     
     // setup meeting being edited

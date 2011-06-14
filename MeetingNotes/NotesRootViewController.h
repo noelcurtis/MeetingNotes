@@ -13,6 +13,13 @@
 @class NotesDetailViewController;
 @class SortDetailViewController;
 @class AgendaItemCell;
+
+@interface UIBarButtonItem(ButtonWithImage)
+
++ (UIBarButtonItem*)barItemWithImage:(UIImage*)image target:(id)target action:(SEL)action;
+
+@end
+
 @interface NotesRootViewController : UITableViewController {
     
 }
