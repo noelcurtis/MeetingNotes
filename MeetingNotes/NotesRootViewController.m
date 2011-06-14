@@ -17,6 +17,8 @@
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)addToolBarToView;
+- (void)selectCellAtIndexPath:(NSIndexPath*) indexPath;
+@property (nonatomic, retain)AgendaItemCell *currentSelectedCell;
 @property (nonatomic, retain)UIToolbar *toolbar;
 @end
 
@@ -28,6 +30,7 @@
 @synthesize sortDetailViewController;
 @synthesize toolbar;
 @synthesize agendaItemCell;
+@synthesize currentSelectedCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,6 +43,7 @@
 
 - (void)dealloc
 {
+    [currentSelectedCell release];
     [agendaItemCell release];
     [agendaItems release];
     [notesDetailViewController release];
@@ -88,26 +92,7 @@
     [self tableView:self.tableView didSelectRowAtIndexPath:indexOfNewAgendaItem];
     
 }
-/*
--(void)saveContextAndReloadTable{
-    NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
-    NSError *error = nil;
-    if (![context save:&error]) {
-        
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    // release the old agenda items
-    [self.agendaItems release];
-    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
-    [self.tableView reloadData];
-    // ?? how do I make sure that the agenda item that was just updated is selected....
-}
-*/
+
 -(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem{
     NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
     NSError *error = nil;
@@ -126,7 +111,16 @@
     [self.tableView reloadData];
     NSUInteger positionOfNewAgendaItem = [self.agendaItems indexOfObject:newAgendaItem];
     NSIndexPath *indexOfNewAgendaItem = [[NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0] autorelease];
-    [self.tableView selectRowAtIndexPath:indexOfNewAgendaItem animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [self selectCellAtIndexPath:indexOfNewAgendaItem];
+    /*AgendaItemCell *cellForItemBeingEdited = (AgendaItemCell*)[self.tableView cellForRowAtIndexPath:indexOfNewAgendaItem];
+    if(self.currentSelectedCell){
+        // reset the arrow of the old selected cell to hidded
+        self.currentSelectedCell.redArrow.hidden = YES;
+    }
+    // update the current selected cell
+    self.currentSelectedCell = cellForItemBeingEdited;
+    self.currentSelectedCell.redArrow.hidden = NO;*/
+    //[self.tableView selectRowAtIndexPath:indexOfNewAgendaItem animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 #pragma mark - Meeting options to allow to print PDFs, send email and view meeting details
@@ -253,13 +247,13 @@
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
 
-    
+    self.currentSelectedCell = nil;
     // display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if([self.agendaItems count] >= 1)
     {
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+        //[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
     }
     [indexPath release];
 }
@@ -279,6 +273,17 @@
 {
     // Return YES for supported orientations
 	return YES;
+}
+
+
+-(void)selectCellAtIndexPath:(NSIndexPath*) indexPath{
+    if(self.currentSelectedCell){
+        // reset the arrow of the old selected cell to hidded
+        self.currentSelectedCell.redArrow.hidden = YES;
+    }
+    // update the current selected cell
+    self.currentSelectedCell = (AgendaItemCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    self.currentSelectedCell.redArrow.hidden = NO;
 }
 
 #pragma mark - Table view data source
@@ -315,7 +320,9 @@
     
     // Configure the cell...
     AgendaItem *currentItem = [self.agendaItems objectAtIndex:indexPath.row];
-    cell.agendaItemLabel.text = currentItem.title;
+    //cell.agendaItemLabel.text = currentItem.title;
+    //[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setupWithAgendaItem:currentItem];
     return cell;
 }
 
@@ -388,7 +395,7 @@
                 newRow = indexPath.row;
             }
             NSIndexPath *newSelectedIndex = [NSIndexPath indexPathForRow:newRow inSection:indexPath.section];
-            [self.tableView selectRowAtIndexPath:newSelectedIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
+            //[self.tableView selectRowAtIndexPath:newSelectedIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
             [self tableView:self.tableView didSelectRowAtIndexPath:newSelectedIndex];
             [newSelectedIndex release];
         }else{
@@ -426,11 +433,28 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    /*
+    // setup the detail view with the selected agenda item
+    if (self.sortDetailViewController.isActiveViewControllerHidden) {
+        [self.sortDetailViewController showActiveViewController];
+    }
+    AgendaItemCell *selectedCell = (AgendaItemCell*)[tableView cellForRowAtIndexPath:indexPath];
+    selectedCell.redArrow.hidden = NO;
+    [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];*/
+    /*if(self.currentSelectedCell){
+        // reset the arrow of the old selected cell to hidded
+        self.currentSelectedCell.redArrow.hidden = YES;
+    }
+    // update the current selected cell
+    self.currentSelectedCell = (AgendaItemCell*)[tableView cellForRowAtIndexPath:indexPath];
+    self.currentSelectedCell.redArrow.hidden = NO;*/
+    [self selectCellAtIndexPath:indexPath];
     // setup the detail view with the selected agenda item
     if (self.sortDetailViewController.isActiveViewControllerHidden) {
         [self.sortDetailViewController showActiveViewController];
     }
     [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];
+
 }
 
 @end

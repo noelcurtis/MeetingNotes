@@ -76,6 +76,8 @@
         isStarred = NO;
         [self.starButton setImage:[UIImage imageNamed:@"favstar_off"] forState:UIControlStateNormal];   
     }
+    
+    [self setSelectionStyle:UITableViewCellEditingStyleNone];
 }
 
 -(void)dealloc{

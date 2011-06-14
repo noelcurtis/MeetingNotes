@@ -69,6 +69,7 @@
 								<string key="NSFrame">{{562, 7}, {39, 39}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -170,7 +171,7 @@
 							<object class="IBUIButton" id="268787891">
 								<reference key="NSNextResponder" ref="536879528"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{31, 24}, {21, 21}}</string>
+								<string key="NSFrame">{{26, 15}, {30, 43}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="633054299"/>

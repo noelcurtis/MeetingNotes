@@ -14,7 +14,8 @@
 @synthesize redArrow;
 
 -(void) setupWithAgendaItem:(AgendaItem *)agendaItem{
-    
+    self.agendaItemLabel.text = agendaItem.title;
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 -(void)dealloc{

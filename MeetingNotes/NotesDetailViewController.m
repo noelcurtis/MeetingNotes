@@ -74,6 +74,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //
+    // Create a header view. Wrap it in a container to allow us to position
+    // it better.
+    //
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -139,7 +143,7 @@
     if([self.agendaItem.ActionItems count] >0){
         return 3;
     }else{
-    return 2;
+        return 2;
     }
 }
 
@@ -204,9 +208,6 @@
         }
         // get the action items and push a new ActionItemCell with one
         NSMutableArray *actionItems = [[NSMutableArray alloc] initWithArray:[self.agendaItem.ActionItems allObjects]];
-        //cell.actionItemLabel.text = ((ActionItem *)[actionItems objectAtIndex:indexPath.row]).notes;
-        //[cell setupAttendeesLabel:((ActionItem *)[actionItems objectAtIndex:indexPath.row]).Attendees];
-        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setupWithActionItem:(ActionItem *)[actionItems objectAtIndex:indexPath.row]];
         [actionItems release];
         return cell;

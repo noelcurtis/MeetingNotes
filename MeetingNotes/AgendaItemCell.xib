@@ -64,11 +64,10 @@
 							</object>
 							<object class="IBUIImageView" id="792617721">
 								<reference key="NSNextResponder" ref="530290402"/>
-								<int key="NSvFlags">257</int>
+								<int key="NSvFlags">-2147483391</int>
 								<string key="NSFrame">{{285, 15}, {17, 15}}</string>
 								<reference key="NSSuperview" ref="530290402"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">

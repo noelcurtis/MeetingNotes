@@ -828,7 +828,6 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
-				C759BC5F13A2E7F40093C9A0 /* EventKit.framework */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
@@ -848,6 +847,7 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C759BC5F13A2E7F40093C9A0 /* EventKit.framework */,
 				C7D56DCF139C666D00F342C7 /* Security.framework */,
 				C76A79C21378ADAD00AEF020 /* AddressBookUI.framework */,
 				C76A79C11378ADAD00AEF020 /* AddressBook.framework */,

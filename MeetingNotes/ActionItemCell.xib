@@ -80,7 +80,7 @@
 							<object class="IBUILabel" id="278694324">
 								<reference key="NSNextResponder" ref="185598374"/>
 								<int key="NSvFlags">306</int>
-								<string key="NSFrame">{{50, 7}, {511, 28}}</string>
+								<string key="NSFrame">{{50, 9}, {511, 28}}</string>
 								<reference key="NSSuperview" ref="185598374"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="273521249"/>
@@ -106,10 +106,9 @@
 							<object class="IBUILabel" id="620320926">
 								<reference key="NSNextResponder" ref="185598374"/>
 								<int key="NSvFlags">306</int>
-								<string key="NSFrame">{{68, 33}, {493, 25}}</string>
+								<string key="NSFrame">{{68, 31}, {493, 25}}</string>
 								<reference key="NSSuperview" ref="185598374"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -270,10 +269,10 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="645954643"/>
+							<reference ref="741275514"/>
 							<reference ref="273521249"/>
 							<reference ref="278694324"/>
 							<reference ref="620320926"/>
-							<reference ref="741275514"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">actionItemCell</string>
