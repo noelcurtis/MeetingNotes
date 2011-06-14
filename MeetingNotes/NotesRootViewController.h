@@ -28,7 +28,7 @@
 @property (nonatomic, retain) SortDetailViewController* sortDetailViewController;
 @property (nonatomic, retain) NSMutableArray* agendaItems;
 @property (nonatomic, retain) IBOutlet AgendaItemCell* agendaItemCell;
--(IBAction) addActionItem:(id) sender;
+-(IBAction) addAgendaItem:(id) sender;
 
 //-(void)saveContextAndReloadTable;
 -(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem;

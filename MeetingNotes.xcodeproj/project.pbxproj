@@ -184,6 +184,7 @@
 		C7E162FF13A4321600FA4790 /* favstar_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FD13A4321600FA4790 /* favstar_off.png */; };
 		C7E1630013A4321600FA4790 /* favstar_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FE13A4321600FA4790 /* favstar_on.png */; };
 		C7EF0AED139B2ECF00314AC5 /* FileHandlerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF0AEC139B2ECF00314AC5 /* FileHandlerController.m */; };
+		C7F2BC2713A7069400EE92BA /* btn_add_action.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F2BC2613A7069400EE92BA /* btn_add_action.png */; };
 		C7F96FE21368EDA300737BEA /* CreateMinutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */; };
 		C7F96FE31368EDA300737BEA /* StartsEndsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */; };
 		C7F96FE61368EE2A00737BEA /* CreateMinutesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F96FE41368EE2A00737BEA /* CreateMinutesView.xib */; };
@@ -510,6 +511,7 @@
 		C7E162FE13A4321600FA4790 /* favstar_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favstar_on.png; path = Images/favstar_on.png; sourceTree = "<group>"; };
 		C7EF0AEB139B2ECF00314AC5 /* FileHandlerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHandlerController.h; sourceTree = "<group>"; };
 		C7EF0AEC139B2ECF00314AC5 /* FileHandlerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandlerController.m; sourceTree = "<group>"; };
+		C7F2BC2613A7069400EE92BA /* btn_add_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_add_action.png; path = Images/btn_add_action.png; sourceTree = "<group>"; };
 		C7F96FDE1368EDA300737BEA /* CreateMinutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMinutesViewController.h; sourceTree = "<group>"; };
 		C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMinutesViewController.m; sourceTree = "<group>"; };
 		C7F96FE01368EDA300737BEA /* StartsEndsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartsEndsViewController.h; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7F2BC2613A7069400EE92BA /* btn_add_action.png */,
 				C759C4D513A5B15C006E6485 /* act_list_item_bg.png */,
 				C759C4D313A5AF8D006E6485 /* running_man_small.png */,
 				C759C4D713A5BA72006E6485 /* checkbox_off.png */,
@@ -1237,6 +1240,7 @@
 				C759C4D913A5BA72006E6485 /* checkbox_off.png in Resources */,
 				C759C4DA13A5BA72006E6485 /* checkbox_on.png in Resources */,
 				C7DFE63113A6F47A000CA2D2 /* btn_back.png in Resources */,
+				C7F2BC2713A7069400EE92BA /* btn_add_action.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

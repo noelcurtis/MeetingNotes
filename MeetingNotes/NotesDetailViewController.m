@@ -18,6 +18,7 @@
 @interface NotesDetailViewController()
 - (void)configureButtonsForToolbar;
 @property (nonatomic, retain) UIPopoverController* agendaItemPopoverController;
+@property (nonatomic, retain) UIBarButtonItem *newActionItemButton;
 @end
 
 @implementation NotesDetailViewController
@@ -30,6 +31,7 @@
 @synthesize noteView;
 @synthesize customNotesTextViewCell;
 @synthesize actionItemCell;
+@synthesize newActionItemButton;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -40,6 +42,7 @@
 }
 
 - (void)dealloc{
+    [newActionItemButton release];
     [actionItemCell release];
     [customNotesTextViewCell release];
     [noteView release];
@@ -88,25 +91,25 @@
 -(void)configureButtonsForToolbar{
     // setup buttons on the toolbar
     NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
-    UIBarButtonItem *newAgendaItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
-    
+    //UIBarButtonItem *newActionItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
+    newActionItemButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"btn_add_action"] target:self action:@selector(newActionItemAction:)];
     switch ([items count]) {
         case 4:{
-            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:[items objectAtIndex:0], [items objectAtIndex:1], newAgendaItemButton ,nil]];
+            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:[items objectAtIndex:0], [items objectAtIndex:1], newActionItemButton ,nil]];
             break;
         }
         case 3:{
             UIBarButtonItem *replaceFlexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
             [self.detailViewControllerToolbar setItems:[NSArray arrayWithObjects:
                                                         replaceFlexButton,
-                                                        newAgendaItemButton, nil] animated:YES];
+                                                        newActionItemButton, nil] animated:YES];
             [replaceFlexButton release];
             break;
         }
         default:
             break;
     }
-    [newAgendaItemButton release];
+    [newActionItemButton release];
 }
 
 - (void)viewDidUnload{
@@ -351,7 +354,7 @@
         self.agendaItemPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
         //self.agendaItemPopoverController.delegate = self;
         agendaItemPopoverController.popoverContentSize = actionItemsVC.view.frame.size;
-        [agendaItemPopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [agendaItemPopoverController presentPopoverFromBarButtonItem:newActionItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         NSLog(@"Action item view conrtollers displayed.");
         [navigationController release];
         [actionItemsVC release];

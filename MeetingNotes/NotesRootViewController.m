@@ -81,7 +81,7 @@
 
 #pragma mark - Functions to update and save context
 
--(IBAction) addActionItem:(id)sender{
+-(IBAction) addAgendaItem:(id)sender{
     
     // example code to create new action items
     NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
@@ -182,7 +182,7 @@
     // setup navigation bar
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																							target:self 
-																							action:@selector(addActionItem:)] autorelease];
+																							action:@selector(addAgendaItem:)] autorelease];
     
     UIImage *backButtonImage = [UIImage imageNamed:@"btn_back"];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barItemWithImage:backButtonImage target:self action:@selector(backButtonAction:)];
