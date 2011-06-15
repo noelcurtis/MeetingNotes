@@ -44,7 +44,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -52,7 +53,8 @@
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] 
                                                initWithBarButtonSystemItem: UIBarButtonSystemItemDone
                                                target:self action:@selector(done:)] 
-                                              autorelease];}
+                                              autorelease];
+}
 
 - (void)viewDidUnload
 {
@@ -96,7 +98,9 @@
         case 0:
             title = @"Accounts:";
             break;
-            
+        case 1:
+            title = @"Other:";
+            break;
         default:
             break;
     }
@@ -107,13 +111,22 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 2;
+    switch (section) {
+        case 0:
+            return 3;
+            break;
+        case 1:
+            return 1;
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,19 +137,27 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"Link Dropbox";
-            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-            break;
-        case 1:
-            cell.textLabel.text = @"Rate the app";
-            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-            break;
-        default:
-            break;
+    if(indexPath.section == 0){
+        // Configure the cell...
+        switch (indexPath.row) {
+            case 0:
+                cell.textLabel.text = @"Link Dropbox Account";
+                [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                break;
+            case 1:
+                cell.textLabel.text = @"Link Twitter Account";
+                [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                break;
+            case 2:
+                cell.textLabel.text = @"Link Evernote Account";
+                [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                break;
+            default:
+                break;
+        }
+    }else{
+        cell.textLabel.text = @"Rate the app";
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     return cell;

@@ -53,6 +53,7 @@
     [super viewDidLoad];
     self.title = @"Categories";
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
