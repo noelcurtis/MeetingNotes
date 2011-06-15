@@ -19,6 +19,10 @@
 - (void)configureButtonsForToolbar;
 @property (nonatomic, retain) UIPopoverController* agendaItemPopoverController;
 @property (nonatomic, retain) UIBarButtonItem *newActionItemButton;
+@property (nonatomic, retain) UIBarButtonItem *meetingSettingsButton;
+@property (nonatomic, retain) UIBarButtonItem *shareButton;
+-(IBAction) meetingSettingsAction:(id)sender;
+-(IBAction) shareAction:(id)sender;
 @end
 
 @implementation NotesDetailViewController
@@ -32,6 +36,8 @@
 @synthesize customNotesTextViewCell;
 @synthesize actionItemCell;
 @synthesize newActionItemButton;
+@synthesize meetingSettingsButton;
+@synthesize shareButton;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -42,6 +48,8 @@
 }
 
 - (void)dealloc{
+    [meetingSettingsButton release];
+    [shareButton release];
     [newActionItemButton release];
     [actionItemCell release];
     [customNotesTextViewCell release];
@@ -91,17 +99,23 @@
 -(void)configureButtonsForToolbar{
     // setup buttons on the toolbar
     NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
-    //UIBarButtonItem *newActionItemButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Action Item" style:UIBarButtonItemStyleBordered target:self action:@selector(newActionItemAction:)];
-    newActionItemButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"btn_add_action"] target:self action:@selector(newActionItemAction:)];
+    newActionItemButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"btn_add_action"] 
+                                                     target:self action:@selector(newActionItemAction:)];
+    meetingSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] 
+                                                             style:UIBarButtonItemStyleBordered target:self action:@selector(meetingSettingsAction:)];
+    shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_action.png"] 
+                                                   style:UIBarButtonItemStyleBordered target:self action:@selector(shareAction:)];
     switch ([items count]) {
-        case 4:{
-            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:[items objectAtIndex:0], [items objectAtIndex:1], newActionItemButton ,nil]];
+        case 5:{
+            [[items objectAtIndex:0] setTitle:@"Agenda Items"];
+            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:[items objectAtIndex:0], 
+                                                        [items objectAtIndex:1], meetingSettingsButton, shareButton,newActionItemButton ,nil]];
             break;
         }
-        case 3:{
+        case 4:{
             UIBarButtonItem *replaceFlexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
             [self.detailViewControllerToolbar setItems:[NSArray arrayWithObjects:
-                                                        replaceFlexButton,
+                                                        replaceFlexButton,meetingSettingsButton, shareButton,
                                                         newActionItemButton, nil] animated:YES];
             [replaceFlexButton release];
             break;
@@ -125,6 +139,14 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self configureButtonsForToolbar];
+    /*self.notesRootViewController.currentSelectedCell = nil;
+    // display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    if([self.agendaItems count] >= 1)
+    {
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    }
+    [indexPath release];*/
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -360,6 +382,13 @@
         [actionItemsVC release];
     }
 
+}
+
+-(IBAction) meetingSettingsAction:(id)sender{
+    NSLog(@"Meeting settings button pressed");
+}
+-(IBAction) shareAction:(id)sender{
+    NSLog((@"Share action button pressed"));
 }
 
 #pragma mark - ActionItemViewControllerDelegate

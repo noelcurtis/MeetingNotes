@@ -55,6 +55,9 @@
 
 #pragma mark - Managing the active detail view
 -(void) setupToolbarForMeetingListViewController{
+    
+    NSMutableArray *currentItems = [[self.toolBar items] mutableCopy];
+       
     UIBarButtonItem *calenderButton = [[UIBarButtonItem alloc]  initWithImage:[UIImage imageNamed:@"icon_calendar"] style:
                                        UIBarButtonItemStylePlain target:self action:@selector(calenderButtonClick:)];
     UIBarButtonItem *addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
@@ -63,11 +66,19 @@
     
     UIBarButtonItem *applicationSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(didPressSettingsButton:)];
     
-    NSMutableArray *items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
+    NSMutableArray *items;
+    if([currentItems count]==5)
+    {
+        [[currentItems objectAtIndex:0] setTitle:@"Categories"];
+        items = [NSMutableArray arrayWithObjects: [currentItems objectAtIndex:0] ,flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
+    }else{
+        items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
+    }
     [self.toolBar setItems:items];
     [calenderButton release];
     [flexButton release];
     [addMeetingButton release];
+    [currentItems release];
 }
 
 -(void) setupWithMeetingListViewController{
@@ -203,7 +214,6 @@
     [self setupWithActiveViewController:notesDetailView];
     [self hideActiveViewController];
     [notesDetailView release];
-
 }
 
 #pragma mark -
@@ -224,7 +234,12 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem 
        forPopoverController:(UIPopoverController *)pc{
     
-    barButtonItem.title = aViewController.title;  // set the title for the button
+    //barButtonItem.title = aViewController.title;  // set the title for the button
+    if ([self.activeViewController isKindOfClass:[MeetingListViewController class]]) {
+        barButtonItem.title = aViewController.title;
+    }else{
+        barButtonItem.title = @"Agenda Items";
+    }
     NSMutableArray *items = [[self.toolBar items] mutableCopy];
     NSMutableArray *newItems = [NSMutableArray arrayWithObject:barButtonItem];
     [newItems addObjectsFromArray:items];

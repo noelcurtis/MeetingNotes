@@ -18,7 +18,6 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)addToolBarToView;
 - (void)selectCellAtIndexPath:(NSIndexPath*) indexPath;
-@property (nonatomic, retain)AgendaItemCell *currentSelectedCell;
 @property (nonatomic, retain)UIToolbar *toolbar;
 @end
 
@@ -130,6 +129,7 @@
     [self.tableView reloadData];
     NSUInteger positionOfNewAgendaItem = [self.agendaItems indexOfObject:newAgendaItem];
     NSIndexPath *indexOfNewAgendaItem = [[NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0] autorelease];
+    [self.tableView selectRowAtIndexPath:indexOfNewAgendaItem animated:YES scrollPosition:UITableViewScrollPositionTop];
     [self selectCellAtIndexPath:indexOfNewAgendaItem];
     /*AgendaItemCell *cellForItemBeingEdited = (AgendaItemCell*)[self.tableView cellForRowAtIndexPath:indexOfNewAgendaItem];
     if(self.currentSelectedCell){
@@ -263,17 +263,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self addToolBarToView];
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
-
+    //display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
     self.currentSelectedCell = nil;
-    // display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if([self.agendaItems count] >= 1)
     {
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-        //[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
     }
     [indexPath release];
 }
