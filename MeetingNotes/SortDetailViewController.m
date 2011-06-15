@@ -212,7 +212,9 @@
     // pass the toolbar on so the new detail view can edit it
     notesDetailView.detailViewControllerToolbar = self.toolBar;
     [self setupWithActiveViewController:notesDetailView];
-    [self hideActiveViewController];
+    if([meetingToEdit.AgendaItems count]==0){
+        [self hideActiveViewController];
+    }
     [notesDetailView release];
 }
 

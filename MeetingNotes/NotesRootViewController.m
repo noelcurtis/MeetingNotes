@@ -196,6 +196,7 @@
     }
     self.title = self.meetingBeingEdited.name;
     self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+    self.currentSelectedCell = nil;
 }
 
 -(IBAction)backButtonAction:(id)sender{
@@ -266,14 +267,14 @@
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
     //display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
-    self.currentSelectedCell = nil;
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    if([self.agendaItems count] >= 1)
-    {
-        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    if(!currentSelectedCell){
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        if([self.agendaItems count] >= 1)
+        {
+            [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+        }
+        [indexPath release];
     }
-    [indexPath release];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
