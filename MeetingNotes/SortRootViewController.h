@@ -12,10 +12,13 @@
 @class NotesRootViewController;
 @class SortViewCell;
 
-@interface SortRootViewController : UITableViewController<UISplitViewControllerDelegate> {
+@interface SortRootViewController : UITableViewController<UISplitViewControllerDelegate, NSFetchedResultsControllerDelegate> {
     
 }
 
 @property (nonatomic, retain) IBOutlet SortDetailViewController *dvController;
 @property (nonatomic, retain) IBOutlet SortViewCell *sortViewCell;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
 @end

@@ -2,23 +2,25 @@
 //  Meeting.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 6/12/11.
+//  Created by Noel Curtis on 6/15/11.
 //  Copyright (c) 2011 EMC Corporation. All rights reserved.
 //
 
 #import "Meeting.h"
 #import "AgendaItem.h"
 #import "Attendee.h"
+#import "Category.h"
 
 
 @implementation Meeting
 @dynamic location;
-@dynamic startDate;
 @dynamic endDate;
-@dynamic name;
+@dynamic startDate;
 @dynamic isStarred;
+@dynamic name;
 @dynamic Attendees;
 @dynamic AgendaItems;
+@dynamic Category;
 
 - (void)addAttendeesObject:(Attendee *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -84,6 +86,5 @@
     }
     return actionItemCount;
 }
-
 
 @end

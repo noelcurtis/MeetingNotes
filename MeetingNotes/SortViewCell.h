@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Category.h"
 
 @interface SortViewCell : UITableViewCell {
     
 }
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet UILabel *categoryCountLabel;
+
+-(void) setupCellWithCategory:(Category*) category;
 @end

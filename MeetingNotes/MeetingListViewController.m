@@ -274,7 +274,6 @@
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Meeting" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     

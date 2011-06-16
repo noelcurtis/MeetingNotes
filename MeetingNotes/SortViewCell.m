@@ -14,6 +14,11 @@
 @synthesize categoryCountLabel;
 
 
+-(void) setupCellWithCategory:(Category *)category{
+    self.categoryLabel.text = category.name;
+    self.categoryCountLabel.text = [NSString stringWithFormat:@"%d", [category.Meetings count]];
+}
+
 -(void)dealloc{
     [categoryLabel release];
     [categoryCountLabel release];
