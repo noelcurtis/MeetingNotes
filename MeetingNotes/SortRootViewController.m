@@ -18,7 +18,6 @@
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 //+ (void) setDefaultCategory:(Category*) category;
 //- (void) reassignMeetingsForCategory:(Category*) category;
-- (NSArray*) getAllMeetings;
 @end
 
 
@@ -285,7 +284,7 @@
         [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];
     }else{
         if(indexPath.row == 1){
-            ((MeetingListViewController*)self.dvController.activeViewController).categoryForMeetings = self.selectedCategory;
+            ((MeetingListViewController*)self.dvController.activeViewController).categoryForMeetings = nil;
             ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [[NSMutableArray alloc] initWithArray:[self getAllMeetings]];
             ((MeetingListViewController*)self.dvController.activeViewController).managedObjectContext = [fetchedResultsController managedObjectContext];
             [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];

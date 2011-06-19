@@ -146,7 +146,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        // Delete the row from the table
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         // Delete the managed object for the given index path
         Meeting *meetingToDelete = [self.meetingsForCategory objectAtIndex:indexPath.row];
         Category *categoryForMeeting = meetingToDelete.Category;
@@ -164,8 +165,11 @@
 			abort();*/
 		}
         // reload the meetings for a category to update the expected number of rows in the table
-        self.meetingsForCategory = [[NSMutableArray alloc] initWithArray:[categoryForMeeting.Meetings allObjects]];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        if(categoryForMeeting){
+            self.meetingsForCategory = [[NSMutableArray alloc] initWithArray:[categoryForMeeting.Meetings allObjects]];
+        }else{
+            self.meetingsForCategory = [[NSMutableArray alloc] initWithArray:[self.masterSortRootView getAllMeetings]];
+        }
     }
 }
 

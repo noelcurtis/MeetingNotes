@@ -27,5 +27,7 @@
 
 -(void) selectRowForCategory:(Category*) category;
 -(IBAction) addNewCategory:(id)sender;
+- (NSArray*) getAllMeetings;
+
 //+ (Category *)getDefaultCategory;
 @end
