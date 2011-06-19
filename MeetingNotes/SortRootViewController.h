@@ -11,6 +11,7 @@
 @class SortDetailViewController;
 @class NotesRootViewController;
 @class SortViewCell;
+@class Category;
 
 @interface SortRootViewController : UITableViewController<UISplitViewControllerDelegate, NSFetchedResultsControllerDelegate> {
     
@@ -20,5 +21,11 @@
 @property (nonatomic, retain) IBOutlet SortViewCell *sortViewCell;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) IBOutlet UITableViewCell *newCategoryCell;
+@property (nonatomic, retain) IBOutlet UITextField *newCategoryTextField;
+@property (nonatomic, retain) IBOutlet Category *selectedCategory;
 
+-(void) selectRowForCategory:(Category*) category;
+-(IBAction) addNewCategory:(id)sender;
+//+ (Category *)getDefaultCategory;
 @end

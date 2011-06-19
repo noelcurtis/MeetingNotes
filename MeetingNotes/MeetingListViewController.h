@@ -11,16 +11,19 @@
 #import "MeetingCell.h"
 #import <Eventkit/EventKit.h>
 
+@class SortRootViewController;
 @class SortDetailViewController;
-@interface MeetingListViewController : UITableViewController<NSFetchedResultsControllerDelegate> {
+@class Category;
+@interface MeetingListViewController : UITableViewController {
     
 }
 
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) SortDetailViewController *masterSortDetailView;
+@property (nonatomic, retain) SortRootViewController *masterSortRootView;
 @property (nonatomic, retain) IBOutlet MeetingCell *meetingCell;
-
+@property (nonatomic, retain) NSMutableArray *meetingsForCategory;
+@property (nonatomic, retain) Category *categoryForMeetings;
 
 -(void) insertNewMeeting:(Meeting *)newMeeting;
 -(void) insertNewMeetingWithEvent:(EKEvent*)event;

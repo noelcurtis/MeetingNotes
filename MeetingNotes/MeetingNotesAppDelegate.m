@@ -40,11 +40,13 @@
     [splitViewController.view setBackgroundColor:[UIColor clearColor]];
 	sortDVController = [[SortDetailViewController alloc] init];
     sortDVController.managedObjectContext = self.managedObjectContext;
-	splitViewController.delegate = sortDVController;
+    splitViewController.delegate = sortDVController;
 	
 	sortRVController = [[SortRootViewController alloc] initWithNibName:@"SortRootViewController" bundle:nil];
 	sortRVController.dvController = sortDVController;
-	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
+    sortRVController.managedObjectContext = self.managedObjectContext;
+	sortDVController.rvController = sortRVController;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
     nav.view.backgroundColor = [UIColor clearColor];
     nav.view.opaque = NO;
     UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 276, 705)];
@@ -178,10 +180,26 @@
     {
         return __persistentStoreCoordinator;
     }
-    
+    /*
+    NSString *storePath = [[self applicationDocumentsDirectoryAsString] stringByAppendingPathComponent: @"MeetingNotes.sqlite"];
+	
+	 Set up the store.
+	 For the sake of illustration, provide a pre-populated default store.
+	 
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	// If the expected store doesn't exist, copy the default store.
+	if (![fileManager fileExistsAtPath:storePath]) {
+		NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"SeedMeetingNotes" ofType:@"sqlite"];
+		if (defaultStorePath) {
+			[fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
+		}
+	}*/
+
+    //NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MeetingNotes.sqlite"];
     
     NSError *error = nil;
+    //NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];	
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
@@ -225,6 +243,16 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+/**
+ Returns the path to the application's documents directory.
+ */
+- (NSString *)applicationDocumentsDirectoryAsString {
+	
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    return basePath;
+}
+
 #pragma mark -
 #pragma mark DBSessionDelegate methods
 
@@ -242,9 +270,9 @@
 	
 	NSString* errorMsg = nil;
 	if ([consumerKey rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-		errorMsg = @"Make sure you set the consumer key correctly in DBRouletteAppDelegate.m";
+		errorMsg = @"Make sure you set the consumer key correctly in AppDelegate.m";
 	} else if ([consumerSecret rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-		errorMsg = @"Make sure you set the consumer secret correctly in DBRouletteAppDelegate.m";
+		errorMsg = @"Make sure you set the consumer secret correctly in AppDelegate.m";
 	}
 	
 	DBSession* session = 

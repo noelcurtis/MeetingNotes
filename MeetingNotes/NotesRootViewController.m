@@ -13,6 +13,7 @@
 #import "SortDetailViewController.h"
 #import "FileHandlerController.h"
 #import "AgendaItemCell.h"
+#import "SortRootViewController.h"
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -204,6 +205,7 @@
     // replace the detail view in the split view controller
     NSLog(@"Replacing the detail view with the MeetingListViewController");
     [self.sortDetailViewController setupWithMeetingListViewController];
+    [self.sortDetailViewController.rvController selectRowForCategory:self.meetingBeingEdited.Category];
 }
 
 -(void)addToolBarToView{

@@ -28,5 +28,6 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (NSString *)applicationDocumentsDirectoryAsString;
 
 @end

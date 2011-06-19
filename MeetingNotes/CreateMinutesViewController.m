@@ -8,14 +8,19 @@
 
 #import "CreateMinutesViewController.h"
 #import "StartsEndsViewController.h"
+#import "SelectCategorieViewController.h"
 #import "Attendee.h"
 #import "Meeting.h"
+#import "SortRootViewController.h"
+
 @class Meeting;
 @class Attendee;
+@class Category;
 
 @interface CreateMinutesViewController()
 @property (nonatomic, retain) Attendee* personSelectedFromPeoplePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
+@property (nonatomic, retain) Category *selectedCategory;
 @end
 
 @implementation CreateMinutesViewController
@@ -28,6 +33,7 @@
 @synthesize startsDateLabel;
 @synthesize endsDateLabel;
 @synthesize dateFormatter;
+@synthesize selectedCategory;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -40,8 +46,6 @@
 */
 
 -(void) viewWillAppear:(BOOL)animated{
-    CGSize size = {320, 353};
-    [self setContentSizeForViewInPopover:size];
     [super viewWillAppear:animated];
 }
 
@@ -55,7 +59,14 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	
+    CGSize size = {320, 353};
+    [self setContentSizeForViewInPopover:size];
+    // setup the default category
+    //self.selectedCategory = [SortRootViewController getDefaultCategory];
+    
+    // setup the dates
+    self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 	[self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 	[self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
@@ -121,6 +132,7 @@
     [newMeeting addAttendees:[[NSSet alloc] initWithArray:self.attendees]];
     [newMeeting setStartDate:self.startsDate];
     [newMeeting setEndDate:self.endsDate];
+    [newMeeting setCategory:self.selectedCategory];
     if (![self.managedObjectContext save:&error]) {
         
         /*Replace this implementation with code to handle the error appropriately.
@@ -148,6 +160,22 @@
 	[alert release];
 }
 
+#pragma mark - SelectCategoryViewControllerDelegate methods
+
+-(void) didSelectCategory:(Category *)category{
+    if(category != nil){
+        // get new category
+        self.selectedCategory = category;
+    }else{
+        //reset category to default category
+        self.selectedCategory = nil;
+    }
+    [self.tableView cellForRowAtIndexPath:
+     [NSIndexPath indexPathForRow:0 inSection:2]].textLabel.text
+    = [NSString stringWithFormat:@"Category: %@", self.selectedCategory.name];
+
+}
+
 #pragma mark -
 #pragma mark UIAlertView delegate methods
 
@@ -170,7 +198,7 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *title = nil;
     switch (section) {
-        case 2:
+        case 3:
             if([self.attendees count] > 0)
                 title = @"Attendees";
             break;
@@ -183,7 +211,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 
@@ -196,6 +224,8 @@
         case 1:
             return 1;
         case 2:
+            return 1;
+        case 3:
             return [self.attendees count];
         default:
             return 0;
@@ -217,7 +247,22 @@
 		if (indexPath.row == 0) {
 			return startsEndsCell;
 		}
-	}else{
+	}else if(indexPath.section == 2){
+        static NSString *CellIdentifier = @"newCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        if(self.selectedCategory){
+            cell.textLabel.text = [NSString stringWithFormat:@"Category: %@",self.selectedCategory.name];
+        }else{
+            cell.textLabel.text = [NSString stringWithFormat:@"Category: All Meetings"];
+        }
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [cell setSelectionStyle:UITableViewCellEditingStyleNone];
+        return cell;
+    }
+    else{
         static NSString *CellIdentifier = @"newCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
@@ -357,6 +402,17 @@
         startsEndsVC.title = @"Start & End";
         [self.navigationController pushViewController:startsEndsVC animated:YES];
 		[startsEndsVC release];
+	}
+    if (indexPath.section == 2 && indexPath.row == 0) {
+		[titleTextField resignFirstResponder];
+		[locationTextField resignFirstResponder];
+		
+        SelectCategorieViewController *selectCatagoryVC = [[SelectCategorieViewController alloc] 
+                                                           initWithNibName:@"SelectCategorieViewController" bundle:nil]; 
+        selectCatagoryVC.managedObjectContext = self.managedObjectContext;
+        selectCatagoryVC.selectCategoryViewControllerDelegate = self;
+        [self.navigationController pushViewController:selectCatagoryVC animated:YES];
+		[selectCatagoryVC release];
 	}
 }
 

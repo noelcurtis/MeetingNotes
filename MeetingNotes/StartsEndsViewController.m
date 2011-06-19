@@ -38,7 +38,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Done Button
+	CGSize size = {320, 353};
+    [self setContentSizeForViewInPopover:size];
+    // Done Button
 	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
 	//																						target:self 
 	//																						action:@selector(done:)] autorelease];
@@ -57,8 +59,6 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    CGSize size = {320, 353};
-    [self setContentSizeForViewInPopover:size];
     [self tableView:_tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     [super viewWillAppear:animated];

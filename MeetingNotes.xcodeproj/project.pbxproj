@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C70061B6139DC46A00FD9766 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C70061B5139DC46A00FD9766 /* icon_settings.png */; };
+		C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */; };
+		C70A947F13AAFBF700680AF7 /* SelectCategorieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */; };
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
 		C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
+		C727BB1313AD3878002A69EA /* SeedMeetingNotes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C727BB1213AD3878002A69EA /* SeedMeetingNotes.sqlite */; };
 		C727F62113A1D56D0034FDD7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C727F62213A1D56D0034FDD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
 		C727F62313A1D56D0034FDD7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
@@ -201,12 +204,16 @@
 
 /* Begin PBXFileReference section */
 		C70061B5139DC46A00FD9766 /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_settings.png; path = Images/icon_settings.png; sourceTree = "<group>"; };
+		C70A947B13AAFBF600680AF7 /* SelectCategorieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategorieViewController.h; sourceTree = "<group>"; };
+		C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategorieViewController.m; sourceTree = "<group>"; };
+		C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCategorieViewController.xib; sourceTree = "<group>"; };
 		C7132DA7135E7F5A0012B12A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C7132DA9135E7F680012B12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7153EFE1383783200A48C85 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		C7153EFF1383783200A48C85 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
 		C715C0E213A03EFD004CCF7D /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
 		C715C0E313A03EFD004CCF7D /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
+		C727BB1213AD3878002A69EA /* SeedMeetingNotes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeedMeetingNotes.sqlite; sourceTree = "<group>"; };
 		C727F62013A1D56D0034FDD7 /* MeetingNotesUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetingNotesUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C727F62613A1D56D0034FDD7 /* MeetingNotesUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeetingNotesUnitTests-Info.plist"; sourceTree = "<group>"; };
 		C727F62813A1D56D0034FDD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -905,6 +912,7 @@
 		C78540E7135CF9B7001AAEDD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C727BB1213AD3878002A69EA /* SeedMeetingNotes.sqlite */,
 				C78540E8135CF9B7001AAEDD /* MeetingNotes-Info.plist */,
 				C78540E9135CF9B7001AAEDD /* InfoPlist.strings */,
 				C78540EC135CF9B7001AAEDD /* MeetingNotes-Prefix.pch */,
@@ -1126,6 +1134,9 @@
 				C7F96FDF1368EDA300737BEA /* CreateMinutesViewController.m */,
 				C7F96FE01368EDA300737BEA /* StartsEndsViewController.h */,
 				C7F96FE11368EDA300737BEA /* StartsEndsViewController.m */,
+				C70A947B13AAFBF600680AF7 /* SelectCategorieViewController.h */,
+				C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */,
+				C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */,
 			);
 			name = "ManualAddMeeting Controllers";
 			sourceTree = "<group>";
@@ -1258,6 +1269,8 @@
 				C7AC155513A7123800BD8649 /* paper_bg.png in Resources */,
 				C7D97BC513A7154400D696D0 /* icon_calendar.png in Resources */,
 				C7AC9CE613A836E100CE8438 /* icon_action.png in Resources */,
+				C70A947F13AAFBF700680AF7 /* SelectCategorieViewController.xib in Resources */,
+				C727BB1313AD3878002A69EA /* SeedMeetingNotes.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1417,6 +1430,7 @@
 				C7FF1D0213A515F1001A9A0C /* AgendaItemCell.m in Sources */,
 				C742485013A9698D0071A3F7 /* Meeting.m in Sources */,
 				C742485413A969B70071A3F7 /* Category.m in Sources */,
+				C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

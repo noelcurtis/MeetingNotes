@@ -10,11 +10,13 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "Meeting.h"
+#import "Category.h"
+#import "SelectCategorieViewController.h"
 
 @protocol CreateMinutesModalViewControllerDelegate;
 
 @interface CreateMinutesViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate, 
-UITableViewDelegate, UITableViewDataSource> {
+UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate> {
 	id<CreateMinutesModalViewControllerDelegate> delegate;
 	
 	UITextField *titleTextField;

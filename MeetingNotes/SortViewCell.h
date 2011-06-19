@@ -16,4 +16,5 @@
 @property (nonatomic, retain) IBOutlet UILabel *categoryCountLabel;
 
 -(void) setupCellWithCategory:(Category*) category;
+-(void) setupCellWithString:(NSString*) string;
 @end

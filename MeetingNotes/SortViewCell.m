@@ -7,8 +7,6 @@
 //
 
 #import "SortViewCell.h"
-
-
 @implementation SortViewCell
 @synthesize categoryLabel;
 @synthesize categoryCountLabel;
@@ -16,7 +14,18 @@
 
 -(void) setupCellWithCategory:(Category *)category{
     self.categoryLabel.text = category.name;
-    self.categoryCountLabel.text = [NSString stringWithFormat:@"%d", [category.Meetings count]];
+    if ([category.Meetings count] > 0) {
+        [self.categoryCountLabel setHidden:NO];
+        self.categoryCountLabel.text = [NSString stringWithFormat:@"%d", [category.Meetings count]];
+    }else{
+        [self.categoryCountLabel setHidden:YES];
+    }
+    
+}
+
+-(void) setupCellWithString:(NSString *)string{
+    [self.categoryCountLabel setHidden:YES];
+    self.categoryLabel.text = string;
 }
 
 -(void)dealloc{

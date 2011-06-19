@@ -83,8 +83,8 @@
 
 -(void) setupWithMeetingListViewController{
     MeetingListViewController *meetingsList = [[MeetingListViewController alloc] initWithNibName:@"MeetingListViewController" bundle:nil];
-    meetingsList.managedObjectContext = self.managedObjectContext;
     meetingsList.masterSortDetailView = self;
+    meetingsList.masterSortRootView = self.rvController;
     [self setupWithActiveViewController:meetingsList];
     [meetingsList release];
 }
