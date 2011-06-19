@@ -166,14 +166,15 @@
     if(category != nil){
         // get new category
         self.selectedCategory = category;
+        [self.tableView cellForRowAtIndexPath:
+         [NSIndexPath indexPathForRow:0 inSection:2]].textLabel.text
+        = [NSString stringWithFormat:@"Category: %@", self.selectedCategory.name];
     }else{
         //reset category to default category
         self.selectedCategory = nil;
+        [self.tableView cellForRowAtIndexPath:
+         [NSIndexPath indexPathForRow:0 inSection:2]].textLabel.text = @"Category: All Meetings";
     }
-    [self.tableView cellForRowAtIndexPath:
-     [NSIndexPath indexPathForRow:0 inSection:2]].textLabel.text
-    = [NSString stringWithFormat:@"Category: %@", self.selectedCategory.name];
-
 }
 
 #pragma mark -
@@ -412,6 +413,13 @@
         selectCatagoryVC.managedObjectContext = self.managedObjectContext;
         selectCatagoryVC.selectCategoryViewControllerDelegate = self;
         [self.navigationController pushViewController:selectCatagoryVC animated:YES];
+        if(self.selectedCategory){
+            NSIndexPath *selectedCategoryIndex = [selectCatagoryVC.fetchedResultsController indexPathForObject:self.selectedCategory];
+            //[selectCatagoryVC.tableView selectRowAtIndexPath:selectedCategoryIndex animated:NO scrollPosition:UITableViewScrollPositionTop];
+            //[[selectCatagoryVC.tableView cellForRowAtIndexPath:selectedCategoryIndex] setAccessoryType:UITableViewCellAccessoryCheckmark];
+            //[selectedCategoryIndex release];
+            [selectCatagoryVC tableView:selectCatagoryVC.tableView didSelectRowAtIndexPath:selectedCategoryIndex];
+        }
 		[selectCatagoryVC release];
 	}
 }
