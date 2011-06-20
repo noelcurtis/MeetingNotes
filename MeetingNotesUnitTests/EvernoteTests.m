@@ -6,9 +6,31 @@
 //  Copyright 2011 EMC Corporation. All rights reserved.
 //
 
-#import "EvernoteTests.h"
+#import "Kiwi.h"
+#import "ENManager.h"
 
+SPEC_BEGIN(EvernoteTests)
 
-@implementation EvernoteTests
+describe(@"Creates a connection to evernote", ^{
+    it(@"it gets notebooks", ^{
+        // Try changing should to shouldNot, and vice-versa to see
+        // failures in action.
+        [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
+        [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
+        id notebooks = [[ENManager sharedInstance] notebooks];
+        [notebooks shouldNotBeNil];
+        NSLog(@"Success!");
+    });
+    
+    it(@"it gets default notebook", ^{
+        // Try changing should to shouldNot, and vice-versa to see
+        // failures in action.
+        [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
+        [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
+        EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
+        [defaultNoteBook shouldNotBeNil];
+        NSLog(@"Success!");
+    });
+});
 
-@end
+SPEC_END

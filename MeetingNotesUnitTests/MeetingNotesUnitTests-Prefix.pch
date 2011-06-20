@@ -5,3 +5,43 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
 #endif
+
+
+// Evernote user account for tests
+#define EVERNOTE_USER  @"noelcurtis"
+#define EVERNOTE_PASSWORD @"tgbtpE3UE73WBX"
+
+//------------------------------------------------------
+// System Information
+//------------------------------------------------------
+#if __APPLE__
+#if TARGET_OS_IPHONE | TARGET_IPHONE_SIMULATOR
+#define IPHONE_OS
+#else
+#define MAC_OS_X
+#endif
+#else
+#endif
+
+#ifdef	_DEBUG
+#define	DNSLog(...);	NSLog(__VA_ARGS__);
+#define DNSLogMethod	NSLog(@"[%s] %@", class_getName([self class]), NSStringFromSelector(_cmd));
+#define DNSLogPoint(p)	NSLog(@"%f,%f", p.x, p.y);
+#define DNSLogSize(p)	NSLog(@"%f,%f", p.width, p.height);
+#define DNSLogRect(p)	NSLog(@"%f,%f %f,%f", p.origin.x, p.origin.y, p.size.width, p.size.height);
+
+double startTime;
+#define D_START			startTime=CFAbsoluteTimeGetCurrent();
+#define D_END			DNSLog(@"[%s] %@ %f seconds", class_getName([self class]), NSStringFromSelector(_cmd), CFAbsoluteTimeGetCurrent() - startTime );
+#else
+#define DNSLog(...);	// NSLog(__VA_ARGS__);
+#define DNSLogMethod	// NSLog(@"[%s] %@", class_getName([self class]), NSStringFromSelector(_cmd) );
+#define DNSLogPoint(p)	// NSLog(@"%f,%f", p.x, p.y);
+#define DNSLogSize(p)	// NSLog(@"%f,%f", p.width, p.height);
+#define DNSLogRect(p)	// NSLog(@"%f,%f %f,%f", p.origin.x, p.origin.y, p.size.width, p.size.height);
+
+#define D_START			// CFAbsoluteTime startTime=CFAbsoluteTimeGetCurrent();
+#define D_END			// DNSLog(@"New %f seconds", CFAbsoluteTimeGetCurrent() - startTime );
+#endif
+
+#define SAFE_FREE(p) { if(p) { free(p); (p)=NULL; } }
