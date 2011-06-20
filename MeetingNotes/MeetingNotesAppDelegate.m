@@ -10,9 +10,11 @@
 #import "SortRootViewController.h"
 #import "SortDetailViewController.h"
 #import "DropboxSDK.h"
+#import "ENManager.h"
 
 @interface MeetingNotesAppDelegate() <DBSessionDelegate>
 -(void) setupDropboxSession;
+-(void) testEvernote;
 @end
 
 @implementation MeetingNotesAppDelegate
@@ -29,7 +31,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {   
     [self setupDropboxSession];
-    
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
@@ -288,6 +289,19 @@
 		  autorelease]
 		 show];
 	}
+
+}
+
+-(void) testEvernote{
+    [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
+    [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
+    EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
+    EDAMNoteList *notesForDefaultNoteBook  = [[ENManager sharedInstance] notesWithNotebookGUID:[defaultNoteBook guid]];
+    for ( EDAMNote *note in [notesForDefaultNoteBook notes]) {
+        NSString *contents = [[[ENManager sharedInstance] noteWithNoteGUID:note.guid] content];
+        NSLog(@"%@", contents);
+    }
+    NSLog(@"Success!");
 
 }
 
