@@ -11,6 +11,7 @@
 #import "SortDetailViewController.h"
 #import "DropboxSDK.h"
 #import "ENManager.h"
+#import "PersistantCoordinator.h"
 
 @interface MeetingNotesAppDelegate() <DBSessionDelegate>
 -(void) setupDropboxSession;
@@ -40,7 +41,7 @@
     splitViewController.view.opaque = NO;
     [splitViewController.view setBackgroundColor:[UIColor clearColor]];
 	sortDVController = [[SortDetailViewController alloc] init];
-    sortDVController.managedObjectContext = self.managedObjectContext;
+    sortDVController.managedObjectContext =  self.managedObjectContext;
     splitViewController.delegate = sortDVController;
 	
 	sortRVController = [[SortRootViewController alloc] initWithNibName:@"SortRootViewController" bundle:nil];

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSManagedObjectModel_CurrentVersionName</key>
+	<string>MeetingNotes</string>
+	<key>NSManagedObjectModel_VersionHashes</key>
+	<dict>
+		<key>MeetingNotes</key>
+		<dict>
+			<key>ActionItem</key>
+			<data>
+			Vro9WajI2Se3Sn+Q64mziL0nCYUvRMcvmZhBLxnGbxc=
+			</data>
+			<key>AgendaItem</key>
+			<data>
+			F2/chmvvaQX8k+LVttLDGKBOy36xJtO5tOiY4/twe6Q=
+			</data>
+			<key>Attendee</key>
+			<data>
+			144RKcLV1zf8KSPpHsZLNuLgFRivpO0ok4CXnZ9kAqY=
+			</data>
+			<key>Category</key>
+			<data>
+			FZ8n5veimuu17BKdcCBUIf5WRsj3Im3BV2dh+QS2kkc=
+			</data>
+			<key>Meeting</key>
+			<data>
+			GDjxBCFSxkmD+8mG3TAJdJTLPu0/c3GeS2sewcCiqIs=
+			</data>
+		</dict>
+	</dict>
+</dict>
+</plist>

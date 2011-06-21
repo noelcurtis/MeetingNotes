@@ -340,7 +340,11 @@
     [request setEntity:entity];
     
     NSError *error = nil;
-    return [managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *meetings = [managedObjectContext executeFetchRequest:request error:&error];
+    if (!error) {
+        NSLog(@"No meetings exist!");
+    }
+    return meetings;
 }
 
 

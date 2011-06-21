@@ -8,6 +8,8 @@
 
 #import "Kiwi.h"
 #import "ENManager.h"
+#import "Meeting.h"
+#import "PersistantCoordinator.h"
 
 SPEC_BEGIN(EvernoteTests)
 
@@ -19,7 +21,6 @@ describe(@"Creates a connection to evernote", ^{
         [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
         id notebooks = [[ENManager sharedInstance] notebooks];
         [notebooks shouldNotBeNil];
-        NSLog(@"Success!");
     });
     
     it(@"it gets default notebook", ^{
@@ -28,8 +29,7 @@ describe(@"Creates a connection to evernote", ^{
         [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
         [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
         EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
-        [defaultNoteBook shouldNotBeNil];
-        NSLog(@"Success!");
+        [defaultNoteBook shouldNotBeNil];    
     });
 });
 
