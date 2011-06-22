@@ -32,5 +32,5 @@
 - (void)addAgendaItems:(NSSet *)value;
 - (void)removeAgendaItems:(NSSet *)value;
 - (int)getActionItemCount;
-
+- (NSString *) asString;
 @end

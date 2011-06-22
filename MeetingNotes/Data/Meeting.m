@@ -10,6 +10,7 @@
 #import "AgendaItem.h"
 #import "Attendee.h"
 #import "Category.h"
+#import "ActionItem.h"
 
 
 @implementation Meeting
@@ -86,5 +87,26 @@
     }
     return actionItemCount;
 }
+
+- (NSString*)asString{
+    
+    NSString *meetingContents = [NSString stringWithFormat:@"Meeting Name:%@\r\nLocation:%@\r\n\r\n", self.name, self.location];
+    meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Start Date:%@\r\nEnd Date:%@\r\n\r\n", [self.startDate description], [self.endDate description]]];
+    
+    meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Attendees:"]];
+    
+	for (Attendee* attendee in self.Attendees) {
+        meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+    }
+    
+    [meetingContents stringByAppendingString:[NSString stringWithFormat:@"\r\n\r\n"]];
+    for (AgendaItem* agendaItem in self.AgendaItems) {
+        meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",[agendaItem asString]]];
+    }
+    return meetingContents;
+}
+
+
+
 
 @end

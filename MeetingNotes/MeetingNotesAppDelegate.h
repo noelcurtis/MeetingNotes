@@ -24,8 +24,6 @@
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (nonatomic, retain) UINavigationController *dropboxNavigationController;
-
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (NSString *)applicationDocumentsDirectoryAsString;

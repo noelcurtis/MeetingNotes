@@ -14,6 +14,9 @@
 #import "NoteView.h"
 #import "ActionItemCell.h"
 #import "ActionItem.h"
+#import "SharingServiceAdapter.h"
+#import "FileHandlerController.h"
+//@class SharingServiceAdapter;
 
 @interface NotesDetailViewController()
 - (void)configureButtonsForToolbar;
@@ -389,6 +392,9 @@
 }
 -(IBAction) shareAction:(id)sender{
     NSLog((@"Share action button pressed"));
+    [[SharingServiceAdapter sharedSharingService] uploadMeetingToDropbox:self.notesRootViewController.meetingBeingEdited];
+    //FileHandlerController *fileHandlerController = [[FileHandlerController alloc] init];
+    //[fileHandlerController exportMeetingToFile:self.notesRootViewController.meetingBeingEdited];
 }
 
 #pragma mark - ActionItemViewControllerDelegate

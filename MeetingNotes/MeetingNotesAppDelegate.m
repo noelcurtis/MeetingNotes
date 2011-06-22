@@ -12,9 +12,9 @@
 #import "DropboxSDK.h"
 #import "ENManager.h"
 #import "PersistantCoordinator.h"
+#import "SharingServiceAdapter.h"
 
-@interface MeetingNotesAppDelegate() <DBSessionDelegate>
--(void) setupDropboxSession;
+@interface MeetingNotesAppDelegate()
 -(void) testEvernote;
 @end
 
@@ -27,13 +27,14 @@
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
 
 @synthesize sortDVController, sortRVController, splitViewController;
-@synthesize dropboxNavigationController;
+//@synthesize dropboxNavigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {   
-    [self setupDropboxSession];
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    [[SharingServiceAdapter sharedSharingService] setupDropboxSession];
+    
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
 	backgroundImageView.image = [UIImage imageNamed:@"dark_noise_bg"];
     
@@ -254,44 +255,14 @@
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     return basePath;
 }
-
+/*
 #pragma mark -
 #pragma mark DBSessionDelegate methods
 
 - (void)sessionDidReceiveAuthorizationFailure:(DBSession*)session {
 	DBLoginController* loginController = [[DBLoginController new] autorelease];
 	[loginController presentFromController:dropboxNavigationController];
-}
-
--(void)setupDropboxSession{
-    // Set these variables before launching the app
-    NSString* consumerKey = @"v7wv9j7ra5xni86";
-	NSString* consumerSecret = @"rfqnzls0x48adv7";
-	
-	// Look below where the DBSession is created to understand how to use DBSession in your app
-	
-	NSString* errorMsg = nil;
-	if ([consumerKey rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-		errorMsg = @"Make sure you set the consumer key correctly in AppDelegate.m";
-	} else if ([consumerSecret rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-		errorMsg = @"Make sure you set the consumer secret correctly in AppDelegate.m";
-	}
-	
-	DBSession* session = 
-    [[DBSession alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
-	session.delegate = self; // DBSessionDelegate methods allow you to handle re-authenticating
-	[DBSession setSharedSession:session];
-    [session release];
-	
-	if (errorMsg != nil) {
-		[[[[UIAlertView alloc]
-		   initWithTitle:@"Error Configuring Session" message:errorMsg 
-		   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
-		  autorelease]
-		 show];
-	}
-
-}
+}*/
 
 -(void) testEvernote{
     [[ENManager sharedInstance] setUsername:EVERNOTE_USER];

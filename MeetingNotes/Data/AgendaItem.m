@@ -9,7 +9,7 @@
 #import "AgendaItem.h"
 #import "ActionItem.h"
 #import "Meeting.h"
-
+#import "Attendee.h"
 
 @implementation AgendaItem
 @dynamic title;
@@ -45,6 +45,21 @@
     [self didChangeValueForKey:@"ActionItems" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
+- (NSString*)asString{
+    NSString *agendaContents = [NSString stringWithFormat:@"Agenda Item: %@\r\n", self.title];
+    
+    agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Notes: %@\r\n\r\n", self.note]];
+    // print each agenda item
+    for (ActionItem* actionItem in self.ActionItems) {
+        // print each action item
+        agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Action Item: %@\r\n", actionItem.notes]];
+        for (Attendee* attendee in actionItem.Attendees) {
+            agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+        }
+        agendaContents = [agendaContents stringByAppendingString:@"\r\n"];
+    }
+    return agendaContents;
+}
 
 
 @end

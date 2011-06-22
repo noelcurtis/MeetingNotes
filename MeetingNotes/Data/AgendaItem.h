@@ -23,5 +23,5 @@
 - (void)removeActionItemsObject:(ActionItem *)value;
 - (void)addActionItems:(NSSet *)value;
 - (void)removeActionItems:(NSSet *)value;
-
+- (NSString*)asString;
 @end
