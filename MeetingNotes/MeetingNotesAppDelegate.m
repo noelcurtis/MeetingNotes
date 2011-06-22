@@ -14,10 +14,6 @@
 #import "PersistantCoordinator.h"
 #import "SharingServiceAdapter.h"
 
-@interface MeetingNotesAppDelegate()
--(void) testEvernote;
-@end
-
 @implementation MeetingNotesAppDelegate
 
 
@@ -264,17 +260,5 @@
 	[loginController presentFromController:dropboxNavigationController];
 }*/
 
--(void) testEvernote{
-    [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
-    [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
-    EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
-    EDAMNoteList *notesForDefaultNoteBook  = [[ENManager sharedInstance] notesWithNotebookGUID:[defaultNoteBook guid]];
-    for ( EDAMNote *note in [notesForDefaultNoteBook notes]) {
-        NSString *contents = [[[ENManager sharedInstance] noteWithNoteGUID:note.guid] content];
-        NSLog(@"%@", contents);
-    }
-    NSLog(@"Success!");
-
-}
 
 @end

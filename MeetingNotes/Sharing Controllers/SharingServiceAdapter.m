@@ -10,7 +10,8 @@
 
 @interface SharingServiceAdapter()<DBRestClientDelegate, DBSessionDelegate>
 @property (nonatomic, retain) UINavigationController *dropboxNavigationController;
-@property(nonatomic, retain) DBRestClient* restClient;
+@property (nonatomic, retain) DBRestClient* restClient;
+@property (nonatomic, retain) NSString *newMeetingFilePath;
 @end
 
 @implementation SharingServiceAdapter
@@ -18,6 +19,7 @@
 static SharingServiceAdapter *_sharedSharingService;
 @synthesize restClient;
 @synthesize dropboxNavigationController = _dropboxNavigationController;
+@synthesize newMeetingFilePath = _newMeetingFilePath;
 
 - (DBRestClient*)restClient {
     if (restClient == nil) {
@@ -103,21 +105,40 @@ static SharingServiceAdapter *_sharedSharingService;
     
 	NSString *docDir = [arrayPaths objectAtIndex:0];
     // Create pathname to Documents directory
-	NSString *newFilePath = [docDir stringByAppendingString:@"/MeetingNotes.txt"];
+	_newMeetingFilePath = [docDir stringByAppendingString:@"/MeetingNotes.txt"];
     NSString *meetingAsString = [meeting asString];
-    [meetingAsString writeToFile:newFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    [self.restClient uploadFile:@"MeetingNotes.txt" toPath:@"/Photos" fromPath:newFilePath];
+    // Create a temp file with the meetings contents
+    [meetingAsString writeToFile:_newMeetingFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [self.restClient uploadFile:@"MeetingNotes.txt" toPath:@"/Photos" fromPath:_newMeetingFilePath];
+    // Remove the temp file after the upload to dropbox is finished.
     //[newFilePath release];
     //[meetingAsString release];
 }
 
+-(void) removeTempMeetingFile{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    // If the expected store doesn't exist, copy the default store.
+    if ([fileManager fileExistsAtPath:_newMeetingFilePath]) {
+        NSError **error;
+        [fileManager removeItemAtPath:_newMeetingFilePath error:error];
+        if(!error){
+            NSLog(@"Error removing %@", _newMeetingFilePath);
+        }
+    }
+
+}
+
 -(void) restClient:(DBRestClient *)client uploadedFile:(NSString *)srcPath{
     NSLog(@"Finished uploading file!");
+    [self removeTempMeetingFile];
+    _newMeetingFilePath = nil;
 }
 
 
 -(void) restClient:(DBRestClient *)client uploadFileFailedWithError:(NSError *)error{
     NSLog(@"Error uploading file");
+    [self removeTempMeetingFile];
+    _newMeetingFilePath = nil;
 }
 
 -(void) restClient:(DBRestClient *)client uploadProgress:(CGFloat)progress forFile:(NSString *)srcPath{
@@ -131,5 +152,37 @@ static SharingServiceAdapter *_sharedSharingService;
 	DBLoginController* loginController = [[DBLoginController new] autorelease];
 	[loginController presentFromController:_dropboxNavigationController];
 }
+
+#pragma mark - Evernote integration
+/*
+-(void) testEvernote{
+    [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
+    [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
+    EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
+    EDAMNoteList *notesForDefaultNoteBook  = [[ENManager sharedInstance] notesWithNotebookGUID:[defaultNoteBook guid]];
+    for ( EDAMNote *note in [notesForDefaultNoteBook notes]) {
+        NSString *contents = [[[ENManager sharedInstance] noteWithNoteGUID:note.guid] content];
+        NSLog(@"%@", contents);
+    }
+    NSLog(@"Success!");
+    
+}
+*/
+
+-(void) uploadMeetingToEvernote:(Meeting*)meeting{
+    [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
+    [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
+    EDAMNotebook *newNotebook = [[ENManager sharedInstance] createNewNotebookWithTitle:@"Meeting Notes"];
+    EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
+    NSLog(@"%@",newNotebook.guid);
+    NSMutableString *contentString = [NSMutableString string];
+	[contentString setString:	@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"];
+	[contentString appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml.dtd\">"];
+	[contentString appendString:@"<en-note>"];
+	[contentString appendString:[meeting asString]];
+	[contentString appendString:@"</en-note>"];
+    [[ENManager sharedInstance] createNote2Notebook:[defaultNoteBook guid] title:@"NewMeeting" content:contentString];
+}
+
 
 @end

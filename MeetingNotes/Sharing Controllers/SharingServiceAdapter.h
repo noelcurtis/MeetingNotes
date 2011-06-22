@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Meeting.h"
 #import "DropboxSDK.h"
+#import "ENManager.h"
 
 @interface SharingServiceAdapter : NSObject{
     
 }
 - (void) uploadMeetingToDropbox:(Meeting*) meeting;
+- (void) uploadMeetingToEvernote:(Meeting*)meeting;
 + (SharingServiceAdapter*) sharedSharingService;
 - (void) setupDropboxSession;
 @end

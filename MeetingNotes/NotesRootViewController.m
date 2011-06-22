@@ -11,7 +11,6 @@
 #import "AgendaItem.h"
 #import "NotesDetailViewController.h"
 #import "SortDetailViewController.h"
-#import "FileHandlerController.h"
 #import "AgendaItemCell.h"
 #import "SortRootViewController.h"
 
@@ -155,8 +154,8 @@
         case 0:
             segmentedControl.selectedSegmentIndex = -1;
             // create a .txt file with the meeting notes
-            FileHandlerController *fileHandlerController = [[FileHandlerController alloc] init];
-            [fileHandlerController exportMeetingToFile:self.meetingBeingEdited];
+            //FileHandlerController *fileHandlerController = [[FileHandlerController alloc] init];
+            //[fileHandlerController exportMeetingToFile:self.meetingBeingEdited];
             //[fileHandlerController release];
             break;
         /*case 1:
