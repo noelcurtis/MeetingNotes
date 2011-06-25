@@ -7,11 +7,16 @@
 //
 
 #import "SharingServiceAdapter.h"
+#import "EvernoteConfig.h"
+#import "DropboxConfig.h"
+
 
 @interface SharingServiceAdapter()<DBRestClientDelegate, DBSessionDelegate>
 @property (nonatomic, retain) UINavigationController *dropboxNavigationController;
 @property (nonatomic, retain) DBRestClient* restClient;
 @property (nonatomic, retain) NSString *newMeetingFilePath;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+-(NSArray *) getAllEvernoteConfigurations;
 @end
 
 @implementation SharingServiceAdapter
@@ -20,6 +25,8 @@ static SharingServiceAdapter *_sharedSharingService;
 @synthesize restClient;
 @synthesize dropboxNavigationController = _dropboxNavigationController;
 @synthesize newMeetingFilePath = _newMeetingFilePath;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize sharedDropboxConfig = _sharedDropboxConfig;
 
 - (DBRestClient*)restClient {
     if (restClient == nil) {
@@ -29,6 +36,9 @@ static SharingServiceAdapter *_sharedSharingService;
     return restClient;
 }
 
+-(void) setManagegObjectContext:(NSManagedObjectContext *)managedObjectContext{
+    _managedObjectContext = managedObjectContext;
+}
 
 - (id)init {
     self = [super init];
@@ -153,6 +163,7 @@ static SharingServiceAdapter *_sharedSharingService;
 	[loginController presentFromController:_dropboxNavigationController];
 }
 
+
 #pragma mark - Evernote integration
 /*
 -(void) testEvernote{
@@ -169,19 +180,120 @@ static SharingServiceAdapter *_sharedSharingService;
 }
 */
 
--(void) uploadMeetingToEvernote:(Meeting*)meeting{
+/*
+-(EvernoteConfig *) configureEvernote{
+    
     [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
     [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
-    EDAMNotebook *newNotebook = [[ENManager sharedInstance] createNewNotebookWithTitle:@"Meeting Notes"];
-    EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
-    NSLog(@"%@",newNotebook.guid);
-    NSMutableString *contentString = [NSMutableString string];
-	[contentString setString:	@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"];
-	[contentString appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml.dtd\">"];
-	[contentString appendString:@"<en-note>"];
-	[contentString appendString:[meeting asString]];
-	[contentString appendString:@"</en-note>"];
-    [[ENManager sharedInstance] createNote2Notebook:[defaultNoteBook guid] title:@"NewMeeting" content:contentString];
+    
+    NSArray *allEvernoteConfigs = [self getAllEvernoteConfigurations];
+    if ([allEvernoteConfigs count]==0) {
+        _sharedEvernoteConfig = [NSEntityDescription insertNewObjectForEntityForName:@"EvernoteConfig" inManagedObjectContext:self.managedObjectContext];
+        
+        // create the Default Folder if one does not exist
+        EDAMNotebook *newNotebook = [[ENManager sharedInstance] createNewNotebookWithTitle:@"Meeting Notes"];
+        [_sharedEvernoteConfig setNotebookGuid:[newNotebook guid]];
+        NSError *savingError;
+        if (![self.managedObjectContext save:&savingError]) {
+            NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"Error saving default evernote configuration." userInfo:nil];
+            @throw exception;
+        }
+        return _sharedEvernoteConfig;
+    }else if([allEvernoteConfigs count]==1){
+        _sharedEvernoteConfig = [allEvernoteConfigs objectAtIndex:0];
+        return _sharedEvernoteConfig;
+    }else if([allEvernoteConfigs count]>1){
+        NSLog(@"More than one Evernote configuration exists");
+        NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"More than one Evernote configuration exists." userInfo:nil];
+        @throw exception;
+    }else{
+        NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"Error fetching Evernote configuration." userInfo:nil];
+        @throw exception;
+    }
+}*/
+
+// write -(EvernoteConfig*) setupEvernoteWith:(NSString *)MeetingFolder username:(NSString *)username password:(NSString*) password
+
+-(EvernoteConfig*) setupEvernoteWith:(NSString *)meetingNotebookName 
+                            username:(NSString *)username password:(NSString *)password{
+    if(![self isEvernoteConfigured]){
+        EvernoteConfig *newEvernoteConfig = [NSEntityDescription insertNewObjectForEntityForName:@"EvernoteConfig" inManagedObjectContext:self.managedObjectContext];
+        
+        // create the Default Folder if one does not exist
+        if([meetingNotebookName isEqualToString:@""]){
+            meetingNotebookName = @"Meeting Notes";
+        }
+        [[ENManager sharedInstance] setUsername:username];
+        [[ENManager sharedInstance] setPassword:password];
+        EDAMNotebook *newNotebook = [[ENManager sharedInstance] createNewNotebookWithTitle:@"Meeting Notes"];
+        [newEvernoteConfig setNotebookGuid:[newNotebook guid]];
+        [newEvernoteConfig setNotebookName:[newNotebook name]];
+        [newEvernoteConfig setPassword:password];
+        [newEvernoteConfig setUsername:username];
+        NSError *savingError;
+        if (![self.managedObjectContext save:&savingError]) {
+            NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"Error saving default evernote configuration." userInfo:nil];
+            @throw exception;
+        }
+        return newEvernoteConfig;
+        
+    }else{
+        return [self sharedEvernoteConfiguration];
+    }
+}
+
+-(EvernoteConfig*) sharedEvernoteConfiguration{
+    NSArray *allConfigs = [self getAllEvernoteConfigurations];
+    if([allConfigs count] == 0){
+        return nil;
+    }else if([allConfigs count]>1){
+        NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"More than 1 evernote configuration exists??" userInfo:nil];
+        @throw exception;
+    }
+    else{
+        return [allConfigs objectAtIndex:0];
+    }
+}
+
+-(BOOL) isEvernoteConfigured{
+    if([self sharedEvernoteConfiguration]){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+-(NSArray *) getAllEvernoteConfigurations{
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"EvernoteConfig"
+                                              inManagedObjectContext:_managedObjectContext];
+    [request setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *allEvernoteConfigs = [_managedObjectContext executeFetchRequest:request error:&error];
+    if (!error) {
+        return allEvernoteConfigs;
+    }else{
+        NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"Error fetching Evernote configuration." userInfo:nil];
+        @throw exception;
+    }
+}
+
+
+-(void) uploadMeetingToEvernote:(Meeting*)meeting{
+    if([self isEvernoteConfigured]){
+        NSMutableString *contentString = [NSMutableString string];
+        [contentString setString:	@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"];
+        [contentString appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml.dtd\">"];
+        [contentString appendString:@"<en-note>"];
+        [contentString appendString:[meeting asString]];
+        [contentString appendString:@"</en-note>"];
+        [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:meeting.name
+                                                content:contentString];
+    }else{
+        NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"The evernote configuration is null please initialize it before trying to upload." userInfo:nil];
+        @throw exception;
+    }
 }
 
 

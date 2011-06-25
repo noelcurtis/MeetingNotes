@@ -214,6 +214,7 @@
 		C78540EE135CF9B7001AAEDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540ED135CF9B7001AAEDD /* main.m */; };
 		C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */; };
 		C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78540F2135CF9B7001AAEDD /* MainWindow.xib */; };
+		C789CC6913B5958500AE709D /* KiwiTestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */; };
 		C7909C4D138C8166001EFF79 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */; };
 		C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E69F135D0599009B42B9 /* SortRootViewController.m */; };
 		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
@@ -279,6 +280,11 @@
 		C7E162FF13A4321600FA4790 /* favstar_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FD13A4321600FA4790 /* favstar_off.png */; };
 		C7E1630013A4321600FA4790 /* favstar_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E162FE13A4321600FA4790 /* favstar_on.png */; };
 		C7F2BC2713A7069400EE92BA /* btn_add_action.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F2BC2613A7069400EE92BA /* btn_add_action.png */; };
+		C7F5BE2013B2CA700091116A /* DropboxConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5BE1F13B2CA700091116A /* DropboxConfig.m */; };
+		C7F5BE2113B2CA700091116A /* DropboxConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5BE1F13B2CA700091116A /* DropboxConfig.m */; };
+		C7F5BE2413B2CAB60091116A /* EvernoteConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5BE2313B2CAB60091116A /* EvernoteConfig.m */; };
+		C7F5BE2513B2CAB60091116A /* EvernoteConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5BE2313B2CAB60091116A /* EvernoteConfig.m */; };
+		C7F5BE2613B2E4B30091116A /* SharingServiceAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = C77478FC13B15B80008A5756 /* SharingServiceAdapter.m */; };
 		C7F72B2213B013D40002BE32 /* PersistantCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F72B1C13B00A2F0002BE32 /* PersistantCoordinator.m */; };
 		C7F72B2613B016B70002BE32 /* SeedMeetingNotes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C727BB1213AD3878002A69EA /* SeedMeetingNotes.sqlite */; };
 		C7F72B2A13B03F780002BE32 /* ModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F72B2913B03F780002BE32 /* ModelTests.m */; };
@@ -583,6 +589,7 @@
 		C78540EF135CF9B7001AAEDD /* MeetingNotesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingNotesAppDelegate.h; sourceTree = "<group>"; };
 		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
 		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KiwiTestConfiguration.m; sourceTree = "<group>"; };
 		C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
 		C790E69E135D0599009B42B9 /* SortRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRootViewController.h; sourceTree = "<group>"; };
 		C790E69F135D0599009B42B9 /* SortRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortRootViewController.m; sourceTree = "<group>"; };
@@ -657,6 +664,10 @@
 		C7E162FD13A4321600FA4790 /* favstar_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favstar_off.png; path = Images/favstar_off.png; sourceTree = "<group>"; };
 		C7E162FE13A4321600FA4790 /* favstar_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favstar_on.png; path = Images/favstar_on.png; sourceTree = "<group>"; };
 		C7F2BC2613A7069400EE92BA /* btn_add_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_add_action.png; path = Images/btn_add_action.png; sourceTree = "<group>"; };
+		C7F5BE1E13B2CA700091116A /* DropboxConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropboxConfig.h; path = Data/DropboxConfig.h; sourceTree = "<group>"; };
+		C7F5BE1F13B2CA700091116A /* DropboxConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropboxConfig.m; path = Data/DropboxConfig.m; sourceTree = "<group>"; };
+		C7F5BE2213B2CAB60091116A /* EvernoteConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EvernoteConfig.h; path = Data/EvernoteConfig.h; sourceTree = "<group>"; };
+		C7F5BE2313B2CAB60091116A /* EvernoteConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvernoteConfig.m; path = Data/EvernoteConfig.m; sourceTree = "<group>"; };
 		C7F72B1B13B00A2F0002BE32 /* PersistantCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistantCoordinator.h; sourceTree = "<group>"; };
 		C7F72B1C13B00A2F0002BE32 /* PersistantCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistantCoordinator.m; sourceTree = "<group>"; };
 		C7F72B2913B03F780002BE32 /* ModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTests.m; sourceTree = "<group>"; };
@@ -714,6 +725,10 @@
 		C70E6AAE13667FE20059B75E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C7F5BE2213B2CAB60091116A /* EvernoteConfig.h */,
+				C7F5BE2313B2CAB60091116A /* EvernoteConfig.m */,
+				C7F5BE1E13B2CA700091116A /* DropboxConfig.h */,
+				C7F5BE1F13B2CA700091116A /* DropboxConfig.m */,
 				C768756A13AF04600023F34D /* Meeting.h */,
 				C768756B13AF04600023F34D /* Meeting.m */,
 				C742485213A969B70071A3F7 /* Category.h */,
@@ -737,6 +752,7 @@
 				C7F72B1C13B00A2F0002BE32 /* PersistantCoordinator.m */,
 				C768755613AEE3090023F34D /* EvernoteTests.m */,
 				C7F72B2913B03F780002BE32 /* ModelTests.m */,
+				C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */,
 			);
 			path = MeetingNotesUnitTests;
 			sourceTree = "<group>";
@@ -1160,6 +1176,8 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C70E6AAE13667FE20059B75E /* Data */,
+				C7D74AF0136223F500B57A9C /* DataModel */,
 				C7512D6E13B05EB8006D4F8F /* DropboxSDK */,
 				C7512D5F13B04977006D4F8F /* Sharing Controllers */,
 				C7B9B3A313AEE1B300197125 /* EvernoteAPI */,
@@ -1167,10 +1185,8 @@
 				C7D56DD1139C72DE00F342C7 /* Settings Controller */,
 				C7557C3913775086003AC2A2 /* ActionItem Controllers */,
 				C7F96FDD1368ED6F00737BEA /* ManualAddMeeting Controllers */,
-				C70E6AAE13667FE20059B75E /* Data */,
 				C748C973136635FD005C4A2C /* MeetingList Controllers */,
 				C7D74B0A1363212500B57A9C /* NotesView Controllers */,
-				C7D74AF0136223F500B57A9C /* DataModel */,
 				C790E681135D040D009B42B9 /* MainSplitView Controllers */,
 				C790E680135D03FA009B42B9 /* AppDelegate */,
 				C790E67E135D03D7009B42B9 /* Resources */,
@@ -1421,7 +1437,7 @@
 		C78540D3135CF9B7001AAEDD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "EMC Corporation";
+				ORGANIZATIONNAME = "Noel Curtis";
 			};
 			buildConfigurationList = C78540D6135CF9B7001AAEDD /* Build configuration list for PBXProject "MeetingNotes" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1667,6 +1683,10 @@
 				C7512E0213B05EB8006D4F8F /* NSURL+MPURLParameterAdditions.m in Sources */,
 				C7512E0413B05EB8006D4F8F /* NSURLResponse+Encoding.m in Sources */,
 				C7512E0613B05EB8006D4F8F /* NSString+Dropbox.m in Sources */,
+				C7F5BE2113B2CA700091116A /* DropboxConfig.m in Sources */,
+				C7F5BE2513B2CAB60091116A /* EvernoteConfig.m in Sources */,
+				C7F5BE2613B2E4B30091116A /* SharingServiceAdapter.m in Sources */,
+				C789CC6913B5958500AE709D /* KiwiTestConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1751,6 +1771,8 @@
 				C7512E0313B05EB8006D4F8F /* NSURLResponse+Encoding.m in Sources */,
 				C7512E0513B05EB8006D4F8F /* NSString+Dropbox.m in Sources */,
 				C77478FD13B15B80008A5756 /* SharingServiceAdapter.m in Sources */,
+				C7F5BE2013B2CA700091116A /* DropboxConfig.m in Sources */,
+				C7F5BE2413B2CAB60091116A /* EvernoteConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

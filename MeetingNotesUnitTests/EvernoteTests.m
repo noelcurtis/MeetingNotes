@@ -7,30 +7,24 @@
 //
 
 #import "Kiwi.h"
-#import "ENManager.h"
-#import "Meeting.h"
+#import "KiwiTestConfiguration.m"
 #import "PersistantCoordinator.h"
+#import "SharingServiceAdapter.h"
 
-SPEC_BEGIN(EvernoteTests)
+#if KW_TESTS_ENABLED
 
-describe(@"Creates a connection to evernote", ^{
-    it(@"it gets notebooks", ^{
-        // Try changing should to shouldNot, and vice-versa to see
-        // failures in action.
-        [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
-        [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
-        id notebooks = [[ENManager sharedInstance] notebooks];
-        [notebooks shouldNotBeNil];
-    });
-    
-    it(@"it gets default notebook", ^{
-        // Try changing should to shouldNot, and vice-versa to see
-        // failures in action.
-        [[ENManager sharedInstance] setUsername:EVERNOTE_USER];
-        [[ENManager sharedInstance] setPassword:EVERNOTE_PASSWORD];
-        EDAMNotebook *defaultNoteBook = [[ENManager sharedInstance] defaultNotebook];
-        [defaultNoteBook shouldNotBeNil];    
-    });
-});
+@interface EvernoteTests : SenTestCase
 
-SPEC_END
+@end
+
+@implementation EvernoteTests
+
+-(void) testShouldSetupEvernoteSuccesfully{
+    NSManagedObjectContext *moContext = [[PersistantCoordinator sharedCoordinator] managedObjectContext];
+    [[SharingServiceAdapter sharedSharingService] setManagegObjectContext:moContext];
+    EvernoteConfig* evernoteConfig = [[SharingServiceAdapter sharedSharingService] setupEvernoteWith:@"Meeting Notes" username:EVERNOTE_USER password:EVERNOTE_PASSWORD];
+    [[PersistantCoordinator sharedCoordinator] teardown];
+}
+@end
+
+#endif // #if KW_TESTS_ENABLED

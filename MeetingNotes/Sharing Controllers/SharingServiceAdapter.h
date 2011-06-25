@@ -11,6 +11,9 @@
 #import "DropboxSDK.h"
 #import "ENManager.h"
 
+@class EvernoteConfig;
+@class DropboxConfig;
+
 @interface SharingServiceAdapter : NSObject{
     
 }
@@ -18,4 +21,13 @@
 - (void) uploadMeetingToEvernote:(Meeting*)meeting;
 + (SharingServiceAdapter*) sharedSharingService;
 - (void) setupDropboxSession;
+@property (nonatomic, retain) DropboxConfig *sharedDropboxConfig;
+
+
+#pragma mark - Evernote
+- (void) setManagegObjectContext:(NSManagedObjectContext*) managedObjectContext;
+- (EvernoteConfig *) sharedEvernoteConfiguration;
+- (BOOL) isEvernoteConfigured;
+- (EvernoteConfig*) setupEvernoteWith:(NSString *)meetingNotebookName username:(NSString *)username password:(NSString*) password;
+
 @end
