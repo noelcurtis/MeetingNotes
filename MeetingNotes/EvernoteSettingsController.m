@@ -1,26 +1,32 @@
 //
-//  SettingsViewController.m
+//  EvernoteSettingsController.m
 //  MeetingNotes
 //
-//  Created by Noel Curtis on 6/5/11.
-//  Copyright 2011 EMC Corporation. All rights reserved.
+//  Created by Noel Curtis on 6/25/11.
+//  Copyright 2011 Noel Curtis. All rights reserved.
 //
 
-#import "SettingsViewController.h"
-#import "DropboxSDK.h"
 #import "EvernoteSettingsController.h"
+#import "SharingServiceAdapter.h"
+#import "EvernoteConfig.h"
 
-@interface SettingsViewController() <DBLoginControllerDelegate>
--(void) done:(id)sender;
--(IBAction) didPressLinkDropboxAccount:(id)sender;
--(IBAction) didPressLinkEvernoteAccount:(id) sender;
-@property (nonatomic, retain)UINavigationController* evernoteNavController;
+@interface EvernoteSettingsController()
+- (void) done:(id)sender;
+- (void) setWorking:(BOOL)working;
+- (void) cancel:(id)sender;
+//- (void) asyncFunction;
 @end
 
-@implementation SettingsViewController
+@implementation EvernoteSettingsController
 
-@synthesize settingsViewControllerDelegate;
-@synthesize evernoteNavController;
+@synthesize passwordCell = _passwordCell;
+@synthesize usernameCell = _usernameCell;
+@synthesize notebookCell = _notebookCell;
+@synthesize usernameTextView = _usernameTextView;
+@synthesize passwordTextView = _passwordTextView;
+@synthesize notebookTextView = _notebookTextView;
+@synthesize evernoteSettingsViewControllerDelegate;
+@synthesize activityIndicator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -49,16 +55,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
+    
+    self.title = @"Evernote Settings";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] 
                                                initWithBarButtonSystemItem: UIBarButtonSystemItemDone
                                                target:self action:@selector(done:)] 
                                               autorelease];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+    [self.activityIndicator setFrame:CGRectMake(240.0, 225.0, 37.0, 37.0)];
+    [self.tableView addSubview:self.activityIndicator];
+    EvernoteConfig *sharedEvernoteConfig = [[SharingServiceAdapter sharedSharingService] sharedEvernoteConfiguration];
+    [SharingServiceAdapter sharedSharingService].sharingServiceAdapterDelegate = self;
+    if (sharedEvernoteConfig) {
+        self.notebookTextView.text = sharedEvernoteConfig.notebookName;
+        self.usernameTextView.text = sharedEvernoteConfig.username;
+        self.passwordTextView.text = sharedEvernoteConfig.password;
+    }
+    //[self setWorking:YES];
 }
 
 - (void)viewDidUnload
@@ -76,7 +95,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.title = @"App Settings";
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -97,41 +115,16 @@
 
 #pragma mark - Table view data source
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	NSString *title = nil;
-    switch (section) {
-        case 0:
-            title = @"Accounts:";
-            break;
-        case 1:
-            title = @"Other:";
-            break;
-        default:
-            break;
-    }
-    return title;
-}
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 2;
-            break;
-        case 1:
-            return 1;
-            break;
-        default:
-            return 0;
-            break;
-    }
+    // Return the number of rows in the section.
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,29 +133,20 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    if(indexPath.section == 0){
-        // Configure the cell...
-        [cell.textLabel setTextAlignment:UITextAlignmentCenter];
-        switch (indexPath.row) {
+        switch (indexPath.section) {
             case 0:
-                cell.textLabel.text = @"Dropbox Account Configuration";
+                return _usernameCell;
                 break;
             case 1:
-                cell.textLabel.text = @"Evernote Account Configuration";
+                return _passwordCell;
                 break;
             case 2:
-                cell.textLabel.text = @"Link Twitter Account";
+                return _notebookCell;
                 break;
             default:
                 break;
         }
-    }else{
-        cell.textLabel.text = @"Rate the app";
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    [cell setSelectionStyle:UITableViewCellEditingStyleNone];
     return cell;
 }
 
@@ -217,62 +201,59 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    switch (indexPath.row) {
-        case 0:
-            [self didPressLinkDropboxAccount:[self tableView:self.tableView cellForRowAtIndexPath:indexPath]];
-            break;
-        case 1:
-            [self didPressLinkEvernoteAccount:[self tableView:self.tableView cellForRowAtIndexPath:indexPath]];
-            break;
-        default:
-            break;
+}
+
+-(void) done:(id)sender{
+    [[SharingServiceAdapter sharedSharingService] setupEvernoteWith:self.notebookTextView.text username:self.usernameTextView.text password:self.passwordTextView.text];
+}
+
+-(void) didStartConfiguringEvernote{
+    [self setWorking:YES];
+}
+
+-(void) didFinishConfiguringEvernote{
+    [self setWorking:NO];
+    [self.evernoteSettingsViewControllerDelegate dismissEvernoteSettingsViewController];
+}
+
+-(void) didFailConfiguringEvernoteWithError:(NSError *)error{
+    [self setWorking:NO];
+    if([error.domain isEqualToString:@"EvernoteAuthError"]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect username and/or password." 
+        message:@"" 
+        delegate:self 
+        cancelButtonTitle:@"Ok" 
+        otherButtonTitles:nil];
+        //[alert addButtonWithTitle:@"Yes"];
+        [alert show];
+        [alert release];
+    }
+    if([error.domain isEqualToString:@"EvernoteNotebookError"]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not create Notebook because it might already exist." 
+                                                        message:@"" 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        //[alert addButtonWithTitle:@"Yes"];
+        [alert show];
+        [alert release];
     }
 }
 
-#pragma mark - Application Settings
-
--(IBAction) didPressLinkEvernoteAccount:(id) sender{
-    EvernoteSettingsController *evSettingsController = [[EvernoteSettingsController alloc] initWithNibName:@"EvernoteSettingsController" bundle:nil];
-    evSettingsController.evernoteSettingsViewControllerDelegate = self;
-    evernoteNavController = [[UINavigationController alloc] initWithRootViewController:evSettingsController];
-    evernoteNavController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:evernoteNavController animated:YES];
-    [evernoteNavController release];
+-(void) cancel:(id)sender{
+    [self.evernoteSettingsViewControllerDelegate dismissEvernoteSettingsViewController];
 }
 
--(IBAction) didPressLinkDropboxAccount:(id)sender{
-    if (![[DBSession sharedSession] isLinked]) {
-        DBLoginController* controller = [[DBLoginController new] autorelease];
-        controller.delegate = self;
-        [controller presentFromController:self];
+- (void)setWorking:(BOOL)working {
+    self.view.userInteractionEnabled = !working;
+    self.navigationController.view.userInteractionEnabled = !working;
+    if (working) {
+        [activityIndicator startAnimating];
     } else {
-        [[DBSession sharedSession] unlink];
-        [[[[UIAlertView alloc] 
-           initWithTitle:@"Account Unlinked!" message:@"Your dropbox account has been unlinked" 
-           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
-          autorelease]
-         show];
+        [activityIndicator stopAnimating];
     }
 }
 
-#pragma mark DBLoginControllerDelegate methods
 
-- (void)loginControllerDidLogin:(DBLoginController*)controller {
-    NSLog(@"Loging to Dropbox successful");
-}
-
-- (void)loginControllerDidCancel:(DBLoginController*)controller {
-    
-}
-
--(void)done:(id)sender{
-    [self.settingsViewControllerDelegate dismissSettingsViewController];
-}
-
-#pragma mark - EvernoteViewControllerDelegate
-
--(void) dismissEvernoteSettingsViewController{
-    [self.evernoteNavController dismissModalViewControllerAnimated:YES];
-}
 
 @end

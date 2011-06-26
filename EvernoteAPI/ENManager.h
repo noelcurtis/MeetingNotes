@@ -85,6 +85,7 @@
 - (EDAMNoteList*)notesWithNotebookGUID:(EDAMGuid)guid;
 - (NSArray*)notebooks;
 - (EDAMNote*)noteWithNoteGUID:(EDAMGuid)guid;
+- (EDAMNotebook*) notebookWithName:(NSString *)notebookName;
 
 #pragma mark - Create note and notebook
 

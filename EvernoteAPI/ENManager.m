@@ -170,6 +170,26 @@ static ENManager *sharedManager;
 	return [NSArray array];
 }
 
+- (EDAMNotebook*) notebookWithName:(NSString *)notebookName{
+    if (self.noteStoreClient) {
+		@try {
+			NSArray *notebooks = [self.noteStoreClient listNotebooks:[self.auth authenticationToken]];
+			for (EDAMNotebook* notebook in notebooks) {
+                if([[notebook.name lowercaseString] isEqualToString:[notebookName lowercaseString]])
+                    return notebook;
+            }
+		}
+		@catch (NSException *exception) {
+			DNSLog(@"main: Caught %@: %@", [exception name], [exception reason]);
+			[self releaseAuthorization];
+			return nil;
+		}
+		@finally {
+		}
+	}
+	return nil;
+}
+
 - (EDAMNote*)noteWithNoteGUID:(EDAMGuid)guid {
 	if (self.noteStoreClient) {
 		@try {

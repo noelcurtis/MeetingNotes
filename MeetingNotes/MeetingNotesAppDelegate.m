@@ -29,6 +29,7 @@
 {   
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    [[SharingServiceAdapter sharedSharingService] setManagegObjectContext:self.managedObjectContext];
     [[SharingServiceAdapter sharedSharingService] setupDropboxSession];
     
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EvernoteSettingsController.h"
 
 @protocol SettingsViewControllerDelegate;
 
-@interface SettingsViewController : UITableViewController {
+@interface SettingsViewController : UITableViewController<EvernoteSettingsViewControllerDelegate> {
     
 }
 
--(IBAction) didPressLinkDropboxAccount:(id)sender;
 // SettingsViewControllerDelegate
 @property (nonatomic, assign) id<SettingsViewControllerDelegate> settingsViewControllerDelegate;
 @end

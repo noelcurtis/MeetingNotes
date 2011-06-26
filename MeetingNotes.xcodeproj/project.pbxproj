@@ -193,6 +193,10 @@
 		C759C4D613A5B15C006E6485 /* act_list_item_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D513A5B15C006E6485 /* act_list_item_bg.png */; };
 		C759C4D913A5BA72006E6485 /* checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D713A5BA72006E6485 /* checkbox_off.png */; };
 		C759C4DA13A5BA72006E6485 /* checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C759C4D813A5BA72006E6485 /* checkbox_on.png */; };
+		C75D812513B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */; };
+		C75D812613B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */; };
+		C75D812713B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */; };
+		C75D812813B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */; };
 		C768755713AEE3090023F34D /* EvernoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C768755613AEE3090023F34D /* EvernoteTests.m */; };
 		C768756C13AF04600023F34D /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C768756B13AF04600023F34D /* Meeting.m */; };
 		C768756D13AF04600023F34D /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C768756B13AF04600023F34D /* Meeting.m */; };
@@ -567,6 +571,9 @@
 		C759C4D513A5B15C006E6485 /* act_list_item_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = act_list_item_bg.png; path = Images/act_list_item_bg.png; sourceTree = "<group>"; };
 		C759C4D713A5BA72006E6485 /* checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_off.png; path = Images/checkbox_off.png; sourceTree = "<group>"; };
 		C759C4D813A5BA72006E6485 /* checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_on.png; path = Images/checkbox_on.png; sourceTree = "<group>"; };
+		C75D812213B62EC300B4B8B1 /* EvernoteSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteSettingsController.h; sourceTree = "<group>"; };
+		C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteSettingsController.m; sourceTree = "<group>"; };
+		C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvernoteSettingsController.xib; sourceTree = "<group>"; };
 		C768755613AEE3090023F34D /* EvernoteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteTests.m; sourceTree = "<group>"; };
 		C768756A13AF04600023F34D /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
 		C768756B13AF04600023F34D /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
@@ -1341,6 +1348,9 @@
 				C7D56DD7139C750100F342C7 /* SettingsViewController.h */,
 				C7D56DD8139C750100F342C7 /* SettingsViewController.m */,
 				C7D56DD9139C750100F342C7 /* SettingsViewController.xib */,
+				C75D812213B62EC300B4B8B1 /* EvernoteSettingsController.h */,
+				C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */,
+				C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */,
 			);
 			name = "Settings Controller";
 			sourceTree = "<group>";
@@ -1477,6 +1487,7 @@
 				C7512E1813B05EB8006D4F8F /* db_link_header@2x.png in Resources */,
 				C7512E1A13B05EB8006D4F8F /* db_logo.png in Resources */,
 				C7512E1C13B05EB8006D4F8F /* db_logo@2x.png in Resources */,
+				C75D812813B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1538,6 +1549,7 @@
 				C7512E1713B05EB8006D4F8F /* db_link_header@2x.png in Resources */,
 				C7512E1913B05EB8006D4F8F /* db_logo.png in Resources */,
 				C7512E1B13B05EB8006D4F8F /* db_logo@2x.png in Resources */,
+				C75D812713B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1687,6 +1699,7 @@
 				C7F5BE2513B2CAB60091116A /* EvernoteConfig.m in Sources */,
 				C7F5BE2613B2E4B30091116A /* SharingServiceAdapter.m in Sources */,
 				C789CC6913B5958500AE709D /* KiwiTestConfiguration.m in Sources */,
+				C75D812613B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1773,6 +1786,7 @@
 				C77478FD13B15B80008A5756 /* SharingServiceAdapter.m in Sources */,
 				C7F5BE2013B2CA700091116A /* DropboxConfig.m in Sources */,
 				C7F5BE2413B2CAB60091116A /* EvernoteConfig.m in Sources */,
+				C75D812513B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
