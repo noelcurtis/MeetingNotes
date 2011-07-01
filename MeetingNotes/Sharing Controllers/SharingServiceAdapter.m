@@ -11,9 +11,8 @@
 #import "DropboxConfig.h"
 
 
-@interface SharingServiceAdapter()<DBRestClientDelegate, DBSessionDelegate>
+@interface SharingServiceAdapter()<DBSessionDelegate, DBRestClientDelegate>
 @property (nonatomic, retain) UINavigationController *dropboxNavigationController;
-@property (nonatomic, retain) DBRestClient* restClient;
 @property (nonatomic, retain) NSString *newMeetingFilePath;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 -(NSArray *) getAllEvernoteConfigurations;
@@ -29,13 +28,6 @@ static SharingServiceAdapter *_sharedSharingService;
 @synthesize sharedDropboxConfig = _sharedDropboxConfig;
 @synthesize sharingServiceAdapterDelegate;
 
-- (DBRestClient*)restClient {
-    if (restClient == nil) {
-    	restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-    	restClient.delegate = self;
-    }
-    return restClient;
-}
 
 -(void) setManagegObjectContext:(NSManagedObjectContext *)managedObjectContext{
     _managedObjectContext = managedObjectContext;
@@ -68,13 +60,15 @@ static SharingServiceAdapter *_sharedSharingService;
     }
 }
 
-#pragma Mark- Dropbox delegates and upload functions.
-/*
--(void)uploadToDropbox{
-    [self.restClient uploadFile:@"MeetingNotes.txt" toPath:@"/Photos" fromPath:@"/Users/noelcurtis/Library/Application Support/iPhone Simulator/4.3/Applications/C8EF4916-A241-4BD1-B6B1-052A66B29842/Documents/MeetingNotes.txt"];
-}*/
+#pragma Mark- Dropbox delegate and upload functions.
 
-
+- (DBRestClient*)restClient {
+    if (restClient == nil) {
+    	restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+    	restClient.delegate = self;
+    }
+    return restClient;
+}
 
 -(void)setupDropboxSession{
     // Set these variables before launching the app
@@ -143,6 +137,7 @@ static SharingServiceAdapter *_sharedSharingService;
     NSLog(@"Finished uploading file!");
     [self removeTempMeetingFile];
     _newMeetingFilePath = nil;
+    [self.sharingServiceAdapterDelegate didFinishUploadingToDropbox];
 }
 
 
@@ -150,11 +145,13 @@ static SharingServiceAdapter *_sharedSharingService;
     NSLog(@"Error uploading file");
     [self removeTempMeetingFile];
     _newMeetingFilePath = nil;
+    [self.sharingServiceAdapterDelegate didFailUploadingToEvernote:error];
 }
 
 -(void) restClient:(DBRestClient *)client uploadProgress:(CGFloat)progress forFile:(NSString *)srcPath{
     NSLog(@"Uploading file...");
 }
+
 
 #pragma mark -
 #pragma mark DBSessionDelegate methods
@@ -285,20 +282,41 @@ static SharingServiceAdapter *_sharedSharingService;
 }
 
 
--(void) uploadMeetingToEvernote:(Meeting*)meeting{
+-(void) uploadMeetingToEvernote:(id)meeting{
     if([self isEvernoteConfigured]){
+        [[ENManager sharedInstance] setUsername:((EvernoteConfig*)[self sharedEvernoteConfiguration]).username];
+        [[ENManager sharedInstance] setPassword:((EvernoteConfig*)[self sharedEvernoteConfiguration]).password];
         NSMutableString *contentString = [NSMutableString string];
         [contentString setString:	@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"];
         [contentString appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml.dtd\">"];
         [contentString appendString:@"<en-note>"];
         [contentString appendString:[meeting asString]];
         [contentString appendString:@"</en-note>"];
-        [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:meeting.name
-                                                content:contentString];
+        EDAMNote* newNote = [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:((Meeting*)meeting).name content:contentString];
+        if(newNote){
+            [self.sharingServiceAdapterDelegate didFinishUploadingToEvernote];
+        }else{
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:@"Failed to upload meeting to evernote." forKey:NSLocalizedDescriptionKey];
+            NSError *error = [NSError errorWithDomain:@"EvernoteUploadError" code:100 userInfo:errorDetail];
+            [self.sharingServiceAdapterDelegate didFailUploadingToEvernote:error];
+        }
+        [[ENManager sharedInstance] releaseAuthorization];
     }else{
+        NSLog(@"The evernote configuration is null please init it before trying to upload.");
         NSException *exception = [NSException exceptionWithName:@"EvernoteConfigException" reason:@"The evernote configuration is null please initialize it before trying to upload." userInfo:nil];
         @throw exception;
     }
+}
+
+
+#pragma mark - Evernot Async
+
+- (NSOperation*)uploadMeetingAsync:(Meeting*)meeting {
+    NSInvocationOperation* evernoteOperation = [[[NSInvocationOperation alloc] initWithTarget:self
+                                                                         selector:@selector(uploadMeetingToEvernote:) object:meeting] autorelease];
+    
+    return evernoteOperation;
 }
 
 

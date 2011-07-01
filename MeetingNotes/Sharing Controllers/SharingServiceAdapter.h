@@ -19,8 +19,8 @@
 @interface SharingServiceAdapter : NSObject{
     
 }
+@property (nonatomic, retain) DBRestClient* restClient;
 - (void) uploadMeetingToDropbox:(Meeting*) meeting;
-- (void) uploadMeetingToEvernote:(Meeting*)meeting;
 + (SharingServiceAdapter*) sharedSharingService;
 - (void) setupDropboxSession;
 @property (nonatomic, retain) DropboxConfig *sharedDropboxConfig;
@@ -32,13 +32,19 @@
 - (BOOL) isEvernoteConfigured;
 - (EvernoteConfig*) setupEvernoteWith:(NSString *)meetingNotebookName username:(NSString *)username password:(NSString*) password;
 @property (nonatomic, assign) id<SharingServiceAdapterDelegate> sharingServiceAdapterDelegate;
+- (void) uploadMeetingToEvernote:(id)meeting;
+- (NSOperation*)uploadMeetingAsync:(Meeting*)meeting;
 @end
 
 
 @protocol SharingServiceAdapterDelegate
-
+@optional
 -(void) didStartConfiguringEvernote;
 -(void) didFinishConfiguringEvernote;
 -(void) didFailConfiguringEvernoteWithError:(NSError*)error;
+-(void) didFinishUploadingToEvernote;
+-(void) didFailUploadingToEvernote:(NSError*)error;
 
+-(void) didFinishUploadingToDropbox;
+-(void) didFailUploadingToDropbox:(NSError*)error;
 @end

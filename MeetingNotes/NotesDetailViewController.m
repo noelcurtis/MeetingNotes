@@ -15,11 +15,13 @@
 #import "ActionItemCell.h"
 #import "ActionItem.h"
 #import "SharingServiceAdapter.h"
+#import "SharingViewController.h"
 
 //@class SharingServiceAdapter;
 
 @interface NotesDetailViewController()
 - (void)configureButtonsForToolbar;
+@property (nonatomic, retain) UIPopoverController* sharingPopoverController;
 @property (nonatomic, retain) UIPopoverController* agendaItemPopoverController;
 @property (nonatomic, retain) UIBarButtonItem *newActionItemButton;
 @property (nonatomic, retain) UIBarButtonItem *meetingSettingsButton;
@@ -41,6 +43,7 @@
 @synthesize newActionItemButton;
 @synthesize meetingSettingsButton;
 @synthesize shareButton;
+@synthesize sharingPopoverController;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -393,7 +396,23 @@
 -(IBAction) shareAction:(id)sender{
     NSLog((@"Share action button pressed"));
     //[[SharingServiceAdapter sharedSharingService] uploadMeetingToDropbox:self.notesRootViewController.meetingBeingEdited];
-    [[SharingServiceAdapter sharedSharingService] uploadMeetingToEvernote:self.notesRootViewController.meetingBeingEdited];
+    //[[SharingServiceAdapter sharedSharingService] uploadMeetingToEvernote:self.notesRootViewController.meetingBeingEdited];
+    if (self.sharingPopoverController.popoverVisible == YES){
+        [self.sharingPopoverController dismissPopoverAnimated:YES];
+        NSLog(@"Implement any cancel code you require to cancel adding new meeting items.");
+    }else{
+        
+        // create a view to enter a meeting manually
+        NSLog(@"Setting up the ActionItemsViewController with a meeting and agenda item");
+        SharingViewController *sharingVC = [[SharingViewController alloc] initWithNibName:@"SharingViewController" bundle:nil ];
+        // pass the meeting being edited along
+        sharingVC.meetingToShare = self.notesRootViewController.meetingBeingEdited;
+        sharingPopoverController = [[UIPopoverController alloc] initWithContentViewController:sharingVC];
+        sharingPopoverController.popoverContentSize = sharingVC.view.frame.size;
+        [sharingPopoverController presentPopoverFromBarButtonItem:shareButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        NSLog(@"Sharing view controller displayed.");
+        [sharingVC release];
+    }
 }
 
 #pragma mark - ActionItemViewControllerDelegate

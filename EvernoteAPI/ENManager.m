@@ -56,7 +56,7 @@ static ENManager *sharedManager;
 			TBinaryProtocol *userStoreProtocol = [[[TBinaryProtocol alloc] initWithTransport:userStoreHttpClient] autorelease];
 			EDAMUserStoreClient *userStore = [[[EDAMUserStoreClient alloc] initWithProtocol:userStoreProtocol] autorelease];
 			
-			EDAMAuthenticationResult* authResult = [userStore authenticate:username :password :EVERNOTE_API_COSUMER_KEY :EVERNOTE_API_COSUMER_SECRET];
+            EDAMAuthenticationResult* authResult = [userStore authenticate:username :password :EVERNOTE_API_COSUMER_KEY :EVERNOTE_API_COSUMER_SECRET];
 			
 			DNSLog(@"Authentication was successful for: %@", [[authResult user] username]);
 			DNSLog(@"Authentication token: %@", [authResult authenticationToken]);
