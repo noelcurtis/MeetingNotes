@@ -12,7 +12,7 @@
 #import "DropboxConfig.h"
 
 @interface SharingViewController : UITableViewController<SharingServiceAdapterDelegate> {
-    NSOperationQueue *operationQueue;
+
 }
 @property (nonatomic, retain) IBOutlet UITableViewCell* dropboxCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell* evernoteCell;
@@ -20,6 +20,4 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *dropboxActivityIndicator;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *evernoteActivityIndicator;
 
-
-@property (nonatomic, retain, readonly) NSOperationQueue *operationQueue;
 @end

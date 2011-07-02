@@ -8,6 +8,7 @@
 
 #import "SharingViewController.h"
 #import "SharingServiceAdapter.h"
+#import "MeetingNotesAppDelegate.h"
 
 @implementation SharingViewController
 
@@ -28,7 +29,7 @@
 
 - (void)dealloc
 {
-    [operationQueue dealloc];
+    //[operationQueue dealloc];
     [evernoteCell dealloc];
     [dropboxCell dealloc];
     [super dealloc];
@@ -173,12 +174,11 @@
     switch (indexPath.section) {
         case 0:
             [[SharingServiceAdapter sharedSharingService] uploadMeetingToDropbox:_meetingToShare];
+            [_dropboxAI startAnimating];
             break;
         case 1:
         {
-            NSOperationQueue* aQueue = [[NSOperationQueue alloc] init];
-            // set the delegate of the Sharing service to be self for now.
-            [aQueue addOperation:[[SharingServiceAdapter sharedSharingService] uploadMeetingAsync:_meetingToShare]]; 
+            [[(MeetingNotesAppDelegate*)[[UIApplication sharedApplication] delegate] operationQueue] addOperation:[[SharingServiceAdapter sharedSharingService] uploadMeetingAsync:_meetingToShare]]; 
             [_evernoteAI startAnimating];
             break;
         }
@@ -195,6 +195,13 @@
 -(void) didFailUploadingToDropbox:(NSError *)error{
     [_dropboxAI stopAnimating];
     NSLog(@"%@", [error userInfo]);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload trouble" 
+													message:@"Please make sure you have network connectivity and try again." 
+												   delegate:self 
+										  cancelButtonTitle:@"Ok" 
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 -(void) didFinishUploadingToEvernote{
@@ -205,13 +212,14 @@
 -(void) didFailUploadingToEvernote:(NSError *)error{
     [_evernoteAI stopAnimating];
     NSLog(@"%@", [error userInfo]);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload trouble" 
+													message:@"Please make sure you have network connectivity and try again." 
+												   delegate:self 
+										  cancelButtonTitle:@"Ok" 
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
-- (NSOperationQueue *)operationQueue {
-    if (operationQueue == nil) {
-        operationQueue = [[NSOperationQueue alloc] init];
-    }
-    return operationQueue;
-}
 
 @end

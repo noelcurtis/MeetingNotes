@@ -33,4 +33,5 @@
 - (void)removeAgendaItems:(NSSet *)value;
 - (int)getActionItemCount;
 - (NSString *) asString;
+- (NSString *) fileName;
 @end

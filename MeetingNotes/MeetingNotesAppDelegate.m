@@ -107,6 +107,10 @@
 
 - (void)dealloc
 {
+    [sortDVController release];
+    [sortRVController release];
+    [splitViewController release];
+    [operationQueue release];
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
@@ -252,14 +256,15 @@
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     return basePath;
 }
-/*
-#pragma mark -
-#pragma mark DBSessionDelegate methods
 
-- (void)sessionDidReceiveAuthorizationFailure:(DBSession*)session {
-	DBLoginController* loginController = [[DBLoginController new] autorelease];
-	[loginController presentFromController:dropboxNavigationController];
-}*/
+#pragma mark - Shared operation queue
+- (NSOperationQueue *)operationQueue {
+    if (operationQueue == nil) {
+        operationQueue = [[NSOperationQueue alloc] init];
+    }
+    return operationQueue;
+}
+
 
 
 @end

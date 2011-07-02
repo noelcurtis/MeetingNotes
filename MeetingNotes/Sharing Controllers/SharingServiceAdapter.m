@@ -110,14 +110,12 @@ static SharingServiceAdapter *_sharedSharingService;
     
 	NSString *docDir = [arrayPaths objectAtIndex:0];
     // Create pathname to Documents directory
-	_newMeetingFilePath = [docDir stringByAppendingString:@"/MeetingNotes.txt"];
+	_newMeetingFilePath = [docDir stringByAppendingString:[meeting fileName]];
     NSString *meetingAsString = [meeting asString];
     // Create a temp file with the meetings contents
     [meetingAsString writeToFile:_newMeetingFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    [self.restClient uploadFile:@"MeetingNotes.txt" toPath:@"/Photos" fromPath:_newMeetingFilePath];
-    // Remove the temp file after the upload to dropbox is finished.
-    //[newFilePath release];
-    //[meetingAsString release];
+    [self.restClient createFolder:@"Meeting Notes"];
+    [self.restClient uploadFile:[meeting fileName] toPath:@"/Meeting Notes" fromPath:_newMeetingFilePath];
 }
 
 -(void) removeTempMeetingFile{
@@ -133,6 +131,23 @@ static SharingServiceAdapter *_sharedSharingService;
 
 }
 
+-(void) restClient:(DBRestClient *)client createdFolder:(DBMetadata *)folder{
+    NSLog(@"Finished creating folder!");
+}
+
+-(void) restClient:(DBRestClient *)client createFolderFailedWithError:(NSError *)error{
+    NSLog(@"Error creating folder: %@", [error userInfo]);
+    NSString *errorAsString = [[error userInfo] objectForKey:@"error"];
+    NSRange textRange;
+    textRange =[[errorAsString lowercaseString] rangeOfString:[@"already exists" lowercaseString]];
+    if(textRange.location != NSNotFound){
+        //Does contain the substring
+        NSLog((@"The Meeting Notes folder already exsits."));
+    }else{
+        [self.sharingServiceAdapterDelegate didFailUploadingToDropbox:error];
+    }
+}
+
 -(void) restClient:(DBRestClient *)client uploadedFile:(NSString *)srcPath{
     NSLog(@"Finished uploading file!");
     [self removeTempMeetingFile];
@@ -145,7 +160,7 @@ static SharingServiceAdapter *_sharedSharingService;
     NSLog(@"Error uploading file");
     [self removeTempMeetingFile];
     _newMeetingFilePath = nil;
-    [self.sharingServiceAdapterDelegate didFailUploadingToEvernote:error];
+    [self.sharingServiceAdapterDelegate didFailUploadingToDropbox:error];
 }
 
 -(void) restClient:(DBRestClient *)client uploadProgress:(CGFloat)progress forFile:(NSString *)srcPath{

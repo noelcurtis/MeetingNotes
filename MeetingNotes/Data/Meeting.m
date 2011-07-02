@@ -106,7 +106,12 @@
     return meetingContents;
 }
 
-
-
+-(NSString*) fileName{
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@.txt",self.name, [dateFormatter  stringFromDate:self.startDate]];
+    return fileName;
+}
 
 @end
