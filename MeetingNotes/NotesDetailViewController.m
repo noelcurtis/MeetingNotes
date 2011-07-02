@@ -44,6 +44,7 @@
 @synthesize meetingSettingsButton;
 @synthesize shareButton;
 @synthesize sharingPopoverController;
+@synthesize agendaItemTitleChangeDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -339,6 +340,7 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSLog(@"text field did change %@", string);
+    [self.agendaItemTitleChangeDelegate agendaTitleDidChangeCharactersInRange:range replacementString:string];
     return YES;
 }
 

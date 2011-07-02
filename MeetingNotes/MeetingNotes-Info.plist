@@ -13,6 +13,7 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>mn_icon_72x72.png</string>
+		<string>mn_icon_72x72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.noelcurtis.${PRODUCT_NAME:rfc1034identifier}</string>

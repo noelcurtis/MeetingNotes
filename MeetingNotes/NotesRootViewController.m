@@ -445,29 +445,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-    /*
-    // setup the detail view with the selected agenda item
-    if (self.sortDetailViewController.isActiveViewControllerHidden) {
-        [self.sortDetailViewController showActiveViewController];
-    }
-    AgendaItemCell *selectedCell = (AgendaItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    selectedCell.redArrow.hidden = NO;
-    [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];*/
-    /*if(self.currentSelectedCell){
-        // reset the arrow of the old selected cell to hidded
-        self.currentSelectedCell.redArrow.hidden = YES;
-    }
-    // update the current selected cell
-    self.currentSelectedCell = (AgendaItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    self.currentSelectedCell.redArrow.hidden = NO;*/
     [self selectCellAtIndexPath:indexPath];
     // setup the detail view with the selected agenda item
     if (self.sortDetailViewController.isActiveViewControllerHidden) {
@@ -475,6 +452,15 @@
     }
     [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];
 
+}
+
+#pragma mark - AgendaItemTitleChangeDelegate
+-(void) agendaTitleDidChangeCharactersInRange:(NSRange)range 
+                            replacementString:(NSString *)string{
+    AgendaItemCell *selectedCell = [self currentSelectedCell];
+    NSString *currentLabelText = selectedCell.agendaItemLabel.text;
+    currentLabelText = [currentLabelText stringByReplacingCharactersInRange:range withString:string];
+    [selectedCell.agendaItemLabel setText:currentLabelText];
 }
 
 @end

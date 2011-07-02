@@ -13,6 +13,7 @@
 @class AgendaItem;
 @class NoteView;
 @class ActionItemCell;
+@protocol AgendaItemTitleChangeDelegate;
 
 @interface NotesDetailViewController : UITableViewController<UITextFieldDelegate, UITextViewDelegate, ActionItemsViewControllerDelegate> {
     
@@ -27,6 +28,7 @@
 // From the root view controller
 @property(nonatomic, retain)NotesRootViewController* notesRootViewController;
 @property(nonatomic, retain)AgendaItem* agendaItem;
+@property (nonatomic, assign) id<AgendaItemTitleChangeDelegate> agendaItemTitleChangeDelegate;
 
 -(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath;
 -(void) setupDetailViewWithAgendaItem:(AgendaItem*) selectedAgendaItem;
@@ -40,4 +42,9 @@
 // Satisfy the ActionItemsViewControllerDelegate
 -(void) dismissActionItemsViewController;
 
+@end
+
+
+@protocol AgendaItemTitleChangeDelegate
+    -(void)agendaTitleDidChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 @end

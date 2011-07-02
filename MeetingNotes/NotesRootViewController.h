@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AgendaItem.h"
+#import "NotesDetailViewController.h"
 
 @class Meeting;
 @class NotesDetailViewController;
@@ -20,7 +21,7 @@
 
 @end
 
-@interface NotesRootViewController : UITableViewController {
+@interface NotesRootViewController : UITableViewController<AgendaItemTitleChangeDelegate> {
     
 }
 @property (nonatomic, retain) Meeting* meetingBeingEdited;

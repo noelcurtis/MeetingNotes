@@ -198,6 +198,8 @@
     notesRVController.sortDetailViewController = self;
     // Create the detail view controller
     NotesDetailViewController *notesDetailView = [[NotesDetailViewController alloc] initWithNibName:@"NotesDetailViewController" bundle:nil];
+    // setup the title change delegate for the Notes Detail view as its root view.
+    notesDetailView.agendaItemTitleChangeDelegate = notesRVController;
     notesRVController.notesDetailViewController = notesDetailView;
     notesDetailView.notesRootViewController = notesRVController;
     // setup the meeting to edit in the root view controler
