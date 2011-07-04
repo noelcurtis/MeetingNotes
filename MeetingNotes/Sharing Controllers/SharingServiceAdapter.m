@@ -301,13 +301,7 @@ static SharingServiceAdapter *_sharedSharingService;
     if([self isEvernoteConfigured]){
         [[ENManager sharedInstance] setUsername:((EvernoteConfig*)[self sharedEvernoteConfiguration]).username];
         [[ENManager sharedInstance] setPassword:((EvernoteConfig*)[self sharedEvernoteConfiguration]).password];
-        NSMutableString *contentString = [NSMutableString string];
-        [contentString setString:	@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"];
-        [contentString appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml.dtd\">"];
-        [contentString appendString:@"<en-note>"];
-        [contentString appendString:[meeting asString]];
-        [contentString appendString:@"</en-note>"];
-        EDAMNote* newNote = [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:((Meeting*)meeting).name content:contentString];
+        EDAMNote* newNote = [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:((Meeting*)meeting).name content:[meeting asXhtml]];
         if(newNote){
             [self.sharingServiceAdapterDelegate didFinishUploadingToEvernote];
         }else{

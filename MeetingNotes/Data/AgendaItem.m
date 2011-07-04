@@ -61,5 +61,51 @@
     return agendaContents;
 }
 
+-(NSString*) asXhtml{
+    NSMutableString *agendaItem = [[NSMutableString alloc] init];
+    [agendaItem appendString:@"<tr>"];
+    [agendaItem appendString:@"<td align=\"left\" bgcolor=\"#5BAA99\">"];
+    [agendaItem appendString:@"<font face=\"Arial,Helvetica,sans-serif\">"];
+    [agendaItem appendString:[NSString stringWithFormat:@"<b><font color=\"#252525\" size = \"3\">%@:</font></b>",self.title]];
+    [agendaItem appendString:@"</font>"];
+    [agendaItem appendString:@"</td>"];
+    [agendaItem appendString:@"</tr>"];
+    // notes section
+    [agendaItem appendString:@"<tr>"];
+    [agendaItem appendString:@"<td align=\"left\">"];
+    [agendaItem appendString:@"<font face=\"Arial,Helvetica,sans-serif\" size=\"2\">"];
+    [agendaItem appendString:[NSString stringWithFormat:@"<strong>Notes: </strong>%@",self.note]];
+    [agendaItem appendString:@"</font>"];
+    [agendaItem appendString:@"</td>"];
+    [agendaItem appendString:@"</tr>"];
+    
+    // agenda items
+    [agendaItem appendString:@"<tr>"];
+    [agendaItem appendString:@"<td align=\"left\">"];
+    [agendaItem appendString:@"<font face=\"Arial,Helvetica,sans-serif\" size=\"2\">"];
+    // start a list
+    [agendaItem appendString:@"<dl>"];
+    for (ActionItem *actionItem in self.ActionItems) {
+        [agendaItem appendString:@"<dt>"];
+        [agendaItem appendString:[NSString stringWithFormat:@"<strong>%@:</strong>", actionItem.notes]];
+        
+        // attendees for the action item
+        // create a string for the attendees
+        NSString *attendeesString = [[NSString alloc] init];
+        for (Attendee* attendee in actionItem.Attendees) {
+            attendeesString = [attendeesString stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+        }
+        if(attendeesString && ![attendeesString isEqualToString:@""]){
+            [agendaItem appendString:[NSString stringWithFormat:@"<dd>%@</dd>", attendeesString]];
+        }
+        [agendaItem appendString:@"</dt>"];
+    }
+    [agendaItem appendString:@"</dl>"];
+    [agendaItem appendString:@"</font>"];
+    [agendaItem appendString:@"</td>"];
+    [agendaItem appendString:@"</tr>"];
+    return agendaItem;
+}
+
 
 @end

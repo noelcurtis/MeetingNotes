@@ -22,6 +22,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *notebookTextView;
 @property (nonatomic, assign) id<EvernoteSettingsViewControllerDelegate> evernoteSettingsViewControllerDelegate;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) IBOutlet UIImageView *evernoteLogo;
 @end
 
 @protocol EvernoteSettingsViewControllerDelegate

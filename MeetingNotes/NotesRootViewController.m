@@ -16,9 +16,7 @@
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-- (void)addToolBarToView;
 - (void)selectCellAtIndexPath:(NSIndexPath*) indexPath;
-@property (nonatomic, retain)UIToolbar *toolbar;
 @end
 
 @implementation UIBarButtonItem(ButtonWithImage)
@@ -46,7 +44,6 @@
 @synthesize notesDetailViewController;
 @synthesize agendaItems;
 @synthesize sortDetailViewController;
-@synthesize toolbar;
 @synthesize agendaItemCell;
 @synthesize currentSelectedCell;
 
@@ -123,55 +120,6 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    // release the old agenda items
-    [self.agendaItems release];
-    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
-    [self.tableView reloadData];
-    NSUInteger positionOfNewAgendaItem = [self.agendaItems indexOfObject:newAgendaItem];
-    NSIndexPath *indexOfNewAgendaItem = [[NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0] autorelease];
-    [self.tableView selectRowAtIndexPath:indexOfNewAgendaItem animated:YES scrollPosition:UITableViewScrollPositionTop];
-    [self selectCellAtIndexPath:indexOfNewAgendaItem];
-    /*AgendaItemCell *cellForItemBeingEdited = (AgendaItemCell*)[self.tableView cellForRowAtIndexPath:indexOfNewAgendaItem];
-    if(self.currentSelectedCell){
-        // reset the arrow of the old selected cell to hidded
-        self.currentSelectedCell.redArrow.hidden = YES;
-    }
-    // update the current selected cell
-    self.currentSelectedCell = cellForItemBeingEdited;
-    self.currentSelectedCell.redArrow.hidden = NO;*/
-    //[self.tableView selectRowAtIndexPath:indexOfNewAgendaItem animated:YES scrollPosition:UITableViewScrollPositionTop];
-}
-
-#pragma mark - Meeting options to allow to print PDFs, send email and view meeting details
-
-- (IBAction)optionsSegmentAction:(id)sender
-{
-	// The segmented control was clicked, handle it here 
-	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-	NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
-    
-	switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            segmentedControl.selectedSegmentIndex = -1;
-            // create a .txt file with the meeting notes
-            //FileHandlerController *fileHandlerController = [[FileHandlerController alloc] init];
-            //[fileHandlerController exportMeetingToFile:self.meetingBeingEdited];
-            //[fileHandlerController release];
-            break;
-        /*case 1:
-            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
-            [self addActionableAttendeesAction];
-            segmentedControl.selectedSegmentIndex = -1;
-            break;
-        case 2:
-            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
-            segmentedControl.selectedSegmentIndex = -1;
-            [self done:sender];
-            break;  */         
-        default:
-            break;
-    }
-
 }
 
 #pragma mark - View lifecycle
@@ -205,48 +153,6 @@
     NSLog(@"Replacing the detail view with the MeetingListViewController");
     [self.sortDetailViewController setupWithMeetingListViewController];
     [self.sortDetailViewController.rvController selectRowForCategory:self.meetingBeingEdited.Category];
-}
-
--(void)addToolBarToView{
-    
-    toolbar = [[UIToolbar alloc] init];
-    toolbar.barStyle = UIBarStyleDefault;
-    [toolbar sizeToFit];
-    //Caclulate the height of the toolbar
-    CGFloat toolbarHeight = [toolbar frame].size.height;
-    
-    //Get the bounds of the parent view
-    CGRect rootViewBounds = self.parentViewController.view.bounds;
-    
-    //Get the height of the parent view.
-    CGFloat rootViewHeight = CGRectGetHeight(rootViewBounds);
-    
-    //Get the width of the parent view,
-    CGFloat rootViewWidth = CGRectGetWidth(rootViewBounds);
-    
-    //Create a rectangle for the toolbar
-    CGRect rectArea = CGRectMake(0, (rootViewHeight-toolbarHeight), rootViewWidth, toolbarHeight);
-    
-    //Reposition and resize the receiver
-    [toolbar setFrame:rectArea];
-    
-    //Add buttons to the toolbar
-    NSArray *itemArray = [NSArray arrayWithObjects: @"PDF", @"Email", @"Meeting", nil];
-    
-    UISegmentedControl *meetingOptions = [[UISegmentedControl alloc] initWithItems:itemArray];
-    meetingOptions.tintColor = [UIColor darkGrayColor];
-    meetingOptions.segmentedControlStyle = UISegmentedControlStyleBezeled;
-    [meetingOptions addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
-    meetingOptions.frame = CGRectMake(0, 0, 200, 30);
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:meetingOptions];
-    UIBarButtonItem *flex1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *flex2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [toolbar setItems:[NSArray arrayWithObjects:flex1, optionsButton, flex2, nil]];
-    [meetingOptions release];
-    [flex1 release];
-    [flex2 release];
-    [self.navigationController.view addSubview:toolbar];
-    //[toolbar release];
 }
 
 
@@ -286,7 +192,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.toolbar removeFromSuperview];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

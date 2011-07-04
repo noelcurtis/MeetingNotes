@@ -27,6 +27,7 @@
 @synthesize notebookTextView = _notebookTextView;
 @synthesize evernoteSettingsViewControllerDelegate;
 @synthesize activityIndicator;
+@synthesize evernoteLogo;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,6 +40,14 @@
 
 - (void)dealloc
 {
+    [_passwordCell release];
+    [_usernameCell release];
+    [_notebookCell release];
+    [_usernameTextView release];
+    [_passwordTextView release];
+    [_notebookTextView release];
+    [activityIndicator release];
+    [evernoteLogo release];
     [super dealloc];
 }
 
@@ -70,6 +79,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     [self.activityIndicator setFrame:CGRectMake(240.0, 225.0, 37.0, 37.0)];
     [self.tableView addSubview:self.activityIndicator];
+    [self.evernoteLogo setFrame:CGRectMake(240.0, 225.0, 60.0, 60.0)];
+    [self.tableView addSubview:self.evernoteLogo];
     EvernoteConfig *sharedEvernoteConfig = [[SharingServiceAdapter sharedSharingService] sharedEvernoteConfiguration];
     [SharingServiceAdapter sharedSharingService].sharingServiceAdapterDelegate = self;
     if (sharedEvernoteConfig) {
@@ -248,8 +259,10 @@
     self.view.userInteractionEnabled = !working;
     self.navigationController.view.userInteractionEnabled = !working;
     if (working) {
+        self.evernoteLogo.hidden = YES;
         [activityIndicator startAnimating];
     } else {
+        self.evernoteLogo.hidden = NO;
         [activityIndicator stopAnimating];
     }
 }

@@ -224,6 +224,7 @@
 		C78540F1135CF9B7001AAEDD /* MeetingNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */; };
 		C78540F4135CF9B7001AAEDD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78540F2135CF9B7001AAEDD /* MainWindow.xib */; };
 		C789CC6913B5958500AE709D /* KiwiTestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */; };
+		C78C547113C125AF00C2553D /* enlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C78C547013C125AF00C2553D /* enlogo.png */; };
 		C7909C4D138C8166001EFF79 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */; };
 		C790E6A1135D0599009B42B9 /* SortRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E69F135D0599009B42B9 /* SortRootViewController.m */; };
 		C790E6A2135D0599009B42B9 /* SortRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C790E6A0135D0599009B42B9 /* SortRootViewController.xib */; };
@@ -593,7 +594,7 @@
 		C7751914139EE918004E1813 /* MeetingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingCell.h; sourceTree = "<group>"; };
 		C7751915139EE918004E1813 /* MeetingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingCell.m; sourceTree = "<group>"; };
 		C7751917139EE956004E1813 /* MeetingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingCell.xib; sourceTree = "<group>"; };
-		C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mn_icon_72x72.png; sourceTree = "<group>"; };
+		C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mn_icon_72x72.png; path = ../mn_icon_72x72.png; sourceTree = "<group>"; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -606,6 +607,7 @@
 		C78540F0135CF9B7001AAEDD /* MeetingNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingNotesAppDelegate.m; sourceTree = "<group>"; };
 		C78540F3135CF9B7001AAEDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KiwiTestConfiguration.m; sourceTree = "<group>"; };
+		C78C547013C125AF00C2553D /* enlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enlogo.png; path = Images/enlogo.png; sourceTree = "<group>"; };
 		C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
 		C790E69E135D0599009B42B9 /* SortRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortRootViewController.h; sourceTree = "<group>"; };
 		C790E69F135D0599009B42B9 /* SortRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortRootViewController.m; sourceTree = "<group>"; };
@@ -1105,6 +1107,8 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C78C547013C125AF00C2553D /* enlogo.png */,
+				C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */,
 				C7D97BC413A7154400D696D0 /* icon_calendar.png */,
 				C7AC155413A7123800BD8649 /* paper_bg.png */,
 				C7F2BC2613A7069400EE92BA /* btn_add_action.png */,
@@ -1159,7 +1163,6 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
-				C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
@@ -1566,6 +1569,7 @@
 				C75D812713B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */,
 				C721A5AA13B961DB0095BCDA /* SharingViewController.xib in Resources */,
 				C77DE4C113BF6BAF000CD507 /* mn_icon_72x72.png in Resources */,
+				C78C547113C125AF00C2553D /* enlogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,4 +24,5 @@
 - (void)addActionItems:(NSSet *)value;
 - (void)removeActionItems:(NSSet *)value;
 - (NSString*)asString;
+- (NSString*) asXhtml;
 @end

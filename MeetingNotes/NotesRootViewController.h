@@ -35,9 +35,6 @@
 //-(void)saveContextAndReloadTable;
 -(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem;
 
-// options segment action
--(IBAction)optionsSegmentAction:(id)sender;
-
 -(IBAction)backButtonAction:(id)sender;
 
 @end

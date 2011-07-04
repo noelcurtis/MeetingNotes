@@ -34,4 +34,5 @@
 - (int)getActionItemCount;
 - (NSString *) asString;
 - (NSString *) fileName;
+- (NSString *) asXhtml;
 @end
