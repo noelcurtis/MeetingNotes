@@ -225,7 +225,7 @@
 -(void) mailComposeController:(MFMailComposeViewController *)controller 
           didFinishWithResult:(MFMailComposeResult)result 
                         error:(NSError *)error{
-    if(error){
+    if(result==MFMailComposeResultFailed || error){
         NSLog(@"Error when trying to send email: %@", [error userInfo]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email trouble" 
                                                         message:@"Please make sure you have network connectivity and try again." 
