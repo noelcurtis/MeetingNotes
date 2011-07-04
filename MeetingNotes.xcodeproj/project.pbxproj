@@ -201,6 +201,7 @@
 		C75D812613B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */; };
 		C75D812713B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */; };
 		C75D812813B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */; };
+		C75EFA4A13C20C7C001039C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75EFA4913C20C7C001039C7 /* MessageUI.framework */; };
 		C768755713AEE3090023F34D /* EvernoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C768755613AEE3090023F34D /* EvernoteTests.m */; };
 		C768756C13AF04600023F34D /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C768756B13AF04600023F34D /* Meeting.m */; };
 		C768756D13AF04600023F34D /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C768756B13AF04600023F34D /* Meeting.m */; };
@@ -583,6 +584,7 @@
 		C75D812213B62EC300B4B8B1 /* EvernoteSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteSettingsController.h; sourceTree = "<group>"; };
 		C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteSettingsController.m; sourceTree = "<group>"; };
 		C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvernoteSettingsController.xib; sourceTree = "<group>"; };
+		C75EFA4913C20C7C001039C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C768755613AEE3090023F34D /* EvernoteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteTests.m; sourceTree = "<group>"; };
 		C768756A13AF04600023F34D /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
 		C768756B13AF04600023F34D /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75EFA4A13C20C7C001039C7 /* MessageUI.framework in Frameworks */,
 				C759BC6013A2E7F40093C9A0 /* EventKit.framework in Frameworks */,
 				C7D56DD0139C666D00F342C7 /* Security.framework in Frameworks */,
 				C76A79C31378ADAD00AEF020 /* AddressBook.framework in Frameworks */,
@@ -1163,6 +1166,7 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
+				C75EFA4913C20C7C001039C7 /* MessageUI.framework */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,

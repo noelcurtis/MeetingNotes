@@ -10,10 +10,15 @@
 #import "SharingServiceAdapter.h"
 #import "MeetingNotesAppDelegate.h"
 
+@interface SharingViewController()
+- (void) presentMailComposer;
+@end
+
 @implementation SharingViewController
 
 @synthesize evernoteCell;
 @synthesize dropboxCell;
+@synthesize emailCell;
 @synthesize meetingToShare = _meetingToShare;
 @synthesize evernoteActivityIndicator = _evernoteAI;
 @synthesize dropboxActivityIndicator = _dropboxAI;
@@ -30,8 +35,9 @@
 - (void)dealloc
 {
     //[operationQueue dealloc];
-    [evernoteCell dealloc];
-    [dropboxCell dealloc];
+    [evernoteCell release];
+    [dropboxCell release];
+    [emailCell release];
     [super dealloc];
 }
 
@@ -96,7 +102,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -119,6 +125,9 @@
             break;
         case 1:
             return evernoteCell;
+            break;
+        case 2:
+            return emailCell;
             break;
         default:
             break;
@@ -182,9 +191,52 @@
             [_evernoteAI startAnimating];
             break;
         }
+        case 2:
+        {
+            if([MFMailComposeViewController canSendMail]){
+                [self presentMailComposer];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email trouble" 
+                                                                message:@"Please make sure you have network connectivity and email is configured." 
+                                                               delegate:self 
+                                                      cancelButtonTitle:@"Ok" 
+                                                      otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+
+            }
+            break;
+        }
         default:
             break;
     }
+}
+#pragma mark - Mail composer view and delegate methods
+
+- (void) presentMailComposer{
+	MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+	controller.mailComposeDelegate = self;
+	[controller setSubject:@"Meeting notes summary..."];
+	[controller setMessageBody:[self.meetingToShare asXhtml] isHTML:YES];
+	[self presentModalViewController:controller animated:YES];
+	[controller release];
+}
+
+-(void) mailComposeController:(MFMailComposeViewController *)controller 
+          didFinishWithResult:(MFMailComposeResult)result 
+                        error:(NSError *)error{
+    if(error){
+        NSLog(@"Error when trying to send email: %@", [error userInfo]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email trouble" 
+                                                        message:@"Please make sure you have network connectivity and try again." 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+    [self becomeFirstResponder];
+	[self dismissModalViewControllerAnimated:YES];
 }
 #pragma mark - SharingServiceAdapterDelegate methods
 

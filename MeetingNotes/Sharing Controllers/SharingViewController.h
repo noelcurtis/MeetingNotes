@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "Meeting.h"
 #import "SharingServiceAdapter.h"
 #import "DropboxConfig.h"
 
-@interface SharingViewController : UITableViewController<SharingServiceAdapterDelegate> {
+@interface SharingViewController : UITableViewController<SharingServiceAdapterDelegate, MFMailComposeViewControllerDelegate> {
 
 }
 @property (nonatomic, retain) IBOutlet UITableViewCell* dropboxCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell* evernoteCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell* emailCell;
 @property (nonatomic, retain) Meeting *meetingToShare;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *dropboxActivityIndicator;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *evernoteActivityIndicator;
