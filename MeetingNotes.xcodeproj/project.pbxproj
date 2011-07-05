@@ -10,6 +10,7 @@
 		C70061B6139DC46A00FD9766 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C70061B5139DC46A00FD9766 /* icon_settings.png */; };
 		C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */; };
 		C70A947F13AAFBF700680AF7 /* SelectCategorieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */; };
+		C70C259513C2B8F6005532C8 /* icon_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = C70C259413C2B8F6005532C8 /* icon_profile.png */; };
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
 		C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
@@ -314,6 +315,7 @@
 		C70A947B13AAFBF600680AF7 /* SelectCategorieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategorieViewController.h; sourceTree = "<group>"; };
 		C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategorieViewController.m; sourceTree = "<group>"; };
 		C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCategorieViewController.xib; sourceTree = "<group>"; };
+		C70C259413C2B8F6005532C8 /* icon_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_profile.png; path = Images/icon_profile.png; sourceTree = "<group>"; };
 		C7132DA9135E7F680012B12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7153EFE1383783200A48C85 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		C7153EFF1383783200A48C85 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
@@ -1110,6 +1112,7 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C70C259413C2B8F6005532C8 /* icon_profile.png */,
 				C78C547013C125AF00C2553D /* enlogo.png */,
 				C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */,
 				C7D97BC413A7154400D696D0 /* icon_calendar.png */,
@@ -1166,7 +1169,6 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
-				C75EFA4913C20C7C001039C7 /* MessageUI.framework */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
@@ -1186,6 +1188,7 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C75EFA4913C20C7C001039C7 /* MessageUI.framework */,
 				C768757A13AF05060023F34D /* Foundation.framework */,
 				C759BC5F13A2E7F40093C9A0 /* EventKit.framework */,
 				C7D56DCF139C666D00F342C7 /* Security.framework */,
@@ -1574,6 +1577,7 @@
 				C721A5AA13B961DB0095BCDA /* SharingViewController.xib in Resources */,
 				C77DE4C113BF6BAF000CD507 /* mn_icon_72x72.png in Resources */,
 				C78C547113C125AF00C2553D /* enlogo.png in Resources */,
+				C70C259513C2B8F6005532C8 /* icon_profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

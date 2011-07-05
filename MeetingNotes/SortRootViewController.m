@@ -341,8 +341,8 @@
     
     NSError *error = nil;
     NSArray *meetings = [managedObjectContext executeFetchRequest:request error:&error];
-    if (!error) {
-        NSLog(@"No meetings exist!");
+    if (error) {
+        NSLog(@"Error getting all meetings %@ %@", [error userInfo], error);
     }
     return meetings;
 }

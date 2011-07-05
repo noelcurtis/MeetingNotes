@@ -21,6 +21,7 @@
 @property (nonatomic, retain) Attendee* personSelectedFromPeoplePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @property (nonatomic, retain) Category *selectedCategory;
+- (IBAction) addCustomAttendee:(id)sender;
 @end
 
 @implementation CreateMinutesViewController
@@ -34,6 +35,9 @@
 @synthesize endsDateLabel;
 @synthesize dateFormatter;
 @synthesize selectedCategory;
+@synthesize newAttendeeTextField;
+@synthesize addCustomAttendeeButton;
+@synthesize addAttendeeCell;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -82,12 +86,13 @@
 																						   target:self 
                                                                                            action:@selector(cancel:)] autorelease];
     //Add buttons to the toolbar
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Add", @"Contacts", @"Done", nil];
+    NSArray *itemArray = [NSArray arrayWithObjects:@"Contacts", @"Done", nil];
 
     UISegmentedControl *options = [[UISegmentedControl alloc] initWithItems:itemArray];
     options.segmentedControlStyle = UISegmentedControlStyleBezeled;
     [options addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
-    options.frame = CGRectMake(0, 0, 200, 30);
+    options.frame = CGRectMake(0, 0, 140, 30);
+    [options setBackgroundColor:[UIColor clearColor]];
     UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:options];
     self.navigationItem.rightBarButtonItem = optionsButton;
 }
@@ -103,14 +108,10 @@
 	switch (segmentedControl.selectedSegmentIndex) {
         case 0:
             NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
-            segmentedControl.selectedSegmentIndex = -1;
-            break;
-        case 1:
-            NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
             [self addActionableAttendeesAction];
             segmentedControl.selectedSegmentIndex = -1;
             break;
-        case 2:
+        case 1:
             NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
             segmentedControl.selectedSegmentIndex = -1;
             [self done:sender];
@@ -200,8 +201,7 @@
 	NSString *title = nil;
     switch (section) {
         case 3:
-            if([self.attendees count] > 0)
-                title = @"Attendees";
+            title = @"Attendees";
             break;
             
         default:
@@ -227,7 +227,7 @@
         case 2:
             return 1;
         case 3:
-            return [self.attendees count];
+            return [self.attendees count] + 1;
         default:
             return 0;
             break;
@@ -264,27 +264,24 @@
         return cell;
     }
     else{
-        static NSString *CellIdentifier = @"newCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        if(indexPath.row == 0){
+            //new attendee cell
+            return self.addAttendeeCell;
+        }else{
+            // regular attendee cell
+            static NSString *CellIdentifier = @"attendeeCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            }
+            Attendee *attendeeAtIndex = [self.attendees objectAtIndex:indexPath.row - 1];
+            cell.textLabel.text = attendeeAtIndex.name;
+            return cell;
         }
-        Attendee *attendeeAtIndex = [self.attendees objectAtIndex:indexPath.row];
-        cell.textLabel.text = attendeeAtIndex.name;
-        return cell;
     }
 	NSLog(@"There is not cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
 	NSException *exception = [NSException exceptionWithName:@"NoCell" reason:@"There is no table view cell for this indexPath" userInfo:nil];
 	@throw exception;
-}
-
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-
-    }   
 }
 
 
@@ -335,19 +332,20 @@
     }else{
         [self.attendees addObject:self.personSelectedFromPeoplePicker];
     }
+    /*
     // save the context as new Attendee has been created
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
         
-        /*Replace this implementation with code to handle the error appropriately.
+        Replace this implementation with code to handle the error appropriately.
          
          abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
          
          NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-         abort();*/
-    }
+         abort();
+    }*/
 
-    NSLog(@"New attendee %@ picked and created, to add to the attendee list.", [self.personSelectedFromPeoplePicker description]);
+    NSLog(@"New attendee %@ picked and created.", [self.personSelectedFromPeoplePicker description]);
     [firstName release];
     [lastName release];
     [emailAddress release];
@@ -385,11 +383,51 @@
 	[picker release];	
 }
 
-
+-(void)addCustomAttendee:(id)sender{
+    if(self.newAttendeeTextField.text && ![self.newAttendeeTextField.text isEqualToString:@""]){
+        self.personSelectedFromPeoplePicker = [NSEntityDescription insertNewObjectForEntityForName:@"Attendee" inManagedObjectContext:self.managedObjectContext];
+        self.personSelectedFromPeoplePicker.name = self.newAttendeeTextField.text;
+        if (self.attendees == nil) {
+            // initialize the attendees list
+            self.attendees = [[NSMutableArray alloc] init];
+            [self.attendees addObject:self.personSelectedFromPeoplePicker];
+        }else{
+            [self.attendees addObject:self.personSelectedFromPeoplePicker];
+        }
+        [self.newAttendeeTextField setText:@""];
+        NSIndexPath *indexPathForAttendee = [NSIndexPath indexPathForRow:
+                                             [self.attendees indexOfObject:self.personSelectedFromPeoplePicker] + 1 inSection:3];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathForAttendee, nil] withRowAnimation:UITableViewRowAnimationTop];
+    }else{
+        NSLog(@"No attendee entered.");
+    }
+}
 
 
 #pragma mark -
 #pragma mark Table view delegate
+
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row>0 && indexPath.section==3){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        // Delete the managed object for the given index path
+        [self.attendees removeObjectAtIndex:indexPath.row-1];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+        NSLog(@"Removed attendee...");
+    }   
+}
+
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Selected Starts and Ends Dates
@@ -462,6 +500,9 @@
 
 
 - (void)dealloc {
+    [newAttendeeTextField release];
+    [addCustomAttendeeButton release];
+    [addAttendeeCell release];
     [self.dateFormatter release];
     [startsDateLabel release];
     [endsDateLabel  release];
