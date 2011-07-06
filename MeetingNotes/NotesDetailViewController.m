@@ -45,6 +45,8 @@
 @synthesize shareButton;
 @synthesize sharingPopoverController;
 @synthesize agendaItemTitleChangeDelegate;
+@synthesize notesHeaderView;
+@synthesize actionHeaderView;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -202,7 +204,7 @@
     }
 }
 
-
+/*
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *title = nil;
     switch (section) {
@@ -217,7 +219,7 @@
     }
     return title;
 }
-
+*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [self configureCellAtIndexPath:indexPath];
 }
@@ -302,6 +304,24 @@
 */
 
 #pragma mark - Table view delegate
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if(section == 1){
+        return self.notesHeaderView;
+    }else if(section == 2){
+        return self.actionHeaderView;
+    }else{
+        return nil;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return 0;
+    }else{
+        return 29;
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // create a view to enter a meeting manually

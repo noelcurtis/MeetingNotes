@@ -52,7 +52,7 @@
 							<object class="IBUIImageView" id="645954643">
 								<reference key="NSNextResponder" ref="185598374"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{5, 5}, {602, 59}}</string>
+								<string key="NSFrame">{{7, 5}, {738, 59}}</string>
 								<reference key="NSSuperview" ref="185598374"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="741275514"/>
@@ -163,7 +163,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrameSize">{613, 65}</string>
+						<string key="NSFrameSize">{748, 65}</string>
 						<reference key="NSSuperview" ref="82209643"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="645954643"/>
@@ -178,7 +178,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{613, 65}</string>
+				<string key="NSFrameSize">{748, 65}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="185598374"/>
@@ -443,36 +443,46 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>actionHeaderView</string>
 							<string>actionItemCell</string>
 							<string>agendaItemTitleCell</string>
 							<string>agendaItemTitleTextField</string>
 							<string>customNotesTextViewCell</string>
 							<string>detailViewControllerToolbar</string>
 							<string>noteView</string>
+							<string>notesHeaderView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIView</string>
 							<string>ActionItemCell</string>
 							<string>UITableViewCell</string>
 							<string>UITextField</string>
 							<string>UITableViewCell</string>
 							<string>UIToolbar</string>
 							<string>NoteView</string>
+							<string>UIView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>actionHeaderView</string>
 							<string>actionItemCell</string>
 							<string>agendaItemTitleCell</string>
 							<string>agendaItemTitleTextField</string>
 							<string>customNotesTextViewCell</string>
 							<string>detailViewControllerToolbar</string>
 							<string>noteView</string>
+							<string>notesHeaderView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">actionHeaderView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">actionItemCell</string>
 								<string key="candidateClassName">ActionItemCell</string>
@@ -496,6 +506,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">noteView</string>
 								<string key="candidateClassName">NoteView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">notesHeaderView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 						</object>
 					</object>

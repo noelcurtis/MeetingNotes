@@ -42,6 +42,9 @@ UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate
 @property (nonatomic, retain) IBOutlet UILabel *startsDateLabel;
 @property (nonatomic, retain) IBOutlet UILabel *endsDateLabel;
 
+@property (nonatomic, retain) IBOutlet UIView *attendeesSectionHeader;
+@property (nonatomic, retain) IBOutlet UIButton *addAttendeeContactsButton;
+
 // new attendees cell
 @property (nonatomic, retain) IBOutlet UITextField *newAttendeeTextField;
 @property (nonatomic, retain) IBOutlet UIButton *addCustomAttendeeButton;
@@ -51,7 +54,7 @@ UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate
 - (IBAction)cancel:(id)sender;
 // options segment action
 - (IBAction)optionsSegmentAction:(id)sender;
--(void) addActionableAttendeesAction;
+- (IBAction) addActionableAttendeesAction:(id)sender;
 
 @end
 

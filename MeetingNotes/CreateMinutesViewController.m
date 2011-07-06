@@ -38,6 +38,8 @@
 @synthesize newAttendeeTextField;
 @synthesize addCustomAttendeeButton;
 @synthesize addAttendeeCell;
+@synthesize addAttendeeContactsButton;
+@synthesize attendeesSectionHeader;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -85,16 +87,19 @@
 	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
 																						   target:self 
                                                                                            action:@selector(cancel:)] autorelease];
+    
+    /*
     //Add buttons to the toolbar
     NSArray *itemArray = [NSArray arrayWithObjects:@"Contacts", @"Done", nil];
-
+    
     UISegmentedControl *options = [[UISegmentedControl alloc] initWithItems:itemArray];
     options.segmentedControlStyle = UISegmentedControlStyleBezeled;
     [options addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
     options.frame = CGRectMake(0, 0, 140, 30);
     [options setBackgroundColor:[UIColor clearColor]];
     UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:options];
-    self.navigationItem.rightBarButtonItem = optionsButton;
+    */
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
 }
 
 
@@ -108,7 +113,7 @@
 	switch (segmentedControl.selectedSegmentIndex) {
         case 0:
             NSLog(@"Segment clicked: %d", segmentedControl.selectedSegmentIndex);
-            [self addActionableAttendeesAction];
+            //[self addActionableAttendeesAction];
             segmentedControl.selectedSegmentIndex = -1;
             break;
         case 1:
@@ -197,11 +202,28 @@
 #pragma mark -
 #pragma mark Table view data source
 
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if(section == 3){
+        return self.attendeesSectionHeader;
+    }else{
+        return nil;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 3){
+        return 40;
+    }else{
+        return 0;
+    }
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *title = nil;
     switch (section) {
         case 3:
-            title = @"Attendees";
+            title = @"Attendees:";
             break;
             
         default:
@@ -371,7 +393,7 @@
 }
 
 #pragma mark - Adding new Actionable Attendees
--(void) addActionableAttendeesAction{
+- (IBAction) addActionableAttendeesAction:(id)sender{
     NSLog(@"Add actionable attendees items button pressed.");
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
@@ -500,6 +522,7 @@
 
 
 - (void)dealloc {
+    [attendeesSectionHeader release];
     [newAttendeeTextField release];
     [addCustomAttendeeButton release];
     [addAttendeeCell release];

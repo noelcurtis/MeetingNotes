@@ -30,6 +30,10 @@
 @property(nonatomic, retain)AgendaItem* agendaItem;
 @property (nonatomic, assign) id<AgendaItemTitleChangeDelegate> agendaItemTitleChangeDelegate;
 
+// custom headers
+@property (nonatomic, retain)IBOutlet UIView *notesHeaderView;
+@property (nonatomic, retain)IBOutlet UIView *actionHeaderView;
+
 -(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath;
 -(void) setupDetailViewWithAgendaItem:(AgendaItem*) selectedAgendaItem;
 
