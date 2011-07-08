@@ -50,6 +50,8 @@ UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate
 @property (nonatomic, retain) IBOutlet UIButton *addCustomAttendeeButton;
 @property (nonatomic, retain) IBOutlet UITableViewCell  *addAttendeeCell;
 
+@property (nonatomic, retain) IBOutlet Meeting *meetingBeingEdited;
+
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
 // options segment action
@@ -60,5 +62,6 @@ UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate
 
 @protocol CreateMinutesModalViewControllerDelegate
 -(void)didDismissModalView;
+@optional
 -(void)insertNewMeeting:(Meeting *)newMeeting;
 @end

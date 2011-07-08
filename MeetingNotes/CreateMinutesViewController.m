@@ -3,7 +3,7 @@
 //  Notes
 //
 //  Created by Scott Penrose on 8/27/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Noel Curtis. All rights reserved.
 //
 
 #import "CreateMinutesViewController.h"
@@ -22,6 +22,9 @@
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @property (nonatomic, retain) Category *selectedCategory;
 - (IBAction) addCustomAttendee:(id)sender;
+- (void) setupWithMeeting;
+- (void) newMeetingSave;
+- (void) existingMeetingToEdit;
 @end
 
 @implementation CreateMinutesViewController
@@ -40,24 +43,15 @@
 @synthesize addAttendeeCell;
 @synthesize addAttendeeContactsButton;
 @synthesize attendeesSectionHeader;
+@synthesize meetingBeingEdited;
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.startsDate];
-    self.endsDateLabel.text =  [self.dateFormatter stringFromDate:self.endsDate];
+    // setup depending on whether a meeting is being edited or for a new meeting
     [super viewDidAppear:animated];
 }
 
@@ -68,8 +62,6 @@
 	
     CGSize size = {320, 353};
     [self setContentSizeForViewInPopover:size];
-    // setup the default category
-    //self.selectedCategory = [SortRootViewController getDefaultCategory];
     
     // setup the dates
     self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -79,29 +71,31 @@
     // setup the starts date and end dates as now
     self.startsDate = [[NSDate alloc] init];
     self.endsDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60];
-    // Done Button
-	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-	//																						target:self 
-	//																						action:@selector(done:)] autorelease];
-	// Cancel Button
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
 																						   target:self 
                                                                                            action:@selector(cancel:)] autorelease];
-    
-    /*
-    //Add buttons to the toolbar
-    NSArray *itemArray = [NSArray arrayWithObjects:@"Contacts", @"Done", nil];
-    
-    UISegmentedControl *options = [[UISegmentedControl alloc] initWithItems:itemArray];
-    options.segmentedControlStyle = UISegmentedControlStyleBezeled;
-    [options addTarget:self action:@selector(optionsSegmentAction:) forControlEvents:UIControlEventValueChanged];
-    options.frame = CGRectMake(0, 0, 140, 30);
-    [options setBackgroundColor:[UIColor clearColor]];
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithCustomView:options];
-    */
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+    
+    // setup for a meeting
+    if(self.meetingBeingEdited){
+        [self setupWithMeeting];
+    }else{
+        self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.startsDate];
+        self.endsDateLabel.text =  [self.dateFormatter stringFromDate:self.endsDate];
+    }
 }
 
+
+-(void) setupWithMeeting{
+    self.managedObjectContext = [self.meetingBeingEdited managedObjectContext];
+    self.titleTextField.text = self.meetingBeingEdited.name;
+    self.locationTextField.text = self.meetingBeingEdited.location;
+    self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.meetingBeingEdited.startDate];
+    self.endsDateLabel.text = [self.dateFormatter stringFromDate:self.meetingBeingEdited.endDate];
+    self.selectedCategory = self.meetingBeingEdited.Category;
+    self.attendees = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.Attendees allObjects]];
+    NSLog(@"Setup CreateMinutesView with an existing meeting %@", self.meetingBeingEdited);
+}
 
 #pragma mark -
 #pragma mark Actions
@@ -129,6 +123,36 @@
 // The done button was tapped, save and close Modal view
 - (IBAction)done:(id)sender {
 	// TODO - Check for all values
+    if(meetingBeingEdited){
+        [self existingMeetingToEdit];
+    }else{
+        [self newMeetingSave];
+    }
+    
+    [self.delegate didDismissModalView];
+}
+
+-(void) existingMeetingToEdit{
+    NSError *error;
+    // Set the values for the existing Meeting
+    [self.meetingBeingEdited setName:titleTextField.text];
+    [self.meetingBeingEdited setLocation:locationTextField.text];
+    [self.meetingBeingEdited setStartDate:self.startsDate];
+    [self.meetingBeingEdited setEndDate:self.endsDate];
+    [self.meetingBeingEdited setCategory:self.selectedCategory];
+    if (![self.managedObjectContext save:&error]) {
+        
+        /*Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    NSLog(@"Updated meeting!");
+}
+
+-(void) newMeetingSave{
     // create the new meeting from the managed object context
     Meeting *newMeeting = [NSEntityDescription insertNewObjectForEntityForName:@"Meeting" inManagedObjectContext:self.managedObjectContext];
     NSError *error;
@@ -144,14 +168,14 @@
         /*Replace this implementation with code to handle the error appropriately.
          
          abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         
-         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-         abort();*/
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
     NSLog(@"Added new Meeting with Name:%@ and Location:%@", newMeeting.name, newMeeting.location);
     [delegate insertNewMeeting:newMeeting];
-    [self.delegate didDismissModalView];
 }
+
 
 // The cancel button was tapped, display alert letting them know they will lose changes
 - (IBAction)cancel:(id)sender {
@@ -354,6 +378,12 @@
     }else{
         [self.attendees addObject:self.personSelectedFromPeoplePicker];
     }
+    
+    // if a meeting is being edited
+    if (meetingBeingEdited) {
+        [self.meetingBeingEdited addAttendeesObject:self.personSelectedFromPeoplePicker];
+    }
+    
     /*
     // save the context as new Attendee has been created
     NSError *error;
@@ -416,6 +446,11 @@
         }else{
             [self.attendees addObject:self.personSelectedFromPeoplePicker];
         }
+        //if a meeting is being edited add the attendee directly
+        if(meetingBeingEdited){
+            [self.meetingBeingEdited addAttendeesObject:self.personSelectedFromPeoplePicker];
+        }
+        
         [self.newAttendeeTextField setText:@""];
         NSIndexPath *indexPathForAttendee = [NSIndexPath indexPathForRow:
                                              [self.attendees indexOfObject:self.personSelectedFromPeoplePicker] + 1 inSection:3];
@@ -522,6 +557,7 @@
 
 
 - (void)dealloc {
+    [addAttendeeContactsButton release];
     [attendeesSectionHeader release];
     [newAttendeeTextField release];
     [addCustomAttendeeButton release];

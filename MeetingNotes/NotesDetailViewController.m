@@ -16,18 +16,21 @@
 #import "ActionItem.h"
 #import "SharingServiceAdapter.h"
 #import "SharingViewController.h"
+#import "CreateMinutesViewController.h"
 
 //@class SharingServiceAdapter;
 
-@interface NotesDetailViewController()
+@interface NotesDetailViewController()<CreateMinutesModalViewControllerDelegate, UIPopoverControllerDelegate>
 - (void)configureButtonsForToolbar;
 @property (nonatomic, retain) UIPopoverController* sharingPopoverController;
 @property (nonatomic, retain) UIPopoverController* agendaItemPopoverController;
 @property (nonatomic, retain) UIBarButtonItem *newActionItemButton;
 @property (nonatomic, retain) UIBarButtonItem *meetingSettingsButton;
 @property (nonatomic, retain) UIBarButtonItem *shareButton;
--(IBAction) meetingSettingsAction:(id)sender;
--(IBAction) shareAction:(id)sender;
+@property (nonatomic, retain) UIPopoverController *createMinutePopoverController;
+- (void)didDismissModalView;
+- (IBAction) meetingSettingsAction:(id)sender;
+- (IBAction) shareAction:(id)sender;
 @end
 
 @implementation NotesDetailViewController
@@ -47,6 +50,7 @@
 @synthesize agendaItemTitleChangeDelegate;
 @synthesize notesHeaderView;
 @synthesize actionHeaderView;
+@synthesize createMinutePopoverController;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -414,6 +418,29 @@
 
 -(IBAction) meetingSettingsAction:(id)sender{
     NSLog(@"Meeting settings button pressed");
+    // make sure you dissmiss the popover if one already exsits
+    if (self.createMinutePopoverController.popoverVisible == YES){
+        [self.createMinutePopoverController dismissPopoverAnimated:YES]; 
+    }else{
+        
+        // create a view to enter a meeting manually
+        CreateMinutesViewController *createMinutesVC = [[CreateMinutesViewController alloc] initWithNibName:@"CreateMinutesView" bundle:nil];
+        createMinutesVC.delegate = self;
+        createMinutesVC.meetingBeingEdited = self.notesRootViewController.meetingBeingEdited;
+        
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
+        createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+        createMinutePopoverController.delegate = self;
+        CGSize size = {320, 390};
+        [createMinutePopoverController setPopoverContentSize:size];
+        [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+        [navigationController release];
+        [createMinutesVC release];
+    }
+
+    
 }
 -(IBAction) shareAction:(id)sender{
     NSLog((@"Share action button pressed"));
@@ -442,6 +469,13 @@
 -(void) dismissActionItemsViewController{
     [self.agendaItemPopoverController dismissPopoverAnimated:YES];
     [self.tableView reloadData];
+}
+
+#pragma mark - CreateMinutesViewControllerDelegate
+
+- (void)didDismissModalView {
+	//[self dismissModalViewControllerAnimated:YES];	
+	[createMinutePopoverController dismissPopoverAnimated:YES];
 }
 
 @end
