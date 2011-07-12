@@ -120,20 +120,9 @@
     return contents;
 }
 */
--(NSString*) asXhtml{
-    // get a date formatter ready
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    
-    // create a string for the attendees
-    NSString *attendeesString = [[NSString alloc] init];
-	for (Attendee* attendee in self.Attendees) {
-        attendeesString = [attendeesString stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
-    }
-    
-    
-    NSMutableString *meetingAsEvernote = [[NSMutableString alloc] init];
+
+-(NSString*) asEvernote{
+    NSMutableString *meetingAsEvernote = [[[NSMutableString alloc] init] autorelease];
     // header
     [meetingAsEvernote setString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"];
     [meetingAsEvernote appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"];
@@ -141,45 +130,85 @@
     [meetingAsEvernote appendString:@"<table border=\"0\" cellpadding=\"4\" width=\"600\">"];
     [meetingAsEvernote appendString:@"<tbody>"];
     
-    // meeting title
-    [meetingAsEvernote appendString:@"<tr>"];
-    [meetingAsEvernote appendString:@"<td height=\"40\" align=\"center\" bgcolor=\"#101D17\">"];
-    [meetingAsEvernote appendString:@"<h1>"];
-    [meetingAsEvernote appendString:[NSString stringWithFormat:@"<strong><font face=\"Arial,Helvetica,sans-serif\" size=\"6\" color=\"white\">%@</font></strong>", self.name]];
-    [meetingAsEvernote appendString:@"</h1>"];
-    [meetingAsEvernote appendString:@"</td>"];
-    [meetingAsEvernote appendString:@"</tr>"];
-    // date section
-    [meetingAsEvernote appendString:@"<tr>"];
-    [meetingAsEvernote appendString:@"<td height=\"25\" align=\"center\" bgcolor=\"#101D17\">"];
-    [meetingAsEvernote appendString:@"<font face=\"Arial,Helvetica,sans-serif\" size=\"2\" color=\"white\">"];
-    [meetingAsEvernote appendString:[NSString stringWithFormat:@"<strong>Start Date:</strong> %@ <strong>End Date:</strong> %@", [dateFormatter stringFromDate:self.startDate], [dateFormatter stringFromDate:self.endDate]]];
-    [meetingAsEvernote appendString:@"</font>"];
-    [meetingAsEvernote appendString:@"</td>"];
-    [meetingAsEvernote appendString:@"</tr>"];
+    [meetingAsEvernote appendString:[self asHtmlTable]];
     
-    // attendees section
-    if (attendeesString && ![attendeesString isEqualToString:@""]) {
-        [meetingAsEvernote appendString:@"<tr>"];
-        [meetingAsEvernote appendString:@"<td height=\"50\" align=\"center\">"];
-        [meetingAsEvernote appendString:@"<font face=\"Arial,Helvetica,sans-serif\" size=\"2\">"];
-        [meetingAsEvernote appendString:[NSString stringWithFormat:@"<strong>Attendees:</strong> %@",attendeesString]];
-        [meetingAsEvernote appendString:@"</font>"];
-        [meetingAsEvernote appendString:@"</td>"];
-        [meetingAsEvernote appendString:@"</tr>"];
-    }
-    // agenda items section
-    for (AgendaItem *agendaItem in self.AgendaItems) {
-        [meetingAsEvernote appendString:[agendaItem asXhtml]];
-    }
     // close everything
     [meetingAsEvernote appendString:@"</tbody>"];
     [meetingAsEvernote appendString:@"</table>"];
     [meetingAsEvernote appendString:@"</en-note>"];
     [meetingAsEvernote appendString:@""];
-      
+    
     NSLog(@"%@",meetingAsEvernote);
     return meetingAsEvernote;
+}
+
+
+-(NSString *)asHtmlTable{
+    // get a date formatter ready
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    // create a string for the attendees
+    NSString *attendeesString = [[[NSString alloc] init] autorelease];
+	for (Attendee* attendee in self.Attendees) {
+        attendeesString = [attendeesString stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+    }
+    
+    NSMutableString *meetingAsHtmlTable = [[[NSMutableString alloc] init] autorelease];
+    // start the table
+    [meetingAsHtmlTable appendString:@"<table border=\"0\" cellpadding=\"4\" width=\"600\">"];
+    [meetingAsHtmlTable appendString:@"<tbody>"];
+    
+    // meeting title
+    [meetingAsHtmlTable appendString:@"<tr>"];
+    [meetingAsHtmlTable appendString:@"<td height=\"30\" align=\"center\" bgcolor=\"#101D17\">"];
+    [meetingAsHtmlTable appendString:[NSString stringWithFormat:@"<strong><font face=\"Arial,Helvetica,sans-serif\" size=\"6\" color=\"white\">%@</font></strong>", self.name]];
+    [meetingAsHtmlTable appendString:@"</td>"];
+    [meetingAsHtmlTable appendString:@"</tr>"];
+    // date section
+    [meetingAsHtmlTable appendString:@"<tr>"];
+    [meetingAsHtmlTable appendString:@"<td height=\"25\" align=\"center\" bgcolor=\"#101D17\">"];
+    [meetingAsHtmlTable appendString:@"<font face=\"Arial,Helvetica,sans-serif\" size=\"2\" color=\"white\">"];
+    [meetingAsHtmlTable appendString:[NSString stringWithFormat:@"<strong>Start Date:</strong> %@ <strong>End Date:</strong> %@", [dateFormatter stringFromDate:self.startDate], [dateFormatter stringFromDate:self.endDate]]];
+    [meetingAsHtmlTable appendString:@"</font>"];
+    [meetingAsHtmlTable appendString:@"</td>"];
+    [meetingAsHtmlTable appendString:@"</tr>"];
+    
+    // attendees section
+    if (attendeesString && ![attendeesString isEqualToString:@""]) {
+        [meetingAsHtmlTable appendString:@"<tr>"];
+        [meetingAsHtmlTable appendString:@"<td height=\"50\" align=\"center\">"];
+        [meetingAsHtmlTable appendString:@"<font face=\"Arial,Helvetica,sans-serif\" size=\"2\">"];
+        [meetingAsHtmlTable appendString:[NSString stringWithFormat:@"<strong>Attendees:</strong> %@",attendeesString]];
+        [meetingAsHtmlTable appendString:@"</font>"];
+        [meetingAsHtmlTable appendString:@"</td>"];
+        [meetingAsHtmlTable appendString:@"</tr>"];
+    }
+    // agenda items section
+    for (AgendaItem *agendaItem in self.AgendaItems) {
+        [meetingAsHtmlTable appendString:[agendaItem asXhtml]];
+    }
+    // close everything
+    [meetingAsHtmlTable appendString:@"</tbody>"];
+    [meetingAsHtmlTable appendString:@"</table>"];
+    [meetingAsHtmlTable appendString:@""];
+    
+    NSLog(@"%@",meetingAsHtmlTable);
+    return meetingAsHtmlTable;
+
+}
+
+//TODO: handle errors for reading files
+-(NSString*) asHtmlEmail{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HtmlEmailBoilerplateHeader" ofType:@"html"];
+    NSString *htmlBoilerplateHeader = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
+    path = [[NSBundle mainBundle] pathForResource:@"HtmlEmailBoilerplateFooter" ofType:@"html"];
+    NSString *htmlBoilerplateFooter = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
+    
+    NSString *meetingAsHtmlEmail = [NSString stringWithFormat:@"%@ %@ %@", htmlBoilerplateHeader, [self asHtmlTable], htmlBoilerplateFooter];
+    NSLog(@"%@", meetingAsHtmlEmail);
+    return meetingAsHtmlEmail;
 }
 
 @end

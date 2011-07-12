@@ -217,7 +217,7 @@
 	MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
 	controller.mailComposeDelegate = self;
 	[controller setSubject:@"Meeting notes summary..."];
-	[controller setMessageBody:[self.meetingToShare asXhtml] isHTML:YES];
+	[controller setMessageBody:[self.meetingToShare asHtmlEmail] isHTML:YES];
 	[self presentModalViewController:controller animated:YES];
 	[controller release];
 }

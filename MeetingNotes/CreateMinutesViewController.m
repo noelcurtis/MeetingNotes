@@ -21,10 +21,12 @@
 @property (nonatomic, retain) Attendee* personSelectedFromPeoplePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @property (nonatomic, retain) Category *selectedCategory;
+@property (nonatomic, retain) UIBarButtonItem *doneButton;
 - (IBAction) addCustomAttendee:(id)sender;
 - (void) setupWithMeeting;
 - (void) newMeetingSave;
 - (void) existingMeetingToEdit;
+- (IBAction) didChangeEditingTitleTextField:(id) sender;
 @end
 
 @implementation CreateMinutesViewController
@@ -44,6 +46,7 @@
 @synthesize addAttendeeContactsButton;
 @synthesize attendeesSectionHeader;
 @synthesize meetingBeingEdited;
+@synthesize doneButton;
 
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -53,6 +56,9 @@
 -(void) viewDidAppear:(BOOL)animated{
     // setup depending on whether a meeting is being edited or for a new meeting
     [super viewDidAppear:animated];
+    
+    self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.startsDate];
+    self.endsDateLabel.text = [self.dateFormatter stringFromDate:self.endsDate];
 }
 
 
@@ -74,7 +80,9 @@
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
 																						   target:self 
                                                                                            action:@selector(cancel:)] autorelease];
-    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+    self.doneButton.enabled = NO;
+    self.navigationItem.rightBarButtonItem  = self.doneButton;
     
     // setup for a meeting
     if(self.meetingBeingEdited){
@@ -93,8 +101,20 @@
     self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.meetingBeingEdited.startDate];
     self.endsDateLabel.text = [self.dateFormatter stringFromDate:self.meetingBeingEdited.endDate];
     self.selectedCategory = self.meetingBeingEdited.Category;
-    self.attendees = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.Attendees allObjects]];
+    self.attendees = [NSMutableArray arrayWithArray:[self.meetingBeingEdited.Attendees allObjects]];
+    self.startsDate = self.meetingBeingEdited.startDate;
+    self.endsDate = self.meetingBeingEdited.endDate;
     NSLog(@"Setup CreateMinutesView with an existing meeting %@", self.meetingBeingEdited);
+}
+
+#pragma mark - Validation
+
+-(void)didChangeEditingTitleTextField:(id)sender{
+    if ([self.titleTextField.text isEqualToString:@""]) {
+        self.doneButton.enabled = NO;
+    }else{
+        self.doneButton.enabled = YES;
+    }
 }
 
 #pragma mark -

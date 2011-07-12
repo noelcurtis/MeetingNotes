@@ -15,6 +15,8 @@
 @interface ActionItemsViewController()
 -(UITableViewCell *) configureCellAtIndexPath:(UITableViewCell*)cell atIndexPath:(NSIndexPath *)indexPath;
 -(void)done:(id)sender;
+-(IBAction) noteDidChange:(id)sender;
+@property (nonatomic, retain) UIBarButtonItem *doneButton;
 @end
 
 @implementation ActionItemsViewController
@@ -28,6 +30,7 @@
 @synthesize actionableAttendeesToRemove;
 @synthesize actionItemNote;
 @synthesize actionViewControllerDelegate;
+@synthesize doneButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,6 +43,7 @@
 
 - (void)dealloc
 {
+    [doneButton release];
     [agendaItem release];
     [actionItemNote release];
     [actionableAttendeesToRemove release];
@@ -73,11 +77,12 @@
 	//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 	//																						target:self 
 	//																						action:@selector(addActionableAttendeesAction:)] autorelease];
-    
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] 
-                                               initWithBarButtonSystemItem: UIBarButtonSystemItemDone
-                                               target:self action:@selector(done:)] 
-                                               autorelease];
+    self.doneButton = [[[UIBarButtonItem alloc] 
+                        initWithBarButtonSystemItem: UIBarButtonSystemItemDone
+                        target:self action:@selector(done:)] 
+                       autorelease];
+    self.doneButton.enabled = NO;
+    self.navigationItem.rightBarButtonItem = self.doneButton;
 }
 
 
@@ -117,6 +122,17 @@
 {
     // Return YES for supported orientations
 	return YES;
+}
+
+
+#pragma mark - Validation
+
+-(void)noteDidChange:(id)sender{
+    if([self.actionItemNote.text isEqualToString:@""]){
+        self.doneButton.enabled = NO;
+    }else{
+        self.doneButton.enabled = YES;
+    }
 }
 
 #pragma mark - Table view data source

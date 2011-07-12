@@ -34,5 +34,7 @@
 - (int)getActionItemCount;
 - (NSString *) asString;
 - (NSString *) fileName;
-- (NSString *) asXhtml;
+- (NSString *) asHtmlTable;
+- (NSString*) asEvernote;
+- (NSString *) asHtmlEmail;
 @end

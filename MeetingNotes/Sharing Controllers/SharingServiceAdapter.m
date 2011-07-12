@@ -97,7 +97,6 @@ static SharingServiceAdapter *_sharedSharingService;
 		  autorelease]
 		 show];
 	}
-    
 }
 
 
@@ -128,7 +127,6 @@ static SharingServiceAdapter *_sharedSharingService;
             NSLog(@"Error removing %@", _newMeetingFilePath);
         }
     }
-
 }
 
 -(void) restClient:(DBRestClient *)client createdFolder:(DBMetadata *)folder{
@@ -301,7 +299,7 @@ static SharingServiceAdapter *_sharedSharingService;
     if([self isEvernoteConfigured]){
         [[ENManager sharedInstance] setUsername:((EvernoteConfig*)[self sharedEvernoteConfiguration]).username];
         [[ENManager sharedInstance] setPassword:((EvernoteConfig*)[self sharedEvernoteConfiguration]).password];
-        EDAMNote* newNote = [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:((Meeting*)meeting).name content:[meeting asXhtml]];
+        EDAMNote* newNote = [[ENManager sharedInstance] createNote2Notebook:(EDAMGuid)[self sharedEvernoteConfiguration].notebookGuid title:((Meeting*)meeting).name content:[meeting asEvernote]];
         if(newNote){
             [self.sharingServiceAdapterDelegate didFinishUploadingToEvernote];
         }else{
