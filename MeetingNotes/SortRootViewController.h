@@ -24,6 +24,7 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell *newCategoryCell;
 @property (nonatomic, retain) IBOutlet UITextField *newCategoryTextField;
 @property (nonatomic, retain) IBOutlet Category *selectedCategory;
+@property (nonatomic, retain) IBOutlet UITableViewCell *starredCategoryCell;
 
 -(void) selectRowForCategory:(Category*) category;
 -(IBAction) addNewCategory:(id)sender;

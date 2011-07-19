@@ -1274,10 +1274,10 @@
 			isa = PBXGroup;
 			children = (
 				C7E162F313A4127700FA4790 /* SortView Custom Cells */,
-				C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */,
 				C790E69E135D0599009B42B9 /* SortRootViewController.h */,
 				C790E69F135D0599009B42B9 /* SortRootViewController.m */,
 				C790E6A0135D0599009B42B9 /* SortRootViewController.xib */,
+				C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */,
 				C790E6A3135D05C5009B42B9 /* SortDetailViewController.h */,
 				C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */,
 			);

@@ -11,12 +11,13 @@
 			<string key="NS.object.0">300</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBUIButton</string>
-			<string>IBUITableViewCell</string>
-			<string>IBUITableView</string>
-			<string>IBUIImageView</string>
-			<string>IBUITextField</string>
 			<string>IBProxyObject</string>
+			<string>IBUIImageView</string>
+			<string>IBUILabel</string>
+			<string>IBUITextField</string>
+			<string>IBUITableView</string>
+			<string>IBUITableViewCell</string>
+			<string>IBUIButton</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -92,7 +93,7 @@
 								<reference key="NSNextKeyView" ref="687275899"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
+								<object class="NSCustomResource" key="IBUIImage" id="199100054">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">cat_list_bg.png</string>
 								</object>
@@ -118,7 +119,7 @@
 										<int key="NSID">2</int>
 									</object>
 								</object>
-								<object class="NSFont" key="IBUIFont">
+								<object class="NSFont" key="IBUIFont" id="220499814">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
@@ -182,6 +183,83 @@
 				<int key="IBUISeparatorStyle">1</int>
 				<reference key="IBUIContentView" ref="22910590"/>
 			</object>
+			<object class="IBUITableViewCell" id="855354918">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">292</int>
+				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIView" id="487643539">
+						<reference key="NSNextResponder" ref="855354918"/>
+						<int key="NSvFlags">256</int>
+						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUIImageView" id="504325404">
+								<reference key="NSNextResponder" ref="487643539"/>
+								<int key="NSvFlags">274</int>
+								<string key="NSFrame">{{12, 2}, {310, 54}}</string>
+								<reference key="NSSuperview" ref="487643539"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="451836768"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUIImage" ref="199100054"/>
+							</object>
+							<object class="IBUILabel" id="451836768">
+								<reference key="NSNextResponder" ref="487643539"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{33, 12}, {231, 21}}</string>
+								<reference key="NSSuperview" ref="487643539"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="778691644"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Starred Meetings</string>
+								<reference key="IBUIFont" ref="220499814"/>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAAA</bytes>
+								</object>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">14</float>
+							</object>
+							<object class="IBUIImageView" id="778691644">
+								<reference key="NSNextResponder" ref="487643539"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{281, 12}, {21, 21}}</string>
+								<reference key="NSSuperview" ref="487643539"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">favstar_on.png</string>
+								</object>
+							</object>
+						</array>
+						<string key="NSFrameSize">{322, 54}</string>
+						<reference key="NSSuperview" ref="855354918"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="504325404"/>
+						<reference key="IBUIBackgroundColor" ref="1021896149"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+				</array>
+				<string key="NSFrameSize">{322, 54}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="487643539"/>
+				<reference key="IBUIBackgroundColor" ref="880283012"/>
+				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+				<int key="IBUISeparatorStyle">1</int>
+				<reference key="IBUIContentView" ref="487643539"/>
+			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -234,6 +312,14 @@
 					</object>
 					<int key="connectionID">23</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">starredCategoryCell</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="855354918"/>
+					</object>
+					<int key="connectionID">33</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -285,16 +371,46 @@
 						<reference key="object" ref="372802445"/>
 						<reference key="parent" ref="4128732"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">25</int>
+						<reference key="object" ref="855354918"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="451836768"/>
+							<reference ref="504325404"/>
+							<reference ref="778691644"/>
+						</array>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">starredCategoryCell</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">26</int>
+						<reference key="object" ref="451836768"/>
+						<reference key="parent" ref="855354918"/>
+						<string key="objectName">categoryLabel</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">27</int>
+						<reference key="object" ref="504325404"/>
+						<reference key="parent" ref="855354918"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">32</int>
+						<reference key="object" ref="778691644"/>
+						<reference key="parent" ref="855354918"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-1.CustomClassName">SortRootViewController</string>
 				<string key="-2.CustomClassName">UIResponder</string>
-				<string key="12.CustomClassName">SortViewCell</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBEditorWindowLastContentRect">{{45, 132}, {768, 1024}}</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -302,7 +418,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">23</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -390,6 +506,7 @@
 						<string key="newCategoryTextField">UITextField</string>
 						<string key="selectedCategory">Category</string>
 						<string key="sortViewCell">SortViewCell</string>
+						<string key="starredCategoryCell">UITableViewCell</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="dvController">
@@ -411,6 +528,10 @@
 						<object class="IBToOneOutletInfo" key="sortViewCell">
 							<string key="name">sortViewCell</string>
 							<string key="candidateClassName">SortViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="starredCategoryCell">
+							<string key="name">starredCategoryCell</string>
+							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -446,10 +567,10 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">cat_list_bg.png</string>
-			<string key="NS.object.0">{310, 54}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="cat_list_bg.png">{310, 54}</string>
+			<string key="favstar_on.png">{21, 21}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">300</string>
 	</data>
 </archive>

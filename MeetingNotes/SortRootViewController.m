@@ -16,6 +16,7 @@
 
 @interface SortRootViewController()
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (NSArray*) getAllStarredMeetings;
 //+ (void) setDefaultCategory:(Category*) category;
 //- (void) reassignMeetingsForCategory:(Category*) category;
 @end
@@ -32,6 +33,7 @@
 @synthesize newCategoryCell;
 @synthesize newCategoryTextField;
 @synthesize selectedCategory;
+@synthesize starredCategoryCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -52,6 +54,7 @@
     [sortViewCell release];
     [dvController release];
     [managedObjectContext release];
+    [starredCategoryCell release];
     [super dealloc];
 }
 
@@ -152,7 +155,7 @@
         id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:0];
         return [sectionInfo numberOfObjects];
     }else{
-        return 2;
+        return 3;
     }
     
 }
@@ -172,7 +175,7 @@
     }else{
         if(indexPath.row == 0){
             return self.newCategoryCell;
-        }else{
+        }else if(indexPath.row == 1){
             static NSString *CellIdentifier = @"AllMeetingCell";
             SortViewCell *cell = (SortViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
@@ -182,6 +185,8 @@
             }
             [cell setupCellWithString:@"All Meetings"];
             return cell;
+        }else{
+            return self.starredCategoryCell;
         }
     }
 }
@@ -289,6 +294,12 @@
             ((MeetingListViewController*)self.dvController.activeViewController).managedObjectContext = [fetchedResultsController managedObjectContext];
             [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];
         }
+        if (indexPath.row == 2) {
+            ((MeetingListViewController*)self.dvController.activeViewController).categoryForMeetings = nil;
+            ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [[NSMutableArray alloc] initWithArray:[self getAllStarredMeetings]];
+            ((MeetingListViewController*)self.dvController.activeViewController).managedObjectContext = [fetchedResultsController managedObjectContext];
+            [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];
+        }
     }
 }
 
@@ -343,6 +354,23 @@
     NSArray *meetings = [managedObjectContext executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"Error getting all meetings %@ %@", [error userInfo], error);
+    }
+    return meetings;
+}
+
+-(NSArray*) getAllStarredMeetings{
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Meeting"
+                                              inManagedObjectContext:managedObjectContext];
+    
+    NSPredicate *starredPredicate = [NSPredicate predicateWithFormat:@"isStarred == YES"];
+    [request setPredicate:starredPredicate];
+    [request setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *meetings = [managedObjectContext executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"Error getting starred meetings %@ %@", [error userInfo], error);
     }
     return meetings;
 }
