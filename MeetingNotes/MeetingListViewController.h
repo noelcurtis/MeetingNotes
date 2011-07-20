@@ -14,7 +14,7 @@
 @class SortRootViewController;
 @class SortDetailViewController;
 @class Category;
-@interface MeetingListViewController : UITableViewController {
+@interface MeetingListViewController : UITableViewController<UISearchBarDelegate> {
     
 }
 
@@ -23,6 +23,8 @@
 @property (nonatomic, retain) SortRootViewController *masterSortRootView;
 @property (nonatomic, retain) IBOutlet MeetingCell *meetingCell;
 @property (nonatomic, retain) NSMutableArray *meetingsForCategory;
+@property (nonatomic, retain) NSMutableArray *filteredList;
+@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, retain) Category *categoryForMeetings;
 
 -(void) insertNewMeeting:(Meeting *)newMeeting;

@@ -15,6 +15,7 @@
 
 @interface MeetingListViewController ()
 - (void)configureCell:(MeetingCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (NSArray*) searchForMeetings:(NSString *) searchString;
 @end
 
 @implementation MeetingListViewController
@@ -25,6 +26,8 @@
 @synthesize meetingsForCategory;
 @synthesize categoryForMeetings;
 @synthesize masterSortRootView;
+@synthesize filteredList;
+@synthesize searchBar = _searchBar;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,12 +40,14 @@
 
 - (void)dealloc
 {
+    [filteredList release];
     [masterSortRootView release];
     [categoryForMeetings release];
     [meetingCell release];
     [meetingsForCategory release];
     [masterSortDetailView release];
     [managedObjectContext release];
+    [_searchBar release];
     [super dealloc];
 }
 
@@ -59,6 +64,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;    
 }
@@ -66,6 +72,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.filteredList = nil;
+    self.meetingsForCategory = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -107,8 +115,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [meetingsForCategory count];
+    //return [self.filteredList count];
+    return [self.filteredList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,7 +135,7 @@
 
 - (void)configureCell:(MeetingCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Meeting *meetingAtIndex = [meetingsForCategory objectAtIndex:indexPath.row];
+    Meeting *meetingAtIndex = [self.filteredList objectAtIndex:indexPath.row];
     [cell setupWithMeeting:meetingAtIndex];
 }
 
@@ -200,7 +208,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Push the Notes View Controllers in the split view
-    [self.masterSortDetailView pushMeetingNotesViewControllers:[meetingsForCategory objectAtIndex:indexPath.row]];
+    [self.masterSortDetailView pushMeetingNotesViewControllers:[self.filteredList objectAtIndex:indexPath.row]];
 }
 
 #pragma mark - Inserting a new object
@@ -209,7 +217,7 @@
     // select the category for the new meeting
     [self.masterSortRootView selectRowForCategory:newMeeting.Category];
     // select the new meeting for that has just been added
-    NSIndexPath *insertionPath = [[NSIndexPath indexPathForRow:[self.meetingsForCategory indexOfObject:newMeeting] inSection:0] autorelease];
+    NSIndexPath *insertionPath = [[NSIndexPath indexPathForRow:[self.filteredList indexOfObject:newMeeting] inSection:0] autorelease];
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 }
 
@@ -257,4 +265,31 @@
  */
 
 
+#pragma mark - searchbar delegate and handle search
+
+-(NSArray*) searchForMeetings:(NSString *) searchString{
+    NSString *searchTerm = [NSString stringWithFormat:@"*%@*", searchString];
+    NSPredicate *search = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(name like[c] '%@') OR (location like[c] '%@')",searchTerm, searchTerm]];
+    NSArray *meetingsFound = [self.meetingsForCategory filteredArrayUsingPredicate:search];
+    return meetingsFound;
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    self.filteredList = nil;
+    self.filteredList = [NSMutableArray arrayWithArray:[self searchForMeetings:searchText]];
+    [self.tableView reloadData];
+}
+
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    /*self.filteredList = nil;
+    self.filteredList = [NSMutableArray arrayWithArray:[self searchForMeetings:searchBar.text]];
+    [self.tableView reloadData];*/
+
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.filteredList = [NSArray arrayWithArray:self.meetingsForCategory];
+    [self.tableView reloadData];
+}
 @end

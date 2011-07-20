@@ -1181,7 +1181,6 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
-				C787D31013CA0EA800EE949B /* MessageUI.framework */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
@@ -1201,6 +1200,7 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C787D31013CA0EA800EE949B /* MessageUI.framework */,
 				C75EFA4913C20C7C001039C7 /* MessageUI.framework */,
 				C768757A13AF05060023F34D /* Foundation.framework */,
 				C759BC5F13A2E7F40093C9A0 /* EventKit.framework */,

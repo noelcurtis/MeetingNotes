@@ -284,19 +284,22 @@
         NSIndexPath *swapIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
         self.selectedCategory = [fetchedResultsController objectAtIndexPath:swapIndexPath];
         ((MeetingListViewController*)self.dvController.activeViewController).categoryForMeetings = self.selectedCategory;
-        ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [[NSMutableArray alloc] initWithArray:[self.selectedCategory.Meetings allObjects]];
+        ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [NSMutableArray arrayWithArray:[self.selectedCategory.Meetings allObjects]];
+        ((MeetingListViewController*)self.dvController.activeViewController).filteredList = [NSMutableArray arrayWithArray:[self.selectedCategory.Meetings allObjects]];
         ((MeetingListViewController*)self.dvController.activeViewController).managedObjectContext = [fetchedResultsController managedObjectContext];
         [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];
     }else{
         if(indexPath.row == 1){
             ((MeetingListViewController*)self.dvController.activeViewController).categoryForMeetings = nil;
-            ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [[NSMutableArray alloc] initWithArray:[self getAllMeetings]];
+            ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [NSMutableArray arrayWithArray:[self getAllMeetings]];
+            ((MeetingListViewController*)self.dvController.activeViewController).filteredList = [NSMutableArray arrayWithArray:[self getAllMeetings]];
             ((MeetingListViewController*)self.dvController.activeViewController).managedObjectContext = [fetchedResultsController managedObjectContext];
             [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];
         }
         if (indexPath.row == 2) {
             ((MeetingListViewController*)self.dvController.activeViewController).categoryForMeetings = nil;
-            ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [[NSMutableArray alloc] initWithArray:[self getAllStarredMeetings]];
+            ((MeetingListViewController*)self.dvController.activeViewController).meetingsForCategory =  [NSMutableArray arrayWithArray:[self getAllStarredMeetings]];
+            ((MeetingListViewController*)self.dvController.activeViewController).filteredList = [NSMutableArray arrayWithArray:[self getAllStarredMeetings]];
             ((MeetingListViewController*)self.dvController.activeViewController).managedObjectContext = [fetchedResultsController managedObjectContext];
             [((MeetingListViewController*)self.dvController.activeViewController).tableView reloadData];
         }
