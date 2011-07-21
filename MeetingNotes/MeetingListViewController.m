@@ -64,7 +64,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    CGRect bounds = self.tableView.bounds;
+    bounds.origin.y = bounds.origin.y + _searchBar.bounds.size.height;
+    self.tableView.bounds = bounds;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;    
 }

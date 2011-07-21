@@ -89,6 +89,7 @@
 		C727F74B13A1D8060034FDD7 /* NSObject+KiwiStubAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70813A1D8060034FDD7 /* NSObject+KiwiStubAdditions.m */; };
 		C727F74C13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70A13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m */; };
 		C727F74D13A1D8060034FDD7 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70C13A1D8060034FDD7 /* NSValue+KiwiAdditions.m */; };
+		C729D9F413D7DC2E009EBA43 /* mn_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = C729D9F313D7DC2D009EBA43 /* mn_icon_72x72.png */; };
 		C742485413A969B70071A3F7 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C742485313A969B70071A3F7 /* Category.m */; };
 		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
@@ -216,7 +217,6 @@
 		C77478FD13B15B80008A5756 /* SharingServiceAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = C77478FC13B15B80008A5756 /* SharingServiceAdapter.m */; };
 		C7751916139EE918004E1813 /* MeetingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7751915139EE918004E1813 /* MeetingCell.m */; };
 		C7751918139EE956004E1813 /* MeetingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7751917139EE956004E1813 /* MeetingCell.xib */; };
-		C77DE4C113BF6BAF000CD507 /* mn_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */; };
 		C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
 		C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E4135CF9B7001AAEDD /* CoreGraphics.framework */; };
@@ -478,6 +478,7 @@
 		C727F70A13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KiwiVerifierAdditions.m"; sourceTree = "<group>"; };
 		C727F70B13A1D8060034FDD7 /* NSValue+KiwiAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+KiwiAdditions.h"; sourceTree = "<group>"; };
 		C727F70C13A1D8060034FDD7 /* NSValue+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+KiwiAdditions.m"; sourceTree = "<group>"; };
+		C729D9F313D7DC2D009EBA43 /* mn_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mn_icon_72x72.png; sourceTree = "<group>"; };
 		C742485213A969B70071A3F7 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = Data/Category.h; sourceTree = "<group>"; };
 		C742485313A969B70071A3F7 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = Data/Category.m; sourceTree = "<group>"; };
 		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
@@ -604,7 +605,6 @@
 		C7751914139EE918004E1813 /* MeetingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingCell.h; sourceTree = "<group>"; };
 		C7751915139EE918004E1813 /* MeetingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingCell.m; sourceTree = "<group>"; };
 		C7751917139EE956004E1813 /* MeetingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingCell.xib; sourceTree = "<group>"; };
-		C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mn_icon_72x72.png; path = ../mn_icon_72x72.png; sourceTree = "<group>"; };
 		C78540DC135CF9B7001AAEDD /* MeetingNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78540E0135CF9B7001AAEDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C78540E2135CF9B7001AAEDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1126,7 +1126,6 @@
 				C70050C613C4140F007E8B54 /* header_agenda.png */,
 				C70C259413C2B8F6005532C8 /* icon_profile.png */,
 				C78C547013C125AF00C2553D /* enlogo.png */,
-				C77DE4C013BF6BAF000CD507 /* mn_icon_72x72.png */,
 				C7D97BC413A7154400D696D0 /* icon_calendar.png */,
 				C7AC155413A7123800BD8649 /* paper_bg.png */,
 				C7F2BC2613A7069400EE92BA /* btn_add_action.png */,
@@ -1181,6 +1180,7 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
+				C729D9F313D7DC2D009EBA43 /* mn_icon_72x72.png */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
@@ -1590,13 +1590,13 @@
 				C7512E1B13B05EB8006D4F8F /* db_logo@2x.png in Resources */,
 				C75D812713B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */,
 				C721A5AA13B961DB0095BCDA /* SharingViewController.xib in Resources */,
-				C77DE4C113BF6BAF000CD507 /* mn_icon_72x72.png in Resources */,
 				C78C547113C125AF00C2553D /* enlogo.png in Resources */,
 				C70C259513C2B8F6005532C8 /* icon_profile.png in Resources */,
 				C70050C713C4140F007E8B54 /* header_actions.png in Resources */,
 				C70050C813C4140F007E8B54 /* header_agenda.png in Resources */,
 				C787D30C13CA001A00EE949B /* HtmlEmailBoilerplateHeader.html in Resources */,
 				C787D30F13CA006F00EE949B /* HTMLEmailBoilerplateFooter.html in Resources */,
+				C729D9F413D7DC2E009EBA43 /* mn_icon_72x72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
