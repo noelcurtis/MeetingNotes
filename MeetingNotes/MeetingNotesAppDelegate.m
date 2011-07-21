@@ -232,7 +232,16 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
+    // setup data protection on the database
+    if([self isRunningiOS4OrBetter])
+    {
+        NSDictionary *fileAttributes = [NSDictionary dictionaryWithObject:NSFileProtectionComplete forKey:NSFileProtectionKey];
+        if (![[NSFileManager defaultManager] setAttributes:fileAttributes ofItemAtPath:[storeURL absoluteString] error:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
     
     return __persistentStoreCoordinator;
 }
@@ -265,6 +274,19 @@
     return operationQueue;
 }
 
-
+#pragma mark - IOS 4 check
+-(BOOL) isRunningiOS4OrBetter{
+    NSString *systemVersion = [UIDevice currentDevice].systemVersion;
+    NSInteger majorSystemVersion = 3;
+    if (systemVersion != nil && [systemVersion length] > 0) { //Can't imagine it would be empty, but.
+        NSString *firstCharacter = [systemVersion substringToIndex:1];
+        majorSystemVersion = [firstCharacter integerValue];
+    }
+    if(majorSystemVersion >= 4)
+        return YES;
+    else
+        return NO;
+        
+}
 
 @end
