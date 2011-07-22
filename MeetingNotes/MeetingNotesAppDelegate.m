@@ -184,9 +184,8 @@
     {
         return __persistentStoreCoordinator;
     }
+    
     /*
-    NSString *storePath = [[self applicationDocumentsDirectoryAsString] stringByAppendingPathComponent: @"MeetingNotes.sqlite"];
-	
 	 Set up the store.
 	 For the sake of illustration, provide a pre-populated default store.
 	 
@@ -233,11 +232,13 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    
+    NSString *storePath = [[self applicationDocumentsDirectoryAsString] stringByAppendingPathComponent: @"MeetingNotes.sqlite"];
     // setup data protection on the database
     if([self isRunningiOS4OrBetter])
     {
         NSDictionary *fileAttributes = [NSDictionary dictionaryWithObject:NSFileProtectionComplete forKey:NSFileProtectionKey];
-        if (![[NSFileManager defaultManager] setAttributes:fileAttributes ofItemAtPath:[storeURL absoluteString] error:&error]) {
+        if (![[NSFileManager defaultManager] setAttributes:fileAttributes ofItemAtPath:storePath error:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }

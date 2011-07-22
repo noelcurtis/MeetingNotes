@@ -10,6 +10,7 @@
 		C70050C713C4140F007E8B54 /* header_actions.png in Resources */ = {isa = PBXBuildFile; fileRef = C70050C513C4140F007E8B54 /* header_actions.png */; };
 		C70050C813C4140F007E8B54 /* header_agenda.png in Resources */ = {isa = PBXBuildFile; fileRef = C70050C613C4140F007E8B54 /* header_agenda.png */; };
 		C70061B6139DC46A00FD9766 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C70061B5139DC46A00FD9766 /* icon_settings.png */; };
+		C701C76913D906A600F26993 /* mn_icon_g.png in Resources */ = {isa = PBXBuildFile; fileRef = C701C76813D906A600F26993 /* mn_icon_g.png */; };
 		C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */; };
 		C70A947F13AAFBF700680AF7 /* SelectCategorieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */; };
 		C70C259513C2B8F6005532C8 /* icon_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = C70C259413C2B8F6005532C8 /* icon_profile.png */; };
@@ -89,7 +90,6 @@
 		C727F74B13A1D8060034FDD7 /* NSObject+KiwiStubAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70813A1D8060034FDD7 /* NSObject+KiwiStubAdditions.m */; };
 		C727F74C13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70A13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m */; };
 		C727F74D13A1D8060034FDD7 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70C13A1D8060034FDD7 /* NSValue+KiwiAdditions.m */; };
-		C729D9F413D7DC2E009EBA43 /* mn_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = C729D9F313D7DC2D009EBA43 /* mn_icon_72x72.png */; };
 		C742485413A969B70071A3F7 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C742485313A969B70071A3F7 /* Category.m */; };
 		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
@@ -318,6 +318,7 @@
 		C70050C513C4140F007E8B54 /* header_actions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = header_actions.png; path = Images/header_actions.png; sourceTree = "<group>"; };
 		C70050C613C4140F007E8B54 /* header_agenda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = header_agenda.png; path = Images/header_agenda.png; sourceTree = "<group>"; };
 		C70061B5139DC46A00FD9766 /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_settings.png; path = Images/icon_settings.png; sourceTree = "<group>"; };
+		C701C76813D906A600F26993 /* mn_icon_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mn_icon_g.png; sourceTree = "<group>"; };
 		C70A947B13AAFBF600680AF7 /* SelectCategorieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategorieViewController.h; sourceTree = "<group>"; };
 		C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategorieViewController.m; sourceTree = "<group>"; };
 		C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCategorieViewController.xib; sourceTree = "<group>"; };
@@ -478,7 +479,6 @@
 		C727F70A13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KiwiVerifierAdditions.m"; sourceTree = "<group>"; };
 		C727F70B13A1D8060034FDD7 /* NSValue+KiwiAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+KiwiAdditions.h"; sourceTree = "<group>"; };
 		C727F70C13A1D8060034FDD7 /* NSValue+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+KiwiAdditions.m"; sourceTree = "<group>"; };
-		C729D9F313D7DC2D009EBA43 /* mn_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mn_icon_72x72.png; sourceTree = "<group>"; };
 		C742485213A969B70071A3F7 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = Data/Category.h; sourceTree = "<group>"; };
 		C742485313A969B70071A3F7 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = Data/Category.m; sourceTree = "<group>"; };
 		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
@@ -1180,7 +1180,7 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
-				C729D9F313D7DC2D009EBA43 /* mn_icon_72x72.png */,
+				C701C76813D906A600F26993 /* mn_icon_g.png */,
 				C78540E6135CF9B7001AAEDD /* MeetingNotes */,
 				C727F62413A1D56D0034FDD7 /* MeetingNotesUnitTests */,
 				C78540DF135CF9B7001AAEDD /* Frameworks */,
@@ -1596,7 +1596,7 @@
 				C70050C813C4140F007E8B54 /* header_agenda.png in Resources */,
 				C787D30C13CA001A00EE949B /* HtmlEmailBoilerplateHeader.html in Resources */,
 				C787D30F13CA006F00EE949B /* HTMLEmailBoilerplateFooter.html in Resources */,
-				C729D9F413D7DC2E009EBA43 /* mn_icon_72x72.png in Resources */,
+				C701C76913D906A600F26993 /* mn_icon_g.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

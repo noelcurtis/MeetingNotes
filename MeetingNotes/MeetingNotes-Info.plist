@@ -12,7 +12,7 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>mn_icon_72x72.png</string>
+		<string>mn_icon_g.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.noelcurtis.${PRODUCT_NAME:rfc1034identifier}</string>
@@ -32,6 +32,8 @@
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -39,7 +41,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 </dict>
 </plist>
