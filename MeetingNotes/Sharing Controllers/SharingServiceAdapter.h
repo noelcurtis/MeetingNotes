@@ -10,6 +10,7 @@
 #import "Meeting.h"
 #import "DropboxSDK.h"
 #import "ENManager.h"
+#import "KeychainItemWrapper.h"
 
 @protocol SharingServiceAdapterDelegate;
 
@@ -25,6 +26,8 @@
 - (void) setupDropboxSession;
 @property (nonatomic, retain) DropboxConfig *sharedDropboxConfig;
 
+#pragma mark - Keychain for evernote credentials
+@property (nonatomic, retain) KeychainItemWrapper *evernoteKeychain;
 
 #pragma mark - Evernote
 - (void) setManagegObjectContext:(NSManagedObjectContext*) managedObjectContext;

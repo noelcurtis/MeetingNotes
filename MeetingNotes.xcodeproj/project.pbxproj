@@ -90,6 +90,7 @@
 		C727F74B13A1D8060034FDD7 /* NSObject+KiwiStubAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70813A1D8060034FDD7 /* NSObject+KiwiStubAdditions.m */; };
 		C727F74C13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70A13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m */; };
 		C727F74D13A1D8060034FDD7 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C727F70C13A1D8060034FDD7 /* NSValue+KiwiAdditions.m */; };
+		C73110FF13DA70B700D831D2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C73110FE13DA70B700D831D2 /* KeychainItemWrapper.m */; };
 		C742485413A969B70071A3F7 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C742485313A969B70071A3F7 /* Category.m */; };
 		C748C96B13662841005C4A2C /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C748C96913662841005C4A2C /* MeetingListViewController.m */; };
 		C748C96C13662841005C4A2C /* MeetingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C748C96A13662841005C4A2C /* MeetingListViewController.xib */; };
@@ -479,6 +480,8 @@
 		C727F70A13A1D8060034FDD7 /* NSObject+KiwiVerifierAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KiwiVerifierAdditions.m"; sourceTree = "<group>"; };
 		C727F70B13A1D8060034FDD7 /* NSValue+KiwiAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+KiwiAdditions.h"; sourceTree = "<group>"; };
 		C727F70C13A1D8060034FDD7 /* NSValue+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+KiwiAdditions.m"; sourceTree = "<group>"; };
+		C73110FD13DA70B700D831D2 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		C73110FE13DA70B700D831D2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		C742485213A969B70071A3F7 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = Data/Category.h; sourceTree = "<group>"; };
 		C742485313A969B70071A3F7 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = Data/Category.m; sourceTree = "<group>"; };
 		C748C96813662841005C4A2C /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingListViewController.h; sourceTree = "<group>"; };
@@ -950,6 +953,15 @@
 			path = Kiwi;
 			sourceTree = "<group>";
 		};
+		C73110FB13DA709D00D831D2 /* Keychain Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				C73110FD13DA70B700D831D2 /* KeychainItemWrapper.h */,
+				C73110FE13DA70B700D831D2 /* KeychainItemWrapper.m */,
+			);
+			name = "Keychain Wrapper";
+			sourceTree = "<group>";
+		};
 		C748C973136635FD005C4A2C /* MeetingList Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1231,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C73110FB13DA709D00D831D2 /* Keychain Wrapper */,
 				C70E6AAE13667FE20059B75E /* Data */,
 				C7D74AF0136223F500B57A9C /* DataModel */,
 				C7512D6E13B05EB8006D4F8F /* DropboxSDK */,
@@ -1835,6 +1848,7 @@
 				C7F5BE2413B2CAB60091116A /* EvernoteConfig.m in Sources */,
 				C75D812513B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */,
 				C721A5A813B961DB0095BCDA /* SharingViewController.m in Sources */,
+				C73110FF13DA70B700D831D2 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
