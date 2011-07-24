@@ -162,7 +162,7 @@
         cell.textLabel.text = @"Rate the app";
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    [cell setSelectionStyle:UITableViewCellEditingStyleNone];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 

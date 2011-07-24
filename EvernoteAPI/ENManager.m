@@ -310,10 +310,11 @@ static ENManager *sharedManager;
 	return self;
 }
 
+/*
 - (void)release {
 	// for singleton design pattern
 }
-
+*/
 - (void)dealloc {
     [password release];
 	[username release];

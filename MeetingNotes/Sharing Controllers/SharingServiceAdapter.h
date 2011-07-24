@@ -33,7 +33,8 @@
 - (void) setManagegObjectContext:(NSManagedObjectContext*) managedObjectContext;
 - (EvernoteConfig *) sharedEvernoteConfiguration;
 - (BOOL) isEvernoteConfigured;
-- (EvernoteConfig*) setupEvernoteWith:(NSString *)meetingNotebookName username:(NSString *)username password:(NSString*) password;
+- (EvernoteConfig*) setupEvernoteWith:(NSDictionary*) evernoteSetupParameters;
+- (NSOperation*) setupEvernoteAsyncWith:(NSDictionary*) evernoteSetupParameters;
 @property (nonatomic, assign) id<SharingServiceAdapterDelegate> sharingServiceAdapterDelegate;
 - (void) uploadMeetingToEvernote:(id)meeting;
 - (NSOperation*)uploadMeetingAsync:(Meeting*)meeting;
@@ -42,12 +43,12 @@
 
 @protocol SharingServiceAdapterDelegate
 @optional
--(void) didStartConfiguringEvernote;
+#pragma mark - evernote delegate methods
 -(void) didFinishConfiguringEvernote;
 -(void) didFailConfiguringEvernoteWithError:(NSError*)error;
 -(void) didFinishUploadingToEvernote;
 -(void) didFailUploadingToEvernote:(NSError*)error;
-
+#pragma mark -dropbox delegate methods
 -(void) didFinishUploadingToDropbox;
 -(void) didFailUploadingToDropbox:(NSError*)error;
 @end

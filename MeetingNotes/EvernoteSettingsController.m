@@ -9,6 +9,7 @@
 #import "EvernoteSettingsController.h"
 #import "SharingServiceAdapter.h"
 #import "EvernoteConfig.h"
+#import "MeetingNotesAppDelegate.h"
 
 @interface EvernoteSettingsController()
 - (void) done:(id)sender;
@@ -85,8 +86,10 @@
     [SharingServiceAdapter sharedSharingService].sharingServiceAdapterDelegate = self;
     if (sharedEvernoteConfig) {
         self.notebookTextView.text = sharedEvernoteConfig.notebookName;
-        self.usernameTextView.text = sharedEvernoteConfig.username;
-        self.passwordTextView.text = sharedEvernoteConfig.password;
+        //self.usernameTextView.text = sharedEvernoteConfig.username;
+        //self.passwordTextView.text = sharedEvernoteConfig.password;
+        self.usernameTextView.text = [[SharingServiceAdapter sharedSharingService].evernoteKeychain objectForKey:(id)kSecAttrAccount];
+        self.passwordTextView.text = [[SharingServiceAdapter sharedSharingService].evernoteKeychain objectForKey:(id)kSecValueData];
     }
     //[self setWorking:YES];
 }
@@ -215,27 +218,28 @@
 }
 
 -(void) done:(id)sender{
-    [[SharingServiceAdapter sharedSharingService] setupEvernoteWith:self.notebookTextView.text username:self.usernameTextView.text password:self.passwordTextView.text];
+    [self setWorking:YES];
+    NSArray *keys = [NSArray arrayWithObjects:@"username", @"password", @"meetingNotebookName", nil];
+    NSArray *objects = [NSArray arrayWithObjects:self.usernameTextView.text, self.passwordTextView.text, self.notebookTextView.text, nil];
+    NSOperation *evernoteSetupOperation = [[SharingServiceAdapter  sharedSharingService] setupEvernoteAsyncWith:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
+    [[(MeetingNotesAppDelegate*)[[UIApplication sharedApplication] delegate] operationQueue] addOperation:evernoteSetupOperation];
 }
 
--(void) didStartConfiguringEvernote{
-    [self setWorking:YES];
-}
 
 -(void) didFinishConfiguringEvernote{
-    [self setWorking:NO];
-    [self.evernoteSettingsViewControllerDelegate dismissEvernoteSettingsViewController];
+    // call the following on the main thread because there were problems when they were just regularly called
+    [self performSelectorOnMainThread:@selector(setWorking:) withObject:NO waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(dismissModalViewControllerAnimated:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:NO];
 }
 
 -(void) didFailConfiguringEvernoteWithError:(NSError *)error{
-    [self setWorking:NO];
+    [self performSelectorOnMainThread:@selector(setWorking:) withObject:NO waitUntilDone:NO];
     if([error.domain isEqualToString:@"EvernoteAuthError"]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect username and/or password." 
         message:@"" 
         delegate:self 
         cancelButtonTitle:@"Ok" 
         otherButtonTitles:nil];
-        //[alert addButtonWithTitle:@"Yes"];
         [alert show];
         [alert release];
     }
@@ -245,13 +249,13 @@
                                                        delegate:self 
                                               cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];
-        //[alert addButtonWithTitle:@"Yes"];
         [alert show];
         [alert release];
     }
 }
 
 -(void) cancel:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
     [self.evernoteSettingsViewControllerDelegate dismissEvernoteSettingsViewController];
 }
 

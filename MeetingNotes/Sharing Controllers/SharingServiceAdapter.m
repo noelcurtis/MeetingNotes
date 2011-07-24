@@ -187,12 +187,14 @@ static SharingServiceAdapter *_sharedSharingService;
 
 #pragma mark - Evernote integration
 
-// write -(EvernoteConfig*) setupEvernoteWith:(NSString *)MeetingFolder username:(NSString *)username password:(NSString*) password
+// Use to setup evernote. Evernote setup parameters must be a dictionary with the following keys as strings "username", "password", "meetingNotebookName"
+-(EvernoteConfig*) setupEvernoteWith:(NSDictionary*) evernoteSetupParameters{
 
--(EvernoteConfig*) setupEvernoteWith:(NSString *)meetingNotebookName 
-                            username:(NSString *)username password:(NSString *)password{
+    // martial credentials from evernoteSetupParameters
+    NSString *username = [evernoteSetupParameters objectForKey:@"username"];
+    NSString *password = [evernoteSetupParameters objectForKey:@"password"];
+    NSString *meetingNotebookName = [evernoteSetupParameters objectForKey:@"meetingNotebookName"];
     
-    [self.sharingServiceAdapterDelegate didStartConfiguringEvernote];
     // release any configured ENManager
     [[ENManager sharedInstance] releaseAuthorization];
     [[ENManager sharedInstance] setUsername:username];
@@ -222,8 +224,6 @@ static SharingServiceAdapter *_sharedSharingService;
             newEvernoteConfig = [NSEntityDescription insertNewObjectForEntityForName:@"EvernoteConfig" inManagedObjectContext:self.managedObjectContext];
             [newEvernoteConfig setNotebookGuid:[newNotebook guid]];
             [newEvernoteConfig setNotebookName:[newNotebook name]];
-            //[newEvernoteConfig setPassword:password];
-            //[newEvernoteConfig setUsername:username];
             // setup account keychain
             [_evernoteKeychain setObject:username forKey:(id)kSecAttrAccount];
             [_evernoteKeychain setObject:password forKey:(id)kSecValueData];
@@ -246,8 +246,6 @@ static SharingServiceAdapter *_sharedSharingService;
         // reset account keychain
         [_evernoteKeychain setObject:username forKey:(id)kSecAttrAccount];
         [_evernoteKeychain setObject:password forKey:(id)kSecValueData];
-        //[existingEvernoteConfig setPassword:password];
-        //[existingEvernoteConfig setUsername:username];
         EDAMNotebook *newNotebook = [[ENManager sharedInstance] notebookWithName:meetingNotebookName];
         if(!newNotebook){
             newNotebook = [[ENManager sharedInstance] createNewNotebookWithTitle:meetingNotebookName];
@@ -271,6 +269,12 @@ static SharingServiceAdapter *_sharedSharingService;
         [self.sharingServiceAdapterDelegate didFinishConfiguringEvernote];
         return [self sharedEvernoteConfiguration];
     }
+}
+
+
+-(NSOperation*) setupEvernoteAsyncWith:(NSDictionary*) evernoteSetupParameters{
+    NSInvocationOperation *evernoteSetupOperation = [[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(setupEvernoteWith:) object:evernoteSetupParameters]autorelease];
+    return evernoteSetupOperation;
 }
 
 -(EvernoteConfig*) sharedEvernoteConfiguration{
@@ -313,8 +317,6 @@ static SharingServiceAdapter *_sharedSharingService;
 
 -(void) uploadMeetingToEvernote:(id)meeting{
     if([self isEvernoteConfigured]){
-        //[[ENManager sharedInstance] setUsername:((EvernoteConfig*)[self sharedEvernoteConfiguration]).username];
-        //[[ENManager sharedInstance] setPassword:((EvernoteConfig*)[self sharedEvernoteConfiguration]).password];
         // Retrieve values from the username and password from the keychain
         [[ENManager sharedInstance] setUsername:[_evernoteKeychain objectForKey:(id)kSecAttrAccount]];
         [[ENManager sharedInstance] setPassword:[_evernoteKeychain objectForKey:(id)kSecValueData]];
