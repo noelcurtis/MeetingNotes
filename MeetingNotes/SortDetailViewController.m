@@ -134,7 +134,7 @@
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
 	createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
 	createMinutePopoverController.delegate = self;
-    CGSize size = {320, 390};
+    CGSize size = {320, 394};
     [createMinutePopoverController setPopoverContentSize:size];
     [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 	

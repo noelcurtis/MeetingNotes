@@ -28,9 +28,14 @@
 @property (nonatomic, retain) UIBarButtonItem *meetingSettingsButton;
 @property (nonatomic, retain) UIBarButtonItem *shareButton;
 @property (nonatomic, retain) UIPopoverController *createMinutePopoverController;
+@property (nonatomic, assign) BOOL isNotesTextViewActive;
 - (void)didDismissModalView;
 - (IBAction) meetingSettingsAction:(id)sender;
 - (IBAction) shareAction:(id)sender;
+- (void)registerForNotifications;
+- (void)keyboardWasShown:(NSNotification*)aNotification;
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification;
+- (void)deviceDidChangeOrientation:(NSNotification*)aNotification;
 @end
 
 @implementation NotesDetailViewController
@@ -51,6 +56,7 @@
 @synthesize notesHeaderView;
 @synthesize actionHeaderView;
 @synthesize createMinutePopoverController;
+@synthesize isNotesTextViewActive;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -97,6 +103,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self registerForNotifications];
     
     //
     // Create a header view. Wrap it in a container to allow us to position
@@ -168,11 +175,12 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
-	return YES;
+	return NO;
 }
 
 #pragma mark - Table view data source
@@ -360,6 +368,7 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     NSLog(@"text field did begin editing");
+    [textField becomeFirstResponder];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -380,13 +389,24 @@
     // reload the table
 }
 
+-(void) textViewDidBeginEditing:(UITextView *)textView{
+    NSLog(@"Text view did begin editing");
+    [textView becomeFirstResponder];
+    self.isNotesTextViewActive = YES;
+}
+
+-(void) textViewDidChange:(UITextView *)textView{
+    NSLog(@"Text view did change");
+}
+
 -(void)textViewDidEndEditing:(UITextView *)textView{
     NSLog(@"Text view did end editing, updating agenda item and saving context");
     [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
     //[self.notesRootViewController saveContextAndReloadTable];
     [self.notesRootViewController saveContextAndReloadTableWithNewAgendaItem:self.agendaItem];
-    [textView resignFirstResponder];    
+    [textView resignFirstResponder];
+    self.isNotesTextViewActive = NO;
 }
 
 #pragma mark - Button actions
@@ -413,7 +433,6 @@
         [navigationController release];
         [actionItemsVC release];
     }
-
 }
 
 -(IBAction) meetingSettingsAction:(id)sender{
@@ -432,7 +451,7 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
         createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
         createMinutePopoverController.delegate = self;
-        CGSize size = {320, 390};
+        CGSize size = {320, 400};
         [createMinutePopoverController setPopoverContentSize:size];
         [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         
@@ -476,6 +495,44 @@
 - (void)didDismissModalView {
 	//[self dismissModalViewControllerAnimated:YES];	
 	[createMinutePopoverController dismissPopoverAnimated:YES];
+}
+
+#pragma mark - Controlling the Keyboard
+- (void)registerForNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+    /*[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceDidChangeOrientation:)
+                                                 name:UIDeviceOrientationDidChangeNotification object:nil];*/
+    
+}
+
+- (void)deviceDidChangeOrientation:(NSNotification*)aNotification{
+    if([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait){
+        [self.noteView resignFirstResponder];
+    }
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    if(self.isNotesTextViewActive){
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+
 }
 
 @end

@@ -326,7 +326,7 @@
             cell.textLabel.text = [NSString stringWithFormat:@"Category: All Meetings"];
         }
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        [cell setSelectionStyle:UITableViewCellEditingStyleNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
     }
     else{
@@ -475,6 +475,7 @@
         NSIndexPath *indexPathForAttendee = [NSIndexPath indexPathForRow:
                                              [self.attendees indexOfObject:self.personSelectedFromPeoplePicker] + 1 inSection:3];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathForAttendee, nil] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView scrollToRowAtIndexPath:indexPathForAttendee atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }else{
         NSLog(@"No attendee entered.");
     }
