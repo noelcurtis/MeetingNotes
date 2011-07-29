@@ -33,7 +33,7 @@
     [[SharingServiceAdapter sharedSharingService] setupDropboxSession];
     
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
-	backgroundImageView.image = [UIImage imageNamed:@"dark_noise_bg"];
+	backgroundImageView.image = [UIImage imageNamed:@"background_p"];
     
     splitViewController = [[UISplitViewController alloc] init];
     splitViewController.view.opaque = NO;
@@ -49,8 +49,8 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
     nav.view.backgroundColor = [UIColor clearColor];
     nav.view.opaque = NO;
-    UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 276, 705)];
-	backgroundImageViewNav.image = [UIImage imageNamed:@"cat_view_bg"];
+    UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(25, 45, 276, 705)];
+	backgroundImageViewNav.image = [UIImage imageNamed:@"cat_view_bg_l"];
     [nav.view insertSubview:backgroundImageViewNav atIndex:0];
     [backgroundImageViewNav release];
     splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];

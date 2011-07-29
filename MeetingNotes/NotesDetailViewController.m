@@ -35,7 +35,7 @@
 - (void)registerForNotifications;
 - (void)keyboardWasShown:(NSNotification*)aNotification;
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification;
-- (void)deviceDidChangeOrientation:(NSNotification*)aNotification;
+//- (void)deviceDidChangeOrientation:(NSNotification*)aNotification;
 @end
 
 @implementation NotesDetailViewController
@@ -515,13 +515,13 @@
                                                  name:UIDeviceOrientationDidChangeNotification object:nil];*/
     
 }
-
+/*
 - (void)deviceDidChangeOrientation:(NSNotification*)aNotification{
     if([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait){
         [self.noteView resignFirstResponder];
     }
 }
-
+*/
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
     if(self.isNotesTextViewActive){

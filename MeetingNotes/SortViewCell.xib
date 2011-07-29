@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J869</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.SystemVersion">11A511</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
+		<string key="IBDocument.AppKitVersion">1138</string>
+		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">300</string>
+			<string key="NS.object.0">534</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -51,7 +51,7 @@
 							<object class="IBUIImageView" id="749636180">
 								<reference key="NSNextResponder" ref="84476977"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{12, 2}, {310, 54}}</string>
+								<string key="NSFrame">{{9, 2}, {310, 54}}</string>
 								<reference key="NSSuperview" ref="84476977"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="476107034"/>
@@ -65,7 +65,7 @@
 							<object class="IBUILabel" id="476107034">
 								<reference key="NSNextResponder" ref="84476977"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{33, 12}, {231, 21}}</string>
+								<string key="NSFrame">{{31, 12}, {231, 21}}</string>
 								<reference key="NSSuperview" ref="84476977"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="970012320"/>
@@ -222,7 +222,9 @@
 				<object class="NSArray" key="dict.sortedKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
+					<string>-1.IBPluginDependency</string>
 					<string>-2.CustomClassName</string>
+					<string>-2.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
@@ -232,7 +234,9 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>SortRootViewController</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SortViewCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -388,6 +392,7 @@
 							<string>newCategoryTextField</string>
 							<string>selectedCategory</string>
 							<string>sortViewCell</string>
+							<string>starredCategoryCell</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -396,6 +401,7 @@
 							<string>UITextField</string>
 							<string>Category</string>
 							<string>SortViewCell</string>
+							<string>UITableViewCell</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -407,6 +413,7 @@
 							<string>newCategoryTextField</string>
 							<string>selectedCategory</string>
 							<string>sortViewCell</string>
+							<string>starredCategoryCell</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -429,6 +436,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">sortViewCell</string>
 								<string key="candidateClassName">SortViewCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">starredCategoryCell</string>
+								<string key="candidateClassName">UITableViewCell</string>
 							</object>
 						</object>
 					</object>
@@ -491,6 +502,6 @@
 			<string key="NS.key.0">cat_list_bg.png</string>
 			<string key="NS.object.0">{310, 54}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">300</string>
+		<string key="IBCocoaTouchPluginVersion">534</string>
 	</data>
 </archive>
