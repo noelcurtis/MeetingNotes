@@ -52,6 +52,7 @@
     [super viewDidLoad];
     self.title = @"Select Category";
     CGSize size = {320, 353};
+    
     [self setContentSizeForViewInPopover:size];
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {

@@ -134,10 +134,16 @@
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createMinutesVC];
 	createMinutePopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
 	createMinutePopoverController.delegate = self;
-    CGSize size = {320, 394};
-    [createMinutePopoverController setPopoverContentSize:size];
+    
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if(UIDeviceOrientationIsLandscape(orientation)){
+        [createMinutePopoverController setPopoverContentSize:CGSizeMake(320, 300)];
+    }else{
+        [createMinutePopoverController setPopoverContentSize:CGSizeMake(320, 397)];
+    }
+    
     [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-	
+        
 	[navigationController release];
 	[createMinutesVC release];
     }

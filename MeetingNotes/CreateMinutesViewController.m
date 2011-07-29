@@ -59,16 +59,21 @@
     
     self.startsDateLabel.text = [self.dateFormatter stringFromDate:self.startsDate];
     self.endsDateLabel.text = [self.dateFormatter stringFromDate:self.endsDate];
+    [self.titleTextField becomeFirstResponder];
 }
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-    CGSize size = {320, 353};
-    [self setContentSizeForViewInPopover:size];
     
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if(UIDeviceOrientationIsLandscape(orientation)){
+        [self setContentSizeForViewInPopover:CGSizeMake(320, 300)];
+    }else{
+        [self setContentSizeForViewInPopover:CGSizeMake(320, 360)];
+    }
+	
     // setup the dates
     self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 	[self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
