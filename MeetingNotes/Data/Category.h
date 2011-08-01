@@ -16,5 +16,8 @@
 }
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet* Meetings;
+@property (nonatomic, retain) NSNumber* labelId;
+
++ (NSNumber*)findNextAvailableLabelId;
 
 @end

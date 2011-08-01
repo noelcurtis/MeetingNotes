@@ -62,13 +62,32 @@
 									<string key="NSResourceName">cat_list_bg.png</string>
 								</object>
 							</object>
+							<object class="IBUIImageView" id="261449213">
+								<reference key="NSNextResponder" ref="84476977"/>
+								<int key="NSvFlags">-2147483359</int>
+								<string key="NSFrame">{{272, 12}, {30, 21}}</string>
+								<reference key="NSSuperview" ref="84476977"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="970012320"/>
+								<string key="NSReuseIdentifierKey">_NS:544</string>
+								<object class="NSColor" key="IBUIBackgroundColor" id="73230118">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">cat_num_1.png</string>
+								</object>
+							</object>
 							<object class="IBUILabel" id="476107034">
 								<reference key="NSNextResponder" ref="84476977"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{31, 12}, {231, 21}}</string>
 								<reference key="NSSuperview" ref="84476977"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="970012320"/>
+								<reference key="NSNextKeyView" ref="261449213"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -94,10 +113,8 @@
 								<string key="NSFrame">{{272, 12}, {30, 21}}</string>
 								<reference key="NSSuperview" ref="84476977"/>
 								<reference key="NSWindow"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMAA</bytes>
-								</object>
+								<reference key="NSNextKeyView"/>
+								<reference key="IBUIBackgroundColor" ref="73230118"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -115,10 +132,7 @@
 						<reference key="NSSuperview" ref="59501885"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="749636180"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="73230118"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -166,6 +180,14 @@
 					</object>
 					<int key="connectionID">8</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">categoryImageView</string>
+						<reference key="source" ref="59501885"/>
+						<reference key="destination" ref="261449213"/>
+					</object>
+					<int key="connectionID">10</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -195,6 +217,7 @@
 							<reference ref="970012320"/>
 							<reference ref="749636180"/>
 							<reference ref="476107034"/>
+							<reference ref="261449213"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -215,6 +238,12 @@
 						<reference key="parent" ref="59501885"/>
 						<string key="objectName">categoryCount</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">9</int>
+						<reference key="object" ref="261449213"/>
+						<reference key="parent" ref="59501885"/>
+						<string key="objectName">categoryImage</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -230,6 +259,7 @@
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
+					<string>9.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -238,6 +268,7 @@
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SortViewCell</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -256,7 +287,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">8</int>
+			<int key="maxID">10</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -456,11 +487,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>categoryCountLabel</string>
+							<string>categoryImageView</string>
 							<string>categoryLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 						</object>
 					</object>
@@ -469,6 +502,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>categoryCountLabel</string>
+							<string>categoryImageView</string>
 							<string>categoryLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -476,6 +510,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">categoryCountLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">categoryImageView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">categoryLabel</string>
@@ -499,8 +537,17 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">cat_list_bg.png</string>
-			<string key="NS.object.0">{310, 54}</string>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>cat_list_bg.png</string>
+				<string>cat_num_1.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{310, 54}</string>
+				<string>{31, 25}</string>
+			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">534</string>
 	</data>

@@ -8,6 +8,7 @@
 
 #import "MeetingCell.h"
 #import "Meeting.h"
+#import "Category.h"
 
 @interface MeetingCell() 
 @property (nonatomic, retain) Meeting *meeting;
@@ -51,6 +52,15 @@
 // Use to setup the cell with a Meeting
 -(void) setupWithMeeting:(Meeting *)meeting{
     _meeting = meeting;
+    
+    if (meeting.Category) {
+        NSString *categoryLabelImage = [NSString stringWithFormat:@"cat_label_%@", meeting.Category.labelId];
+        self.categoryImage.hidden = NO;
+        [self.categoryImage setImage:[UIImage imageNamed:categoryLabelImage]];
+    }else{
+        self.categoryImage.hidden = YES;
+    }
+    
     self.meetingLabel.text = [[meeting valueForKey:@"name"] description];
     if ([[meeting valueForKey:@"location"] description]) {
         self.locationLabel.text = [[meeting valueForKey:@"location"] description];
@@ -77,7 +87,7 @@
         [self.starButton setImage:[UIImage imageNamed:@"favstar_off"] forState:UIControlStateNormal];   
     }
     
-    [self setSelectionStyle:UITableViewCellEditingStyleNone];
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 -(void)dealloc{

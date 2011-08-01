@@ -14,6 +14,7 @@
 }
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet UILabel *categoryCountLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *categoryImageView;
 
 -(void) setupCellWithCategory:(Category*) category;
 -(void) setupCellWithString:(NSString*) string;

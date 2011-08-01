@@ -448,9 +448,11 @@
 -(IBAction) addNewCategory:(id)sender{
     [self.newCategoryTextField resignFirstResponder];
     if ([self.newCategoryTextField.text length]>0 && ![[self.newCategoryTextField.text lowercaseString] isEqualToString:@"all meetings"]) {
+        NSNumber *labelIdForCategory = [Category findNextAvailableLabelId];
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:[fetchedResultsController managedObjectContext]];
         // Set the values for the new Meeting
         [(Category*)newManagedObject setName:self.newCategoryTextField.text];
+        [(Category*)newManagedObject setLabelId:labelIdForCategory];
         NSError *error;
 		if (![[fetchedResultsController managedObjectContext] save:&error]) {
 			/*
