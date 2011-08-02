@@ -24,6 +24,7 @@
 @synthesize isStarred;
 @synthesize starButton;
 @synthesize meeting = _meeting;
+@synthesize startDateValueLabel;
 
 -(IBAction) starClicked:(id)sender{
     if(isStarred){
@@ -51,6 +52,12 @@
 
 // Use to setup the cell with a Meeting
 -(void) setupWithMeeting:(Meeting *)meeting{
+    
+    // setup the dates
+    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+	//[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
     _meeting = meeting;
     
     if (meeting.Category) {
@@ -62,6 +69,7 @@
     }
     
     self.meetingLabel.text = [[meeting valueForKey:@"name"] description];
+    self.startDateValueLabel.text = [dateFormatter stringFromDate:meeting.startDate];
     if ([[meeting valueForKey:@"location"] description]) {
         self.locationLabel.text = [[meeting valueForKey:@"location"] description];
     }else{

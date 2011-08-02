@@ -184,6 +184,7 @@
                 self.sortViewCell = nil;
             }
             [cell setupCellWithString:@"All Meetings"];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }else{
             return self.starredCategoryCell;
@@ -200,6 +201,7 @@
         [SortRootViewController setDefaultCategory:(Category*) managedObject];
     }*/
     [(SortViewCell*)cell setupCellWithCategory:(Category *)managedObject];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 

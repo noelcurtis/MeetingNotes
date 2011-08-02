@@ -149,7 +149,6 @@
 								<int key="NSvFlags">278</int>
 								<string key="NSFrame">{{13, 8}, {743, 340}}</string>
 								<reference key="NSSuperview" ref="923905892"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1003314724"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -163,8 +162,6 @@
 								<int key="NSvFlags">310</int>
 								<string key="NSFrame">{{13, 8}, {743, 340}}</string>
 								<reference key="NSSuperview" ref="923905892"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="185365787"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -179,7 +176,6 @@
 						</array>
 						<string key="NSFrameSize">{768, 361}</string>
 						<reference key="NSSuperview" ref="431317934"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="255701531"/>
 						<reference key="IBUIBackgroundColor" ref="185365787"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -191,7 +187,6 @@
 				</array>
 				<string key="NSFrameSize">{768, 361}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="923905892"/>
 				<reference key="IBUIBackgroundColor" ref="104897115"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -199,7 +194,7 @@
 				<reference key="IBUIContentView" ref="923905892"/>
 			</object>
 			<object class="IBUIView" id="465759929">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="156977017">
@@ -207,24 +202,25 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{20, 0}, {94, 29}}</string>
 						<reference key="NSSuperview" ref="465759929"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
+						<object class="NSCustomResource" key="IBUIImage" id="521098805">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">header_actions.png</string>
 						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 29}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="156977017"/>
-				<object class="NSColor" key="IBUIBackgroundColor" id="128699812">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MCAwIDAAA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="185365787"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUIView" id="150585251">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="209920820">
@@ -232,17 +228,18 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{20, 0}, {94, 29}}</string>
 						<reference key="NSSuperview" ref="150585251"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">header_agenda.png</string>
-						</object>
+						<reference key="IBUIImage" ref="521098805"/>
 					</object>
 				</array>
 				<string key="NSFrameSize">{769, 29}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="209920820"/>
-				<reference key="IBUIBackgroundColor" ref="128699812"/>
+				<reference key="IBUIBackgroundColor" ref="185365787"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 		</array>
@@ -575,7 +572,6 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="header_actions.png">{94, 29}</string>
-			<string key="header_agenda.png">{92, 34}</string>
 			<string key="inset_bg.png">{676, 44}</string>
 			<string key="paper_bg.png">{676, 394}</string>
 		</dictionary>

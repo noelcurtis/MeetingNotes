@@ -10,7 +10,7 @@
 #import "Meeting.h"
 #import "MeetingNotesAppDelegate.h"
 
-#define MAXLABEL_COUNT  20
+#define MAXLABEL_COUNT  5
 
 @implementation Category
 @dynamic name;

@@ -17,6 +17,7 @@
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
 		C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
+		C7160C6813E7752000E64EF0 /* icon_gear.png in Resources */ = {isa = PBXBuildFile; fileRef = C7160C6713E7752000E64EF0 /* icon_gear.png */; };
 		C721A5A813B961DB0095BCDA /* SharingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C721A5A613B961DB0095BCDA /* SharingViewController.m */; };
 		C721A5AA13B961DB0095BCDA /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C721A5A713B961DB0095BCDA /* SharingViewController.xib */; };
 		C721A5AB13B961DB0095BCDA /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C721A5A713B961DB0095BCDA /* SharingViewController.xib */; };
@@ -344,6 +345,7 @@
 		C7153EFF1383783200A48C85 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
 		C715C0E213A03EFD004CCF7D /* AgendaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaItem.h; path = Data/AgendaItem.h; sourceTree = "<group>"; };
 		C715C0E313A03EFD004CCF7D /* AgendaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaItem.m; path = Data/AgendaItem.m; sourceTree = "<group>"; };
+		C7160C6713E7752000E64EF0 /* icon_gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_gear.png; path = Images/icon_gear.png; sourceTree = "<group>"; };
 		C721A5A513B961DB0095BCDA /* SharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharingViewController.h; path = "Sharing Controllers/SharingViewController.h"; sourceTree = "<group>"; };
 		C721A5A613B961DB0095BCDA /* SharingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharingViewController.m; path = "Sharing Controllers/SharingViewController.m"; sourceTree = "<group>"; };
 		C721A5A713B961DB0095BCDA /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SharingViewController.xib; path = "Sharing Controllers/SharingViewController.xib"; sourceTree = "<group>"; };
@@ -1167,6 +1169,7 @@
 				C7C64FFF13E3838500DFE26F /* CategoryLabels */,
 				C7C64FF413E3837F00DFE26F /* MeetingLabels */,
 				C75032DE13E258740064D66D /* cat_add_bg.png */,
+				C7160C6713E7752000E64EF0 /* icon_gear.png */,
 				C75032DA13E2571C0064D66D /* background_p.png */,
 				C75032D613E253790064D66D /* background_l.png */,
 				C70050C513C4140F007E8B54 /* header_actions.png */,
@@ -1688,6 +1691,7 @@
 				C7C6500B13E3838500DFE26F /* cat_num_5.png in Resources */,
 				C7C6500C13E3838500DFE26F /* cat_num_gray.png in Resources */,
 				C7C6500D13E3838500DFE26F /* cat_num_yellow.png in Resources */,
+				C7160C6813E7752000E64EF0 /* icon_gear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

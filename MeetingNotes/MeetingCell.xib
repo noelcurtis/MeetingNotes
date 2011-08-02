@@ -80,7 +80,7 @@
 							<object class="IBUILabel" id="633054299">
 								<reference key="NSNextResponder" ref="536879528"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{60, 7}, {447, 40}}</string>
+								<string key="NSFrame">{{60, 11}, {447, 26}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="33883671"/>
@@ -106,7 +106,7 @@
 							<object class="IBUILabel" id="33883671">
 								<reference key="NSNextResponder" ref="536879528"/>
 								<int key="NSvFlags">288</int>
-								<string key="NSFrame">{{60, 37}, {61, 22}}</string>
+								<string key="NSFrame">{{60, 36}, {57, 22}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="986647626"/>
@@ -131,11 +131,11 @@
 							</object>
 							<object class="IBUILabel" id="986647626">
 								<reference key="NSNextResponder" ref="536879528"/>
-								<int key="NSvFlags">288</int>
-								<string key="NSFrame">{{126, 37}, {381, 22}}</string>
+								<int key="NSvFlags">294</int>
+								<string key="NSFrame">{{125, 36}, {49, 22}}</string>
 								<reference key="NSSuperview" ref="536879528"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="801718519"/>
+								<reference key="NSNextKeyView" ref="1065940988"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -143,7 +143,6 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">Raleigh</string>
 								<reference key="IBUIFont" ref="874543509"/>
-								<reference key="IBUITextColor" ref="759057684"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">14</float>
@@ -200,6 +199,43 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">favstar_off.png</string>
 								</object>
+							</object>
+							<object class="IBUILabel" id="1065940988">
+								<reference key="NSNextResponder" ref="536879528"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{182, 36}, {69, 22}}</string>
+								<reference key="NSSuperview" ref="536879528"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="234965634"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Start Date:</string>
+								<reference key="IBUIFont" ref="874543509"/>
+								<reference key="IBUITextColor" ref="759057684"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">14</float>
+							</object>
+							<object class="IBUILabel" id="234965634">
+								<reference key="NSNextResponder" ref="536879528"/>
+								<int key="NSvFlags">294</int>
+								<string key="NSFrame">{{259, 36}, {71, 22}}</string>
+								<reference key="NSSuperview" ref="536879528"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="801718519"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">12/10/2011</string>
+								<reference key="IBUIFont" ref="874543509"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">14</float>
 							</object>
 						</object>
 						<string key="NSFrameSize">{613, 66}</string>
@@ -303,6 +339,14 @@
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">startDateValueLabel</string>
+						<reference key="source" ref="64237729"/>
+						<reference key="destination" ref="234965634"/>
+					</object>
+					<int key="connectionID">25</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -331,11 +375,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="502840029"/>
 							<reference ref="633054299"/>
-							<reference ref="33883671"/>
-							<reference ref="986647626"/>
 							<reference ref="268787891"/>
 							<reference ref="442884692"/>
 							<reference ref="801718519"/>
+							<reference ref="33883671"/>
+							<reference ref="986647626"/>
+							<reference ref="1065940988"/>
+							<reference ref="234965634"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -379,6 +425,18 @@
 						<reference key="parent" ref="64237729"/>
 						<string key="objectName">starButton</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">23</int>
+						<reference key="object" ref="1065940988"/>
+						<reference key="parent" ref="64237729"/>
+						<string key="objectName">startDateLabel</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">24</int>
+						<reference key="object" ref="234965634"/>
+						<reference key="parent" ref="64237729"/>
+						<string key="objectName">startDateValueLabel</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -396,6 +454,8 @@
 					<string>19.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBPluginDependency</string>
+					<string>23.IBPluginDependency</string>
+					<string>24.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
@@ -416,6 +476,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -430,7 +492,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">25</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -460,6 +522,7 @@
 							<string>locationNameLabel</string>
 							<string>meetingLabel</string>
 							<string>starButton</string>
+							<string>startDateValueLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -470,6 +533,7 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
+							<string>UILabel</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -483,6 +547,7 @@
 							<string>locationNameLabel</string>
 							<string>meetingLabel</string>
 							<string>starButton</string>
+							<string>startDateValueLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -513,6 +578,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">starButton</string>
 								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startDateValueLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 						</object>
 					</object>

@@ -58,13 +58,10 @@
     
     NSMutableArray *currentItems = [[self.toolBar items] mutableCopy];
        
-    UIBarButtonItem *calenderButton = [[UIBarButtonItem alloc]  initWithImage:[UIImage imageNamed:@"icon_calendar"] style:
-                                       UIBarButtonItemStylePlain target:self action:@selector(calenderButtonClick:)];
+    UIBarButtonItem *calenderButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_calendar"] target:self action:@selector(calenderButtonClick:)];
     UIBarButtonItem *addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
-    
     UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    UIBarButtonItem *applicationSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(didPressSettingsButton:)];
+    UIBarButtonItem *applicationSettingsButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_gear.png"] target:self action:@selector(didPressSettingsButton:)];
     
     NSMutableArray *items;
     if([currentItems count]==5)

@@ -21,6 +21,7 @@
 @property(nonatomic, retain) IBOutlet UIImageView* categoryImage;
 @property(nonatomic, assign) BOOL isStarred;
 @property(nonatomic, retain) IBOutlet UIButton *starButton;
+@property(nonatomic, retain) IBOutlet UILabel* startDateValueLabel;
 
 -(IBAction) starClicked:(id)sender;
 -(void) setupWithMeeting:(Meeting*) meeting;
