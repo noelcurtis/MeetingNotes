@@ -13,6 +13,7 @@
 #import "SortDetailViewController.h"
 #import "AgendaItemCell.h"
 #import "SortRootViewController.h"
+#import "MeetingNotesAppDelegate.h"
 
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -80,7 +81,7 @@
 -(IBAction) addAgendaItem:(id)sender{
     
     // example code to create new action items
-    NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
+    NSManagedObjectContext *context = [(MeetingNotesAppDelegate*)[UIApplication sharedApplication].delegate managedObjectContext];
     
     AgendaItem *agendaItem = [NSEntityDescription insertNewObjectForEntityForName:@"AgendaItem" inManagedObjectContext:context];
     [agendaItem setNote:@"Im a new note."];
@@ -97,15 +98,10 @@
         abort();
     }
     NSLog(@"Added AgendaItem to meeting, current count for agenda items is %@", [NSNumber numberWithInteger:[self.meetingBeingEdited.AgendaItems count]]);
-    [self.agendaItems release];
-    self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
-    NSUInteger positionOfNewAgendaItem = [self.agendaItems indexOfObject:agendaItem];
-    [agendaItem release];
-    [self.tableView reloadData];
-    
-    NSIndexPath *indexOfNewAgendaItem = [[NSIndexPath indexPathForRow:positionOfNewAgendaItem inSection:0] autorelease];
-    [self tableView:self.tableView didSelectRowAtIndexPath:indexOfNewAgendaItem];
-    
+    [self.agendaItems addObject:agendaItem];
+    NSIndexPath *newAgendaItemIndex = [NSIndexPath indexPathForRow:[self.agendaItems count] -1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newAgendaItemIndex] withRowAnimation:UITableViewRowAnimationTop];
+    [self tableView:self.tableView didSelectRowAtIndexPath:newAgendaItemIndex];
 }
 
 -(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem{
@@ -180,7 +176,6 @@
         {
             [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
         }
-        [indexPath release];
     }
 }
 
@@ -245,8 +240,6 @@
     
     // Configure the cell...
     AgendaItem *currentItem = [self.agendaItems objectAtIndex:indexPath.row];
-    //cell.agendaItemLabel.text = currentItem.title;
-    //[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setupWithAgendaItem:currentItem];
     return cell;
 }
@@ -264,24 +257,7 @@
     }
     AgendaItem *currentItem = [self.agendaItems objectAtIndex:indexPath.row];
     cell.textLabel.text = currentItem.title;
-    [currentItem release];
 }
-
-/*
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	NSString *title = nil;
-    switch (section) {
-        case 0:
-            title = @"Agenda Items";
-            break;
-        
-        default:
-            break;
-    }
-    return title;
-}
-*/
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -294,11 +270,15 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSManagedObjectContext *context = [(MeetingNotesAppDelegate*)[UIApplication sharedApplication].delegate managedObjectContext];
     NSLog(@"Deleting at index path:%@", [indexPath description]);
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"Deleting agenta item %@", [[self.agendaItems objectAtIndex:indexPath.row] description]);
-        [[self.meetingBeingEdited managedObjectContext] deleteObject:[self.agendaItems objectAtIndex:indexPath.row]];
-        NSManagedObjectContext *context = self.meetingBeingEdited.managedObjectContext;
+        AgendaItem* agendaItemToDelete = [self.agendaItems objectAtIndex:indexPath.row];
+        NSLog(@"Deleting agenta item %@", [agendaItemToDelete description]);
+        // remove object for the agendaItems array first
+        [self.agendaItems removeObjectAtIndex:indexPath.row];
+        // delete the object from the context
+        [self.meetingBeingEdited removeAgendaItemsObject:agendaItemToDelete];
         NSError *error = nil;
         if (![context save:&error]) {
             /*
@@ -309,9 +289,12 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
-        self.agendaItems = nil;
-        self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
-        [self.tableView reloadData];
+        //self.agendaItems = nil;
+        //self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
+        //[self.tableView reloadData];
+        // delete the row
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        
         if([self.meetingBeingEdited.AgendaItems count] > 0){
             NSInteger newRow;
             if(indexPath.row == [self.agendaItems count]){
@@ -320,9 +303,7 @@
                 newRow = indexPath.row;
             }
             NSIndexPath *newSelectedIndex = [NSIndexPath indexPathForRow:newRow inSection:indexPath.section];
-            //[self.tableView selectRowAtIndexPath:newSelectedIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
             [self tableView:self.tableView didSelectRowAtIndexPath:newSelectedIndex];
-            [newSelectedIndex release];
         }else{
             [self.sortDetailViewController hideActiveViewController];
         }
@@ -356,7 +337,6 @@
         [self.sortDetailViewController showActiveViewController];
     }
     [self.notesDetailViewController setupDetailViewWithAgendaItem:[self.agendaItems objectAtIndex:indexPath.row]];
-
 }
 
 #pragma mark - AgendaItemTitleChangeDelegate

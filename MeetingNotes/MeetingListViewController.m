@@ -178,6 +178,7 @@
         }else{
             self.meetingsForCategory = [[NSMutableArray alloc] initWithArray:[self.masterSortRootView getAllMeetings]];
         }
+        self.filteredList = self.meetingsForCategory;
         // Delete the row from the table
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }

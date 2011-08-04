@@ -159,14 +159,6 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self configureButtonsForToolbar];
-    /*self.notesRootViewController.currentSelectedCell = nil;
-    // display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    if([self.agendaItems count] >= 1)
-    {
-        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-    }
-    [indexPath release];*/
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
