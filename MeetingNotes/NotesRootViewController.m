@@ -162,6 +162,24 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    UIImageView *backgroundView = [self.navigationController.view.subviews objectAtIndex:0];
+    
+    if(backgroundView){
+        [backgroundView removeFromSuperview];
+    }
+    // adjust top inset for the scroll view depending on the orientation of the view
+    if(self.view.frame.size.height == 748.0){
+        [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
+        [self.tableView setContentInset:UIEdgeInsetsMake(50.0, 0.0, 0.0, 0.0)];
+        backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 44, 276, 705)];
+    }else{
+        [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+        [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0.0, 0.0, 0.0)];
+        backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 37, 276, 805)];
+    }
+    [self.navigationController.view insertSubview:backgroundView atIndex:0];
+    backgroundView.image = [UIImage imageNamed:@"cat_view_bg_l"];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -170,6 +188,7 @@
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
     //display the detail view controller with the fist agenda item when the Notes view controllers are shown at first
+    
     if(!currentSelectedCell){
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         if([self.agendaItems count] >= 1)

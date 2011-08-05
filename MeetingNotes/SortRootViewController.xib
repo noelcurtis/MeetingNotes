@@ -37,6 +37,8 @@
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{320, 852}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="1021896149">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
@@ -66,10 +68,6 @@
 					</object>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-				<double key="IBUIContentInset.top">14</double>
-				<double key="IBUIContentInset.bottom">0.0</double>
-				<double key="IBUIContentInset.left">0.0</double>
-				<double key="IBUIContentInset.right">0.0</double>
 				<bool key="IBUIBouncesZoom">NO</bool>
 				<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 				<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
@@ -78,7 +76,7 @@
 				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 			<object class="IBUITableViewCell" id="4128732">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="22910590">
@@ -167,7 +165,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{322, 54}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="22910590"/>
 				<reference key="IBUIBackgroundColor" ref="880283012"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -176,7 +173,7 @@
 				<reference key="IBUIContentView" ref="22910590"/>
 			</object>
 			<object class="IBUITableViewCell" id="855354918">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="487643539">
@@ -242,7 +239,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{322, 54}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="487643539"/>
 				<reference key="IBUIBackgroundColor" ref="880283012"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>

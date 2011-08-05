@@ -49,10 +49,6 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:sortRVController];
     nav.view.backgroundColor = [UIColor clearColor];
     nav.view.opaque = NO;
-    UIImageView *backgroundImageViewNav = [[UIImageView alloc] initWithFrame:CGRectMake(25, 45, 276, 705)];
-	backgroundImageViewNav.image = [UIImage imageNamed:@"cat_view_bg_l"];
-    [nav.view insertSubview:backgroundImageViewNav atIndex:0];
-    [backgroundImageViewNav release];
     splitViewController.viewControllers = [NSArray arrayWithObjects:nav,sortDVController,nil];
 	[self.window addSubview:splitViewController.view];
     [self.window insertSubview:backgroundImageView belowSubview:splitViewController.view];
