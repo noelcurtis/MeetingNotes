@@ -46,19 +46,26 @@
 }
 
 - (NSString*)asString{
-    NSString *agendaContents = [NSString stringWithFormat:@"Agenda Item: %@\r\n", self.title];
+    NSString *agendaContents = [NSString stringWithFormat:@"Agenda Item: %@\n", self.title];
     
-    agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Notes: %@\r\n\r\n", self.note]];
+    agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Notes: %@\n\n", self.note]];
     // print each agenda item
     for (ActionItem* actionItem in self.ActionItems) {
         // print each action item
-        agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Action Item: %@\r\n", actionItem.notes]];
-        NSString *attendeesString = [[NSArray arrayWithArray:[actionItem.Attendees allObjects]] componentsJoinedByString:@","];
-        if(attendeesString && ![attendeesString isEqualToString:@""]){
-            agendaContents = [agendaContents stringByAppendingString:attendeesString];
+        agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Action Item: %@\n", actionItem.notes]];
+        
+        NSMutableArray *attendeeNames = [NSMutableArray arrayWithCapacity:[actionItem.Attendees count]];
+        for (Attendee* attendee in actionItem.Attendees) {
+            [attendeeNames addObject:attendee.name];
         }
-        agendaContents = [agendaContents stringByAppendingString:@"\r\n"];
+        // create a string for the attendees
+        NSString *attendeesString = [[NSArray arrayWithArray:attendeeNames] componentsJoinedByString:@", "];
+        if(attendeesString && ![attendeesString isEqualToString:@""]){
+            agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"(%@)",attendeesString]];
+        }
+        agendaContents = [agendaContents stringByAppendingString:@"\n"];
     }
+    agendaContents = [agendaContents stringByAppendingString:@"\n"];
     return agendaContents;
 }
 

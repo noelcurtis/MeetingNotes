@@ -119,7 +119,7 @@ static SharingServiceAdapter *_sharedSharingService;
     
 	NSString *docDir = [arrayPaths objectAtIndex:0];
     // Create pathname to Documents directory
-	_newMeetingFilePath = [docDir stringByAppendingString:[meeting fileName]];
+	_newMeetingFilePath = [docDir stringByAppendingString:[NSString stringWithFormat:@"/%@",[meeting fileName]]];
     NSString *meetingAsString = [meeting asString];
     // Create a temp file with the meetings contents
     [meetingAsString writeToFile:_newMeetingFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];

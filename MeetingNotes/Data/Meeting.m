@@ -89,22 +89,28 @@
 }
 
 - (NSString*)asString{
+    NSString *meetingContents = [NSString stringWithFormat:@"Meeting Name:%@\nLocation:%@\n\n", self.name, self.location];
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-    NSString *meetingContents = [NSString stringWithFormat:@"Meeting Name:%@\r\nLocation:%@\r\n\r\n", self.name, self.location];
-    meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Start Date:%@\r\nEnd Date:%@\r\n\r\n", [self.startDate description], [self.endDate description]]];
+    meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Start Date:%@\nEnd Date:%@\n\n", [dateFormatter stringFromDate:self.startDate], [dateFormatter stringFromDate:self.endDate]]];
     
-    meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Attendees:"]];
-    NSString *attendeesString = [[NSArray arrayWithArray:[self.Attendees allObjects]] componentsJoinedByString:@","];
+    NSMutableArray *attendeeNames = [NSMutableArray arrayWithCapacity:[self.Attendees count]];
+    for (Attendee* attendee in self.Attendees) {
+        [attendeeNames addObject:attendee.name];
+    }
+    // create a string for the attendees
+    NSString *attendeesString = [[NSArray arrayWithArray:attendeeNames] componentsJoinedByString:@", "];
+
     if(attendeesString && ![attendeesString isEqualToString:@""]){
+        meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Attendees: "]];
         meetingContents = [meetingContents stringByAppendingString:attendeesString];
+        meetingContents = [meetingContents stringByAppendingString:@"\n\n"];
     }
-	for (Attendee* attendee in self.Attendees) {
-        meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
-    }
-    
-    [meetingContents stringByAppendingString:[NSString stringWithFormat:@"\r\n\r\n"]];
+	
     for (AgendaItem* agendaItem in self.AgendaItems) {
-        meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",[agendaItem asString]]];
+        meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"%@",[agendaItem asString]]];
     }
     return meetingContents;
 }
@@ -113,7 +119,8 @@
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@.txt",self.name, [dateFormatter  stringFromDate:self.startDate]];
+    NSString *startDateForMeeting = [[dateFormatter stringFromDate:self.startDate] stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@.txt",self.name, startDateForMeeting];
     return fileName;
 }
 /*
