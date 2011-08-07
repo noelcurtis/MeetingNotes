@@ -94,7 +94,10 @@
     meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Start Date:%@\r\nEnd Date:%@\r\n\r\n", [self.startDate description], [self.endDate description]]];
     
     meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"Attendees:"]];
-    
+    NSString *attendeesString = [[NSArray arrayWithArray:[self.Attendees allObjects]] componentsJoinedByString:@","];
+    if(attendeesString && ![attendeesString isEqualToString:@""]){
+        meetingContents = [meetingContents stringByAppendingString:attendeesString];
+    }
 	for (Attendee* attendee in self.Attendees) {
         meetingContents = [meetingContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
     }
@@ -149,11 +152,12 @@
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-    // create a string for the attendees
-    NSString *attendeesString = [[[NSString alloc] init] autorelease];
-	for (Attendee* attendee in self.Attendees) {
-        attendeesString = [attendeesString stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+    NSMutableArray *attendeeNames = [NSMutableArray arrayWithCapacity:[self.Attendees count]];
+    for (Attendee* attendee in self.Attendees) {
+        [attendeeNames addObject:attendee.name];
     }
+    // create a string for the attendees
+    NSString *attendeesString = [[NSArray arrayWithArray:attendeeNames] componentsJoinedByString:@", "];
     
     NSMutableString *meetingAsHtmlTable = [[[NSMutableString alloc] init] autorelease];
     // start the table

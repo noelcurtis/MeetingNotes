@@ -53,8 +53,9 @@
     for (ActionItem* actionItem in self.ActionItems) {
         // print each action item
         agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"Action Item: %@\r\n", actionItem.notes]];
-        for (Attendee* attendee in actionItem.Attendees) {
-            agendaContents = [agendaContents stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+        NSString *attendeesString = [[NSArray arrayWithArray:[actionItem.Attendees allObjects]] componentsJoinedByString:@","];
+        if(attendeesString && ![attendeesString isEqualToString:@""]){
+            agendaContents = [agendaContents stringByAppendingString:attendeesString];
         }
         agendaContents = [agendaContents stringByAppendingString:@"\r\n"];
     }
@@ -91,10 +92,12 @@
         
         // attendees for the action item
         // create a string for the attendees
-        NSString *attendeesString = [[NSString alloc] init];
+        NSMutableArray *attendeeNames = [NSMutableArray arrayWithCapacity:[actionItem.Attendees count]];
         for (Attendee* attendee in actionItem.Attendees) {
-            attendeesString = [attendeesString stringByAppendingString:[NSString stringWithFormat:@"%@ ",attendee.name]];
+            [attendeeNames addObject:attendee.name];
         }
+        // create a string for the attendees
+        NSString *attendeesString = [[NSArray arrayWithArray:attendeeNames] componentsJoinedByString:@", "];
         if(attendeesString && ![attendeesString isEqualToString:@""]){
             [agendaItem appendString:[NSString stringWithFormat:@"<dd>%@</dd>", attendeesString]];
         }
