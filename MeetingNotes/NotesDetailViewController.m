@@ -268,28 +268,46 @@
     return height;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if(indexPath.section == 2){
+        return YES;
+    }else{
+        return NO;
+    }
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        ActionItem *actionItemToDelete = [[self.agendaItem.ActionItems allObjects] objectAtIndex:indexPath.row];
+        [self.agendaItem removeActionItems:[NSSet setWithObject:actionItemToDelete]];
+        // Save the context.
+		NSError *error;
+		if (![self.agendaItem.managedObjectContext save:&error]) {
+			/*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.*/
+             
+             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+             abort();
+		}
+        if ([self.agendaItem.ActionItems count] == 0) {
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+        }else{
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }  
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -395,7 +413,6 @@
     NSLog(@"Text view did end editing, updating agenda item and saving context");
     [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
-    //[self.notesRootViewController saveContextAndReloadTable];
     [self.notesRootViewController saveContextAndReloadTableWithNewAgendaItem:self.agendaItem];
     [textView resignFirstResponder];
     self.isNotesTextViewActive = NO;
@@ -499,12 +516,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-    
-    /*[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceDidChangeOrientation:)
-                                                 name:UIDeviceOrientationDidChangeNotification object:nil];*/
     
 }
 /*
