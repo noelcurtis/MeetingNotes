@@ -141,6 +141,7 @@
     self.title = self.meetingBeingEdited.name;
     self.agendaItems = [[NSMutableArray alloc] initWithArray:[self.meetingBeingEdited.AgendaItems allObjects]];
     self.currentSelectedCell = nil;
+    [self setContentSizeForViewInPopover:CGSizeMake(320.0, 704.0)];
 }
 
 -(IBAction)backButtonAction:(id)sender{
@@ -162,24 +163,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    UIImageView *backgroundView = [self.navigationController.view.subviews objectAtIndex:0];
-    
-    if(backgroundView){
-        [backgroundView removeFromSuperview];
+    UIImageView *backgroundImageView = [self.navigationController.view.subviews objectAtIndex:0];
+    if(backgroundImageView){
+        [backgroundImageView removeFromSuperview];
     }
-    // adjust top inset for the scroll view depending on the orientation of the view
-    if(self.view.frame.size.height == 748.0){
-        [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
-        [self.tableView setContentInset:UIEdgeInsetsMake(50.0, 0.0, 0.0, 0.0)];
-        backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 44, 276, 705)];
-    }else{
-        [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    if(self.view.frame.size.height == 1004.0 || self.view.frame.size.height == 741.0){
         [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0.0, 0.0, 0.0)];
-        backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 37, 276, 805)];
+        [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+        backgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 37, 320, 704)] autorelease];
+        backgroundImageView.image = [UIImage imageNamed:@"cat_view_bg_p"];
+    }else{
+        [self.tableView setContentInset:UIEdgeInsetsMake(50.0, 0.0, 0.0, 0.0)];
+        [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
+        backgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(22, 44, 276, 704)] autorelease];
+        backgroundImageView.image = [UIImage imageNamed:@"cat_view_bg_l"];
     }
-    [self.navigationController.view insertSubview:backgroundView atIndex:0];
-    backgroundView.image = [UIImage imageNamed:@"cat_view_bg_l"];
-
+    [self.navigationController.view insertSubview:backgroundImageView atIndex:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated

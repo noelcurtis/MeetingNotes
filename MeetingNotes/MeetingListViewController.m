@@ -174,9 +174,9 @@
 		}
         // reload the meetings for a category to update the expected number of rows in the table
         if(categoryForMeeting){
-            self.meetingsForCategory = [[NSMutableArray alloc] initWithArray:[categoryForMeeting.Meetings allObjects]];
+            self.meetingsForCategory = [NSMutableArray arrayWithArray:[categoryForMeeting.Meetings allObjects]];
         }else{
-            self.meetingsForCategory = [[NSMutableArray alloc] initWithArray:[self.masterSortRootView getAllMeetings]];
+            self.meetingsForCategory = [NSMutableArray arrayWithArray:[self.masterSortRootView getAllMeetings]];
         }
         self.filteredList = self.meetingsForCategory;
         // Delete the row from the table
@@ -220,7 +220,7 @@
     // select the category for the new meeting
     [self.masterSortRootView selectRowForCategory:newMeeting.Category];
     // select the new meeting for that has just been added
-    NSIndexPath *insertionPath = [[NSIndexPath indexPathForRow:[self.filteredList indexOfObject:newMeeting] inSection:0] autorelease];
+    NSIndexPath *insertionPath = [NSIndexPath indexPathForRow:[self.filteredList indexOfObject:newMeeting] inSection:0];
     [self tableView:self.tableView didSelectRowAtIndexPath:insertionPath];
 }
 

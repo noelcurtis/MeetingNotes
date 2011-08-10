@@ -17,7 +17,6 @@
 @interface SortRootViewController()
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (NSArray*) getAllStarredMeetings;
-@property (nonatomic, retain) UIImageView *backgroundImageView;
 //+ (void) setDefaultCategory:(Category*) category;
 //- (void) reassignMeetingsForCategory:(Category*) category;
 @end
@@ -33,7 +32,6 @@
 @synthesize newCategoryTextField;
 @synthesize selectedCategory;
 @synthesize starredCategoryCell;
-@synthesize backgroundImageView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,7 +44,6 @@
 
 - (void)dealloc
 {
-    [backgroundImageView release];
     [selectedCategory release];
     [newCategoryTextField release];
     [newCategoryCell release];
@@ -97,6 +94,10 @@
     // select the first row after the root view controller loads
     NSLog(@"Selecting the fist category when the SortRootViewController is loaded...");
     [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    [self setContentSizeForViewInPopover:CGSizeMake(320.0, 704.0)];
+    // add in the background Image view will add an image to this view later
+    UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 37, 320, 704)] autorelease];
+    [self.navigationController.view insertSubview:backgroundImageView atIndex:0];
 }
 
 - (void)viewDidUnload
@@ -109,21 +110,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(self.backgroundImageView){
-        [self.backgroundImageView removeFromSuperview];
+    UIImageView *backgroundImageView = [self.navigationController.view.subviews objectAtIndex:0];
+    if(backgroundImageView){
+        [backgroundImageView removeFromSuperview];
     }
-    // adjust top inset for the scroll view depending on the orientation of the view
-    if(self.view.frame.size.height == 748.0){
-        [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
-        [self.tableView setContentInset:UIEdgeInsetsMake(50.0, 0.0, 0.0, 0.0)];
-        backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 44, 276, 705)];
-    }else{
-        [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    if(self.view.frame.size.height == 704.0){
         [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0.0, 0.0, 0.0)];
-        backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 37, 276, 805)];
+        [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+        backgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 37, 320, 704)] autorelease];
+        backgroundImageView.image = [UIImage imageNamed:@"cat_view_bg_p"];
+    }else{
+        [self.tableView setContentInset:UIEdgeInsetsMake(50.0, 0.0, 0.0, 0.0)];
+        [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
+        backgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(22, 44, 276, 704)] autorelease];
+        backgroundImageView.image = [UIImage imageNamed:@"cat_view_bg_l"];
     }
     [self.navigationController.view insertSubview:backgroundImageView atIndex:0];
-    backgroundImageView.image = [UIImage imageNamed:@"cat_view_bg_l"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
