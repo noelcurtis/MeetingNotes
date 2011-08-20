@@ -484,6 +484,7 @@
         SharingViewController *sharingVC = [[SharingViewController alloc] initWithNibName:@"SharingViewController" bundle:nil ];
         // pass the meeting being edited along
         sharingVC.meetingToShare = self.notesRootViewController.meetingBeingEdited;
+        sharingVC.navigationController.navigationBar.tintColor = [UIColor redColor];
         sharingPopoverController = [[UIPopoverController alloc] initWithContentViewController:sharingVC];
         sharingPopoverController.popoverContentSize = sharingVC.view.frame.size;
         [sharingPopoverController presentPopoverFromBarButtonItem:shareButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];

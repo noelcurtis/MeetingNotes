@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373ADDC113F33E540001280E /* cat_view_bg_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 373ADDC013F33E540001280E /* cat_view_bg_p.png */; };
 		C70061B6139DC46A00FD9766 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C70061B5139DC46A00FD9766 /* icon_settings.png */; };
 		C701C76913D906A600F26993 /* mn_icon_g.png in Resources */ = {isa = PBXBuildFile; fileRef = C701C76813D906A600F26993 /* mn_icon_g.png */; };
 		C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */; };
@@ -19,7 +20,6 @@
 		C721A5A813B961DB0095BCDA /* SharingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C721A5A613B961DB0095BCDA /* SharingViewController.m */; };
 		C721A5AA13B961DB0095BCDA /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C721A5A713B961DB0095BCDA /* SharingViewController.xib */; };
 		C721A5AB13B961DB0095BCDA /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C721A5A713B961DB0095BCDA /* SharingViewController.xib */; };
-		C726FE1F13F0D7C00096B046 /* cat_view_bg_p.png in Resources */ = {isa = PBXBuildFile; fileRef = C726FE1E13F0D7C00096B046 /* cat_view_bg_p.png */; };
 		C727BB1313AD3878002A69EA /* SeedMeetingNotes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C727BB1213AD3878002A69EA /* SeedMeetingNotes.sqlite */; };
 		C727F62113A1D56D0034FDD7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E0135CF9B7001AAEDD /* UIKit.framework */; };
 		C727F62213A1D56D0034FDD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78540E2135CF9B7001AAEDD /* Foundation.framework */; };
@@ -333,6 +333,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		373ADDC013F33E540001280E /* cat_view_bg_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat_view_bg_p.png; path = Images/cat_view_bg_p.png; sourceTree = "<group>"; };
 		C70061B5139DC46A00FD9766 /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_settings.png; path = Images/icon_settings.png; sourceTree = "<group>"; };
 		C701C76813D906A600F26993 /* mn_icon_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mn_icon_g.png; sourceTree = "<group>"; };
 		C70A947B13AAFBF600680AF7 /* SelectCategorieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategorieViewController.h; sourceTree = "<group>"; };
@@ -348,7 +349,6 @@
 		C721A5A513B961DB0095BCDA /* SharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharingViewController.h; path = "Sharing Controllers/SharingViewController.h"; sourceTree = "<group>"; };
 		C721A5A613B961DB0095BCDA /* SharingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharingViewController.m; path = "Sharing Controllers/SharingViewController.m"; sourceTree = "<group>"; };
 		C721A5A713B961DB0095BCDA /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SharingViewController.xib; path = "Sharing Controllers/SharingViewController.xib"; sourceTree = "<group>"; };
-		C726FE1E13F0D7C00096B046 /* cat_view_bg_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat_view_bg_p.png; path = "../../../../Dropbox/Meeting Notes/img/meeting_list/cat_view_bg_p.png"; sourceTree = "<group>"; };
 		C727BB1213AD3878002A69EA /* SeedMeetingNotes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeedMeetingNotes.sqlite; sourceTree = "<group>"; };
 		C727F62013A1D56D0034FDD7 /* MeetingNotesUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetingNotesUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C727F62613A1D56D0034FDD7 /* MeetingNotesUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeetingNotesUnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -1168,7 +1168,7 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C726FE1E13F0D7C00096B046 /* cat_view_bg_p.png */,
+				373ADDC013F33E540001280E /* cat_view_bg_p.png */,
 				C7C64FFF13E3838500DFE26F /* CategoryLabels */,
 				C7C64FF413E3837F00DFE26F /* MeetingLabels */,
 				C7E8753713EB57B500A62507 /* header_actions.png */,
@@ -1695,7 +1695,7 @@
 				C7160C6813E7752000E64EF0 /* icon_gear.png in Resources */,
 				C7E8753913EB57B500A62507 /* header_actions.png in Resources */,
 				C7E8753A13EB57B500A62507 /* header_notes.png in Resources */,
-				C726FE1F13F0D7C00096B046 /* cat_view_bg_p.png in Resources */,
+				373ADDC113F33E540001280E /* cat_view_bg_p.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2063,7 +2063,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/EvernoteAPI/Evernote/thrift/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/EvernoteAPI/Evernote/thrift\"/**";
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2091,7 +2091,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/EvernoteAPI/Evernote/thrift/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/EvernoteAPI/Evernote/thrift\"/**";
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
