@@ -121,10 +121,14 @@
     NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
     newActionItemButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"btn_add_action"] 
                                                      target:self action:@selector(newActionItemAction:)];
-    meetingSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] 
-                                                             style:UIBarButtonItemStyleBordered target:self action:@selector(meetingSettingsAction:)];
-    shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_action.png"] 
-                                                   style:UIBarButtonItemStyleBordered target:self action:@selector(shareAction:)];
+    //meetingSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] 
+    //                                                         style:UIBarButtonItemStyleBordered target:self action:@selector(meetingSettingsAction:)];
+    
+    meetingSettingsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(meetingSettingsAction:)];
+    //shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_action.png"] 
+    //                                               style:UIBarButtonItemStyleBordered target:self action:@selector(shareAction:)];
+    shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction:)];
+    
     switch ([items count]) {
         case 5:{
             [[items objectAtIndex:0] setTitle:@"Agenda Items"];

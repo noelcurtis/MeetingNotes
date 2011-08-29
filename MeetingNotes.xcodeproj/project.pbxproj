@@ -2063,7 +2063,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/EvernoteAPI/Evernote/thrift/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/EvernoteAPI/Evernote/thrift/**\"";
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2091,7 +2091,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/EvernoteAPI/Evernote/thrift/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/EvernoteAPI/Evernote/thrift/**\"";
 				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

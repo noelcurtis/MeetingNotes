@@ -17,6 +17,7 @@
 
 @interface SortDetailViewController()
 @property(nonatomic, retain) UINavigationController* settingsNavigationController;
+@property (nonatomic, retain) UIBarButtonItem* calendarButton;
 @end
 
 @implementation SortDetailViewController
@@ -30,6 +31,7 @@
 @synthesize calenderCreatePopover;
 @synthesize isActiveViewControllerHidden;
 @synthesize settingsNavigationController;
+@synthesize calendarButton = _calendarButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +44,7 @@
 
 - (void)dealloc
 {
+    [_calendarButton release];
     [settingsNavigationController release];
     [calenderCreatePopover release];
     [createMinutePopoverController release];
@@ -57,8 +60,8 @@
 -(void) setupToolbarForMeetingListViewController{
     
     NSMutableArray *currentItems = [[self.toolBar items] mutableCopy];
-       
-    UIBarButtonItem *calenderButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_calendar"] target:self action:@selector(calenderButtonClick:)];
+    
+    _calendarButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_calendar"] target:nil action:@selector(calenderButtonClick:)];
     UIBarButtonItem *addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
     UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *applicationSettingsButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_gear.png"] target:self action:@selector(didPressSettingsButton:)];
@@ -67,12 +70,11 @@
     if([currentItems count]==5)
     {
         [[currentItems objectAtIndex:0] setTitle:@"Categories"];
-        items = [NSMutableArray arrayWithObjects: [currentItems objectAtIndex:0] ,flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
+        items = [NSMutableArray arrayWithObjects: [currentItems objectAtIndex:0] ,flexButton, applicationSettingsButton, _calendarButton, addMeetingButton, nil];
     }else{
-        items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, calenderButton, addMeetingButton, nil];
+        items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, _calendarButton, addMeetingButton, nil];
     }
     [self.toolBar setItems:items];
-    [calenderButton release];
     [flexButton release];
     [addMeetingButton release];
     [currentItems release];
@@ -160,8 +162,9 @@
                                   initWithContentViewController:eventsNavigationController];
         CGSize size = {320, 390};
         self.calenderCreatePopover.popoverContentSize = size;
-        [self.calenderCreatePopover presentPopoverFromBarButtonItem:sender 
+        [self.calenderCreatePopover presentPopoverFromBarButtonItem:_calendarButton
                                        permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
         [eventsViewController release];
         [eventsNavigationController release];
     }
