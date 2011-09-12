@@ -12,6 +12,7 @@
 		C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */; };
 		C70A947F13AAFBF700680AF7 /* SelectCategorieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */; };
 		C70C259513C2B8F6005532C8 /* icon_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = C70C259413C2B8F6005532C8 /* icon_profile.png */; };
+		C70C5B9B141EB0780028D07D /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C70C5B9A141EB0780028D07D /* Entitlements.entitlements */; };
 		C7132DAA135E7F680012B12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7132DA9135E7F680012B12A /* QuartzCore.framework */; };
 		C7153F001383783200A48C85 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7153EFF1383783200A48C85 /* NoteView.m */; };
 		C715C0E413A03EFD004CCF7D /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
@@ -339,6 +340,7 @@
 		C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategorieViewController.m; sourceTree = "<group>"; };
 		C70A947D13AAFBF700680AF7 /* SelectCategorieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCategorieViewController.xib; sourceTree = "<group>"; };
 		C70C259413C2B8F6005532C8 /* icon_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_profile.png; path = Images/icon_profile.png; sourceTree = "<group>"; };
+		C70C5B9A141EB0780028D07D /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		C7132DA9135E7F680012B12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7153EFE1383783200A48C85 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		C7153EFF1383783200A48C85 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
@@ -1231,6 +1233,7 @@
 		C78540D1135CF9B7001AAEDD = {
 			isa = PBXGroup;
 			children = (
+				C70C5B9A141EB0780028D07D /* Entitlements.entitlements */,
 				C75032DC13E2573D0064D66D /* Default-Portrait~ipad.png */,
 				C75032D813E256360064D66D /* Default-Landscape~ipad.png */,
 				C701C76813D906A600F26993 /* mn_icon_g.png */,
@@ -1696,6 +1699,7 @@
 				C7E8753913EB57B500A62507 /* header_actions.png in Resources */,
 				C7E8753A13EB57B500A62507 /* header_notes.png in Resources */,
 				C726FE1F13F0D7C00096B046 /* cat_view_bg_p.png in Resources */,
+				C70C5B9B141EB0780028D07D /* Entitlements.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2055,6 +2059,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Noel Curtis (GUX7YGJ7FP)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2075,6 +2080,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "341D6792-51F9-45D4-91EE-C8CD67E53CE4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2084,6 +2090,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Noel Curtis (GUX7YGJ7FP)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2103,10 +2110,83 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "341D6792-51F9-45D4-91EE-C8CD67E53CE4";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		C7994AF8141D74AD00EA8B9D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = "Ad Hoc";
+		};
+		C7994AF9141D74AD00EA8B9D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = Entitlements.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Noel Curtis (GUX7YGJ7FP)";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeetingNotes/MeetingNotes-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/EvernoteAPI/Evernote/thrift/**\"";
+				INFOPLIST_FILE = "MeetingNotes/MeetingNotes-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "341D6792-51F9-45D4-91EE-C8CD67E53CE4";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
+		C7994AFA141D74AD00EA8B9D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeetingNotesUnitTests/MeetingNotesUnitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/EvernoteAPI/Evernote/thrift/**";
+				INFOPLIST_FILE = "MeetingNotesUnitTests/MeetingNotesUnitTests-Info.plist";
+				New_Setting = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
 		};
 /* End XCBuildConfiguration section */
 
@@ -2116,6 +2196,7 @@
 			buildConfigurations = (
 				C727F63013A1D56D0034FDD7 /* Debug */,
 				C727F63113A1D56D0034FDD7 /* Release */,
+				C7994AFA141D74AD00EA8B9D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2125,6 +2206,7 @@
 			buildConfigurations = (
 				C78540F5135CF9B7001AAEDD /* Debug */,
 				C78540F6135CF9B7001AAEDD /* Release */,
+				C7994AF8141D74AD00EA8B9D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2134,6 +2216,7 @@
 			buildConfigurations = (
 				C78540F8135CF9B7001AAEDD /* Debug */,
 				C78540F9135CF9B7001AAEDD /* Release */,
+				C7994AF9141D74AD00EA8B9D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
