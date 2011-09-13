@@ -58,6 +58,9 @@
     
     // init and launch appirater
     [Appirater appLaunched:YES];
+    // init TestFlight Api
+    [TestFlight takeOff:@"63d2f5463c05024c6f192fcf7c776b18_MTMyNDcyMDExLTA5LTEyIDIyOjMxOjQzLjgyNDIzOQ"];
+    
     return YES;
 }
 

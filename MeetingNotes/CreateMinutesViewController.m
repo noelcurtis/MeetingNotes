@@ -198,6 +198,7 @@
         abort();
     }
     NSLog(@"Added new Meeting with Name:%@ and Location:%@", newMeeting.name, newMeeting.location);
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Added new Meeting with Name:%@ and Location:%@", newMeeting.name, newMeeting.location]];
     [delegate insertNewMeeting:newMeeting];
 }
 
@@ -423,6 +424,7 @@
     }*/
 
     NSLog(@"New attendee %@ picked and created.", [self.personSelectedFromPeoplePicker description]);
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"New attendee %@ picked and created.", [self.personSelectedFromPeoplePicker description]]];
     [firstName release];
     [lastName release];
     [emailAddress release];
@@ -481,6 +483,8 @@
                                              [self.attendees indexOfObject:self.personSelectedFromPeoplePicker] + 1 inSection:3];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathForAttendee, nil] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView scrollToRowAtIndexPath:indexPathForAttendee atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
+        [TestFlight passCheckpoint:[NSString stringWithFormat:@"Created a custom Attendee"]];
     }else{
         NSLog(@"No attendee entered.");
     }
@@ -508,6 +512,7 @@
         [self.attendees removeObjectAtIndex:indexPath.row-1];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
         NSLog(@"Removed attendee...");
+        [TestFlight passCheckpoint:@"Removed attendee"];
     }   
 }
 

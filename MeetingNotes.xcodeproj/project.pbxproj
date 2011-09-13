@@ -211,6 +211,9 @@
 		C75D812713B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */; };
 		C75D812813B62EC300B4B8B1 /* EvernoteSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */; };
 		C75EFA4A13C20C7C001039C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75EFA4913C20C7C001039C7 /* MessageUI.framework */; };
+		C767FD64141EF898004E16E3 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C767FD60141EF898004E16E3 /* libTestFlight.a */; };
+		C767FD65141EF898004E16E3 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C767FD61141EF898004E16E3 /* README.txt */; };
+		C767FD66141EF898004E16E3 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C767FD62141EF898004E16E3 /* release_notes.txt */; };
 		C768755713AEE3090023F34D /* EvernoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C768755613AEE3090023F34D /* EvernoteTests.m */; };
 		C768756C13AF04600023F34D /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = C768756B13AF04600023F34D /* Meeting.m */; };
 		C768757D13AF05A00023F34D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C759BC5F13A2E7F40093C9A0 /* EventKit.framework */; };
@@ -624,6 +627,10 @@
 		C75D812313B62EC300B4B8B1 /* EvernoteSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteSettingsController.m; sourceTree = "<group>"; };
 		C75D812413B62EC300B4B8B1 /* EvernoteSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvernoteSettingsController.xib; sourceTree = "<group>"; };
 		C75EFA4913C20C7C001039C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C767FD60141EF898004E16E3 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		C767FD61141EF898004E16E3 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		C767FD62141EF898004E16E3 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		C767FD63141EF898004E16E3 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		C768755613AEE3090023F34D /* EvernoteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteTests.m; sourceTree = "<group>"; };
 		C768756A13AF04600023F34D /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Data/Meeting.h; sourceTree = "<group>"; };
 		C768756B13AF04600023F34D /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Data/Meeting.m; sourceTree = "<group>"; };
@@ -796,6 +803,7 @@
 				C78540E1135CF9B7001AAEDD /* UIKit.framework in Frameworks */,
 				C78540E3135CF9B7001AAEDD /* Foundation.framework in Frameworks */,
 				C78540E5135CF9B7001AAEDD /* CoreGraphics.framework in Frameworks */,
+				C767FD64141EF898004E16E3 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1228,6 +1236,18 @@
 			name = "EventKit Integration";
 			sourceTree = "<group>";
 		};
+		C767FD5F141EF898004E16E3 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				C767FD60141EF898004E16E3 /* libTestFlight.a */,
+				C767FD61141EF898004E16E3 /* README.txt */,
+				C767FD62141EF898004E16E3 /* release_notes.txt */,
+				C767FD63141EF898004E16E3 /* TestFlight.h */,
+			);
+			name = TestFlight;
+			path = MeetingNotes/lib/TestFlight;
+			sourceTree = "<group>";
+		};
 		C7751913139EE7DA004E1813 /* MeetingList Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1264,6 +1284,8 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7B15690141EE91F003724C5 /* appirater */,
+				C767FD5F141EF898004E16E3 /* TestFlight */,
 				C7B15697141EE9D4003724C5 /* SystemConfiguration.framework */,
 				C7B15695141EE9A7003724C5 /* CFNetwork.framework */,
 				C787D31013CA0EA800EE949B /* MessageUI.framework */,
@@ -1285,7 +1307,6 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
-				C7B15690141EE91F003724C5 /* appirater */,
 				C73110FB13DA709D00D831D2 /* Keychain Wrapper */,
 				C70E6AAE13667FE20059B75E /* Data */,
 				C7D74AF0136223F500B57A9C /* DataModel */,
@@ -1359,6 +1380,7 @@
 				C7B15693141EE956003724C5 /* Appirater.m */,
 			);
 			name = appirater;
+			path = MeetingNotes;
 			sourceTree = "<group>";
 		};
 		C7B9B3A313AEE1B300197125 /* EvernoteAPI */ = {
@@ -1719,6 +1741,8 @@
 				C7E8753913EB57B500A62507 /* header_actions.png in Resources */,
 				C7E8753A13EB57B500A62507 /* header_notes.png in Resources */,
 				C70C5B9B141EB0780028D07D /* Entitlements.entitlements in Resources */,
+				C767FD65141EF898004E16E3 /* README.txt in Resources */,
+				C767FD66141EF898004E16E3 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2043,6 +2067,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -2053,6 +2078,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -2062,6 +2088,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2070,6 +2097,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -2093,6 +2121,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/MeetingNotes/lib/TestFlight\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -2123,6 +2152,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/MeetingNotes/lib/TestFlight\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -2141,6 +2171,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2149,6 +2180,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = "Ad Hoc";
@@ -2172,6 +2204,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/MeetingNotes/lib/TestFlight\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (

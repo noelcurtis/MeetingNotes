@@ -257,6 +257,8 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
         }
+        
+        [TestFlight passCheckpoint:@"Deleted category"];
         // select all meetings if a Category is deleted
         //[self tableView:self.tableView didDeselectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     }   
@@ -484,6 +486,7 @@
 		}else{
             NSLog(@"User tried to add a duplicate All Meetings");
         }
+        [TestFlight passCheckpoint:[NSString stringWithFormat:@"Added category %@", self.newCategoryTextField.text]];
         self.newCategoryTextField.text = @"";
         //NSIndexPath *newItemIndexPath = [fetchedResultsController indexPathForObject:newManagedObject];
         //NSIndexPath *newRowIndexPath = [NSIndexPath indexPathForRow:newItemIndexPath.row inSection:newItemIndexPath.section];

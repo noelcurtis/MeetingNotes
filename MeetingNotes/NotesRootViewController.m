@@ -102,6 +102,8 @@
     NSIndexPath *newAgendaItemIndex = [NSIndexPath indexPathForRow:[self.agendaItems count] -1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newAgendaItemIndex] withRowAnimation:UITableViewRowAnimationTop];
     [self tableView:self.tableView didSelectRowAtIndexPath:newAgendaItemIndex];
+    
+    [TestFlight passCheckpoint:@"Added agenda item."];
 }
 
 -(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem{

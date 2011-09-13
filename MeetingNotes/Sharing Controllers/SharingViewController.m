@@ -241,6 +241,7 @@
 #pragma mark - SharingServiceAdapterDelegate methods
 
 -(void) didFinishUploadingToDropbox{
+    [TestFlight passCheckpoint:@"Meetin uploaded to Dropbox"];
     [_dropboxAI stopAnimating];
 }
 
@@ -257,6 +258,7 @@
 }
 
 -(void) didFinishUploadingToEvernote{
+    [TestFlight passCheckpoint:@"Meeting uploaded to Evernote."];
     [_evernoteAI stopAnimating];
 }
 
