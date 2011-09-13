@@ -34,6 +34,9 @@
 @property (nonatomic, retain)IBOutlet UIView *notesHeaderView;
 @property (nonatomic, retain)IBOutlet UIView *actionHeaderView;
 
+// for the detail view
+@property (nonatomic, retain) UIBarButtonItem *newActionItemButton;
+
 -(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath;
 -(void) setupDetailViewWithAgendaItem:(AgendaItem*) selectedAgendaItem;
 

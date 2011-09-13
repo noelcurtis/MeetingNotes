@@ -24,7 +24,6 @@
 - (void)configureButtonsForToolbar;
 @property (nonatomic, retain) UIPopoverController* sharingPopoverController;
 @property (nonatomic, retain) UIPopoverController* agendaItemPopoverController;
-@property (nonatomic, retain) UIBarButtonItem *newActionItemButton;
 @property (nonatomic, retain) UIBarButtonItem *meetingSettingsButton;
 @property (nonatomic, retain) UIBarButtonItem *shareButton;
 @property (nonatomic, retain) UIPopoverController *createMinutePopoverController;
@@ -97,6 +96,12 @@
     if(self.agendaItem.title != nil){
         self.agendaItemTitleTextField.text = self.agendaItem.title;
     }
+    // do not enable the action item button unless the agenda item is set
+    if(self.agendaItem){
+        newActionItemButton.enabled = YES;
+    }else{
+        newActionItemButton.enabled = NO;
+    }
     [self.tableView  reloadData];
     NSLog(@"Setup the Notes detail view with a new AgendaItem: %@", [selectedAgendaItem.ActionItems description]);
 }
@@ -121,6 +126,13 @@
     NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
     newActionItemButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"btn_add_action"] 
                                                      target:self action:@selector(newActionItemAction:)];
+    
+    // do not enable the action item button unless the agenda item is set
+    if(self.agendaItem){
+        newActionItemButton.enabled = YES;
+    }else{
+        newActionItemButton.enabled = NO;
+    }
     //meetingSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] 
     //                                                         style:UIBarButtonItemStyleBordered target:self action:@selector(meetingSettingsAction:)];
     
@@ -147,7 +159,6 @@
         default:
             break;
     }
-    [newActionItemButton release];
 }
 
 - (void)viewDidUnload{

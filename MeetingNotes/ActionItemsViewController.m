@@ -83,7 +83,7 @@
                        autorelease];
     self.doneButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.doneButton;
-    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
+    //self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
 }
 
 

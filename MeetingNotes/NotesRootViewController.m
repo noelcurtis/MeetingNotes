@@ -323,6 +323,7 @@
             NSIndexPath *newSelectedIndex = [NSIndexPath indexPathForRow:newRow inSection:indexPath.section];
             [self tableView:self.tableView didSelectRowAtIndexPath:newSelectedIndex];
         }else{
+            self.notesDetailViewController.newActionItemButton.enabled = NO;
             [self.sortDetailViewController hideActiveViewController];
         }
     }  
