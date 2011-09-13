@@ -13,6 +13,7 @@
 #import "ENManager.h"
 #import "PersistantCoordinator.h"
 #import "SharingServiceAdapter.h"
+#import "Appirater.h"
 
 @implementation MeetingNotesAppDelegate
 
@@ -54,6 +55,9 @@
     [self.window insertSubview:backgroundImageView belowSubview:splitViewController.view];
 	NSLog(@"Application has launched, managed object context has been set, main split view controllers have been displayed.");
     [nav release];
+    
+    // init and launch appirater
+    [Appirater appLaunched:YES];
     return YES;
 }
 
@@ -79,6 +83,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		373ADDC113F33E540001280E /* cat_view_bg_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 373ADDC013F33E540001280E /* cat_view_bg_p.png */; };
 		C70061B6139DC46A00FD9766 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C70061B5139DC46A00FD9766 /* icon_settings.png */; };
 		C701C76913D906A600F26993 /* mn_icon_g.png in Resources */ = {isa = PBXBuildFile; fileRef = C701C76813D906A600F26993 /* mn_icon_g.png */; };
 		C70A947E13AAFBF700680AF7 /* SelectCategorieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A947C13AAFBF700680AF7 /* SelectCategorieViewController.m */; };
@@ -249,6 +248,9 @@
 		C790E6A6135D05C5009B42B9 /* SortDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */; };
 		C7AC155513A7123800BD8649 /* paper_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AC155413A7123800BD8649 /* paper_bg.png */; };
 		C7AC9CE613A836E100CE8438 /* icon_action.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AC9CE513A836E100CE8438 /* icon_action.png */; };
+		C7B15694141EE956003724C5 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B15693141EE956003724C5 /* Appirater.m */; };
+		C7B15696141EE9A7003724C5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B15695141EE9A7003724C5 /* CFNetwork.framework */; };
+		C7B15698141EE9D4003724C5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B15697141EE9D4003724C5 /* SystemConfiguration.framework */; };
 		C7B9B3D313AEE1B300197125 /* ENManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B9B3A513AEE1B300197125 /* ENManager.m */; };
 		C7B9B3D513AEE1B300197125 /* APACHE-LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7B9B3A713AEE1B300197125 /* APACHE-LICENSE-2.0.txt */; };
 		C7B9B3D613AEE1B300197125 /* APACHE-LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7B9B3A713AEE1B300197125 /* APACHE-LICENSE-2.0.txt */; };
@@ -657,6 +659,10 @@
 		C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDetailViewController.m; sourceTree = "<group>"; };
 		C7AC155413A7123800BD8649 /* paper_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper_bg.png; path = Images/paper_bg.png; sourceTree = "<group>"; };
 		C7AC9CE513A836E100CE8438 /* icon_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_action.png; path = Images/icon_action.png; sourceTree = "<group>"; };
+		C7B15692141EE956003724C5 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = lib/appirater/Appirater.h; sourceTree = "<group>"; };
+		C7B15693141EE956003724C5 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = lib/appirater/Appirater.m; sourceTree = "<group>"; };
+		C7B15695141EE9A7003724C5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C7B15697141EE9D4003724C5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C7B9B3A413AEE1B300197125 /* ENManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENManager.h; sourceTree = "<group>"; };
 		C7B9B3A513AEE1B300197125 /* ENManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ENManager.m; sourceTree = "<group>"; };
 		C7B9B3A713AEE1B300197125 /* APACHE-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "APACHE-LICENSE-2.0.txt"; sourceTree = "<group>"; };
@@ -778,6 +784,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B15698141EE9D4003724C5 /* SystemConfiguration.framework in Frameworks */,
+				C7B15696141EE9A7003724C5 /* CFNetwork.framework in Frameworks */,
 				C75EFA4A13C20C7C001039C7 /* MessageUI.framework in Frameworks */,
 				C759BC6013A2E7F40093C9A0 /* EventKit.framework in Frameworks */,
 				C7D56DD0139C666D00F342C7 /* Security.framework in Frameworks */,
@@ -1256,6 +1264,8 @@
 		C78540DF135CF9B7001AAEDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7B15697141EE9D4003724C5 /* SystemConfiguration.framework */,
+				C7B15695141EE9A7003724C5 /* CFNetwork.framework */,
 				C787D31013CA0EA800EE949B /* MessageUI.framework */,
 				C75EFA4913C20C7C001039C7 /* MessageUI.framework */,
 				C768757A13AF05060023F34D /* Foundation.framework */,
@@ -1275,6 +1285,7 @@
 		C78540E6135CF9B7001AAEDD /* MeetingNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C7B15690141EE91F003724C5 /* appirater */,
 				C73110FB13DA709D00D831D2 /* Keychain Wrapper */,
 				C70E6AAE13667FE20059B75E /* Data */,
 				C7D74AF0136223F500B57A9C /* DataModel */,
@@ -1339,6 +1350,15 @@
 				C790E6A4135D05C5009B42B9 /* SortDetailViewController.m */,
 			);
 			name = "MainSplitView Controllers";
+			sourceTree = "<group>";
+		};
+		C7B15690141EE91F003724C5 /* appirater */ = {
+			isa = PBXGroup;
+			children = (
+				C7B15692141EE956003724C5 /* Appirater.h */,
+				C7B15693141EE956003724C5 /* Appirater.m */,
+			);
+			name = appirater;
 			sourceTree = "<group>";
 		};
 		C7B9B3A313AEE1B300197125 /* EvernoteAPI */ = {
@@ -1698,7 +1718,6 @@
 				C7160C6813E7752000E64EF0 /* icon_gear.png in Resources */,
 				C7E8753913EB57B500A62507 /* header_actions.png in Resources */,
 				C7E8753A13EB57B500A62507 /* header_notes.png in Resources */,
-				C726FE1F13F0D7C00096B046 /* cat_view_bg_p.png in Resources */,
 				C70C5B9B141EB0780028D07D /* Entitlements.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1939,6 +1958,7 @@
 				C75D812513B62EC300B4B8B1 /* EvernoteSettingsController.m in Sources */,
 				C721A5A813B961DB0095BCDA /* SharingViewController.m in Sources */,
 				C73110FF13DA70B700D831D2 /* KeychainItemWrapper.m in Sources */,
+				C7B15694141EE956003724C5 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

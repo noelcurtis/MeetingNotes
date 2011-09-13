@@ -1,0 +1,3 @@
+[submodule "MeetingNotes/lib/appirater"]
+	path = MeetingNotes/lib/appirater
+	url = git://github.com/arashpayan/appirater.git
