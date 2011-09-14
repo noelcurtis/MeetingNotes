@@ -16,8 +16,9 @@
 #import "EventsViewController.h"
 
 @interface SortDetailViewController()
-@property(nonatomic, retain) UINavigationController* settingsNavigationController;
-@property (nonatomic, retain) UIBarButtonItem* calendarButton;
+@property(nonatomic, retain) UINavigationController *settingsNavigationController;
+@property (nonatomic, retain) UIBarButtonItem *calendarButton;
+@property (nonatomic, retain) UIBarButtonItem *addMeetingButton;
 @end
 
 @implementation SortDetailViewController
@@ -32,6 +33,7 @@
 @synthesize isActiveViewControllerHidden;
 @synthesize settingsNavigationController;
 @synthesize calendarButton = _calendarButton;
+@synthesize addMeetingButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +46,7 @@
 
 - (void)dealloc
 {
+    [addMeetingButton release];
     [_calendarButton release];
     [settingsNavigationController release];
     [calenderCreatePopover release];
@@ -61,9 +64,9 @@
     
     NSMutableArray *currentItems = [[self.toolBar items] mutableCopy];
     
-    _calendarButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_calendar"] target:nil action:@selector(calenderButtonClick:)];
-    UIBarButtonItem *addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
-    UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    _calendarButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_calendar"] target:self action:@selector(calenderButtonClick:)];
+    addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
+    UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *applicationSettingsButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_gear.png"] target:self action:@selector(didPressSettingsButton:)];
     
     NSMutableArray *items;
@@ -76,7 +79,6 @@
     }
     [self.toolBar setItems:items];
     [flexButton release];
-    [addMeetingButton release];
     [currentItems release];
 }
 
@@ -141,7 +143,7 @@
         [createMinutePopoverController setPopoverContentSize:CGSizeMake(320, 397)];
     }
     
-    [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [createMinutePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
         
 	[navigationController release];
 	[createMinutesVC release];
