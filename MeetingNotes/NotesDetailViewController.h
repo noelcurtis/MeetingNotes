@@ -17,6 +17,8 @@
 
 @interface NotesDetailViewController : UITableViewController<UITextFieldDelegate, UITextViewDelegate, ActionItemsViewControllerDelegate> {
     
+    UITableViewCell *actionHeaderCell;
+    UITableViewCell *notesHeaderCell;
 }
 
 @property(nonatomic, retain)IBOutlet UITableViewCell* agendaItemTitleCell;
@@ -24,6 +26,8 @@
 @property(nonatomic, retain)IBOutlet UITableViewCell* customNotesTextViewCell;
 @property(nonatomic, retain)IBOutlet ActionItemCell *actionItemCell;
 @property(nonatomic, retain)IBOutlet NoteView* noteView;
+@property (nonatomic, retain) IBOutlet UITableViewCell *actionHeaderCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell *notesHeaderCell;
 
 // From the root view controller
 @property(nonatomic, retain)NotesRootViewController* notesRootViewController;

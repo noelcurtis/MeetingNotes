@@ -45,6 +45,8 @@
 @synthesize detailViewControllerToolbar;
 @synthesize agendaItemPopoverController;
 @synthesize noteView;
+@synthesize actionHeaderCell;
+@synthesize notesHeaderCell;
 @synthesize customNotesTextViewCell;
 @synthesize actionItemCell;
 @synthesize newActionItemButton;
@@ -78,6 +80,8 @@
     [agendaItemTitleTextField release];
     [notesRootViewController release];
     [agendaItem release];
+    [actionHeaderCell release];
+    [notesHeaderCell release];
     [super dealloc];
 }
 
@@ -162,6 +166,8 @@
 }
 
 - (void)viewDidUnload{
+    [self setActionHeaderCell:nil];
+    [self setNotesHeaderCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -208,11 +214,11 @@
             break;
             
         case 1:
-            return 1;
+            return 2; // 2 to include the header cell
             break;
         
         case 2:
-            return [self.agendaItem.ActionItems count];
+            return [self.agendaItem.ActionItems count] + 1;  // add one for the header cell
             break;
 
         default:
@@ -246,24 +252,30 @@
 -(UITableViewCell *) configureCellAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 && indexPath.row == 0) {
         return self.agendaItemTitleCell;
+    }else if(indexPath.section == 1 && indexPath.row == 0){
+        return self.notesHeaderCell;
     }
-    else if(indexPath.section == 1 && indexPath.row == 0){
+    else if(indexPath.section == 1 && indexPath.row == 1){
         return self.customNotesTextViewCell;
     }
     else if(indexPath.section == 2){
-        // create a new ActionItemCell if one is not dequeued
-        static NSString *CellIdentifier = @"ActionItemCell";
-        ActionItemCell *cell = (ActionItemCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            [[NSBundle mainBundle] loadNibNamed:@"ActionItemCell" owner:self options:nil];
-            cell = actionItemCell;
-            self.actionItemCell = nil;
+        if(indexPath.row > 0){
+            // create a new ActionItemCell if one is not dequeued
+            static NSString *CellIdentifier = @"ActionItemCell";
+            ActionItemCell *cell = (ActionItemCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                [[NSBundle mainBundle] loadNibNamed:@"ActionItemCell" owner:self options:nil];
+                cell = actionItemCell;
+                self.actionItemCell = nil;
+            }
+            // get the action items and push a new ActionItemCell with one
+            NSMutableArray *actionItems = [[NSMutableArray alloc] initWithArray:[self.agendaItem.ActionItems allObjects]];
+            [cell setupWithActionItem:(ActionItem *)[actionItems objectAtIndex:indexPath.row - 1]];
+            [actionItems release];
+            return cell;
+        }else{
+            return self.actionHeaderCell;
         }
-        // get the action items and push a new ActionItemCell with one
-        NSMutableArray *actionItems = [[NSMutableArray alloc] initWithArray:[self.agendaItem.ActionItems allObjects]];
-        [cell setupWithActionItem:(ActionItem *)[actionItems objectAtIndex:indexPath.row]];
-        [actionItems release];
-        return cell;
     }
     else{
         NSLog(@"There is no cell for indexPath row=%@ section=%@", indexPath.row, indexPath.section);
@@ -274,11 +286,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat height = 50;
-    if (indexPath.section == 1 && indexPath.row == 0) {
+    if (indexPath.section == 1 && indexPath.row == 1) {
         height = 400;
     }
-    else if (indexPath.section == 2) {
+    else if (indexPath.section == 2 && indexPath.row > 0) {
         height = 65;
+    }else if ((indexPath.section == 1 && indexPath.row == 0) || (indexPath.section == 2 && indexPath.row == 0)){
+        height = 36;
     }
     return height;
 }
@@ -342,23 +356,23 @@
 
 #pragma mark - Table view delegate
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if(section == 1){
-        return self.notesHeaderView;
-    }else if(section == 2){
-        return self.actionHeaderView;
-    }else{
-        return nil;
-    }
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section == 0){
-        return 0;
-    }else{
-        return 29;
-    }
-}
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    if(section == 1){
+//        return self.notesHeaderView;
+//    }else if(section == 2){
+//        return self.actionHeaderView;
+//    }else{
+//        return nil;
+//    }
+//}
+//
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    if(section == 0){
+//        return 0;
+//    }else{
+//        return 29;
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // create a view to enter a meeting manually
@@ -371,7 +385,7 @@
         actionItemsVC.agendaItem = self.agendaItem;
         actionItemsVC.actionViewControllerDelegate = self;
         // setup the action item for the popover controller
-        actionItemsVC.actionItem = [[self.agendaItem.ActionItems allObjects] objectAtIndex:indexPath.row];
+        actionItemsVC.actionItem = [[self.agendaItem.ActionItems allObjects] objectAtIndex:indexPath.row - 1];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:actionItemsVC];
         self.agendaItemPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
         //self.agendaItemPopoverController.delegate = self;
