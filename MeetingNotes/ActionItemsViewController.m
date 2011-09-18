@@ -204,6 +204,7 @@
                 [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             }
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = attendee.name;
         //[attendee release];
         return cell;
