@@ -134,6 +134,7 @@
     {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = [(Category*)[fetchedResultsController objectAtIndexPath:indexPath] name];
     return cell;
 }
