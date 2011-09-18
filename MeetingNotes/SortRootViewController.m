@@ -293,8 +293,7 @@
     if(category){
         NSIndexPath *indexPathToSelect = [NSIndexPath indexPathForRow:[fetchedResultsController indexPathForObject:category].row inSection:1];
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPathToSelect];
-        [indexPathToSelect release];
-    }else{
+        }else{
         [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     }
 }

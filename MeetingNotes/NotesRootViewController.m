@@ -151,6 +151,7 @@
     // replace the detail view in the split view controller
     NSLog(@"Replacing the detail view with the MeetingListViewController");
     [self.sortDetailViewController setupWithMeetingListViewController];
+    NSLog(@"Replaced the detail view now selecting a meeting category");
     [self.sortDetailViewController.rvController selectRowForCategory:self.meetingBeingEdited.Category];
 }
 
