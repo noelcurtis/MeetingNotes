@@ -425,9 +425,6 @@
 
     NSLog(@"New attendee %@ picked and created.", [self.personSelectedFromPeoplePicker description]);
     [TestFlight passCheckpoint:[NSString stringWithFormat:@"New attendee %@ picked and created.", [self.personSelectedFromPeoplePicker description]]];
-    [firstName release];
-    [lastName release];
-    [emailAddress release];
     [self.navigationController dismissModalViewControllerAnimated:YES];
     [_tableView reloadData];
     return NO;
@@ -445,7 +442,7 @@
 // Dismisses the people picker and shows the application when users tap Cancel. 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
-	[personSelectedFromPeoplePicker release];
+	self.personSelectedFromPeoplePicker = nil;
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 

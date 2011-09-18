@@ -203,7 +203,6 @@
             {
                 [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             }
-            //[actionableAttendees release];
         }
         cell.textLabel.text = attendee.name;
         //[attendee release];
