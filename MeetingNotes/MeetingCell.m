@@ -25,6 +25,7 @@
 @synthesize starButton;
 @synthesize meeting = _meeting;
 @synthesize startDateValueLabel;
+@synthesize actionNumberImage;
 
 -(IBAction) starClicked:(id)sender{
     if(isStarred){
@@ -83,6 +84,7 @@
     else
     {
         [self.actionItemCountLabel setHidden:YES];
+        [self.actionNumberImage setHidden:YES];
     }
     if([meeting.isStarred isEqualToNumber:[NSNumber numberWithInt:1]])
     {
@@ -107,6 +109,7 @@
     [locationNameLabel release];
     [locationLabel release];
     [actionItemCountLabel release];
+    [actionNumberImage release];
     [super dealloc];
 }
 

@@ -243,6 +243,7 @@
 		C787D31513CA11F000EE949B /* AgendaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C715C0E313A03EFD004CCF7D /* AgendaItem.m */; };
 		C787D31613CA11F500EE949B /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD5138F3EE400BEF168 /* Attendee.m */; };
 		C787D31713CA11F800EE949B /* ActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FEBCD2138F3ED500BEF168 /* ActionItem.m */; };
+		C789B9121426A19900B199CB /* act_num_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C789B9111426A19900B199CB /* act_num_bg.png */; };
 		C789CC6913B5958500AE709D /* KiwiTestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */; };
 		C78C547113C125AF00C2553D /* enlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C78C547013C125AF00C2553D /* enlogo.png */; };
 		C7909C4D138C8166001EFF79 /* SortDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */; };
@@ -656,6 +657,7 @@
 		C787D30B13CA001A00EE949B /* HtmlEmailBoilerplateHeader.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = HtmlEmailBoilerplateHeader.html; sourceTree = "<group>"; };
 		C787D30E13CA006F00EE949B /* HTMLEmailBoilerplateFooter.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = HTMLEmailBoilerplateFooter.html; sourceTree = "<group>"; };
 		C787D31013CA0EA800EE949B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C789B9111426A19900B199CB /* act_num_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = act_num_bg.png; path = Images/act_num_bg.png; sourceTree = "<group>"; };
 		C789CC6813B5958500AE709D /* KiwiTestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KiwiTestConfiguration.m; sourceTree = "<group>"; };
 		C78C547013C125AF00C2553D /* enlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enlogo.png; path = Images/enlogo.png; sourceTree = "<group>"; };
 		C7909C4C138C8166001EFF79 /* SortDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortDetailViewController.xib; sourceTree = "<group>"; };
@@ -1186,6 +1188,7 @@
 		C7557C4C137758AC003AC2A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C789B9111426A19900B199CB /* act_num_bg.png */,
 				373ADDC013F33E540001280E /* cat_view_bg_p.png */,
 				C7C64FFF13E3838500DFE26F /* CategoryLabels */,
 				C7C64FF413E3837F00DFE26F /* MeetingLabels */,
@@ -1743,6 +1746,7 @@
 				C70C5B9B141EB0780028D07D /* Entitlements.entitlements in Resources */,
 				C767FD65141EF898004E16E3 /* README.txt in Resources */,
 				C767FD66141EF898004E16E3 /* release_notes.txt in Resources */,
+				C789B9121426A19900B199CB /* act_num_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
