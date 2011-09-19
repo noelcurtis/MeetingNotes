@@ -179,17 +179,23 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="actionItemCountLabel">UILabel</string>
+						<string key="actionNumberImage">UIImageView</string>
 						<string key="backgroundImage">UIImageView</string>
 						<string key="categoryImage">UIImageView</string>
 						<string key="locationLabel">UILabel</string>
 						<string key="locationNameLabel">UILabel</string>
 						<string key="meetingLabel">UILabel</string>
 						<string key="starButton">UIButton</string>
+						<string key="startDateValueLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="actionItemCountLabel">
 							<string key="name">actionItemCountLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="actionNumberImage">
+							<string key="name">actionNumberImage</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="backgroundImage">
 							<string key="name">backgroundImage</string>
@@ -214,6 +220,10 @@
 						<object class="IBToOneOutletInfo" key="starButton">
 							<string key="name">starButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="startDateValueLabel">
+							<string key="name">startDateValueLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

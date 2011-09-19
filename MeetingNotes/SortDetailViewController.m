@@ -96,7 +96,7 @@
     [self.activeViewController.view removeFromSuperview];
 	self.activeViewController = controller;
     // Customize the size of the frame so that the toolbar is not hidden.
-	CGRect r = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height);
+	CGRect r = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44);
 	self.activeViewController.view.frame = r;
     [self.activeViewController viewWillAppear:NO];
 	[self.view addSubview:self.activeViewController.view];

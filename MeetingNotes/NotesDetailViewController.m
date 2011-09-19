@@ -406,18 +406,18 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    NSLog(@"text field did begin editing");
+    //NSLog(@"text field did begin editing");
     [textField becomeFirstResponder];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSLog(@"text field did change %@", string);
+    //NSLog(@"text field did change %@", string);
     [self.agendaItemTitleChangeDelegate agendaTitleDidChangeCharactersInRange:range replacementString:string];
     return YES;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"Text field did end editing, updating agenda item and saving context");
+    //NSLog(@"Text field did end editing, updating agenda item and saving context");
     [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
     //[self.notesRootViewController saveContextAndReloadTable];
@@ -429,17 +429,17 @@
 }
 
 -(void) textViewDidBeginEditing:(UITextView *)textView{
-    NSLog(@"Text view did begin editing");
+    //NSLog(@"Text view did begin editing");
     [textView becomeFirstResponder];
     self.isNotesTextViewActive = YES;
 }
 
 -(void) textViewDidChange:(UITextView *)textView{
-    NSLog(@"Text view did change");
+    //NSLog(@"Text view did change");
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
-    NSLog(@"Text view did end editing, updating agenda item and saving context");
+    //NSLog(@"Text view did end editing, updating agenda item and saving context");
     [self.agendaItem setNote:self.noteView.text];
     [self.agendaItem setTitle:self.agendaItemTitleTextField.text];
     [self.notesRootViewController saveContextAndReloadTableWithNewAgendaItem:self.agendaItem];
