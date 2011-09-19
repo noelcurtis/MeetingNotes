@@ -83,7 +83,8 @@
 - (int)getActionItemCount{
     int actionItemCount = 0;
     for (AgendaItem *agendaItem in [self AgendaItems]) {
-        actionItemCount += [agendaItem.ActionItems count];
+        NSSet *actionItems = agendaItem.ActionItems;
+        actionItemCount += [[actionItems filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"isComplete==%d",0]] count];
     }
     return actionItemCount;
 }
