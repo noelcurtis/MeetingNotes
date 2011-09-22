@@ -63,9 +63,9 @@
 -(void) setupToolbarForMeetingListViewController{
     
     NSMutableArray *currentItems = [[self.toolBar items] mutableCopy];
-    
     _calendarButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_calendar"] target:self action:@selector(calenderButtonClick:)];
     addMeetingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
+    [addMeetingButton setStyle:UIBarButtonItemStyleBordered];
     UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *applicationSettingsButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_gear.png"] target:self action:@selector(didPressSettingsButton:)];
     
