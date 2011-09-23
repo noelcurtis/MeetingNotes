@@ -34,6 +34,7 @@
 - (void)registerForNotifications;
 - (void)keyboardWasShown:(NSNotification*)aNotification;
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification;
+- (IBAction) backButtonPressed:(id)sender;
 //- (void)deviceDidChangeOrientation:(NSNotification*)aNotification;
 @end
 
@@ -145,10 +146,13 @@
     //                                               style:UIBarButtonItemStyleBordered target:self action:@selector(shareAction:)];
     shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction:)];
     
+    UIImage *backButtonImage = [UIImage imageNamed:@"btn_back"];
+    UIBarButtonItem *backButton = [UIBarButtonItem barItemWithImage:backButtonImage target:self action:@selector(backButtonPressed:)];
+    
     switch ([items count]) {
         case 5:{
             [[items objectAtIndex:0] setTitle:@"Agenda Items"];
-            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:[items objectAtIndex:0], 
+            [self.detailViewControllerToolbar setItems:[NSMutableArray arrayWithObjects:backButton, [items objectAtIndex:0], 
                                                         [items objectAtIndex:1], meetingSettingsButton, shareButton,newActionItemButton ,nil]];
             break;
         }
@@ -162,6 +166,24 @@
         }
         default:
             break;
+    }
+}
+
+-(void)alterBackButton:(BOOL)isPresent{
+    if(isPresent){
+        UIImage *backButtonImage = [UIImage imageNamed:@"btn_back"];
+        UIBarButtonItem *backButton = [UIBarButtonItem barItemWithImage:backButtonImage target:self action:@selector(backButtonPressed:)];
+        NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
+        NSMutableArray *newItems = [NSMutableArray arrayWithObject:backButton];
+        [newItems addObjectsFromArray:items];
+        [self.detailViewControllerToolbar setItems:newItems // setup bar button item for toolbar
+                      animated:NO];
+
+    }else{
+        NSMutableArray *items = [[self.detailViewControllerToolbar items] mutableCopy];
+        [items removeObjectAtIndex:0];
+        [self.detailViewControllerToolbar setItems:items animated:YES];
+        [items release];
     }
 }
 
@@ -448,6 +470,10 @@
 }
 
 #pragma mark - Button actions
+- (IBAction)backButtonPressed:(id)sender{
+    [self.notesRootViewController backButtonAction:sender];
+}
+
 -(IBAction) newActionItemAction:(id)sender{
     NSLog(@"New action item button pressed");
     if (self.agendaItemPopoverController.popoverVisible == YES){

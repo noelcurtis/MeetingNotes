@@ -18,6 +18,7 @@
 @interface NotesRootViewController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)selectCellAtIndexPath:(NSIndexPath*) indexPath;
+- (void) setupBackButton;
 @end
 
 @implementation UIBarButtonItem(ButtonWithImage)
@@ -122,6 +123,32 @@
 
 #pragma mark - View lifecycle
 
+-(void) configureBackButtonForNavigationBar {
+    UIImage *backButtonImage = [UIImage imageNamed:@"btn_back"];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barItemWithImage:backButtonImage target:self action:@selector(backButtonAction:)];
+}
+
+-(void) hideBackButtonForNavigationBar {
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
+-(void) setupBackButton {
+    // check if the view is in a popover
+    UIView *v=self.view;
+    BOOL viewIsInPopover = NO;
+    for (;v!= nil; v=v.superview) {
+        if (!strcmp(object_getClassName(v), "UIPopoverView")) {
+            viewIsInPopover = YES;
+        }
+    }
+    if(viewIsInPopover){
+        [self hideBackButtonForNavigationBar];
+    }else{
+        [self configureBackButtonForNavigationBar];
+    }
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -129,9 +156,6 @@
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																							target:self 
 																							action:@selector(addAgendaItem:)] autorelease];
-    
-    UIImage *backButtonImage = [UIImage imageNamed:@"btn_back"];
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barItemWithImage:backButtonImage target:self action:@selector(backButtonAction:)];
     self.navigationItem.hidesBackButton = YES;
     
     // setup meeting being edited
@@ -164,7 +188,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{
+{    
+    [self setupBackButton];
     [super viewWillAppear:animated];
     UIImageView *backgroundImageView = [self.navigationController.view.subviews objectAtIndex:0];
     if(backgroundImageView){

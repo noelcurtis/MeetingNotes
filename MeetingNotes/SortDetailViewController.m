@@ -70,10 +70,10 @@
     UIBarButtonItem *applicationSettingsButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"icon_gear.png"] target:self action:@selector(didPressSettingsButton:)];
     
     NSMutableArray *items;
-    if([currentItems count]==5)
+    if([currentItems count]==6)
     {
-        [[currentItems objectAtIndex:0] setTitle:@"Categories"];
-        items = [NSMutableArray arrayWithObjects: [currentItems objectAtIndex:0] ,flexButton, applicationSettingsButton, _calendarButton, addMeetingButton, nil];
+        [[currentItems objectAtIndex:1] setTitle:@"Categories"];
+        items = [NSMutableArray arrayWithObjects: [currentItems objectAtIndex:1] ,flexButton, applicationSettingsButton, _calendarButton, addMeetingButton, nil];
     }else{
         items = [NSMutableArray arrayWithObjects:flexButton, applicationSettingsButton, _calendarButton, addMeetingButton, nil];
     }
@@ -245,7 +245,6 @@
      willHideViewController:(UIViewController *)aViewController 
           withBarButtonItem:(UIBarButtonItem *)barButtonItem 
        forPopoverController:(UIPopoverController *)pc{
-    
     //barButtonItem.title = aViewController.title;  // set the title for the button
     if ([self.activeViewController isKindOfClass:[MeetingListViewController class]]) {
         barButtonItem.title = aViewController.title;
@@ -257,18 +256,23 @@
     [newItems addObjectsFromArray:items];
     [self.toolBar setItems:newItems // setup bar button item for toolbar
                   animated:YES];
-    [items release];
-    self.rootViewPopover = pc;    
+    if([[(UINavigationController*)aViewController visibleViewController] isKindOfClass:[NotesRootViewController class]]){
+        [[(NotesRootViewController*)[(UINavigationController*)aViewController visibleViewController] notesDetailViewController] alterBackButton:YES];
+    }
+    self.rootViewPopover = pc; 
 }
 
 -(void) splitViewController:(UISplitViewController *)svc 
      willShowViewController:(UIViewController *)aViewController 
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem{
     
+    if([[(UINavigationController*)aViewController visibleViewController] isKindOfClass:[NotesRootViewController class]]){
+        [[(NotesRootViewController*)[(UINavigationController*)aViewController visibleViewController] notesDetailViewController] alterBackButton:NO];
+    }
+    
     NSMutableArray *items = [[toolBar items] mutableCopy];
     [items removeObject:barButtonItem];
     [toolBar setItems:items animated:YES];
-    [items release];
     self.rootViewPopover = nil;
 }
 

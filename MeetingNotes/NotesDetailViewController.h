@@ -53,6 +53,9 @@
 // Satisfy the ActionItemsViewControllerDelegate
 -(void) dismissActionItemsViewController;
 
+// Use to add or remove the back button
+-(void) alterBackButton:(BOOL) isPresent;
+
 @end
 
 

@@ -34,7 +34,8 @@
 
 //-(void)saveContextAndReloadTable;
 -(void)saveContextAndReloadTableWithNewAgendaItem:(AgendaItem*)newAgendaItem;
-
+-(void) configureBackButtonForNavigationBar;
+-(void) hideBackButtonForNavigationBar;
 -(IBAction)backButtonAction:(id)sender;
 
 @end
